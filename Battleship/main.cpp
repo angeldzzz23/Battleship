@@ -15,11 +15,27 @@
 #include "Game.h"
 #include <iostream>
 #include "Coordinate.h"
+#include "Destroyer.h"
+#include "AbsBoat.h"
 using namespace std;
 
 
 int main(int argc, char** argv) {
    
+    
+    Destroyer des1 = Destroyer();
+    Destroyer de2 =  Destroyer();
+    Destroyer des3 = Destroyer();
+
+    AbsBoat *ss[10];
+    ss[0] = &des1;
+    
+    cout << ss[0]->reqsz() << endl;
+    
+    
+    
+    
+    
 //    Game game;
 //    game.startGame();
     

@@ -14,17 +14,19 @@
 #ifndef ABSBOAT_H
 #define ABSBOAT_H
 
+#include "Coordinate.h"
+
 class AbsBoat {
-private: 
-    int size; 
+protected: 
+    int size; // the current size of the boat 
     Coordinate *cordinate;  // the positions of the boat
     Coordinate *hit; // cordinates that have been hit 
     char *name; 
 public: 
     virtual int reqsz() const = 0; // the requirement of every boat size. 
     virtual int getSize() const = 0; // the current size of the boat 
-    virtual bool cordHshit(Coordinate); // check if the cordinate has been hit
-    virtual void setHit(Coordinate *hit);  // initializez the hit with a a cord
+    virtual bool cordHshit(Coordinate) {return false;}; // check if the cordinate has been hit
+    virtual void setHit(Coordinate *hit) {};  // initializez the hit with a a cord 
        
 };
 

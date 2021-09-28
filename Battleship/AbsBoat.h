@@ -16,6 +16,8 @@
 
 #include "Coordinate.h"
 
+// We might want to create all the boats using this abstract class
+
 class AbsBoat {
 protected: 
     int size; // the current size of the boat 

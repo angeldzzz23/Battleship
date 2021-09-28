@@ -15,17 +15,20 @@
 #define BOARD_H
 
 #include "Coordinate.h"
-#include "Boat.h"
+#include "AbsBoat.h"
 
-class Board{
+class Board {
 private:
     char **board; // the board 
 public:
-    void update(*Boat);
-    void upHts(*Coordinate);
-    
-    void update(*Coordinate);
+    Board();
+    void update(AbsBoat*, int size); // adds user boats into board
+    void upHts(AbsBoat*, int size); // update the hits 
+    void upms(AbsBoat*, int size); // update the misses 
+    ~Board();
 };
+
+// we probably want something that checks if a full ship has been taken down.
 
 
 #endif /* BOARD_H */

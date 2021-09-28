@@ -19,7 +19,7 @@ class Coordinate {
         int row; 
         int col; 
     public: 
-        Coordinate(char*);  
+        Coordinate(char*);  // takes in a string 
         int getRow();
         int getCol();
         int  cnvrt(char digit); // returns a translated row or col 

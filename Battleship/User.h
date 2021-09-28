@@ -14,23 +14,30 @@
 #ifndef USER_H
 #define USER_H
 
-#include "Boat.h"
+
+#include "AbsBoat.h"
+#include "Board.h"
+#include "Coordinate.h"
+
 
 class User {
+  private:
     char *name; // the name of the user 
-    Boat *boats; 
-    char *hits; 
-    char *misses; 
-    // display their grid
+    AbsBoat *boats;  // the boats that the user contains 
+    Coordinate *hits;  
+    Coordinate *misses; 
+   
     
     // user board
-        // contains your boats 
-        // the hits and misses of the enemy 
-        // 
+    Board myBoard; // contains the location of your boats
+                   // and the hits and misses of the enemy
+        
     // enemy board
-        // contains your misses
-        // containts your hits
-        // 
+    Board enemyBoard; // contains your misses and hits.
+                      // contains your misses.
+                      // contains your hits.   
+public: 
+    
     
 };
 

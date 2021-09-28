@@ -11,6 +11,8 @@
  * Created on September 26, 2021, 3:05 PM
  */
 
+
+
 #ifndef BATTLESHIP_H
 #define BATTLESHIP_H
 #include "User.h"
@@ -26,7 +28,7 @@ class Battleship {
     public:
         Battleship(int); // initializes the game
      
-        void startTwoPlayer();  // $
+        void startTwoPlayer();  // 
         void startAIGame();
 
 };
@@ -35,3 +37,14 @@ class Battleship {
 
 #endif /* BATTLESHIP_H */
 
+// Helper information 
+// This is how you can create an array with different types of boats
+//    Destroyer des1 = Destroyer();
+//    Destroyer de2 =  Destroyer();
+//    Destroyer des3 = Destroyer();
+//
+//    AbsBoat *ss[10];
+//    ss[0] = &des1;
+//    
+//    cout << ss[0]->reqsz() << endl;
+//    

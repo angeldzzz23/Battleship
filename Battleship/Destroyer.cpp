@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 // this is an example of how we would create a a ship
 
 
 #include "AbsBoat.h"
 #include "Destroyer.h"
 #include <iostream>
+
 
 // initializerr
 // The initializer should probably take in the 

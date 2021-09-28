@@ -13,12 +13,9 @@
 using namespace std;
 
 
-
     // a cordinate number is a letter and a number 
     // ex. a1
   Coordinate::Coordinate(char*p) {
-      
-        
       
       // converting char to int  ascii table 
         row = cnvrtLet(p[0]); // converts char to int
@@ -48,9 +45,29 @@ using namespace std;
    }
    
    // convert letter to an interger using ascii table 
-   // TODO: 
+   // TODO: make it cleaner
    int Coordinate::cnvrtLet(char digit) {
-        // TODO: 
-       return 3; 
+       
+       switch(digit) {
+           case 'a': return 1;
+           case 'b': return 2;
+           case 'c': return 3;
+           case 'd': return 4;   
+           case 'e': return 5;
+           case 'f': return 6;
+           case 'g': return 7;
+           case 'h': return 8;
+           case 'i': return 9;
+           case 'j': return 10;
+           
+           default: 
+               return -1;
+               
+             
+       } 
+       
+       return 2;
+       
+    
    }
 

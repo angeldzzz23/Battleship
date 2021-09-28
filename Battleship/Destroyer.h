@@ -19,7 +19,7 @@
 // destoyers have a size int 
 class Destroyer: public AbsBoat {
     public: 
-        Destroyer(); // destroyer
+        Destroyer(); // We might want to add cordinates on our constructor 
         virtual ~Destroyer();
        int reqsz() const  {return 2; }; // the requirement of every boat size. 
        int getSize() const {return size;}; // the current size of the boat 

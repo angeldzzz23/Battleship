@@ -14,7 +14,11 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
+// this class is in charged of display everything from the board
 
+class Display {
+    
+};
 
 #endif /* DISPLAY_H */
 

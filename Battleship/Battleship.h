@@ -30,15 +30,3 @@ class Battleship {
 
 #endif /* BATTLESHIP_H */
 
-// Helper information 
-// for dealing with the abstract boats
-// This is how you can create an array with different types of boats
-//    Destroyer des1 = Destroyer();
-//    Destroyer de2 =  fffefff();
-//    Destroyer des3 = Destroyer();
-//
-//    AbsBoat *ss[10];
-//    ss[0] = &des1;
-//    
-//    cout << ss[0]->reqsz() << endl;
-//    

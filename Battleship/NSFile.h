@@ -14,12 +14,10 @@
 #ifndef NSFILE_H
 #define NSFILE_H
 
+// TODO #1 come up with properties
+// TODo #2 come up with definitions 
+
 class NSFile {
-public:
-    NSFile();
-    NSFile(const NSFile& orig);
-    virtual ~NSFile();
-private:
 
 };
 

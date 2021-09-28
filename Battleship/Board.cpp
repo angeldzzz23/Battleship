@@ -43,18 +43,18 @@ Board::Board() {
 }
 
 // updates the board with the boats of the User. 
-void Board::update(AbsBoat* boats, int size) {
+void Board::update(Boat* boats, int size) {
     // TODO:
 }
 
 // updates hits of the board
-void Board::upHts(AbsBoat*, int size) {
+void Board::upHts(Boat*, int size) {
     // TODO:
     
 }
 
 // updates the misses of the boat 
-void Board::upms(AbsBoat*, int size) {
+void Board::upms(Boat*, int size) {
     // TODO: 
 }
 

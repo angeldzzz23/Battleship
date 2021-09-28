@@ -1,29 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Author: Team #23232323
+ * Created on Sept 28, 2021, 11:40 AM
+ * Purpose: 
+ *    
  */
 
-/* 
- * File:   User.h
- * Author: AZ
- *
- * Created on September 26, 2021, 3:16 PM
- */
 
 #ifndef USER_H
 #define USER_H
 
-
 #include "AbsBoat.h"
 #include "Board.h"
 #include "Coordinate.h"
+#include "Boat.h"
 
 
 class User {
   private:
     char *name; // the name of the user 
-    AbsBoat *boats;  // the boats that the user contains 
+    Boat *boats;  // the boats that the user contains 
     Coordinate *hits;  
     Coordinate *misses; 
    

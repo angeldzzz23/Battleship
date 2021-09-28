@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
- * File:   Battleship.h
- * Author: AZ
- *
- * Created on September 26, 2021, 3:05 PM
+ * Author: Team #23232323
+ * Created on Sept 28, 2021, 11:40 AM
+ * Purpose: 
+ *    
  */
-
 
 
 #ifndef BATTLESHIP_H
@@ -38,9 +31,10 @@ class Battleship {
 #endif /* BATTLESHIP_H */
 
 // Helper information 
+// for dealing with the abstract boats
 // This is how you can create an array with different types of boats
 //    Destroyer des1 = Destroyer();
-//    Destroyer de2 =  Destroyer();
+//    Destroyer de2 =  fffefff();
 //    Destroyer des3 = Destroyer();
 //
 //    AbsBoat *ss[10];

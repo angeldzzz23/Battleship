@@ -64,6 +64,7 @@ void Battleship::startTwoPlayer() {
 
 
 // TODO
+// Similar process as the other one 
 void Battleship::startAIGame() {
     
 }

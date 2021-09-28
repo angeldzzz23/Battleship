@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
- * File:   Board.h
- * Author: AZ
- *
- * Created on September 26, 2021, 4:48 PM
+ * Author: Team #23232323
+ * Created on Sept 28, 2021, 11:40 AM
+ * Purpose: 
+ *    
  */
 
 #ifndef BOARD_H
@@ -16,16 +10,17 @@
 
 #include "Coordinate.h"
 #include "AbsBoat.h"
+#include "Boat.h"
 
 class Board {
 private:
     char **board; // the board 
 public:
     Board();
-    void update(AbsBoat*, int size); // adds user boats into board
-    void upHts(AbsBoat*, int size); // update the hits 
-    void upms(AbsBoat*, int size); // update the misses 
-    ~Board();
+    void update(Boat*, int size); // adds user boats into board. IDk if we'll need this 
+    void upHts(Boat*, int size); // update the hits 
+    void upms(Boat*, int size); // update the misses 
+    ~Board(); // deinit the *board 
 };
 
 // we probably want something that checks if a full ship has been taken down.

@@ -9,6 +9,9 @@
 
 #include <iostream>
 
+// TODO #1: Construsctor 
+// TODO #2: cnvrtLet
+        // make it cleaner 
 
 using namespace std;
 
@@ -25,16 +28,18 @@ using namespace std;
         
   }
   
+  // returns the row 
   int Coordinate::getRow() {
        return row;    
   }
-            
+ 
+  // returns the col 
    int Coordinate::getCol() {
     
        return col;
     }
    
-   
+   // converts char to integer
    int  Coordinate::cnvrt(char digit) {
      if(digit<'0'||digit>'9'){
         cout<<"You don't know what you are doing"<<endl;
@@ -43,6 +48,7 @@ using namespace std;
      
     return digit-'0';  
    }
+   
    
    // convert letter to an interger using ascii table 
    // TODO: make it cleaner

@@ -15,19 +15,24 @@
 #include "Game.h"
 #include <iostream>
 #include "Coordinate.h"
-#include "Destroyer.h"
+#include "Boat.h"
 #include "AbsBoat.h"
 
 
 using namespace std;
 
+// We need someone to work on: 
+// TODO #1: creating the boats (inheritance of diff boats)
+// TODO #2: Cordinates 
+// TODO #3 Battleship 2 player game - Angel 
+// TODO 3b Battleship playing against a PC - Coder Kai 
+// TODO #4 the User 
+// TODO #5 The file saving/retrieving - Ethanol/Angel
+// TODO #6 Prompt class
+// TODO #7 Display class  
+
 
 int main(int argc, char** argv) {
-   
-    
-    
-   
-    
     
 //    Game game;
 //    game.startGame();
@@ -42,3 +47,5 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+// Prompt class
+// Display class

@@ -7,9 +7,12 @@
       <itemPath>AbsBoat.h</itemPath>
       <itemPath>Battleship.h</itemPath>
       <itemPath>Board.h</itemPath>
+      <itemPath>Boat.h</itemPath>
       <itemPath>Coordinate.h</itemPath>
-      <itemPath>Destroyer.h</itemPath>
+      <itemPath>Display.h</itemPath>
       <itemPath>Game.h</itemPath>
+      <itemPath>NSFile.h</itemPath>
+      <itemPath>Prompt.h</itemPath>
       <itemPath>User.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -21,8 +24,8 @@
                    projectFiles="true">
       <itemPath>Battleship.cpp</itemPath>
       <itemPath>Board.cpp</itemPath>
+      <itemPath>Boat.cpp</itemPath>
       <itemPath>Coordinate.cpp</itemPath>
-      <itemPath>Destroyer.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -58,17 +61,23 @@
       </item>
       <item path="Board.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Boat.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Boat.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Coordinate.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Coordinate.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Destroyer.cpp" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="Destroyer.h" ex="false" tool="3" flavor2="0">
+      <item path="Display.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NSFile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Prompt.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -105,17 +114,23 @@
       </item>
       <item path="Board.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Boat.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Boat.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Coordinate.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Coordinate.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Destroyer.cpp" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="Destroyer.h" ex="false" tool="3" flavor2="0">
+      <item path="Display.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NSFile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Prompt.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>

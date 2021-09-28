@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
- * File:   Game.h
- * Author: AZ
- *
- * Created on September 26, 2021, 1:11 PM
+ * Author: Team #23232323
+ * Created on Sept 28, 2021, 11:40 AM
+ * Purpose: 
+ *    
  */
 
 #ifndef GAME_H
 #define GAME_H
 
+// this will be the main menu of the game 
 
-// this will be the menu of the game 
-// will call function to begin a certain
+// TODO: 
+    // Input User validation 
+   
 
 class Game {  
 //    private:
@@ -27,7 +23,7 @@ class Game {
                           // and contain the game loop 
         bool gameIsNotOver();
         
-        void makeAdecision(char); 
+        void makeAdecision(char); // makes a decision given the user input 
         
 };
 

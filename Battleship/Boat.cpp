@@ -8,28 +8,28 @@
 
 
 #include "AbsBoat.h"
-#include "Destroyer.h"
+#include "Boat.h"
 #include <iostream>
 
 
 // initializerr
 // The initializer should probably take in the 
-Destroyer::Destroyer() {
-    name = "Destroyer"; 
+Boat::Boat() {
+    name = "Boat"; 
     
     
 }
 
 // destructor
-Destroyer::~Destroyer() {
+Boat::~Boat() {
     
 }
 
- bool Destroyer::cordHshit(Coordinate) { // Checks if that specific cordinate has been hit
+ bool Boat::cordHshit(Coordinate) { // Checks if that specific cordinate has been hit
      return true;
  }
    
  
- void Destroyer::setHit(Coordinate *hit) { // initializez the hit with a a cord
+ void Boat::setHit(Coordinate *hit) { // initializez the hit with a a cord
        
    }  

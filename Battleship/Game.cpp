@@ -10,18 +10,20 @@ using namespace std;
 
 
 
-
+// the constructor for the game class
 Game::Game() {
     
 }
 
+// checks if the gameIsnoverOver 
+// IDK if this is needed
 bool Game::gameIsNotOver() {
     
     return true;
 }
 
 // displays the user menu
-
+// starts the game 
 void Game::startGame() {
     
     int userSze = 81; 
@@ -42,7 +44,7 @@ void Game::startGame() {
     } while(userInput[0] != '3');
     
    // present the menu 
-   
+    
 }
 
 // c++

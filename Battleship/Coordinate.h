@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
- * File:   Coordinate.h
- * Author: AZ
- *
- * Created on September 26, 2021, 3:19 PM
+ * Author: Team #23232323
+ * Created on Sept 28, 2021, 11:40 AM
+ * Purpose: 
+ *    
  */
 
 #ifndef COORDINATE_H
@@ -16,14 +10,16 @@
 
 class Coordinate {
     private: 
-        int row; 
-        int col; 
+        int row; // the row of a cordinte 
+        int col; // the col of a cordinate 
+                 // you can change those to x and y, up to you. 
+        int cnvrt(char digit); // transalteas number  
+        int cnvrtLet(char digit);  // transalte a letter 
     public: 
-        Coordinate(char*);  // takes in a string 
-        int getRow();
-        int getCol();
-        int  cnvrt(char digit); // returns a translated row or col 
-        int cnvrtLet(char digit); 
+        Coordinate(char*);  // Constructor that takes in a C string
+        int getRow(); // returns the row
+        int getCol(); // returns the col 
+                    
 };
 
 #endif /* COORDINATE_H */

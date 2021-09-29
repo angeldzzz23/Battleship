@@ -23,7 +23,8 @@
 // 
 
 class Prompt {
-    
+public:
+    void hello();
 };
 
 

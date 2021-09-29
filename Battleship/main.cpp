@@ -17,6 +17,7 @@
 #include "Coordinate.h"
 #include "Boat.h"
 #include "AbsBoat.h"
+#include "Prompt.h"
 
 
 using namespace std;
@@ -41,6 +42,10 @@ int main(int argc, char** argv) {
     Coordinate cord = Coordinate("a2");
     cout << cord.getRow() << endl;
     cout << cord.getCol() << endl;
+    
+    Prompt test;
+    
+    test.hello();
     
 //    cout << "\u24E7" << endl;
     // Hello

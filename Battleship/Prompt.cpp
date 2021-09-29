@@ -9,3 +9,11 @@
 
 using namespace std;
 
+void Prompt::hello(){
+    cout <<"Welcome to Battleship!" <<endl;
+    cout <<"Please enter username: ";
+    int size = 15;
+    tester.username =new char[size];
+    cin.getline(tester.username,size-1);
+    cout <<tester.username <<endl;
+}

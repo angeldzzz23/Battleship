@@ -13,7 +13,9 @@
 
 #ifndef PROMPT_H
 #define PROMPT_H
+#include <string>
 
+using namespace std;
 // TODO: THink of all the type of user input that we will need
 // might want to talk to the person working on game and cruiserclass
 // this class is in charge of taking all different type of the userput from users 
@@ -23,6 +25,12 @@
 // 
 
 class Prompt {
+private:
+    struct userinfo{
+        char *username;
+    };
+    
+    userinfo tester;
 public:
     void hello();
 };

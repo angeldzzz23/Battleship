@@ -28,11 +28,18 @@ class Prompt {
 private:
     struct userinfo{
         char *username;
-    };
-    
+    };    
     userinfo tester;
+    
+    
 public:
     void hello();
+    
+    void mainmenu();
+    
+    void getturn(); //le master function
+    
+    
 };
 
 

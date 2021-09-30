@@ -46,6 +46,8 @@ int main(int argc, char** argv) {
     Prompt test;
     
     test.hello();
+    test.getturn();
+    test.mainmenu();
     
 //    cout << "\u24E7" << endl;
     // Hello

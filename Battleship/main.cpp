@@ -24,7 +24,7 @@ using namespace std;
 
 // We need someone to work on: 
 // TODO #1: creating the boats (inheritance of diff boats)
-// TODO #2: Cordinates 
+// TODO #2: Cordinates
 // TODO #3 Battleship 2 player game - Angel 
 // TODO 3b Battleship playing against a PC - Coder Kai 
 // TODO #4 the User 

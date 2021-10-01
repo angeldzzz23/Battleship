@@ -13,7 +13,7 @@
 
 #ifndef PROMPT_H
 #define PROMPT_H
-#include <string>
+#include <cstring>
 
 using namespace std;
 // TODO: THink of all the type of user input that we will need

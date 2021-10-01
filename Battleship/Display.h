@@ -13,10 +13,14 @@
 
 #ifndef DISPLAY_H
 #define DISPLAY_H
+#include "Board.h"
 
 // this class is in charged of display everything from the board
 
 class Display {
+private:
+public:
+    void displayboard(Board);
     
 };
 

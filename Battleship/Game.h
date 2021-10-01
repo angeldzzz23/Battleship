@@ -7,6 +7,7 @@
 
 #ifndef GAME_H
 #define GAME_H
+#include "Board.h"
 
 // this will be the main menu of the game 
 

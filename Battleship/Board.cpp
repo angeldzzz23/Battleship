@@ -58,6 +58,15 @@ void Board::upms(Boat*, int size) {
     // TODO: 
 }
 
+int Board::getrowsize(){
+    return rowsize;
+}
+
+int Board::getcolsize(){
+    return colsize;
+}
+
+
 //deconstructor 
 // TODO:
 // check if it has any errors 
@@ -75,5 +84,3 @@ Board::~Board() {
     
     board = NULL;
 }
-
-

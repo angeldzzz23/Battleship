@@ -17,6 +17,7 @@
 #include "Coordinate.h"
 #include "Boat.h"
 #include "AbsBoat.h"
+#include "Display.h"
 
 
 using namespace std;
@@ -42,6 +43,11 @@ int main(int argc, char** argv) {
     cout << cord.getRow() << endl;
     cout << cord.getCol() << endl;
     
+    //testing board display function
+    Board testboard; //creating a test board object
+    
+    Display test; //created the display object test
+    test.displayboard(testboard); //displaying the board
 //    cout << "\u24E7" << endl;
     // Hello
     return 0;

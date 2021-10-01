@@ -24,7 +24,7 @@ using namespace std;
         row = cnvrtLet(p[0]); // converts char to int
         
         // convert to char -> to int using ascii table 
-        col = cnvrt(p[1]); // convets char to int 
+        col = cnvrt(p[1]); // converts char to int 
         
   }
   
@@ -46,7 +46,7 @@ using namespace std;
         exit(0);
       }
      
-    return digit-'0';  
+    return digit-'0';  //<-some smart shit right here
    }
    
    

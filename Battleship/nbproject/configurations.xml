@@ -27,6 +27,7 @@
       <itemPath>Boat.cpp</itemPath>
       <itemPath>Coordinate.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
+      <itemPath>display.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -81,6 +82,8 @@
       </item>
       <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -133,6 +136,8 @@
       <item path="Prompt.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="User.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="display.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

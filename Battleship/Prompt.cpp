@@ -10,7 +10,7 @@
 
 using namespace std;
 
-void Prompt::hello(){
+void Prompt::hello(){ //a simple welcome to the game prompt that asks for a username
     cout <<"Welcome to Battleship!" <<endl;
     cout <<"Please enter username: ";
     int size = 15;
@@ -20,7 +20,7 @@ void Prompt::hello(){
     delete tester.username;
 }
 
-void Prompt::getturn(){
+void Prompt::getturn(){ //function for taking turns - all inputs c strings for future input validation
     char input[1];
     cout <<"What would you like to do: \n"
             <<"1. Re-Print board \n"
@@ -42,7 +42,7 @@ void Prompt::getturn(){
     }
 }
 
-void Prompt::mainmenu(){
+void Prompt::mainmenu(){ //function for the main menu - all inputs c strings for future input validation
     char input[1];
     cout <<"What would you like to do: \n"
             <<"1. Play Computer \n"

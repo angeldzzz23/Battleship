@@ -20,11 +20,11 @@ class User {
   private:
     char *name; // the name of the user 
     int boatsz; // the size of the boat 
-    Boat *boats;  // the boats that the user contains 
+    Boat **boats;  // the boats that the user contains 
     int hitsz; // the size of the hits
-    Coordinate *hits; // contains the hits you 
+    Coordinate **hits; // contains the hits you 
     int missSz; // the 
-    Coordinate *misses;  
+    Coordinate **misses;  
   
     // user board
     Board myBoard; // contains the location of your boats
@@ -40,6 +40,7 @@ public:
     void adBoat(Boat boat); // adds a boat into the boat array 
     void adHit(Coordinate hit); // adds a hit into the boat array 
     void adMiss(Coordinate mis); // adds a cor
+    ~User(); // destructor 
 };
 
 #endif /* USER_H */

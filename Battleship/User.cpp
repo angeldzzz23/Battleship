@@ -22,11 +22,11 @@ User::User() {
     
     
     // dynamically allocate memory for boat 
-    boats = new Boat[boatsz];
+    boats = new Boat*[boatsz];
     // dynamically allocate memory for hits 
-//    hits = new Coordinate[totHit];
+    hits = new Coordinate*[totHit];
     // dynamically allocate memory for miss 
-//    misses = new Coordinate[totMis];
+    misses = new Coordinate*[totMis];
 
 }
 
@@ -49,6 +49,36 @@ void User::adMiss(Coordinate mis) {
     
 }
 
+// delete the instances allocated in the 
+ User::~User() {
+    int brdsz = 100; // the size of the board 
+    int boatsz = 5; // the total number of boats a user can add 
+    int totHit = 5 + 4 + 3 + 3 + 2; // sz of Cruiser,battleship,sz of cruiser, sz sub, sz of dest
+    int totMis = brdsz - totHit; // gets the tot misses the user can have 
+    
+    // loop through boat and delete each instance of boat 
+    for(int i = 0; i <boatsz;i++ ) {
+        delete boats[i]; 
+        boats[i] = NULL; 
+    }
+    
+    // loop thorugh hits and delete each isntance hits 
+     for(int i = 0; i <totHit;i++ ) {
+        delete hits[i]; 
+        hits[i] = NULL; 
+    }
+    
+    // loop thorugh misses and delete each instance of boat
+     for(int i = 0; i <totMis;i++ ) {
+        delete misses[i]; 
+        misses[i] = NULL; 
+    }
+    
+    // deleting the arrays 
+    delete [] boats;
+    delete [] hits;
+    delete [] misses;
+}
 
 
 

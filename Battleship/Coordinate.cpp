@@ -59,6 +59,7 @@ using namespace std;
    
    // convert letter to an interger using ascii table 
    // TODO: make it cleaner
+   // ADD new version 
    int Coordinate::cnvrtLet(char digit) {
        
        switch(digit) {

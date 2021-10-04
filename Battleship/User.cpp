@@ -38,6 +38,7 @@ void User::updNam(char *n, int sz) {
     // TODO
    // Angel - Comment for Lehr: I have experienced with C. 
     strcpy(name,n);
+    std::cout << name << std::endl;
     
 }
 

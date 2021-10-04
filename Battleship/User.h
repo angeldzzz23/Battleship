@@ -40,6 +40,7 @@ public:
     void adBoat(Boat boat); // adds a boat into the boat array 
     void adHit(Coordinate hit); // adds a hit into the boat array 
     void adMiss(Coordinate mis); // adds a cor
+    char *gtName() {return name;}
     ~User(); // destructor 
 };
 

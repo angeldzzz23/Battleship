@@ -28,19 +28,6 @@ using namespace std;
         
   }
   
-  // operator overload for a coordinate
-//  bool Coordinate::operator==(const Coordinate &c){
-//      if (row == c.getRow() && col == c.get.col()) {
-//          return true;
-//      }
-//      
-////      if(this->row==c.row && this->col==c.col) {
-////          return true; 
-////      } 
-//      
-//      
-//      return false;
-//  }
   
    bool operator==(const Coordinate &lhs, const Coordinate &rhs) {
        
@@ -53,18 +40,6 @@ using namespace std;
   
   
   
-  
-//  // returns the row 
-//  int Coordinate::getRow() {
-//       return row;    
-//  }
-// 
-//  // returns the col 
-//   int Coordinate::getCol() {
-//    
-//       return col;
-//    }
-//   
    // converts char to integer
    int  Coordinate::cnvrt(char digit) {
      if(digit<'0'||digit>'9'){

@@ -46,35 +46,19 @@ int main(int argc, char** argv) {
     Coordinate *cord2 = new Coordinate("b3");
     Coordinate *cord3 = new Coordinate("a2");
 
+    char *name = new char[81];
+    cin.getline(name, 81-1);
     
-    cout << cord1->getRow() << endl;
-    cout << cord1->getCol() << endl;
+    User *user = new User();
+    user->updNam(name, 81); 
     
-//    cout << cord1.getRow() << endl;
-//    cout << cord1.getCol() << endl;
+    delete [] name;
     
-    //testing board display function
-//    Board testboard; //creating a test board object
-//    
-//    Display test; //created the display object test
-//    test.displayboard(testboard); //displaying the board
+    char *name2 =  user->gtName();
     
-//    User usr = User();
-  
-//    if (cord1 == cord2) {
-//        cout << "same" << endl;
-//    }
-//    
-    
-    Boat b = Boat(); // creates a new boat
-//    
-    b.addCord(cord1);
-
-    
-        b.addCord(cord2);
+    cout << name2 << endl;
     
 
-    
     
     
     return 0;

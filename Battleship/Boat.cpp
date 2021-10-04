@@ -91,7 +91,6 @@ Boat::~Boat() {
  // make that you cannot add more than the ship size
  
  void Boat::addCord(Coordinate *cord) {   
-     std::cout << "here we are" << std::endl;
      
       cordinate[csize]= cord;
       csize++;

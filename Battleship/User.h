@@ -15,6 +15,7 @@
 #include "Boat.h"
 
 
+// each user will have a 5 boats 
 class User {
   private:
     char *name; // the name of the user 
@@ -24,8 +25,7 @@ class User {
     Coordinate *hits; // contains the hits you 
     int missSz; // the 
     Coordinate *misses;  
-   
-    
+  
     // user board
     Board myBoard; // contains the location of your boats
                    // and the hits and misses of the enemy
@@ -35,7 +35,7 @@ class User {
                       // contains your misses.
                       // contains your hits.   
 public: 
-    User(char*n); //initializes a user with a name
+    User(); //initializes a user with a name
     void updNam(char *name, int sz);
     void adBoat(Boat boat); // adds a boat into the boat array 
     void adHit(Coordinate hit); // adds a hit into the boat array 

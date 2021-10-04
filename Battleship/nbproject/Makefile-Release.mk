@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Boat.o \
 	${OBJECTDIR}/Coordinate.o \
 	${OBJECTDIR}/Game.o \
+	${OBJECTDIR}/User.o \
 	${OBJECTDIR}/display.o \
 	${OBJECTDIR}/main.o
 
@@ -92,6 +93,11 @@ ${OBJECTDIR}/Game.o: Game.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game.o Game.cpp
+
+${OBJECTDIR}/User.o: User.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/User.o User.cpp
 
 ${OBJECTDIR}/display.o: display.cpp
 	${MKDIR} -p ${OBJECTDIR}

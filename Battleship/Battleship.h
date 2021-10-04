@@ -13,9 +13,9 @@
 class Battleship {  
     private: 
         // user 1 
-        User userOne;
+//        User userOne;
         // user 2
-        User userTwo;
+//        User userTwo;
         
         
     public:

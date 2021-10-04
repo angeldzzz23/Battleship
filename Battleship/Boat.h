@@ -23,10 +23,11 @@ class Boat: public AbsBoat {
        int reqsz() const  {return 2; }; // the requirement of every boat size. 
        int getSize() const {return size;}; // the current size of the boat 
        bool cordHshit(Coordinate); // check if the cordinate has been hit
-       void setHit(Coordinate hit);  // initializez the hit with a a cord
-       void addCord(Coordinate);      // Adds a cordinate
+       void setHit(Coordinate *hit);  // initializez the hit with a a cord
+       void addCord(Coordinate*);    // Adds a cordinate
        bool cordHsadd(Coordinate c);
        char* nameOfBoat() {return name;}
+     
 };
 
 

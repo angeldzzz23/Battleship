@@ -19,7 +19,6 @@ class Coordinate {
         Coordinate(char*);  // Constructor that takes in a C string
         int getRow() {return row;} // returns the row
         int getCol() {return col;} // returns the col 
-//      bool operator==(const Coordinate &lhs, const Coordinate& lhs); //comparing cordinates 
         friend bool operator==(const Coordinate &lhs, const Coordinate &rhs);
            
 };

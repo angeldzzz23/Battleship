@@ -15,7 +15,7 @@
 // initializerr
 // The initializer should probably take in the 
 Boat::Boat() {
-//     strcpy(name,"boat"); gave ne =
+//     strcpy(name,"boat\0"); gave me a 
     csize=0; 
     hsize=0; 
     
@@ -48,66 +48,56 @@ Boat::~Boat() {
 }
 
 // checks of a specific cordinate has been hit 
+// you might need to specify a new parameter
  bool Boat::cordHshit(Coordinate c) { // Checks if that specific cordinate has been hit
-     
-     for(int i=0;i<hsize;i++){
-        if(hits[i]== &c) {
-             return true; 
-        }   
-    }
+    // TODO: FIX ME
     return false;
     
  }
    
  // FIX: 
  // make that you cannot add more than the ship size
- void Boat::setHit(Coordinate hit) { // initializez the hit with a a cord
+ void Boat::setHit(Coordinate *hit) { // initializez the hit with a a cord
      // if cordinate has not been hit
         // we add we a cordinate into our cordinate array 
-     if (!cordHshit(hit)) {
-         if (hsize==0) {
-             hits[0]= &hit;
-             hsize++;
-         } else {
-             hits[hsize] = &hit;
-             hsize++;
-         }
-     }
-   }  
+      hits[csize]= hit;
+      hsize++;
+      
+      std::cout << "set hit called: " << std::endl;
+      for(int i = 0; i < hsize; i++) {
+          std::cout << hits[i]->getRow() << " " << hits[i]->getCol() << std::endl;
+      }
+
+ }  
  
  // checks if the boat has already been added
+ // FIX ME: 
+ // test that it works. 
  bool Boat::cordHsadd(Coordinate c) {
-     for(int i = 0; i<csize;i++) {
-       // returns true if it is in the codinate array 
-//         if (cordinate[i]== &c) {
-//           return true;
-//       }
-     }
+     // TODO: 
      // return false if it is not in the corddinate array
      return false;
+ 
+ 
+ 
  }
  
+
  // adds a cordinate into our boat cordinate 
  // make this cleaner later 
  // FIX: 
+    // make sure that you dont add more than required size cordinates.
+    // fix the cordhadded function
  // make that you cannot add more than the ship size
- void Boat::addCord(Coordinate cord) {   
+ 
+ void Boat::addCord(Coordinate *cord) {   
      std::cout << "here we are" << std::endl;
      
+      cordinate[csize]= cord;
+      csize++;
      
-     if(!cordHsadd(cord)){
-        if(csize==0){
-            cordinate[0]=&cord;
-            csize++; 
-        }else{
-            cordinate[csize]=&cord; 
-            csize++; 
-        }
-    }
-     
-     // 
-     std::cout<<"cordinates in the array" << std::endl;
-     for (int i = 0; i <csize;i++) {
-         std::cout <<"row: " <<cordinate[i]->getRow() << " col " << cordinate[i]->getCol() << std::endl;
+     for (int i = 0; i < csize; i++) {
+         std::cout << "cord " << i <<  " row " << cordinate[i]->getRow() <<", col " << cordinate[i]->getCol() << std::endl;
      }
+   
  }

@@ -43,9 +43,9 @@ int main(int argc, char** argv) {
     cout << cord.getRow() << endl;
     cout << cord.getCol() << endl;
     
-    Prompt test;
+    Prompt test; //just testing out the prompt class and some functions of prompt class
     
-    test.hello();
+    test.hello(); 
     test.getturn();
     test.mainmenu();
     

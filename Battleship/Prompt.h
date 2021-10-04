@@ -7,7 +7,7 @@
 /* 
  * File:   Prompt.h
  * Author: AZ
- *
+ * Version 1 - Ethan and Yanis - basic prompting for functions + inputs and input validation. Will still need to link up with other classes for full functionality but the bases are made
  * Created on September 28, 2021, 10:43 AM
  */
 
@@ -22,24 +22,21 @@ using namespace std;
 // TODO #1 define function properties (header file)
 // TODO #2 create function definitions (cpp file)
 // hint: for user input you will use the getline function
-// 
 
 class Prompt {
 private:
     struct userinfo{
-        char *username;
+        char *username; //class was being weird about accessing username without being in a struct
     };    
     userinfo tester;
     
     
 public:
-    void hello();
+    void hello();//basic welcome prompt
     
-    void mainmenu();
+    void mainmenu(); //main menu
     
-    void getturn(); //le master function
-    
-    
+    void getturn(); //for taking turns
 };
 
 

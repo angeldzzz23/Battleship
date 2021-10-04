@@ -28,6 +28,13 @@ using namespace std;
         
   }
   
+  // operator overload for a coordinate
+  bool Coordinate::operator==(const Coordinate &c){
+      if(this->row==c.row && this->col==c.col);
+      return true; 
+  }
+  
+  
   // returns the row 
   int Coordinate::getRow() {
        return row;    

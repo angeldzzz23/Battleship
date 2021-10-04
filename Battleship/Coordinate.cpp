@@ -29,29 +29,48 @@ using namespace std;
   }
   
   // operator overload for a coordinate
-  bool Coordinate::operator==(const Coordinate &c){
-      if(this->row==c.row && this->col==c.col);
-      return true; 
-  }
+//  bool Coordinate::operator==(const Coordinate &c){
+//      if (row == c.getRow() && col == c.get.col()) {
+//          return true;
+//      }
+//      
+////      if(this->row==c.row && this->col==c.col) {
+////          return true; 
+////      } 
+//      
+//      
+//      return false;
+//  }
+  
+   bool operator==(const Coordinate &lhs, const Coordinate &rhs) {
+       
+       if (lhs.row == rhs.row &&  lhs.col == rhs.col) {
+           return true; 
+       }
+       
+       return false; 
+   }
   
   
-  // returns the row 
-  int Coordinate::getRow() {
-       return row;    
-  }
- 
-  // returns the col 
-   int Coordinate::getCol() {
-    
-       return col;
-    }
-   
+  
+  
+//  // returns the row 
+//  int Coordinate::getRow() {
+//       return row;    
+//  }
+// 
+//  // returns the col 
+//   int Coordinate::getCol() {
+//    
+//       return col;
+//    }
+//   
    // converts char to integer
    int  Coordinate::cnvrt(char digit) {
      if(digit<'0'||digit>'9'){
         cout<<"You don't know what you are doing"<<endl;
         exit(0);
-      }
+      }  
      
     return digit-'0';  //<-some smart shit right here
    }

@@ -6,6 +6,7 @@
 
 #include "User.h"
 #include <iostream>
+#include <string.h>
 
 // constructor 
 User::User() {
@@ -27,17 +28,29 @@ User::User() {
     hits = new Coordinate*[totHit];
     // dynamically allocate memory for miss 
     misses = new Coordinate*[totMis];
-
+    
+    name = new char[81]; // crea
+    
 }
 
 // takes in a string, and the size of the string 
-void User::updNam(char *name, int sz) {
+void User::updNam(char *n, int sz) {
     // TODO
+   // Angel - Comment for Lehr: I have experienced with C. 
+    strcpy(name,n);
+    
 }
 
 
+
 void User::adBoat(Boat boat) {
-    
+    if (boatsz < 5) {
+        boats[boatsz] = &boat;
+        boatsz++;
+    } else {
+        std::cout << "YOU ARE ADDING MORE THAN FIVE BOATS" << std::endl;
+        exit(0);
+    }
 }
 
 // adds a hit into the hit array
@@ -78,6 +91,7 @@ void User::adMiss(Coordinate mis) {
     delete [] boats;
     delete [] hits;
     delete [] misses;
+    delete [] name; 
 }
 
 

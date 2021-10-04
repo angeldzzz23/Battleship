@@ -18,6 +18,9 @@
 #include "Boat.h"
 #include "AbsBoat.h"
 #include "Display.h"
+#include <cstring>
+#include "User.h"
+#include "Boat.h"
 
 
 using namespace std;
@@ -39,17 +42,63 @@ int main(int argc, char** argv) {
 //    game.startGame();
     
 //    
-    Coordinate cord = Coordinate("a2");
-    cout << cord.getRow() << endl;
-    cout << cord.getCol() << endl;
+    Coordinate cord1 = Coordinate("a2");
+    Coordinate cord2 = Coordinate("a2");
+    Coordinate cord3 = Coordinate("a2");
+    
+    cout << cord1.getRow() << endl;
+    cout << cord1.getCol() << endl;
     
     //testing board display function
-    Board testboard; //creating a test board object
+//    Board testboard; //creating a test board object
+//    
+//    Display test; //created the display object test
+//    test.displayboard(testboard); //displaying the board
     
-    Display test; //created the display object test
-    test.displayboard(testboard); //displaying the board
-//    cout << "\u24E7" << endl;
-    // Hello
+//    User usr = User();
+  
+    if (cord1 == cord2) {
+        cout << "same" << endl;
+    }
+    
+    
+    //Boat b = Boat(); // creates a new boat
+    
+//    b.addCord(cord1);
+//    b.addCord(cord2);
+//    b.addCord(cord3);
+//    
+//    cout << "the boat required size is : " << b.reqsz();
+    
+    
+    //    cout << "\u24E7" << endl;
+    // Hello]
+    
+//    char*name = new char[81];
+//    char*nam2 = new char[81];
+//    cin.getline(name, 81-1);
+//      
+   
+    
+    
+//    cout << strlen(name) << endl;
+//    
+//    strcpy(nam2, name);
+//   
+//    
+//    cout << name << endl;
+//    
+//
+//    for(int i = 0; i <81; i++) {
+//        cout << name[i] << endl;
+//        if (name[i] == '\0') {
+//            cout << "here at: "<< i<< endl;
+//        }
+//    }
+    
+    
+    
+    
     return 0;
 }
 

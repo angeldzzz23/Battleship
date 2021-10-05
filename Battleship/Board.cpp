@@ -76,14 +76,14 @@ void Board::upms(Boat*, int size) {
 
 // update a hts cordinate 
 // do not need 
-void Board::upHts(Coordinate* hts, int size) {
-    board[hts->getRow()][hts->getCol()] = 'h';
+void Board::upHts(Coordinate* hts) {
+    board[hts->getRow()][hts->getCol()] = 'x';
 }
 
 // update a missed cordinate 
 // call this ms
-void Board::upms(Coordinate* ms, int size) {
-    
+void Board::upms(Coordinate* ms) {
+    board[ms->getRow()][ms->getCol()] = 'm';
 }
 
 

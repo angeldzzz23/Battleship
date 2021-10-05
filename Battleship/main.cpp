@@ -48,6 +48,11 @@ int main(int argc, char** argv) {
     Coordinate *cord3 = new Coordinate("a3");
    
     Coordinate *cord8 = new Coordinate("c4");
+    Coordinate *cord88 = new Coordinate("j6");
+    
+     Coordinate *cord9 = new Coordinate("f5");
+    Coordinate *cord99 = new Coordinate("f7");
+    
     
     Coordinate *cord4 = new Coordinate("d2");
     Coordinate *cord5 = new Coordinate("d3");
@@ -70,7 +75,12 @@ int main(int argc, char** argv) {
     Board *board = new Board();
     
     board->update(boats, 2);
-    board->upHts(cord8, 3);
+    board->upHts(cord8);
+    board->upHts(cord88);
+    
+    board->upms(cord9);
+    board->upms(cord99);
+    
     
 //    f int getrowsize(); //get size of row variable for other functions Ethan/Yanis
 //    int getcolsize(); //get size of colomn variable for other functions Ethan/Yanis

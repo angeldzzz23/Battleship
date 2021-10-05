@@ -41,8 +41,6 @@ void Battleship::startTwoPlayer() {
     // we can display a small menu for the user 
         // let them know that they can quit the game at any time and that they can save 
     
-
-    
     // get the name of user 1
         // create a delay for user 2 to press so that they can pick their name
     // get the name of user 2 

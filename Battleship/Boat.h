@@ -18,7 +18,7 @@ class Boat: public AbsBoat {
         
     public: 
         Boat(); // We might want to add cordinates on our constructor 
-                     // we might want to create another constructor thae has an array of constructor 
+                // we might want to create another constructor thae has an array of constructor 
        virtual ~Boat();
        int reqsz() const  {return 2; }; // the requirement of every boat size. 
        int getSize() const {return size;}; // the current size of the boat 
@@ -28,6 +28,9 @@ class Boat: public AbsBoat {
        bool cordHsadd(Coordinate c);
        char* nameOfBoat() {return name;}
        Coordinate **getcordinates() {return cordinate;}
+       // Check if cordinates added are
+       bool alCords(); // returns true if the coordinates of the boat fit our board 
+       
 };
 
 

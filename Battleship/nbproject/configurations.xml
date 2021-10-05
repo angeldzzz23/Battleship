@@ -63,6 +63,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>11</standard>
+        </ccTool>
       </compileType>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
       </item>

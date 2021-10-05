@@ -43,80 +43,93 @@ int main(int argc, char** argv) {
 //    game.startGame();
     
 //    
-    Coordinate *cord1 = new Coordinate("a1");
-    Coordinate *cord2 = new Coordinate("a2");
-   
-    Coordinate *cord3 = new Coordinate("c2");
-    Coordinate *cord4 = new Coordinate("c3");
+    char* n1 = new char[4];
+    n1 = "a1";
+    Coordinate *cord1 = new Coordinate(n1); // 0 1
+    cout << cord1->getCol() << " " << cord1->getRow() << endl;
     
-    Coordinate *cord5 = new Coordinate("b6");
-    Coordinate *cord6 = new Coordinate("b7");
-   
-    Coordinate *cord7 = new Coordinate("f7");
-    Coordinate *cord8 = new Coordinate("f8");
+    char* n2 = new char[4];
+    n2 = "a1";
     
-    Coordinate *cord9 = new Coordinate("d1");
-    Coordinate *cord10 = new Coordinate("d2");
+    Coordinate *cord2 = new Coordinate(n2);// 0 1
+    cout << cord2->getCol() << " " << cord2->getRow() << endl;
     
-    Coordinate *cord101 = new Coordinate("f8");
-    Coordinate *cord102 = new Coordinate("f7");
-    
-   Coordinate *cord103 =  new Coordinate("a5");
-    Coordinate *cord104 = new  Coordinate("a7");
+
+//    Coordinate *cord3 = new Coordinate("c2");
+//    Coordinate *cord4 = new Coordinate("c3");
+//    
+//    Coordinate *cord5 = new Coordinate("b6");
+//    Coordinate *cord6 = new Coordinate("b7");
+//   
+//    Coordinate *cord7 = new Coordinate("f7");
+//    Coordinate *cord8 = new Coordinate("f8");
+//    
+//    Coordinate *cord9 = new Coordinate("d1");
+//    Coordinate *cord10 = new Coordinate("d2");
+//    
+//    Coordinate *cord101 = new Coordinate("f8");
+//    Coordinate *cord102 = new Coordinate("f7");
+//    
+//   Coordinate *cord103 =  new Coordinate("a5");
+//    Coordinate *cord104 = new  Coordinate("a7");
         
     // Fix  == overoading opera
+    if (*cord1 == *cord2) {
+        cout << "dwdwdwfefefefef" << endl;
+    } else {
+        cout << "not true" << endl;
+    }
     
     
-    Boat *boat1 = new Boat();
-   
-    boat1->addCord(cord1);
-    boat1->addCord(cord2);
-    
-    Boat *boat2 = new Boat();
-    boat2->addCord(cord3);
-    boat2->addCord(cord4);
-    
-    Boat *boat3 = new Boat();
-    boat3->addCord(cord5);
-    boat3->addCord(cord6);
-
-    Boat *boat4 = new Boat();
-    boat4->addCord(cord7);
-    boat4->addCord(cord8);
-    
-    Boat *boat5 = new Boat();
-    boat5->addCord(cord9);
-    boat5->addCord(cord10);
-    
-    
-    Boat **boats = new Boat*[4];
-    boats[0] = boat1;
-    boats[1] = boat2; 
-    boats[2] = boat3;
-    boats[3] = boat4;
-    boats[4] = boat5;
- 
-    User *user = new User();
-    
-    user->adBoat(boat1);
-    user->adBoat(boat2);
-    user->adBoat(boat3);
-    user->adBoat(boat4);
-    user->adBoat(boat5);
-    
-    user->adEnemyHt(cord101);
-    user->adEnemyHt(cord102);
-    
-    user->adEnemyMs(cord103);
-    user->adEnemyMs(cord104);
+//    Boat *boat1 = new Boat();
+//   
+//    boat1->addCord(cord1);
+//    boat1->addCord(cord2);
+//    
+//    Boat *boat2 = new Boat();
+//    boat2->addCord(cord3);
+//    boat2->addCord(cord4);
+//    
+//    Boat *boat3 = new Boat();
+//    boat3->addCord(cord5);
+//    boat3->addCord(cord6);
+//
+//    Boat *boat4 = new Boat();
+//    boat4->addCord(cord7);
+//    boat4->addCord(cord8);
+//    
+//    Boat *boat5 = new Boat();
+//    boat5->addCord(cord9);
+//    boat5->addCord(cord10);
+//    
+//    
+//    Boat **boats = new Boat*[4];
+//    boats[0] = boat1;
+//    boats[1] = boat2; 
+//    boats[2] = boat3;
+//    boats[3] = boat4;
+//    boats[4] = boat5;
+// 
+//    User *user = new User();
+//    
+//    user->adBoat(boat1);
+//    user->adBoat(boat2);
+//    user->adBoat(boat3);
+//    user->adBoat(boat4);
+//    user->adBoat(boat5);
+//    
+//    user->adEnemyHt(cord101);
+//    user->adEnemyHt(cord102);
+//    
+//    user->adEnemyMs(cord103);
+//    user->adEnemyMs(cord104);
     
                
     //adEnemyHt
     //adEnemyMs
-   
-    if (user->isHit(cord101)) {
-        cout << "you are good fam" << endl;
-    }
+//    if (user->isHit(cord101)) {
+//        cout << "you are good fam" << endl;
+//    }
             
     
     
@@ -135,15 +148,15 @@ int main(int argc, char** argv) {
 //    char getElement(
     
     
-    cout << "printing your current board" << endl;
-    cout << "your boats and enemy hits and misses"  << endl;
-    // printing the board of the user
-    for (int i = 0; i <  user->brdRow(); i++) {
-        for (int j = 0; j < user->brdCol(); j++) {
-            cout << user->gtMBrdElmnt(i,j) << " ";
-        }
-        cout << endl;
-    }
+//    cout << "printing your current board" << endl;
+//    cout << "your boats and enemy hits and misses"  << endl;
+//    // printing the board of the user
+//    for (int i = 0; i <  user->brdRow(); i++) {
+//        for (int j = 0; j < user->brdCol(); j++) {
+//            cout << user->gtMBrdElmnt(i,j) << " ";
+//        }
+//        cout << endl;
+//    }
     
     
     

@@ -14,8 +14,8 @@
 
 class Board {
 private:
-    int rowsize = 10;//rowsize for board - Ethan/Yanis
-    int colsize = 10;//colsize for board - Ethan/Yanis
+    int rowsize;//rowsize for board - Ethan/Yanis
+    int colsize;//colsize for board - Ethan/Yanis
     char **board; // the board 
 public:
     Board();
@@ -29,7 +29,7 @@ public:
     int getrowsize(); //get size of row variable for other functions Ethan/Yanis
     int getcolsize(); //get size of colomn variable for other functions Ethan/Yanis
     char getElement(int row, int col) {return board[row][col]; } // retrives an element from the board
-    char** rboard(){ 
+    char** rboard() { 
         return board; 
     };
     

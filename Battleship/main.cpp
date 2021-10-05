@@ -114,9 +114,9 @@ int main(int argc, char** argv) {
     //adEnemyHt
     //adEnemyMs
    
-//    if (user->isHit(cord101)) {
-//        cout << "you are good fam" << endl;
-//    }
+    if (user->isHit(cord101)) {
+        cout << "you are good fam" << endl;
+    }
             
     
     

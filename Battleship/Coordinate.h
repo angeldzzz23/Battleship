@@ -14,7 +14,7 @@ class Coordinate {
         int col; // the col of a cordinate 
                  // you can change those to x and y, up to you. 
         int cnvrt(char digit); // transalteas number  
-        int cnvrtLet(char digit);  // transalte a letter 
+        int cnvrtLet(char letter);  // transalte a letter 
     public: 
         Coordinate(char*);  // Constructor that takes in a C string
         int getRow() const {return row;} // returns the row

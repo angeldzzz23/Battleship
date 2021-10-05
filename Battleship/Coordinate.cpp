@@ -46,36 +46,40 @@ using namespace std;
      if(digit<'0'||digit>'9'){
         cout<<"You don't know what you are doing"<<endl;
         exit(0);
-      }  
+      }
      
-    return digit-'0';  //<-some smart shit right here
+      //compensate if 0 is input
+     if(digit=='0'){
+         return digit-'0'; 
+     }
+     
+     
+     
+    return digit-'0'-1;  //<-some smart shit right here
    }
    
    
    // convert letter to an interger using ascii table 
    // TODO: make it cleaner
    // ADD new version 
-   int Coordinate::cnvrtLet(char digit) {
+   int Coordinate::cnvrtLet(char letter) {
        
-       switch(digit) {
-           case 'a': return 0;
-           case 'b': return 1;
-           case 'c': return 2;
-           case 'd': return 3;   
-           case 'e': return 4;
-           case 'f': return 5;
-           case 'g': return 6;
-           case 'h': return 7;
-           case 'i': return 8;
-           case 'j': return 9;
+          //out of bounds 
+       if((letter<'A'||letter>'Z')&&(letter<'a'||letter>'z')){
+           cout<<"You don't know what you are doing"<<endl; 
+           exit(0); 
+       }
+       
+       //in bounds
+       if(letter>='A'&&letter<='Z'){
+           return letter-'A';
+       }else if(letter>='a'&&letter<='z'){
+           return letter-'a'; 
+       } else {
+           cout << "somethign wrong happened here" << endl;
+           exit(0);
            
-           default: 
-               return -1;
-               
-             
-       } 
-       
-       return 2;
+       }
        
     
    }

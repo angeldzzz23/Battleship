@@ -53,9 +53,11 @@ int main(int argc, char** argv) {
     
     User *user = new User();
     user->updNam(name, 81); 
+    user->adMiss(cord1);
+    user->adMiss(cord2);
+    user->adMiss(cord3);
     
-    user->adBoat(boat1);
-    user->adBoat(boat2);
+    
     
     
     delete [] name;

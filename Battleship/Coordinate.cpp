@@ -29,12 +29,13 @@ using namespace std;
   }
   
   
-   bool operator==(const Coordinate &lhs, const Coordinate &rhs) {
-       
-       if (lhs.row == rhs.row &&  lhs.col == rhs.col) {
+   bool operator==(const Coordinate &lhs, const Coordinate &rhs)  {
+//       
+       cout << "hereswsw" << endl;
+       if (lhs.getRow() == rhs.getRow() &&  lhs.getCol() == rhs.getCol()) {
            return true; 
        }
-       
+//       
        return false; 
    }
   

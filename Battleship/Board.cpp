@@ -57,8 +57,15 @@ void Board::update(Boat** boats, int size) {
 }
 
 // adds a single boat to the board
-void Board::adBoard(Boat*) {
-    //TODO:
+void Board::adBoat(Boat* boat) {
+    //TODO: adds cordinates to the board
+    Coordinate **cord = boat->getcordinates();
+    
+    for (int i = 0; i < boat->reqsz(); i++) {
+        board[cord[i]->getRow()][cord[i]->getCol()] = 'b';
+    }
+
+
 }
 
 // updates hits of  a sppecific 
@@ -77,7 +84,7 @@ void Board::upms(Boat*, int size) {
 // update a hts cordinate 
 // do not need 
 void Board::upHts(Coordinate* hts) {
-    board[hts->getRow()][hts->getCol()] = 'x';
+    board[hts->getRow()][hts->getCol()] = 'h';
 }
 
 // update a missed cordinate 

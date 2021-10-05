@@ -27,20 +27,32 @@ class User {
     Coordinate **misses;  
   
     // user board
-    Board myBoard; // contains the location of your boats
+//    Board myBoard; // contains the location of your boats
                    // and the hits and misses of the enemy
         
     // enemy board
-    Board enemyBoard; // contains your misses and hits.
+   
+public: 
+     Board enemyBoard; // contains your misses and hits.
                       // contains your misses.
                       // contains your hits.   
-public: 
+     
+       // user board
+    Board myBoard; // contains the location of your boats
+                   // and the hits and misses of the enemy
     User(); //initializes a user with a name
     void updNam(char *n, int sz); // updates the name of the user 
     void adBoat(Boat *boat); // adds a boat into the boat array 
-    void adHit(Coordinate *hit); // adds a hit into the boat array 
-    void adMiss(Coordinate *mis); // adds a cor
+    void adHit(Coordinate *hit); // adds user hits into enemy board
+    void adMiss(Coordinate *mis); // adds user misses into enemy board
+    void adEnemyHt(Coordinate *hit);
+    void adEnemyMs(Coordinate *mis);
     char *gtName() {return name;}
+    bool isHit(Coordinate*); // return true if cordinate is a hit 
+    
+   
+    // 
+    
     ~User(); // destructor 
 };
 

@@ -52,6 +52,7 @@ void User::adBoat(Boat *boat) {
     if (boatsz < 5) {
         boats[boatsz] = boat;
         boatsz++;
+        myBoard.adBoat(boat);
     } else {
         std::cout << "YOU ARE ADDING MORE THAN FIVE BOATS" << std::endl;
         exit(0);
@@ -69,28 +70,46 @@ void User::adBoat(Boat *boat) {
 
 // adds a hit into the hit array
 void User::adHit(Coordinate *hit) {
-   
-   
+  
    hits[hitsz] = hit;  // 
    hitsz += 1; // increment the number of hits the user has
+   // myBoard.upHts(hit);
+   enemyBoard.upHts(hit); // updates the htz of the enemy 
  
-    
-   // boatsz = 0; // the number of boats the user currently has 
-    // hitsz = 0; // the size of the hits to zero
-    // missSz = 0; // set the missSz to zero 
-//    
-//   cout << "the size of hits the user has made" << endl; 
-//   for (int i =0; i < hitsz; i++) {
-//       cout << i <<" row " << hits[i]->getRow() << ", col " << hits[i]->getCol() << endl; 
-//   }
-    
-   
 }
+
+// returns true if the cordinate is a hit. 
+bool User::isHit(Coordinate* cord) {
+    cout << "is hit function is called" << endl; 
+    // loop through all boats
+    for(int i = 0; i < boatsz; i++)  {
+        Boat *cboat = boats[i]; // the current boat at index i  
+        Coordinate **cords = cboat->getcordinates(); // the current cords 
+        
+        // loop through all the cordinates of the current boat 
+        // TODO: == is still not working for some odd reason
+        for (int j = 0; j < cboat->reqsz(); j++) {
+//            cout << cords[j]->getCol             
+            if (cords[j]->getCol() == cord->getCol() && cords[j]->getRow() == cord->getRow()) {
+                cout << "here" << endl;
+                return true;
+            }
+        }
+    }
+    
+    
+    //boatsz; // the size of the boat 
+     //**boats;  // the boats that the user contains 
+    
+    return false; 
+}
+
 
 void User::adMiss(Coordinate *mis) {
     misses[missSz] = mis;  // add the cordinate to our misses
     missSz += 1; // increment misses by one 
-    
+    //myBoard.upms(mis); // updates the misse
+    enemyBoard.upms(mis); // 
 }
 
 

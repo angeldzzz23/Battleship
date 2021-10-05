@@ -45,6 +45,8 @@ int main(int argc, char** argv) {
     Coordinate *cord1 = new Coordinate("a2");
     Coordinate *cord2 = new Coordinate("b3");
     Coordinate *cord3 = new Coordinate("a2");
+    Boat *boat1 = new Boat();
+    Boat *boat2 = new Boat();
 
     char *name = new char[81];
     cin.getline(name, 81-1);
@@ -52,12 +54,12 @@ int main(int argc, char** argv) {
     User *user = new User();
     user->updNam(name, 81); 
     
+    user->adBoat(boat1);
+    user->adBoat(boat2);
+    
+    
     delete [] name;
-    
-    char *name2 =  user->gtName();
-    
-    cout << name2 << endl;
-    
+      
 
     
     

@@ -16,6 +16,7 @@
 // The initializer should probably take in the 
 Boat::Boat() {
 //     strcpy(name,"boat\0"); gave me a 
+    name = "boat";
     csize=0; 
     hsize=0; 
     

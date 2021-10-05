@@ -36,10 +36,10 @@ class User {
                       // contains your hits.   
 public: 
     User(); //initializes a user with a name
-    void updNam(char *n, int sz);
-    void adBoat(Boat boat); // adds a boat into the boat array 
-    void adHit(Coordinate hit); // adds a hit into the boat array 
-    void adMiss(Coordinate mis); // adds a cor
+    void updNam(char *n, int sz); // updates the name of the user 
+    void adBoat(Boat *boat); // adds a boat into the boat array 
+    void adHit(Coordinate *hit); // adds a hit into the boat array 
+    void adMiss(Coordinate *mis); // adds a cor
     char *gtName() {return name;}
     ~User(); // destructor 
 };

@@ -38,28 +38,35 @@ void User::updNam(char *n, int sz) {
     // TODO
    // Angel - Comment for Lehr: I have experienced with C. 
     strcpy(name,n);
-    std::cout << name << std::endl;
     
 }
 
 
-
-void User::adBoat(Boat boat) {
+// The adding of boats 
+// parameter: is a reference to a boat
+// TODO: check if the function works for other boats 
+void User::adBoat(Boat *boat) {
     if (boatsz < 5) {
-        boats[boatsz] = &boat;
+        boats[boatsz] = boat;
         boatsz++;
     } else {
         std::cout << "YOU ARE ADDING MORE THAN FIVE BOATS" << std::endl;
         exit(0);
     }
+    
+    std::cout << "size of boat: " << boatsz << std::endl;
+    for (int i = 0; i < boatsz; i++) {
+        std::cout <<boats[i]->nameOfBoat() << std::endl;
+    }
+
 }
 
 // adds a hit into the hit array
-void User::adHit(Coordinate hit) {
+void User::adHit(Coordinate *hit) {
     
 }
 
-void User::adMiss(Coordinate mis) {
+void User::adMiss(Coordinate *mis) {
     
 }
 

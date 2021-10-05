@@ -21,6 +21,8 @@ public:
     Board();
     void update(Boat**, int size); // adds user boats into board. IDk if we'll need this 
     void upHts(Boat*, int size); // update the hits 
+    void upHts(Coordinate*, int size); // updates hts cordinates
+    void upms(Coordinate*, int size); // updates the misses cordinates 
     void upms(Boat*, int size); // update the misses 
     void adBoard(Boat*); // adds a boat into the Board 
     

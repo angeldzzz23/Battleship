@@ -56,19 +56,36 @@ void Board::update(Boat** boats, int size) {
    
 }
 
+// adds a single boat to the board
 void Board::adBoard(Boat*) {
-    
+    //TODO:
 }
-// updates hits of the board
+
+// updates hits of  a sppecific 
 void Board::upHts(Boat*, int size) {
     // TODO:
     
+    
 }
 
-// updates the misses of the boat 
+// updates the misses of a specific boat
+// unsure if I need this
 void Board::upms(Boat*, int size) {
     // TODO: 
 }
+
+// update a hts cordinate 
+// do not need 
+void Board::upHts(Coordinate* hts, int size) {
+    board[hts->getRow()][hts->getCol()] = 'h';
+}
+
+// update a missed cordinate 
+// call this ms
+void Board::upms(Coordinate* ms, int size) {
+    
+}
+
 
 int Board::getrowsize(){
     return rowsize;

@@ -58,8 +58,11 @@ int main(int argc, char** argv) {
     Coordinate *cord9 = new Coordinate("d1");
     Coordinate *cord10 = new Coordinate("d2");
     
-    Coordinate cord101 =  Coordinate("f8");
-    Coordinate cord102 =  Coordinate("f8");
+    Coordinate *cord101 = new Coordinate("f8");
+    Coordinate *cord102 = new Coordinate("f7");
+    
+   Coordinate *cord103 =  new Coordinate("a5");
+    Coordinate *cord104 = new  Coordinate("a7");
         
     // Fix  == overoading opera
     
@@ -101,8 +104,15 @@ int main(int argc, char** argv) {
     user->adBoat(boat4);
     user->adBoat(boat5);
     
+    user->adEnemyHt(cord101);
+    user->adEnemyHt(cord102);
     
+    user->adEnemyMs(cord103);
+    user->adEnemyMs(cord104);
     
+               
+    //adEnemyHt
+    //adEnemyMs
    
 //    if (user->isHit(cord101)) {
 //        cout << "you are good fam" << endl;
@@ -124,12 +134,20 @@ int main(int argc, char** argv) {
 //    int getcolsize(); //get size of colomn variable for other functions Ethan/Yanis
 //    char getElement(
     
-    for (int i = 0; i <  user->myBoard.getrowsize(); i++) {
-        for (int j = 0; j < user->myBoard.getcolsize(); j++) {
-            cout << user->myBoard.getElement(i,j) << " "; 
+    
+    cout << "printing your current board" << endl;
+    cout << "your boats and enemy hits and misses"  << endl;
+    // printing the board of the user
+    for (int i = 0; i <  user->brdRow(); i++) {
+        for (int j = 0; j < user->brdCol(); j++) {
+            cout << user->gtMBrdElmnt(i,j) << " ";
         }
         cout << endl;
     }
+    
+    
+    
+    
     
     
     

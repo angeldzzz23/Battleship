@@ -33,6 +33,9 @@ User::User() {
     
     name = new char[81]; // dynamically allocate memory for the name 
     
+    // create a new board 
+    myBoard = new Board();
+    enemyBoard = new Board();
 }
 
 // takes in a string, and the size of the string 
@@ -52,7 +55,7 @@ void User::adBoat(Boat *boat) {
     if (boatsz < 5) {
         boats[boatsz] = boat;
         boatsz++;
-        myBoard.adBoat(boat);
+        myBoard->adBoat(boat); // updates the user board with the boat
     } else {
         std::cout << "YOU ARE ADDING MORE THAN FIVE BOATS" << std::endl;
         exit(0);
@@ -63,20 +66,37 @@ void User::adBoat(Boat *boat) {
         std::cout <<boats[i]->nameOfBoat() << std::endl;
     }
 
-    // update the user board class 
+ 
     
     
 }
 
-// adds a hit into the hit array
+// 
+
+
+
+// updates the enemy board with the hit
 void User::adHit(Coordinate *hit) {
-  
    hits[hitsz] = hit;  // 
    hitsz += 1; // increment the number of hits the user has
-   // myBoard.upHts(hit);
-   enemyBoard.upHts(hit); // updates the htz of the enemy 
+   enemyBoard->upHts(hit); // updates the htz of the enemy 
  
 }
+ 
+// adds the hits the enemy has made on your boats. 
+ void User::adEnemyHt(Coordinate *hit)  {
+     myBoard->upHts(hit); 
+     
+ }
+ 
+ 
+ 
+ // adds the misses the enemy has made on your board.
+ void User::adEnemyMs(Coordinate *mis) {
+     // TODO: 
+     myBoard->upms(mis);
+ }
+ 
 
 // returns true if the cordinate is a hit. 
 bool User::isHit(Coordinate* cord) {
@@ -104,12 +124,11 @@ bool User::isHit(Coordinate* cord) {
     return false; 
 }
 
-
+// updates the enemyboard with the miss
 void User::adMiss(Coordinate *mis) {
     misses[missSz] = mis;  // add the cordinate to our misses
     missSz += 1; // increment misses by one 
-    //myBoard.upms(mis); // updates the misse
-    enemyBoard.upms(mis); // 
+    enemyBoard->upms(mis); // 
 }
 
 
@@ -143,6 +162,10 @@ void User::adMiss(Coordinate *mis) {
     delete [] hits;
     delete [] misses;
     delete [] name; 
+    
+    // delete boards
+    delete myBoard;
+    delete enemyBoard;
 }
 
 

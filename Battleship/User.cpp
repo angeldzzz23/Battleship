@@ -62,6 +62,9 @@ void User::adBoat(Boat *boat) {
         std::cout <<boats[i]->nameOfBoat() << std::endl;
     }
 
+    // update the user board class 
+    
+    
 }
 
 // adds a hit into the hit array
@@ -75,11 +78,11 @@ void User::adHit(Coordinate *hit) {
    // boatsz = 0; // the number of boats the user currently has 
     // hitsz = 0; // the size of the hits to zero
     // missSz = 0; // set the missSz to zero 
-    
-   cout << "the size of hits the user has made" << endl; 
-   for (int i =0; i < hitsz; i++) {
-       cout << i <<" row " << hits[i]->getRow() << ", col " << hits[i]->getCol() << endl; 
-   }
+//    
+//   cout << "the size of hits the user has made" << endl; 
+//   for (int i =0; i < hitsz; i++) {
+//       cout << i <<" row " << hits[i]->getRow() << ", col " << hits[i]->getCol() << endl; 
+//   }
     
    
 }
@@ -88,10 +91,6 @@ void User::adMiss(Coordinate *mis) {
     misses[missSz] = mis;  // add the cordinate to our misses
     missSz += 1; // increment misses by one 
     
-    cout << "the size of hits the user has made" << endl; 
-   for (int i =0; i < missSz; i++) {
-       cout << i <<" row " << misses[i]->getRow() << ", col " << misses[i]->getCol() << endl; 
-   }
 }
 
 

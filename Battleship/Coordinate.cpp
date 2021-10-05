@@ -57,16 +57,16 @@ using namespace std;
    int Coordinate::cnvrtLet(char digit) {
        
        switch(digit) {
-           case 'a': return 1;
-           case 'b': return 2;
-           case 'c': return 3;
-           case 'd': return 4;   
-           case 'e': return 5;
-           case 'f': return 6;
-           case 'g': return 7;
-           case 'h': return 8;
-           case 'i': return 9;
-           case 'j': return 10;
+           case 'a': return 0;
+           case 'b': return 1;
+           case 'c': return 2;
+           case 'd': return 3;   
+           case 'e': return 4;
+           case 'f': return 5;
+           case 'g': return 6;
+           case 'h': return 7;
+           case 'i': return 8;
+           case 'j': return 9;
            
            default: 
                return -1;

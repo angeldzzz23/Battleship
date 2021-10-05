@@ -27,7 +27,7 @@ class Boat: public AbsBoat {
        void addCord(Coordinate*);    // Adds a cordinate
        bool cordHsadd(Coordinate c);
        char* nameOfBoat() {return name;}
-     
+       Coordinate **getcordinates() {return cordinate;}
 };
 
 

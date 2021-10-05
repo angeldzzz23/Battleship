@@ -43,10 +43,22 @@ Board::Board() {
 }
 
 // updates the board with the boats of the User. 
-void Board::update(Boat* boats, int size) {
-    // TODO:
+void Board::update(Boat** boats, int size) {
+    //
+    for (int i = 0; i < size; i++) { // looops through the array of boats
+        Boat *boat = boats[i]; // the boat in that specific index
+        Coordinate **cord = boat->getcordinates(); // the cordinates of the boat
+        
+          for (int j = 0; j < boat->reqsz();j++ )   {
+             board[cord[j]->getRow()][cord[j]->getCol()] = 'b';  // initializes the location of the board
+          }
+    }
+   
 }
 
+void Board::adBoard(Boat*) {
+    
+}
 // updates hits of the board
 void Board::upHts(Boat*, int size) {
     // TODO:

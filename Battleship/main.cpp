@@ -21,6 +21,7 @@
 #include <cstring>
 #include "User.h"
 #include "Boat.h"
+#include "Board.h"
 
 
 using namespace std;
@@ -42,25 +43,57 @@ int main(int argc, char** argv) {
 //    game.startGame();
     
 //    
-    Coordinate *cord1 = new Coordinate("a2");
-    Coordinate *cord2 = new Coordinate("b3");
-    Coordinate *cord3 = new Coordinate("a2");
+    Coordinate *cord1 = new Coordinate("a1");
+    Coordinate *cord2 = new Coordinate("a2");
+    Coordinate *cord3 = new Coordinate("a3");
+  
+    
+    Coordinate *cord4 = new Coordinate("d2");
+    Coordinate *cord5 = new Coordinate("d3");
+    Coordinate *cord6 = new Coordinate("d4");
+    
     Boat *boat1 = new Boat();
+   
+    boat1->addCord(cord1);
+    boat1->addCord(cord2);
+    
     Boat *boat2 = new Boat();
-
-    char *name = new char[81];
-    cin.getline(name, 81-1);
+    boat2->addCord(cord4);
+    boat2->addCord(cord5);
     
-    User *user = new User();
-    user->updNam(name, 81); 
-    user->adMiss(cord1);
-    user->adMiss(cord2);
-    user->adMiss(cord3);
+    Boat **boats = new Boat*[4];
+    boats[0] = boat1;
+    boats[1] = boat2; 
+    
+ 
+    Board *board = new Board();
+    board->update(boats, 2);
+   
+    
+//    f int getrowsize(); //get size of row variable for other functions Ethan/Yanis
+//    int getcolsize(); //get size of colomn variable for other functions Ethan/Yanis
+//    char getElement(
+    
+    for (int i = 0; i < board->getrowsize(); i++) {
+        for (int j = 0; j < board->getcolsize(); j++) {
+            cout << board->getElement(i,j) << " "; 
+        }
+        cout << endl;
+    }
+    
+//    char *name = new char[81];
+//    cin.getline(name, 81-1);
+    
+//    User *user = new User();
+//    user->updNam(name, 81); 
+//    user->adMiss(cord1);
+//    user->adMiss(cord2);
+//    user->adMiss(cord3);
     
     
     
     
-    delete [] name;
+//    delete [] name;
       
 
     

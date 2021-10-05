@@ -19,13 +19,14 @@ private:
     char **board; // the board 
 public:
     Board();
-    void update(Boat*, int size); // adds user boats into board. IDk if we'll need this 
+    void update(Boat**, int size); // adds user boats into board. IDk if we'll need this 
     void upHts(Boat*, int size); // update the hits 
     void upms(Boat*, int size); // update the misses 
+    void adBoard(Boat*); // adds a boat into the Board 
     
     int getrowsize(); //get size of row variable for other functions Ethan/Yanis
     int getcolsize(); //get size of colomn variable for other functions Ethan/Yanis
-    
+    char getElement(int row, int col) {return board[row][col]; } // retrives an element from the board
     char** rboard(){ 
         return board; 
     };

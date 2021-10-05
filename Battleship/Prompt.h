@@ -8,6 +8,7 @@
  * File:   Prompt.h
  * Author: AZ
  * Version 1 - Ethan and Yanis - basic prompting for functions + inputs and input validation. Will still need to link up with other classes for full functionality but the bases are made
+ * Version 2 - Added some more prompting for taking turns and printing the winner of the game 
  * Created on September 28, 2021, 10:43 AM
  */
 
@@ -37,6 +38,8 @@ public:
     void mainmenu(); //main menu
     
     void getturn(); //for taking turns
+    
+    void waitturn(); //for waiting for 2nd user
 };
 
 

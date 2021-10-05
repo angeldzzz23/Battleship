@@ -94,3 +94,19 @@ void Prompt::mainmenu(){ //function for the main menu - all inputs c strings for
     }while(valid == false);//while be true if inputs are valid, false and repeat for invalid inputs
     delete input; //delete input to free memory
 }
+
+void waitturn(){ //for a two-player game - a little pause for the other player to get on the computer so they do not see each other's boards
+    char *input;  //dynamically allocate an array of characters for input
+    int size = 50;
+    input = new char[size];
+    
+    cout <<"Thankyou, please let other user take their seat and being their turn. " <<endl //ask other user to get on
+            <<"When next player is ready, press any key and enter..." <<endl;   
+    cin.getline(input,size-1); //just any input to let program know player is there
+    delete input;
+}
+
+void winner(){ //prints out winner of game - still need to link it up with game class etc,
+    cout <<"Congratulations player: " <<"!" <<endl //insert username variable of winning player 
+            <<"You have won! " <<endl; //perhaps also put in their score
+}

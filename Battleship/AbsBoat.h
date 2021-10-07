@@ -11,6 +11,10 @@
 #include "Coordinate.h"
 
 // We might want to create all the boats using this abstract class
+
+//enumeration for boat types
+enum Type{boat=1,destroyer=2, submarine=3, cruiser=3, battleship=4, carrier=5};
+
 class AbsBoat {
 protected: 
     int csize; // the current size of the boat
@@ -18,12 +22,13 @@ protected:
     int size; // the current size of the boat 
     Coordinate **cordinate;  // the positions of the boat 
     Coordinate **hits; // cordinates that have been hit 
-    char *name; 
+    char *name; // TODO: FIX  THIS 
+    Type type; //type of boat
 public: 
     virtual int reqsz() const = 0; // the requirement of  boat size. When we initialize a boat we want to make sure that reqsz is the same as the size of *cordinate
     virtual int getSize() const = 0; // the current size of the boat 
-    virtual bool cordHshit(Coordinate) {return false;} // check if the cordinate has been hit
-    virtual void setHit(Coordinate *$hit) {};  // initializez the hit with a a cord 
+    virtual bool cordHshit(Coordinate*) {return false;} // check if the cordinate has been hit
+    virtual void setHit(Coordinate *hit) {};  // initializez the hit with a a cord 
                                               // we might need a a function to set the name
     
 };

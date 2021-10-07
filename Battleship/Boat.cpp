@@ -15,8 +15,9 @@
 // initializerr
 // The initializer should probably take in the 
 Boat::Boat() {
-//     strcpy(name,"boat\0"); gave me a 
-//    name = "boat";
+//     strcpy(name,"boat"); 
+//    name = "boat"; FIX THIS
+    
     csize=0; 
     hsize=0; 
     
@@ -50,7 +51,7 @@ Boat::~Boat() {
 
 // checks of a specific cordinate has been hit 
 // you might need to specify a new parameter
- bool Boat::cordHshit(Coordinate c) { // Checks if that specific cordinate has been hit
+ bool Boat::cordHshit(Coordinate *c) { // Checks if that specific cordinate has been hit
     // TODO: FIX ME
     return false;
     
@@ -74,7 +75,7 @@ Boat::~Boat() {
  // checks if the boat has already been added
  // FIX ME: 
  // test that it works. 
- bool Boat::cordHsadd(Coordinate c) {
+ bool Boat::cordHsadd(Coordinate *c) {
      // TODO: 
      // return false if it is not in the corddinate array
      return false;
@@ -92,9 +93,15 @@ Boat::~Boat() {
  // make that you cannot add more than the ship size
  
  void Boat::addCord(Coordinate *cord) {   
+    
+     if (csize == reqsz()) {
+         std::cout << "you have added way too many boats" <<std::endl;
+         exit(1);
+     }
      
       cordinate[csize]= cord;
       csize++;
+
       
  }
  

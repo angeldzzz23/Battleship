@@ -90,6 +90,7 @@ int main(int argc, char** argv) {
     Boat *boat1 = new Boat();
     boat1->addCord(cord01);
     boat1->addCord(cord02);
+    boat1->addCord(cord03);
 //    
     Boat *boat2 = new Boat();
     boat2->addCord(cord03);

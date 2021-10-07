@@ -17,18 +17,10 @@ class Coordinate {
         int cnvrtLet(char letter);  // transalte a letter 
     public: 
         Coordinate(char*);  // Constructor that takes in a C string
+        Coordinate(int r, int c); // this initializer takes in an int row and an in col
         int getRow() const {return row;} // returns the row
-        int getCol() const {return col;} // returns the col 
-//        friend bool operator==(const Coordinate &lhs, const Coordinate &rhs); // FIX ME: 
+        int getCol() const {return col;} // returns the col  
         bool operator==(const Coordinate &);
-//        bool operator==(const Coordinate &lhs ) const { 
-//            
-//            return ((row == lhs.row) && (col == lhs.col)); 
-//        
-//        
-//        }
-           
-//        (lhs.row == rhs.row &&  lhs.col == rhs.col)
 };
 
 #endif /* COORDINATE_H */

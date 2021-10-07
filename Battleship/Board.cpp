@@ -22,6 +22,8 @@
 Board::Board() {
     int row = 10; int col = 10; 
     
+    this->rowsize = row;
+    this->colsize = col;
     // dynamically create a 10x10 2-D array 
     // allocating the rows 
     board = new char*[row];
@@ -109,7 +111,6 @@ int Board::getcolsize(){
 Board::~Board() {
     int row = 10; int col = 10; 
 
-    
      //Free each sub-array
     for(int i = 0; i < 10; ++i) {
         delete[] board[i];   

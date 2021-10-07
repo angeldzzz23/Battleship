@@ -95,9 +95,7 @@ Boat::~Boat() {
      
       cordinate[csize]= cord;
       csize++;
-     
-     for (int i = 0; i < csize; i++) {
-         std::cout << "cord " << i <<  " row " << cordinate[i]->getRow() <<", col " << cordinate[i]->getCol() << std::endl;
-     }
-   
+      
  }
+ 
+ 

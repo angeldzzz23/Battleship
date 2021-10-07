@@ -59,20 +59,8 @@ void User::adBoat(Boat *boat) {
     } else {
         std::cout << "YOU ARE ADDING MORE THAN FIVE BOATS" << std::endl;
         exit(0);
-    }
-    
-    std::cout << "size of boat: " << boatsz << std::endl;
-    for (int i = 0; i < boatsz; i++) {
-        std::cout <<boats[i]->nameOfBoat() << std::endl;
-    }
-
- 
-    
-    
+    }  
 }
-
-// 
-
 
 
 // updates the enemy board with the hit
@@ -82,14 +70,13 @@ void User::adHit(Coordinate *hit) {
    enemyBoard->upHts(hit); // updates the htz of the enemy 
  
 }
- 
+
+
 // adds the hits the enemy has made on your boats. 
  void User::adEnemyHt(Coordinate *hit)  {
      myBoard->upHts(hit); 
      
  }
- 
- 
  
  // adds the misses the enemy has made on your board.
  void User::adEnemyMs(Coordinate *mis) {
@@ -109,7 +96,6 @@ bool User::isHit(Coordinate* cord) {
         // loop through all the cordinates of the current boat 
         // TODO: == is still not working for some odd reason
         for (int j = 0; j < cboat->reqsz(); j++) {
-//            cout << cords[j]->getCol             
             if (cords[j]->getCol() == cord->getCol() && cords[j]->getRow() == cord->getRow()) {
                 cout << "here" << endl;
                 return true;

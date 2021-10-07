@@ -17,6 +17,7 @@ private:
     int rowsize;//rowsize for board - Ethan/Yanis
     int colsize;//colsize for board - Ethan/Yanis
     char **board; // the board 
+    
 public:
     Board();
     void update(Boat**, int size); // adds user boats into board. IDk if we'll need this 

@@ -29,9 +29,14 @@ using namespace std;
         col = cnvrt(p[1]); // converts char to int 
         cout << col << endl;
         
-        
-        
   }
+  
+  // Constructor for the cordinate
+  Coordinate::Coordinate(int r, int c) {
+      row = r;   
+      col = c;
+  }
+  
   
   
 //   bool operator==(const Coordinate &lhs, const Coordinate &rhs)  {

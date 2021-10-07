@@ -39,7 +39,7 @@ public:
     
     User(); //initializes a user with a name
     void updNam(char *n, int sz); // updates the name of the user 
-    void adBoat(Boat *boat); // adds a boat into the boat array 
+    void adBoat(Boat *boat); // adds a boat into the boat array and int myBoard
     void adHit(Coordinate *hit); // adds user hits into enemyBoard
     void adMiss(Coordinate *mis); // adds user misses into enemyBoard
     void adEnemyHt(Coordinate *hit); // adds the hits the enemy has made on myBoard. 

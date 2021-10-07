@@ -19,13 +19,14 @@
 class User {
   private:
     char *name; // the name of the user 
-    int boatsz; // the size of the boat 
+    int boatsz; // the size of the boats 
     Boat **boats;  // the boats that the user contains 
     int hitsz; // the size of the hits
     Coordinate **hits; // contains the hits you 
     int missSz; // the size of the misses array  
     Coordinate **misses;  // constains 
   
+    
     // enemy board
     Board *enemyBoard; // contains your misses and hits.
                       // contains your misses.
@@ -46,6 +47,7 @@ public:
     void adEnemyMs(Coordinate *mis); // adds the misses the enemy has made on myBoard.
     char *gtName() {return name;}
     bool isHit(Coordinate*); // return true if cordinate is a hit 
+    bool isHitb(Coordinate*); // returns true if the cordinate exist but it is not contained in the hits array
     // for printing a user board use the these two functions 
     char gtMBrdElmnt(int row, int col) { return myBoard->getElement(row, col); } // get my board element 
     char gtEnBrdElmnt(int row, int col) {return enemyBoard->getElement(row, col);} // get enemy board element
@@ -56,16 +58,3 @@ public:
 };
 
 #endif /* USER_H */
-
-// Helper information 
-// for dealing with the abstract boats
-// This is how you can create an array with different types of boats
-//    Destroyer des1 = Destroyer();
-//    Destroyer de2 =  fffefff();
-//    Destroyer des3 = Destroyer();
-//
-//    AbsBoat *ss[10];
-//    ss[0] = &des1;
-//    
-//    cout << ss[0]->reqsz() << endl;
-//    

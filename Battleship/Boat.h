@@ -23,9 +23,9 @@ class Boat: public AbsBoat {
        virtual int reqsz() const  {return 2; }; // the requirement of every boat size 
        virtual int getSize() const {return size;}; // the current size of the boat 
        virtual bool cordHshit(Coordinate*); // check if the cordinate has been hit
-       virtual bool cordHsadd(Coordinate *c);
+       virtual bool cordHsadd(Coordinate *c); 
        virtual void setHit(Coordinate *hit);  // initializez the hit with a a cord
-       virtual void addCord(Coordinate*);    // Adds a cordinate
+       virtual void addCord(Coordinate*);    // Adds a cordinates
        virtual Type getType() {return type;}
        char* nameOfBoat() {return name;}
        Coordinate **getcordinates() {return cordinate;}

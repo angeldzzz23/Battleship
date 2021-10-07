@@ -81,8 +81,8 @@ int main(int argc, char** argv) {
     //boat=1,dest=2, sub=3, crui=3, battl=4, carr=5
 //    Boat **boatss = new Boat*[6]; // the array 
     
-    Coordinate *cord044 = new Coordinate(0,0);
-    Coordinate *cord0555 = new Coordinate(0,1);
+//    Coordinate *cord044 = new Coordinate(0,0);
+//    Coordinate *cord0555 = new Coordinate(0,1);
     
     
     
@@ -90,56 +90,61 @@ int main(int argc, char** argv) {
     depp->addCord(cord01);
     depp->addCord(cord02);
     
+  
     
-    depp->setHit(cord044);
+    Submarine *sub = new Submarine();
+      sub->addCord(cord03);
+      sub->addCord(cord04);
+      sub->addCord(cord05);
+   
+    Cruiser *cuucu = new  Cruiser();
+      cuucu->addCord(cord06);
+      cuucu->addCord(cord07);
+      cuucu->addCord(cord08);
+   
+   Battleshp *battle = new Battleshp();
+      battle->addCord(cord09);
+      battle->addCord(cord10);
+      battle->addCord(cord11);
+      battle->addCord(cord12);
     
-    if (depp->isDead()) {
-        cout << "dead" << endl;
-    } else {
-        cout <<" not dead yet" << endl;
-    }
-    
-      depp->setHit(cord0555);
-    
-     if (depp->isDead()) {
-        cout << "dead" << endl;
-    } else {
-        cout <<" not dead yet" << endl;
-    }
-    
-//    Submarine *sub = new Submarine();
-//      sub->addCord(cord03);
-//      sub->addCord(cord04);
-//      sub->addCord(cord05);
-//   
-//    Cruiser *cuucu = new  Cruiser();
-//      cuucu->addCord(cord06);
-//      cuucu->addCord(cord07);
-//      cuucu->addCord(cord08);
-//   
-//   Battleshp *battle = new Battleshp();
-//      battle->addCord(cord09);
-//      battle->addCord(cord10);
-//      battle->addCord(cord11);
-//      battle->addCord(cord12);
-//    
-//    Carrier *carr = new Carrier();
-//      carr->addCord(cord13);
-//      carr->addCord(cord14);
-//      carr->addCord(cord15);
-//      carr->addCord(cord16);
-//      carr->addCord(cord17);
+    Carrier *carr = new Carrier();
+      carr->addCord(cord13);
+      carr->addCord(cord14);
+      carr->addCord(cord15);
+      carr->addCord(cord16);
+      carr->addCord(cord17);
 //      
    
 // 
-//     User *user = new User();
-//     user->adBoat(depp);
-//     user->adBoat(sub);
-//     user->adBoat(cuucu);
-//     user->adBoat(battle);
-//     user->adBoat(carr);
-//    
-//
+     User *user = new User();
+     user->adBoat(depp);
+     user->adBoat(sub);
+     user->adBoat(cuucu);
+     user->adBoat(battle);
+     user->adBoat(carr);
+
+         Coordinate *cord0222 = new Coordinate(0,0);
+         Coordinate *cord3333 = new Coordinate(0,1);
+         Coordinate *cord02224 = new Coordinate(0,0);
+         Coordinate *cord33334 = new Coordinate(0,1);
+         
+        user->adHit(cord0222);
+        
+     if (user->isHit(cord02224)) {
+         cout << "it is a hit" << endl;
+     } else {
+         cout << "not a hit" << endl;
+     }
+    
+
+
+      
+      // user->adHit(cord02);
+
+     
+
+             //
 //     boatss[0] = depp;
 //     boatss[1] = sub;
 //     boatss[2] = cuucu;

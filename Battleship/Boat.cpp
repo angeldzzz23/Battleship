@@ -75,6 +75,12 @@ Boat::~Boat() {
  // FIX: 
  // make that you cannot add more than the ship size
  void Boat::setHit(Coordinate *hit) { // initializez the hit with a a cord
+     
+     // cannot add more hits if the boat is already dead 
+     if (hsize == reqsz()) {
+         std::cout<<"you cant add more hits, boat is dead" << std::endl;
+         exit(0);
+     }
      // if cordinate has not been hit
         // we add we a cordinate into our cordinate array 
       hits[csize]= hit;
@@ -83,6 +89,7 @@ Boat::~Boat() {
       
       if (hsize == reqsz()) {
          dead = true;  
+         cout << "you boat is dead" << endl;
       }
  }  
  

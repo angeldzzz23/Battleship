@@ -50,8 +50,8 @@ using namespace std;
 //   }
 
   
+  // operarator ove
    bool Coordinate::operator==(const Coordinate &c){
-       cout << "here we are" << endl;
       if(this->row==c.getRow() && this->col==c.getCol())
             return true; 
       

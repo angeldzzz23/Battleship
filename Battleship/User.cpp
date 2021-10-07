@@ -64,11 +64,27 @@ void User::adBoat(Boat *boat) {
 
 
 // updates the enemy board with the hit
+// update the boat that
+// adds the hit into the hits array 
+// update: add hits into the boat 
 void User::adHit(Coordinate *hit) {
    hits[hitsz] = hit;  // 
    hitsz += 1; // increment the number of hits the user has
    enemyBoard->upHts(hit); // updates the htz of the enemy 
- 
+   
+   // loop through the boats and add the hit to that boat 
+    for(int i = 0; i < boatsz; i++)  {
+        Boat *cboat = boats[i]; // the current boat at index i  
+//        Coordinate **cords = cboat->getcordinates(); // the current cords 
+        
+        // check if the boat contains the cordinate 
+        if (cboat->cordHsadd(hit)) {
+            //  set the hit to the boats
+            cboat->setHit(hit); 
+        }
+        
+}
+   
 }
 
 
@@ -86,15 +102,33 @@ void User::adHit(Coordinate *hit) {
  
 
 // returns true if the cordinate is a hit. 
+// A
+// this returns true of the user contains that cordinate 
+// and if does not exist in the user hit array
 bool User::isHit(Coordinate* cord) {
     cout << "is hit function is called" << endl; 
+     
+    cout << hitsz<< endl;
+     // loop through the hits array and make sure it hasnt been added yet.
+    if (hitsz > 0) {
+      
+        for(int i = 0; i < hitsz; i++) {
+            
+         if (*hits[i] == *cord) {
+             cout << "dd" << endl;;
+                return false;
+            }
+       }
+    }
+    
+    
     // loop through all boats
+    // and check if it exists 
     for(int i = 0; i < boatsz; i++)  {
         Boat *cboat = boats[i]; // the current boat at index i  
         Coordinate **cords = cboat->getcordinates(); // the current cords 
         
         // loop through all the cordinates of the current boat 
-        // TODO: == is still not working for some odd reason
         for (int j = 0; j < cboat->reqsz(); j++) {
             if (cords[j]->getCol() == cord->getCol() && cords[j]->getRow() == cord->getRow()) {
                 cout << "here" << endl;
@@ -102,7 +136,7 @@ bool User::isHit(Coordinate* cord) {
             }
         }
     }
-    
+   
     
     //boatsz; // the size of the boat 
      //**boats;  // the boats that the user contains 

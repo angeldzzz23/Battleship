@@ -10,12 +10,18 @@
 #define BATTLESHIP_H
 #include "User.h"
 
+// this is our battleship logic (our viewController)
+// our controller is the Battleship class 
+// our models are the boats, users,  Coordinates 
+// our view is the Board, this is what is being displayed
+
 class Battleship {  
     private: 
         // user 1 
-//        User userOne;
+        User userOne; // a user One model 
+         
         // user 2
-//        User userTwo;
+        User userTwo; // a userTwo model 
         
         
     public:
@@ -23,7 +29,8 @@ class Battleship {
      
         void startTwoPlayer();  // 
         void startAIGame();
-
+        void displyBoard();
+        void displayEnemybrd();
 };
 
 

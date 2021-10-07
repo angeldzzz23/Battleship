@@ -26,6 +26,7 @@ public:
     void upms(Coordinate*); // updates the misses cordinates 
     void upms(Boat*, int size); // update the misses 
     void adBoat(Boat*); // adds a boat into the Board 
+    void adBoat(Boat*, char); // adds a boat with the type of boat
     
     int getrowsize(); //get size of row variable for other functions Ethan/Yanis
     int getcolsize(); //get size of colomn variable for other functions Ethan/Yanis

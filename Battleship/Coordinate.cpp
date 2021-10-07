@@ -71,10 +71,8 @@ using namespace std;
      if(digit=='0'){
          return digit-'0'; 
      }
-     
-     
-     
-    return digit-'0'-1;  //<-some smart shit right here
+      
+    return digit-'0'-1;  
    }
    
    

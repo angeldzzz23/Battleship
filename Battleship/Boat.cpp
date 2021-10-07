@@ -11,26 +11,35 @@
 #include "Boat.h"
 #include <iostream>
 
-
+using namespace std;
 // initializerr
 // The initializer should probably take in the 
+// TODO: might want to create another intiializer that takes in a size so that we can use in our other boat classes
+// 
 Boat::Boat() {
+    
 //     strcpy(name,"boat"); 
 //    name = "boat"; FIX THIS
-    
     csize=0; 
-    hsize=0; 
+    hsize=0;
+    dead=0;
     
     // create hits 
-    hits = new Coordinate*[reqsz()]; 
+   // hits = new Coordinate*[reqsz()]; 
     // creates cordinate
-    cordinate = new Coordinate*[reqsz()];
+   // cordinate = new Coordinate*[reqsz()];
     
 }
 
+
+
+
 // destructor
+// This works with destroying other boats
 Boat::~Boat() {
- 
+    
+    cout << "dess" << csize << endl;
+    
     // loop through hits
     for (int i =0; i < csize; i++) {
         delete hits[i]; // deletes reference
@@ -51,8 +60,14 @@ Boat::~Boat() {
 
 // checks of a specific cordinate has been hit 
 // you might need to specify a new parameter
+// returns true if the cordinate has been hit before 
  bool Boat::cordHshit(Coordinate *c) { // Checks if that specific cordinate has been hit
-    // TODO: FIX ME
+    // TODO:
+     for(int i = 0; i <hsize; i++) {
+         if (*hits[i] == *c) {
+             return true;
+         }
+     }
     return false;
     
  }
@@ -65,11 +80,10 @@ Boat::~Boat() {
       hits[csize]= hit;
       hsize++;
       
-      std::cout << "set hit called: " << std::endl;
-      for(int i = 0; i < hsize; i++) {
-          std::cout << hits[i]->getRow() << " " << hits[i]->getCol() << std::endl;
+      
+      if (hsize == reqsz()) {
+         dead = true;  
       }
-
  }  
  
  // checks if the boat has already been added
@@ -78,10 +92,13 @@ Boat::~Boat() {
  bool Boat::cordHsadd(Coordinate *c) {
      // TODO: 
      // return false if it is not in the corddinate array
+     for(int i=0; i <csize;i++) {
+         if (*cordinate[i] == *c) {
+             return true;
+         }
+     }
+     
      return false;
- 
- 
- 
  }
  
 

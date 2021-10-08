@@ -51,12 +51,24 @@ void Board::update(Boat** boats, int size) {
     for (int i = 0; i < size; i++) { // looops through the array of boats
         Boat *boat = boats[i]; // the boat in that specific index
         Coordinate **cord = boat->getcordinates(); // the cordinates of the boat
-        
+           // updates the position of the boats with the appropriate letter
           for (int j = 0; j < boat->reqsz();j++ )   {
-             board[cord[j]->getRow()][cord[j]->getCol()] = btType[boat->getType()];  // initializes the location of the board
+              // checks if the boat is dead 
+              if (boat->isDead()) {
+                  board[cord[j]->getRow()][cord[j]->getCol()] = 'X';
+              }
+              else if (boat->cordHshit(cord[j])) {      // if the cordinate at pos j has been hit 
+                  board[cord[j]->getRow()][cord[j]->getCol()] = 'h';
+              } else {
+                 board[cord[j]->getRow()][cord[j]->getCol()] = btType[boat->getType()];  // initializes the location of the board
+              }
+            
           }
+    
     }
-   
+     
+     
+
 }
 
 // adds a single boat to the board

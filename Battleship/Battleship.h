@@ -15,6 +15,7 @@
 // our models are the boats, users,  Coordinates 
 // our view is the Board, this is what is being displayed
 
+// our battleship is our controller
 class Battleship {  
     private: 
         // user 1 
@@ -25,7 +26,7 @@ class Battleship {
         
         
     public:
-        Battleship(int); // initializes the game
+        Controller(int); // initializes the game
      
         void startTwoPlayer();  // 
         void startAIGame();

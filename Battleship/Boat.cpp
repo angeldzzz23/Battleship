@@ -63,10 +63,14 @@ Boat::~Boat() {
 // returns true if the cordinate has been hit before 
  bool Boat::cordHshit(Coordinate *c) { // Checks if that specific cordinate has been hit
     // TODO:
+
+     
      for(int i = 0; i <hsize; i++) {
-         if (*hits[i] == *c) {
+//         cout << "hdhdhddh" << endl;
+         if (hits[i]->getRow() == c->getRow() && hits[i]->getCol() == c->getCol()) {
              return true;
          }
+        
      }
     return false;
     
@@ -83,7 +87,7 @@ Boat::~Boat() {
      }
      // if cordinate has not been hit
         // we add we a cordinate into our cordinate array 
-      hits[csize]= hit;
+      hits[hsize]= hit;
       hsize++;
       
       

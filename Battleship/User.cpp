@@ -105,9 +105,7 @@ void User::adHit(Coordinate *hit) {
 // A
 // this returns true of the user contains that cordinate 
 // and if does not exist in the user hit array
-bool User::isHit(Coordinate* cord) {
-    cout << "is hit function is called" << endl; 
-     
+bool User::isHit(Coordinate* cord) {  
     cout << hitsz<< endl;
      // loop through the hits array and make sure it hasnt been added yet.
     if (hitsz > 0) {
@@ -115,7 +113,6 @@ bool User::isHit(Coordinate* cord) {
         for(int i = 0; i < hitsz; i++) {
             
          if (*hits[i] == *cord) {
-             cout << "dd" << endl;;
                 return false;
             }
        }
@@ -136,13 +133,33 @@ bool User::isHit(Coordinate* cord) {
             }
         }
     }
-   
-    
-    //boatsz; // the size of the boat 
-     //**boats;  // the boats that the user contains 
     
     return false; 
 }
+
+
+// loops through the boats 
+// takes in a coordinate called cord
+// returns true if a boat contains the cord and if the cord hasnt been hit yet. 
+bool User::isHitb(Coordinate* cord) {
+    // find the boat that contains that cordinate
+    for (int i =0; i < boatsz; i++) {
+        Boat *cboat = boats[i];
+        // check if the boat contains the cordinate
+        if (cboat->cordHsadd(cord)) {
+            cout << "we are here" << endl;
+            if (cboat->cordHshit(cord)) {
+                return false;     
+            } 
+//            // returns true if
+            return true;
+        }
+    }
+    
+    return false; 
+}
+
+
 
 // updates the enemyboard with the miss
 void User::adMiss(Coordinate *mis) {

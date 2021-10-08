@@ -9,6 +9,8 @@
  * Author: AZ
  *
  * Created on September 28, 2021, 11:02 AM
+ * 
+ * Version 1 - Ethan and Yanis - Display now uses GEtElement function of the board class to print out the board, also prints out misses, hits, boats, etc..
  */
 
 #ifndef DISPLAY_H
@@ -20,7 +22,7 @@
 class Display {
 private:
 public:
-    void displayboard(Board);
+    void displayboard(Board *board1);
     
 };
 

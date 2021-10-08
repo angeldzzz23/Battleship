@@ -9,11 +9,9 @@
 
 using namespace std;
 
-void Display::displayboard(Board board1){
-    int col = board1.getcolsize();
-    int row = board1.getrowsize();
-    
-    char** board2 = board1.rboard();
+void Display::displayboard(Board *board1){
+    int col = board1->getcolsize();
+    int row = board1->getrowsize();
     
     //printing out the board;
     cout <<" ";//print out a leading space so numbers fall nicely ontop of columns 
@@ -28,7 +26,7 @@ void Display::displayboard(Board board1){
         ascii++; //add one to ascii value to move on to next letter of alphabet
         
         for (int j = 0; j < col; j++) {
-            cout << board2[i][j] <<" ";//how to access board
+            cout << board1->getElement(i,j) << " ";//how to access board
         }
         cout << endl;
     }

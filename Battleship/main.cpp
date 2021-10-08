@@ -22,6 +22,7 @@
 #include "User.h"
 #include "Boat.h"
 #include "Board.h"
+#include "Prompt.h"
 
 
 using namespace std;
@@ -138,15 +139,23 @@ int main(int argc, char** argv) {
 
 
     // displaying the row and cols size 
-    for (int i = 0; i <  brd->getrowsize(); i++) {
+    /*for (int i = 0; i <  brd->getrowsize(); i++) {
         for (int j = 0; j < brd->getcolsize(); j++) {
             cout << brd->getElement(i,j) << " ";
         }
         cout << endl;
-    }
+    }*/
      
- 
+      //testing display and prompt
+      Display test;
+      test.displayboard(brd);
      
+      Prompt tester;
+      tester.hello();
+      tester.mainmenu();
+      tester.waitturn();
+      tester.getturn();
+      tester.winner();
      
     
     

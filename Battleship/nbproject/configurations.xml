@@ -26,6 +26,7 @@
       <itemPath>Boat.cpp</itemPath>
       <itemPath>Coordinate.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
+      <itemPath>Prompt.cpp</itemPath>
       <itemPath>User.cpp</itemPath>
       <itemPath>display.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -90,6 +91,8 @@
       </item>
       <item path="NSFile.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Prompt.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Prompt.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="User.cpp" ex="false" tool="0" flavor2="0">
@@ -144,6 +147,8 @@
       <item path="Game.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="NSFile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Prompt.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Prompt.h" ex="false" tool="3" flavor2="0">
       </item>

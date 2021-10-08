@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-MacOSX
-CND_DLIB_EXT=dylib
+CND_PLATFORM=MinGW-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Boat.o \
 	${OBJECTDIR}/Coordinate.o \
 	${OBJECTDIR}/Game.o \
+	${OBJECTDIR}/Prompt.o \
 	${OBJECTDIR}/User.o \
 	${OBJECTDIR}/display.o \
 	${OBJECTDIR}/main.o
@@ -62,9 +63,9 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship ${OBJECTFILES} ${LDLIBSOPTIONS}
 
@@ -87,6 +88,11 @@ ${OBJECTDIR}/Game.o: Game.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game.o Game.cpp
+
+${OBJECTDIR}/Prompt.o: Prompt.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Prompt.o Prompt.cpp
 
 ${OBJECTDIR}/User.o: User.cpp
 	${MKDIR} -p ${OBJECTDIR}

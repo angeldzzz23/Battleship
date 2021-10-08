@@ -40,6 +40,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/Boat.o \
 	${OBJECTDIR}/Coordinate.o \
 	${OBJECTDIR}/Game.o \
+<<<<<<< Updated upstream
+=======
+	${OBJECTDIR}/Prompt.o \
+	${OBJECTDIR}/User.o \
+>>>>>>> Stashed changes
 	${OBJECTDIR}/display.o \
 	${OBJECTDIR}/main.o
 
@@ -93,6 +98,19 @@ ${OBJECTDIR}/Game.o: Game.cpp
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game.o Game.cpp
 
+<<<<<<< Updated upstream
+=======
+${OBJECTDIR}/Prompt.o: Prompt.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Prompt.o Prompt.cpp
+
+${OBJECTDIR}/User.o: User.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/User.o User.cpp
+
+>>>>>>> Stashed changes
 ${OBJECTDIR}/display.o: display.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"

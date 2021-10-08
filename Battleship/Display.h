@@ -20,7 +20,7 @@
 class Display {
 private:
 public:
-    void displayboard(Board);
+    void displayboard(Board *daboard);
     
 };
 

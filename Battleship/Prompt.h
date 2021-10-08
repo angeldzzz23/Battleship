@@ -13,17 +13,34 @@
 
 #ifndef PROMPT_H
 #define PROMPT_H
+#include <cstring>
 
+using namespace std;
 // TODO: THink of all the type of user input that we will need
 // might want to talk to the person working on game and cruiserclass
 // this class is in charge of taking all different type of the userput from users 
 // TODO #1 define function properties (header file)
 // TODO #2 create function definitions (cpp file)
 // hint: for user input you will use the getline function
-// 
 
 class Prompt {
+private:
+    struct userinfo{
+        char *username; //class was being weird about accessing username without being in a struct
+    };    
+    userinfo tester;
     
+    
+public:
+    void hello();//basic welcome prompt
+    
+    void mainmenu(); //main menu
+    
+    void getturn(); //for taking turns
+    
+    void waitturn(); //for waiting for 2nd user
+    
+    void winner(); //for printing out winner
 };
 
 

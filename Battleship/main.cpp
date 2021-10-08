@@ -18,6 +18,14 @@
 #include "Boat.h"
 #include "AbsBoat.h"
 #include "Display.h"
+<<<<<<< Updated upstream
+=======
+#include <cstring>
+#include "User.h"
+#include "Boat.h"
+#include "Board.h"
+#include "Prompt.h"
+>>>>>>> Stashed changes
 
 
 using namespace std;
@@ -46,10 +54,85 @@ int main(int argc, char** argv) {
     //testing board display function
     Board testboard; //creating a test board object
     
+<<<<<<< Updated upstream
     Display test; //created the display object test
     test.displayboard(testboard); //displaying the board
 //    cout << "\u24E7" << endl;
     // Hello
+=======
+    
+    Submarine *sub = new Submarine();
+      sub->addCord(cord03);
+      sub->addCord(cord04);
+      sub->addCord(cord05);
+   
+    Cruiser *cuucu = new  Cruiser();
+      cuucu->addCord(cord06);
+      cuucu->addCord(cord07);
+      cuucu->addCord(cord08);
+   
+   Battleshp *battle = new Battleshp();
+      battle->addCord(cord09);
+      battle->addCord(cord10);
+      battle->addCord(cord11);
+      battle->addCord(cord12);
+    
+    Carrier *carr = new Carrier();
+      carr->addCord(cord13);
+      carr->addCord(cord14);
+      carr->addCord(cord15);
+      carr->addCord(cord16);
+      carr->addCord(cord17);
+      
+     User *user = new User();
+     user->adBoat(depp);
+     user->adBoat(sub);
+     user->adBoat(cuucu);
+     user->adBoat(battle);
+     user->adBoat(carr);
+//
+         Coordinate *cord0222 = new Coordinate(5,3);
+         Coordinate *cord3333 = new Coordinate(6,1);
+         Coordinate *cord02224 = new Coordinate(7,5);
+         Coordinate *cord33334 = new Coordinate(8,1);
+     
+       int misz = 4;
+      Coordinate **misses = new Coordinate*[21];
+      misses[0] = cord0222;
+      misses[1] = cord3333;
+      misses[2] = cord02224;
+      misses[3] = cord33334;
+      
+      // how to update the board
+      Board *brd = new Board();
+      
+      // update misses at once 
+      brd->upms(cord0222);
+      brd->upms(cord3333);
+      brd->upms(cord02224);
+      brd->upms(cord33334);
+      
+      // the boaats
+     Boat **boatss = new Boat*[6]; // the array 
+     boatss[0] = depp;
+     boatss[1] = sub;
+     boatss[2] = cuucu;
+     boatss[3] = battle;
+     boatss[4] = carr;
+      // update the boats 
+      brd->update(boatss, 5);
+      
+      Display test;
+      test.displayboard(brd);
+      
+      Prompt tester;
+      tester.mainmenu();
+      tester.hello();
+      tester.getturn();
+      tester.waitturn();
+      tester.winner();
+     
+>>>>>>> Stashed changes
     return 0;
 }
 

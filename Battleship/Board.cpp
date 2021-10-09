@@ -18,6 +18,7 @@
 
 
 // TODO: need to add the row numbers and col letters. 
+// TODO: we still need to test 
 
 Board::Board() {
     int row = 10; int col = 10; 
@@ -45,70 +46,51 @@ Board::Board() {
 }
 
 // updates the board with the boats of the User. 
+// updates the board with the boats of the user
+// this will update the hits and deads of boats
 void Board::update(Boat** boats, int size) {
-     char btType[] = {'d','s','c','b', 'C'};
-  
-    for (int i = 0; i < size; i++) { // looops through the array of boats
-        Boat *boat = boats[i]; // the boat in that specific index
-        Coordinate **cord = boat->getcordinates(); // the cordinates of the boat
-           // updates the position of the boats with the appropriate letter
-          for (int j = 0; j < boat->reqsz();j++ )   {
-              // checks if the boat is dead 
-              if (boat->isDead()) {
-                  board[cord[j]->getRow()][cord[j]->getCol()] = 'X';
-              }
-              else if (boat->cordHshit(cord[j])) {      // if the cordinate at pos j has been hit 
-                  board[cord[j]->getRow()][cord[j]->getCol()] = 'h';
-              } else {
-                 board[cord[j]->getRow()][cord[j]->getCol()] = btType[boat->getType()];  // initializes the location of the board
-              }
-            
-          }
-    
-    }
-     
-     
+     char btType[] = {'d','s','c','b', 'C'};  
+     for (int i = 0; i < size; i++) { // loop through the array of boats
+         Boat *boat = boats[i]; // the boat in that specific index
+         int sz = boat->reqsz();
+         
+         for (int i = 0; i < sz; i++) {
+             Coordinate *cord = boat->cordAt(i);
+             if (boat->isDead()) {
+                 board[cord->getRow()][cord->getCol()] = 'X';
+             } else if (boat->cordHshit(cord)){
+                  board[cord->getRow()][cord->getCol()] = 'h';
+             } else {
+                  board[cord->getRow()][cord->getCol()] = btType[boat->getType()];
+             }
+         }
+         
+     }
 
 }
 
 // adds a single boat to the board
+// adds a single boat
+// updates the hts or deads
 void Board::adBoat(Boat* boat) {
     //TODO: adds cordinates to the board
     // 
     char btType[] = {'d','s','c','b', 'C'};
-    Coordinate **cord = boat->getcordinates();
-
-            
-    for (int i = 0; i < boat->reqsz(); i++) {
-        
-        board[cord[i]->getRow()][cord[i]->getCol()] = btType[boat->getType()];
-    }
-
-
+    int sz = boat->reqsz();
+   
+        for (int i = 0; i < sz; i++) {
+           Coordinate *cord = boat->cordAt(i);
+           if (boat->isDead()) {
+                board[cord->getRow()][cord->getCol()] = 'X';
+             } else if (boat->cordHshit(cord)){
+                  board[cord->getRow()][cord->getCol()] = 'h';
+             } else {
+                  board[cord->getRow()][cord->getCol()] = btType[boat->getType()];
+             }
+         }
 }
 
-
-// updates hits of  a sppecific 
-void Board::upHts(Boat*, int size) {
-    // TODO:
-    
-    
-}
-
-// updates the misses of a specific boat
-// unsure if I need this
-void Board::upms(Boat*, int size) {
-    // TODO: 
-}
-
-// update a hts cordinate 
-// do not need 
-void Board::upHts(Coordinate* hts) {
-    board[hts->getRow()][hts->getCol()] = 'h';
-}
-
-// update a missed cordinate 
-// call this ms
+// update a missed cordinate
 void Board::upms(Coordinate* ms) {
     board[ms->getRow()][ms->getCol()] = 'm';
 }

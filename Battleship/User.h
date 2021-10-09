@@ -18,42 +18,30 @@
 // each user will have a 5 boats 
 class User {
   private:
+    int id; // the identifier of a user
     char *name; // the name of the user 
     int boatsz; // the size of the boats 
     Boat **boats;  // the boats that the user contains 
-    int hitsz; // the size of the hits
-    Coordinate **hits; // contains the hits you 
     int missSz; // the size of the misses array  
+    int hitsz;
     Coordinate **misses;  // constains 
-  
-    
-    // enemy board
-    Board *enemyBoard; // contains your misses and hits.
-                      // contains your misses.
-                      // contains your hits.   
-     
-       // user board
-    Board *myBoard; // contains the location of your boats
-                   // and the hits and misses of the enemy
+ 
 public: 
-    
-    
     User(); //initializes a user with a name
     void updNam(char *n, int sz); // updates the name of the user 
     void adBoat(Boat *boat); // adds a boat into the boat array and int myBoard
     void adHit(Coordinate *hit); // adds user hits into enemyBoard
     void adMiss(Coordinate *mis); // adds user misses into enemyBoard
-    void adEnemyHt(Coordinate *hit); // adds the hits the enemy has made on myBoard. 
-    void adEnemyMs(Coordinate *mis); // adds the misses the enemy has made on myBoard.
     char *gtName() {return name;}
-    bool isHit(Coordinate*); // return true if cordinate is a hit 
     bool isHitb(Coordinate*); // returns true if the cordinate exist but it is not contained in the hits array
     // for printing a user board use the these two functions 
-    char gtMBrdElmnt(int row, int col) { return myBoard->getElement(row, col); } // get my board element 
-    char gtEnBrdElmnt(int row, int col) {return enemyBoard->getElement(row, col);} // get enemy board element
-    int brdRow() {return myBoard->getrowsize();} // return a boards row  
-    int brdCol() {return myBoard->getcolsize();} // returns a board's col
-     
+    Boat* getBoat(int i);
+    int gtTotBtsz() { return boatsz;} // get the total boat size
+    int gtTotmiSz() {return missSz; } // returns the total missSz
+    Coordinate* gtMiCrd(int i); // get the miss coordinate
+    int getId() const {return id;} // returns the id of the user
+     bool operator==(const User &);
+      
     ~User(); // destructor 
 };
 

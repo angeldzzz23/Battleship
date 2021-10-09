@@ -44,98 +44,177 @@ int main(int argc, char** argv) {
 //    game.startGame();
 
     
-        // boat 1
-    Coordinate *cord01 = new Coordinate(0,0);
-    Coordinate *cord02 = new Coordinate(0,1);
 //    
-//    // boat 2
-    Coordinate *cord03 = new Coordinate(1,0);
-    Coordinate *cord04 = new Coordinate(1,1);
-    Coordinate *cord05 = new Coordinate(1,2);
-    
-    // boat 3
-    Coordinate *cord06 = new Coordinate(2,0);
-    Coordinate *cord07 = new Coordinate(2,1); // 
-    Coordinate *cord08 = new Coordinate(2,2); //
-    
-    // boat 4
-    Coordinate *cord09 = new Coordinate(3,0); //
-    Coordinate *cord10 = new Coordinate(3,1); //
-    Coordinate *cord11 = new Coordinate(3,2); //
-    Coordinate *cord12 = new Coordinate(3,3); //
-   
-    // boat 5
-    Coordinate *cord13 = new Coordinate(9,1); //
-    Coordinate *cord14 = new Coordinate(9,2); //
-    Coordinate *cord15 = new Coordinate(9,3); //
-    Coordinate *cord16 = new Coordinate(9,4); //
-    Coordinate *cord17 = new Coordinate(9,5); //
-    
-    Destroyer *depp = new Destroyer(); 
-    depp->addCord(cord01);
-    depp->addCord(cord02);
-    
-    
-    Submarine *sub = new Submarine();
-      sub->addCord(cord03);
-      sub->addCord(cord04);
-      sub->addCord(cord05);
-   
-    Cruiser *cuucu = new  Cruiser();
-      cuucu->addCord(cord06);
-      cuucu->addCord(cord07);
-      cuucu->addCord(cord08);
-   
-   Battleshp *battle = new Battleshp();
-      battle->addCord(cord09);
-      battle->addCord(cord10);
-      battle->addCord(cord11);
-      battle->addCord(cord12);
-    
-    Carrier *carr = new Carrier();
-      carr->addCord(cord13);
-      carr->addCord(cord14);
-      carr->addCord(cord15);
-      carr->addCord(cord16);
-      carr->addCord(cord17);
-      
-     User *user = new User();
-     user->adBoat(depp);
-     user->adBoat(sub);
-     user->adBoat(cuucu);
-     user->adBoat(battle);
-     user->adBoat(carr);
-//
-         Coordinate *cord0222 = new Coordinate(5,3);
-         Coordinate *cord3333 = new Coordinate(6,1);
-         Coordinate *cord02224 = new Coordinate(7,5);
-         Coordinate *cord33334 = new Coordinate(8,1);
+//        // boat 1
+//    Coordinate *cord01 = new Coordinate(0,0);
+//    Coordinate *cord02 = new Coordinate(0,1);
+////    
+////    // boat 2
+//    Coordinate *cord03 = new Coordinate(1,0);
+//    Coordinate *cord04 = new Coordinate(1,1);
+//    Coordinate *cord05 = new Coordinate(1,2);
+//    
+//    // boat 3
+//    Coordinate *cord06 = new Coordinate(2,0);
+//    Coordinate *cord07 = new Coordinate(2,1); // 
+//    Coordinate *cord08 = new Coordinate(2,2); //
+//    
+//    // boat 4
+//    Coordinate *cord09 = new Coordinate(3,0); //
+//    Coordinate *cord10 = new Coordinate(3,1); //
+//    Coordinate *cord11 = new Coordinate(3,2); //
+//    Coordinate *cord12 = new Coordinate(3,3); //
+//   
+//    // boat 5
+//    Coordinate *cord13 = new Coordinate(9,1); //
+//    Coordinate *cord14 = new Coordinate(9,2); //
+//    Coordinate *cord15 = new Coordinate(9,3); //
+//    Coordinate *cord16 = new Coordinate(9,4); //
+//    Coordinate *cord17 = new Coordinate(9,5); //
+//    
+//    Destroyer *depp = new Destroyer(); 
+//    depp->addCord(cord01);
+//    depp->addCord(cord02);
+//    
+//    
+//    Submarine *sub = new Submarine();
+//      sub->addCord(cord03);
+//      sub->addCord(cord04);
+//      sub->addCord(cord05);
+//   
+//    Cruiser *cuucu = new  Cruiser();
+//      cuucu->addCord(cord06);
+//      cuucu->addCord(cord07);
+//      cuucu->addCord(cord08);
+//   
+//   Battleshp *battle = new Battleshp();
+//      battle->addCord(cord09);
+//      battle->addCord(cord10);
+//      battle->addCord(cord11);
+//      battle->addCord(cord12);
+//    
+//    Carrier *carr = new Carrier();
+//      carr->addCord(cord13);
+//      carr->addCord(cord14);
+//      carr->addCord(cord15);
+//      carr->addCord(cord16);
+//      carr->addCord(cord17);
+
+//     Coordinate *hit1 = new Coordinate(1,0);
+//     Coordinate *hit2 = new Coordinate(1,1);
+//     Coordinate *hit3 = new Coordinate(5,2);
      
-       int misz = 4;
-      Coordinate **misses = new Coordinate*[21];
-      misses[0] = cord0222;
-      misses[1] = cord3333;
-      misses[2] = cord02224;
-      misses[3] = cord33334;
+
+//     Boat **boatss = new Boat*[16];
+//     boatss[0] = depp;
+//     boatss[1] = sub;
+//     boatss[2] = cuucu;       
+//     boatss[3] = battle;
+//     boatss[4] = carr;
+     
+    
+//     cout << depp->cordAt(1)->getRow() << endl;
+//     cout << depp->cordAt(1)->getCol() << endl;
+//     
+     
+//     Board *brd = new Board;
+//     brd->update(boatss, 5);
+//     brd->adBoat(depp);
+     
+
+//        Display test;
+//      test.displayboard(brd);
+////     
+     
+     
+//     sub->setHit(hit1); 
+//     sub->setHit(hit2);
+//     sub->setHit(hit3);
+     
+//     if (depp->cordHshit(hit2)) {
+//         cout << "you have hit again" << endl;
+//     }
+     
+//     depp->setHit(hit1);       
       
-      // how to update the board
-      Board *brd = new Board();
-      
-      // update misses at once 
-      brd->upms(cord0222);
-      brd->upms(cord3333);
-      brd->upms(cord02224);
-      brd->upms(cord33334);
-      
-      // the boaats
-     Boat **boatss = new Boat*[6]; // the array 
-     boatss[0] = depp;
-     boatss[1] = sub;
-     boatss[2] = cuucu;
-     boatss[3] = battle;
-     boatss[4] = carr;
-      // update the boats 
-      brd->update(boatss, 5);
+//      
+//      
+//     User *user = new User();
+//     user->adBoat(depp);
+//     user->adBoat(sub);
+//     user->adBoat(cuucu);
+//     user->adBoat(battle);
+//     user->adBoat(carr);
+////    
+////     
+//     Coordinate *hit12 = new Coordinate(2,0);
+//     Coordinate *hit123 = new Coordinate(2,1);
+//     Coordinate *hit1234 = new Coordinate(2,2);
+////     
+//     user->adHit(hit12);
+//     user->adHit(hit123);
+//     user->adHit(hit1234);
+//     
+//     
+     
+   
+     
+    return 0;
+}
+
+// Prompt class
+// Display class
+
+
+   
+//    
+//     user->adHit(hit3);
+
+     
+//     if (user->isHitb(hit)) {
+//         cout << "it is a hit" << endl;
+//     }
+     
+     
+  // Coordinate *cord06 = new Coordinate(2,0);
+    //Coordinate *cord07 = new Coordinate(2,1); // 
+    //Coordinate *cord08 = new Coordinate(2,2); //
+     
+     
+//     delete user;
+     
+     
+////
+//         Coordinate *cord0222 = new Coordinate(5,3);
+//         Coordinate *cord3333 = new Coordinate(6,1);
+//         Coordinate *cord02224 = new Coordinate(7,5);
+//         Coordinate *cord33334 = new Coordinate(8,1);
+//     
+//       int misz = 4;
+//      Coordinate **misses = new Coordinate*[21];
+//      misses[0] = cord0222;
+//      misses[1] = cord3333;
+//      misses[2] = cord02224;
+//      misses[3] = cord33334;
+//      
+//      // how to update the board
+//      Board *brd = new Board();
+//      
+//      // update misses at once 
+//      brd->upms(cord0222);
+//      brd->upms(cord3333);
+//      brd->upms(cord02224);
+//      brd->upms(cord33334);
+//      
+//      // the boaats
+//     Boat **boatss = new Boat*[6]; // the array 
+//     boatss[0] = depp;
+//     boatss[1] = sub;
+//     boatss[2] = cuucu;
+//     boatss[3] = battle;
+//     boatss[4] = carr;
+//      // update the boats 
+//      brd->update(boatss, 5);
 
 
     // displaying the row and cols size 
@@ -147,23 +226,12 @@ int main(int argc, char** argv) {
     }*/
      
       //testing display and prompt
-      Display test;
-      test.displayboard(brd);
-     
-      Prompt tester;
-      tester.hello();
-      tester.mainmenu();
-      tester.waitturn();
-      tester.getturn();
-      tester.winner();
-     
-    
-    
-    
-    
-
-    return 0;
-}
-
-// Prompt class
-// Display class
+//      Display test;
+//      test.displayboard(brd);
+//     
+//      Prompt tester;
+//      tester.hello();
+//      tester.mainmenu();
+//      tester.waitturn();
+//      tester.getturn();
+//      tester.winner();

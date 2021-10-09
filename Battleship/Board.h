@@ -12,6 +12,9 @@
 #include "AbsBoat.h"
 #include "Boat.h"
 
+
+
+// test the board
 class Board {
 private:
     int rowsize;//rowsize for board - Ethan/Yanis
@@ -22,9 +25,7 @@ public:
     Board();
     void update(Boat**, int size); // adds user boats into board. IDk if we'll need this 
     void upHts(Boat*, int size); // update the hits 
-    void upHts(Coordinate*); // updates hts cordinates
     void upms(Coordinate*); // updates the misses cordinates 
-    void upms(Boat*, int size); // update the misses 
     void adBoat(Boat*); // adds a boat into the Board 
     void adBoat(Boat*, char); // adds a boat with the type of boat
     void updmis(Coordinate**, int size);

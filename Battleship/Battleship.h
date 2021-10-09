@@ -19,19 +19,25 @@
 class Battleship {  
     private: 
         // user 1 
-        User userOne; // a user One model 
-         
-        // user 2
-        User userTwo; // a userTwo model 
+        User *userOne; // a user One model 
+       // usrbrd - contains UserTwo hits and misses
         
+        // enmy brd - contains the hits and misses of the user
+        
+        
+        // user 2
+        User *userTwo; // a userTwo model 
+        // usrbrd - contains UserTwo hits and misses
+        
+        // enmy brd - contains the hits and misses of the user
+            
         
     public:
         Controller(int); // initializes the game
-     
-        void startTwoPlayer();  // 
-        void startAIGame();
-        void displyBoard();
-        void displayEnemybrd();
+        void shotAttempt(User*);
+        void setUserOne(User*);
+        void setUserTwo(User*);
+      
 };
 
 

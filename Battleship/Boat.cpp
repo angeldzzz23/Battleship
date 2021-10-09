@@ -75,15 +75,48 @@ Boat::~Boat() {
     return false;
     
  }
+ // returns a hit coordinate 
+ Coordinate* Boat::hcordAt(int i) {
+     if (i >= hsize) {
+         cout << "class boat-hcordaT: your index is out of bounds" << endl;
+         exit(1);
+     }
+     return hits[i];
+ }
+ 
+ // retuns a cordAt
+ Coordinate* Boat::cordAt(int i) {
+     if (i >= csize) {
+         cout << "class boat-cordAt: Your index is out of bounds." << endl;
+         exit(1);
+     }
+     
+     return cordinate[i];
+ }
    
  // FIX: 
  // make that you cannot add more than the ship size
  void Boat::setHit(Coordinate *hit) { // initializez the hit with a a cord
      
+     // if coordinate is not in the boat
+     if (!cordHsadd(hit)) {
+         cout << "the coordinate is not in the boat. what is wrong with you." << endl;
+         exit(1);
+     }
+     
+     if (cordHshit(hit)) {
+         cout << "cordinate has been hit before, exiting the game " <<endl;
+           for (int i = 0; i < hsize;i++) {
+             cout <<"cord row " << hits[i]->getRow() <<" col " << hits[i]->getCol() << endl;
+         }
+         exit(1);
+     }
+     
      // cannot add more hits if the boat is already dead 
      if (hsize == reqsz()) {
          std::cout<<"you cant add more hits, boat is dead" << std::endl;
-         exit(0);
+       
+         exit(1);
      }
      // if cordinate has not been hit
         // we add we a cordinate into our cordinate array 
@@ -104,6 +137,7 @@ Boat::~Boat() {
      // TODO: 
      // return false if it is not in the corddinate array
      for(int i=0; i <csize;i++) {
+         
          if (*cordinate[i] == *c) {
              return true;
          }
@@ -124,6 +158,11 @@ Boat::~Boat() {
     
      if (csize == reqsz()) {
          std::cout << "you have added way too many boats" <<std::endl;
+         exit(1);
+     }
+     
+     if (cordHsadd(cord)) {
+         cout << "the coordinate has already been added in the boat. Please fix" << endl;
          exit(1);
      }
      

@@ -21,17 +21,17 @@ class Boat: public AbsBoat {
                 // we might want to create another constructor thae has an array of constructor 
         ~Boat();
        virtual int reqsz() const  {return 2; }; // the requirement of every boat size 
-       virtual int getSize() const {return size;}; // the current size of the boat 
        virtual bool cordHshit(Coordinate*); // check if the cordinate has been hit
        virtual bool cordHsadd(Coordinate *c); 
        virtual void setHit(Coordinate *hit);  // initializez the hit with a a cord
        virtual void addCord(Coordinate*);    // Adds a cordinates
        virtual Type getType() {return type;}
        char* nameOfBoat() {return name;}
-       Coordinate **getcordinates() {return cordinate;}
        // Check if cordinates added are
        bool alCords(); // returns true if the coordinates of the boat fit our board 
        bool isDead() {return dead;}
+        Coordinate* cordAt(int i);
+        Coordinate* hcordAt(int i); // returns a coordinate at index i 
 };
 
 class Destroyer: public Boat {

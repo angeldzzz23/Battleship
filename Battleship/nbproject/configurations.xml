@@ -22,6 +22,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Battleship.cpp</itemPath>
       <itemPath>Board.cpp</itemPath>
       <itemPath>Boat.cpp</itemPath>
       <itemPath>Coordinate.cpp</itemPath>
@@ -30,6 +31,28 @@
       <itemPath>User.cpp</itemPath>
       <itemPath>display.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -68,6 +91,8 @@
         </ccTool>
       </compileType>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Battleship.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -125,6 +150,8 @@
         </asmTool>
       </compileType>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Battleship.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
       </item>

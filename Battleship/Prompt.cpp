@@ -53,7 +53,7 @@ void Prompt::getturn(){ //function for taking turns - all inputs c strings for i
         }
         else if (*input == '4'){ //save game to binary file for later and quit
             cout <<"Quitting and Saving the game..." <<endl;
-            valid == true;
+            valid = true;
         }
         else if (strlen(input) > 2){ //to test out garbage inputs with white spaces
             cout <<"Invalid" <<endl;
@@ -92,7 +92,7 @@ void Prompt::mainmenu(){ //function for the main menu - all inputs c strings for
         }
         else if (*input == '3'){ //loads save game
             cout <<"Loading saved game..." <<endl;
-            valid == true;
+            valid = true;
         }
         else if (*input == '4'){
             cout <<"Quitting..." <<endl;  //quits the game

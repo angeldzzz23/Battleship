@@ -85,8 +85,13 @@ Boat::~Boat() {
          std::cout<<"you cant add more hits, boat is dead" << std::endl;
          exit(0);
      }
+     
+     
      // if cordinate has not been hit
         // we add we a cordinate into our cordinate array 
+     cout << reqsz() << endl;
+     cout <<hsize << endl;
+    
       hits[hsize]= hit;
       hsize++;
       
@@ -95,6 +100,7 @@ Boat::~Boat() {
          dead = true;  
          cout << "you boat is dead" << endl;
       }
+      
  }  
  
  // checks if the boat has already been added

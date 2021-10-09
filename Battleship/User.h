@@ -18,6 +18,7 @@
 // each user will have a 5 boats 
 class User {
   private:
+    int id; // identifitier
     char *name; // the name of the user 
     int boatsz; // the size of the boats 
     Boat **boats;  // the boats that the user contains 
@@ -53,7 +54,8 @@ public:
     char gtEnBrdElmnt(int row, int col) {return enemyBoard->getElement(row, col);} // get enemy board element
     int brdRow() {return myBoard->getrowsize();} // return a boards row  
     int brdCol() {return myBoard->getcolsize();} // returns a board's col
-     
+    bool operator==(const User &);
+    int  getId() const {return id;}
     ~User(); // destructor 
 };
 

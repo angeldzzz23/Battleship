@@ -4,65 +4,75 @@
  * and open the template in the editor.
  */
 
-// thethe actual battleship game 
-
 #include "Battleship.h"
+#include <iostream>
+
+using namespace std;
 
 
 
- // if user user wants to quit, we ask they if they want to save the current game. 
-
-// TODO
-Battleship::Battleship(int gameType) {
-    // figure out the game type 
+Battleship::Battleship(GameType gmetype) {
+    myBoardOne = new Board();
+    enemyBoardOne = new Board();
     
+    myBoardTwo = new Board();
+    enemyBoardTwo = new Board();
+    
+    
+// if (gmetype == twoPlyr)  {
+//     cout << "a two player game" << endl;
+//     // create two new users
+//     
+//     
+// } 
+// else if (gmetype == AIGme) {
+//    
+// }
     
 }
 
-// Game details: 
-// Quitting
-    // users can quit at any time of the game
-    // if users quit, we ask them if they want to save
-        // we save and then quit the game
-    // the next time the user enters a two player game. We ask them if they want to continue playing the game
-// Game details 
-    // Each user enters five boats 
-    // user 1 gets to choose the coordinates first. 
-    // we keep on letting a user choose cordinates until they get a miss 
-        // we display both the user's boards (each user has two boards)
-        // ask user for correct input. 
-        // if the user got a correct, we ask again. 
-        // if the user got an incorrect input, we aks the next user 
-    // 
+void Battleship::takeShot(User* n, Coordinate* cor) {
+    
+    // if userOne took the shot 
+
+    if (*n == *userOne ) {
+          // we check if it is the userTwo contains that hit 
+        if (userTwo->isHitb(cor)) {
+           // we hit the boat that has that specific coordinate
+           // we dont 
+            userTwo->adHit(cor);
+        } 
+        // we dont do anything if it is not a hit 
         
-
-void Battleship::startTwoPlayer() {
-    
-    // we can display a small menu for the user 
-        // let them know that they can quit the game at any time and that they can save 
-    
-    // get the name of user 1
-        // create a delay for user 2 to press so that they can pick their name
-    // get the name of user 2 
-    
-    // create a delay for user 1 to press so that they can pick their boats
-    
-    // get the boats for user one
-        // there are around ___ boats
+    } 
+    else if (*n == *userTwo) {
+        cout << "userTwo" << endl;
         
-    // create a delay for user 2 to press so that they can pick their board
+        if (userOne->isHitb(cor)) {
+           // we hit the boat that has that specific coordinate
+           // we dont 
+            userOne->adHit(cor);
+        } 
+        
+    }
     
-    // get the boats for user 2
-    
-    
-    // Here is where we will get input from the user 
-    
-    
+//    if (n->isHitb(cor)) {
+//        std::cout << "it is a hit" << std::endl;
+//    } else {
+//     std::cout << "Not a hit" << std::endl;
+//    }
+//    
 }
 
-
-// TODO
-// Similar process as the other one 
-void Battleship::startAIGame() {
-    
-}
+// might want to loop through playerOne and get all of its things
+  void Battleship::setPlayerOne(User* u) {
+      // loop through 
+      userOne = u;
+        
+  }
+  
+  
+  // might want to loop through playerTwo and get all of its things 
+  void Battleship::setPlayerTwo(User* u) {
+      userTwo = u;// make them both point to the same things
+  }

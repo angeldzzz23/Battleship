@@ -12,7 +12,7 @@ using namespace std;
 
 // constructor 
 User::User() {
-    
+    static int q = 0;
     int brdsz = 100; // the size of the board 
     int boatszs = 5; // the total number of boats a user can add 
     int totHit = 5 + 4 + 3 + 3 + 2; // sz of Cruiser,battleship,sz of cruiser, sz sub, sz of dest
@@ -23,7 +23,9 @@ User::User() {
     hitsz = 0; // the size of the hits to zero
     missSz = 0; // set the missSz to zero
     
-    
+    q+=1;
+    // create identifier 
+    id = q;
     // dynamically allocate memory for boat 
     boats = new Boat*[boatszs];
     // dynamically allocate memory for hits 
@@ -62,9 +64,19 @@ void User::adBoat(Boat *boat) {
     }  
 }
 
+// checks if two users are the same 
+  bool User::operator==(const User &c){
+      
+      if (this->id == c.getId() ) {
+          return true; 
+      }
+      
+      return false;
+  }
+
 
 // updates the enemy board with the hit
-// update the boat that
+// update the boat that contains that cordinate 
 // adds the hit into the hits array 
 // update: add hits into the boat 
 void User::adHit(Coordinate *hit) {
@@ -79,6 +91,7 @@ void User::adHit(Coordinate *hit) {
         
         // check if the boat contains the cordinate 
         if (cboat->cordHsadd(hit)) {
+          
             //  set the hit to the boats
             cboat->setHit(hit); 
         }

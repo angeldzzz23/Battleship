@@ -23,6 +23,7 @@
 #include "Boat.h"
 #include "Board.h"
 #include "Prompt.h"
+#include "Battleship.h"
 
 
 using namespace std;
@@ -40,11 +41,8 @@ using namespace std;
 
 int main(int argc, char** argv) {
     
-//    Game game;
-//    game.startGame();
-
-    
-        // boat 1
+    // Coordinates for the user1
+   // boat 1
     Coordinate *cord01 = new Coordinate(0,0);
     Coordinate *cord02 = new Coordinate(0,1);
 //    
@@ -65,12 +63,12 @@ int main(int argc, char** argv) {
     Coordinate *cord12 = new Coordinate(3,3); //
    
     // boat 5
-    Coordinate *cord13 = new Coordinate(9,1); //
-    Coordinate *cord14 = new Coordinate(9,2); //
-    Coordinate *cord15 = new Coordinate(9,3); //
-    Coordinate *cord16 = new Coordinate(9,4); //
-    Coordinate *cord17 = new Coordinate(9,5); //
-    
+    Coordinate *cord13 = new Coordinate(4,0); //
+    Coordinate *cord14 = new Coordinate(4,1); //
+    Coordinate *cord15 = new Coordinate(4,2); //
+    Coordinate *cord16 = new Coordinate(4,3); //
+    Coordinate *cord17 = new Coordinate(4,4); //
+       
     Destroyer *depp = new Destroyer(); 
     depp->addCord(cord01);
     depp->addCord(cord02);
@@ -98,67 +96,135 @@ int main(int argc, char** argv) {
       carr->addCord(cord15);
       carr->addCord(cord16);
       carr->addCord(cord17);
-      
-     User *user = new User();
-     user->adBoat(depp);
-     user->adBoat(sub);
-     user->adBoat(cuucu);
-     user->adBoat(battle);
-     user->adBoat(carr);
-//
-         Coordinate *cord0222 = new Coordinate(5,3);
-         Coordinate *cord3333 = new Coordinate(6,1);
-         Coordinate *cord02224 = new Coordinate(7,5);
-         Coordinate *cord33334 = new Coordinate(8,1);
-     
-       int misz = 4;
-      Coordinate **misses = new Coordinate*[21];
-      misses[0] = cord0222;
-      misses[1] = cord3333;
-      misses[2] = cord02224;
-      misses[3] = cord33334;
-      
-      // how to update the board
-      Board *brd = new Board();
-      
-      // update misses at once 
-      brd->upms(cord0222);
-      brd->upms(cord3333);
-      brd->upms(cord02224);
-      brd->upms(cord33334);
-      
-      // the boaats
-     Boat **boatss = new Boat*[6]; // the array 
-     boatss[0] = depp;
-     boatss[1] = sub;
-     boatss[2] = cuucu;
-     boatss[3] = battle;
-     boatss[4] = carr;
-      // update the boats 
-      brd->update(boatss, 5);
-
-
-    // displaying the row and cols size 
-    /*for (int i = 0; i <  brd->getrowsize(); i++) {
-        for (int j = 0; j < brd->getcolsize(); j++) {
-            cout << brd->getElement(i,j) << " ";
-        }
-        cout << endl;
-    }*/
-     
-      //testing display and prompt
-      Display test;
-      test.displayboard(brd);
-     
-      Prompt tester;
-      tester.hello();
-      tester.mainmenu();
-      tester.waitturn();
-      tester.getturn();
-      tester.winner();
-     
     
     
+     // Coordinates for the user2
+   // boat 1
+    Coordinate *cord0123 = new Coordinate(5,0);
+    Coordinate *cord0223 = new Coordinate(5,1);
+//    
+//    // boat 2
+    Coordinate *cord0323 = new Coordinate(6,0);
+    Coordinate *cord0423 = new Coordinate(6,1);
+    Coordinate *cord0523 = new Coordinate(6,2);
+    
+    // boat 3
+    Coordinate *cord0623 = new Coordinate(7,0);
+    Coordinate *cord0723 = new Coordinate(7,1); // 
+    Coordinate *cord0823 = new Coordinate(7,2); //
+    
+    // boat 4
+    Coordinate *cord0923 = new Coordinate(8,0); //
+    Coordinate *cord1023 = new Coordinate(8,1); //
+    Coordinate *cord1123 = new Coordinate(8,2); //
+    Coordinate *cord1223 = new Coordinate(8,3); //
+   
+    // boat 5
+    Coordinate *cord1323 = new Coordinate(9,0); //
+    Coordinate *cord1423 = new Coordinate(9,2); //
+    Coordinate *cord1523 = new Coordinate(9,3); //
+    Coordinate *cord1623 = new Coordinate(9,4); //
+    Coordinate *cord1723 = new Coordinate(9,5); //
+      
+           // boats for the Destroyer 
+     Destroyer *depp2 = new Destroyer(); 
+     depp2->addCord(cord0123);
+     depp2->addCord(cord0223);
+     
+     
+      Submarine *sub2 = new Submarine();
+      sub2->addCord(cord0323);
+      sub2->addCord(cord0423);
+      sub2->addCord(cord0523);
+      
+      Cruiser *cuucu2 = new  Cruiser();
+      cuucu2->addCord(cord0623);
+      cuucu2->addCord(cord0723);
+      cuucu2->addCord(cord0823);
+           
+      Battleshp *battle2 = new Battleshp();
+      battle2->addCord(cord0923);
+      battle2->addCord(cord1023);
+      battle2->addCord(cord1123);
+      battle2->addCord(cord1223);
+    
+      Carrier *carr2 = new Carrier();
+      carr2->addCord(cord1323);
+      carr2->addCord(cord1423);
+      carr2->addCord(cord1523);
+      carr2->addCord(cord1623);
+      carr2->addCord(cord1723);
+      
+       Board *brd1 = new Board;
+       User *user1 = new User;
+       user1->adBoat(depp);
+       user1->adBoat(sub);
+       user1->adBoat(cuucu);
+       user1->adBoat(battle);
+       user1->adBoat(carr);
+       // update the board of the user 
+       brd1->adBoat(depp);
+       brd1->adBoat(sub);
+       brd1->adBoat(cuucu);
+       brd1->adBoat(battle);
+       brd1->adBoat(carr);
+       
+      Board *brd2 = new Board;
+      User *user2 = new User;
+      user2->adBoat(depp2);
+      user2->adBoat(sub2);
+      user2->adBoat(cuucu2);
+      user2->adBoat(battle2);
+      user2->adBoat(carr2);
+      
+      brd2->adBoat(depp2);
+      brd2->adBoat(sub2);
+      brd2->adBoat(cuucu2);
+      brd2->adBoat(battle2);
+      brd2->adBoat(carr2);
+      
+    // both of the users have their things 
+      
+      
+     Display test;
+     
+     test.displayboard(brd1);
+     cout << endl;
+     test.displayboard(brd2);
+     
+     GameType gmo = twoPlyr;
+     // create battleship game 
+     Battleship *game = new Battleship(gmo);
+    
+     game->setPlayerOne(user1);
+     game->setPlayerTwo(user2);
+     
+     // do the game logic 
+     
+     // choose a cordinate for user take a shot 
+     Coordinate *shot111 = new Coordinate(2,0);
+     game->takeShot(user2, shot111);
+     
+     
+     
+     
+     
+     
+//     test.displayboard(brd1);
+     
+//     cout << endl;
+//     cout << user1->getId() << endl;
+//     cout << user2->getId() << endl;
+//     cout << endl;
+    // get the boats from the user 
+    
+//        delete brd1; 
+//        delete user1;
+        //delete user2;
+//    delete 
+    
+
+
     
     
 
@@ -167,3 +233,67 @@ int main(int argc, char** argv) {
 
 // Prompt class
 // Display class
+
+
+/* How to add boats
+ * you can add an array of boats using: 
+ * 
+ 
+ */
+
+//    Game game;
+//    game.startGame();
+
+//     User *user = new User();
+
+//
+//         Coordinate *cord0222 = new Coordinate(5,3);
+//         Coordinate *cord3333 = new Coordinate(6,1);
+//         Coordinate *cord02224 = new Coordinate(7,5);
+//         Coordinate *cord33334 = new Coordinate(8,1);
+//     
+//       int misz = 4;
+//      Coordinate **misses = new Coordinate*[21];
+//      misses[0] = cord0222;
+//      misses[1] = cord3333;
+//      misses[2] = cord02224;
+//      misses[3] = cord33334;
+//      
+//      // how to update the board
+//      Board *brd = new Board();
+//      
+//      // update misses at once 
+//      brd->upms(cord0222);
+//      brd->upms(cord3333);
+//      brd->upms(cord02224);
+//      brd->upms(cord33334);
+//      
+//      // the boaats
+//     Boat **boatss = new Boat*[6]; // the array 
+//     boatss[0] = depp;
+//     boatss[1] = sub;
+//     boatss[2] = cuucu;
+//     boatss[3] = battle;
+//     boatss[4] = carr;
+//      // update the boats 
+//      brd->update(boatss, 5);
+//
+//
+//    // displaying the row and cols size 
+    /*for (int i = 0; i <  brd->getrowsize(); i++) {
+        for (int j = 0; j < brd->getcolsize(); j++) {
+            cout << brd->getElement(i,j) << " ";
+        }
+        cout << endl;
+    }*/
+//     
+//      //testing display and prompt
+
+//     
+//      Prompt tester;
+//      tester.hello();
+//      tester.mainmenu();
+//      tester.waitturn();
+//      tester.getturn();
+//      tester.winner();
+     

@@ -39,19 +39,18 @@ using namespace std;
 
 
 int main(int argc, char** argv) {
-    Prompt test;
-    int size = 25;//having a large size helps prevent infinite loops
-    char **array = new char*[5];//int boatsize depends on how large ship is = number of coordinates
-    for (int f=0; f < 5; f++){
-         array[f] = new char[size];//initialize the char array within the character array
-    }
-    array = test.getboatcoord(5);
+    Prompt *test = new Prompt;
+
+    char** array = test->getboatcoord(5);
     cout <<"Here 2!" <<endl;
     for (int f=0; f < 5; f++){
-         cout <<array[f] <<endl;//initialize the char array within the character array
-    }
+         cout <<array[f] <<endl;//print out array
+    }  
     
-
+    for (int i = 0; i < 5; i++){
+        delete array[i];
+    }
+    delete []array;
     
     return 0;
 }

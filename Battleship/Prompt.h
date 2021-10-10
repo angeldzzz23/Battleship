@@ -27,22 +27,28 @@ using namespace std;
 
 class Prompt {
 private:
-    struct userinfo{
-        char *username; //class was being weird about accessing username without being in a struct
-    };    
-    userinfo tester;
-    
+    char *username; //class was being weird about accessing username without being in a struct
+    char *bcoordinate; //this one for working with boat coordinates
+    char *scoordinate;//this one is for the shooting
+    char *inputmain; //input for main
+    char *inputturn;//input for turn
     
 public:
-    void hello();//basic welcome prompt
+    char* hello();//basic welcome prompt
     
-    void mainmenu(); //main menu
+    char* mainmenu(); //main menu
     
-    void getturn(); //for taking turns
+    char* getturn(); //for taking turns
     
     void waitturn(); //for waiting for 2nd user
     
-    void winner(); //for printing out the winner
+    void winner(char *winner); //for printing out the winner
+    
+    char** getboatcoord(int boatsize); //getting boat 
+    
+    char* getshotcoord();
+    
+    ~Prompt();//destructor 
 };
 
 

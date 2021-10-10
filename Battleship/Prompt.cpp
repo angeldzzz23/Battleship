@@ -131,12 +131,14 @@ void Prompt::winner(char *winner){ //prints out winner of game
 
 char** Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
     int size = 25;//having a large size helps prevent infinite loops
-    char *array[boatsize];//int boatsize depends on how large ship is = number of coordinates
+    char **array = new char*[boatsize];//int boatsize depends on how large ship is = number of coordinates
+    for (int f=0; f < boatsize; f++){
+         array[f] = new char[size];//initialize the char array within the character array
+    }
     int c = 0;
     for ( ;c < boatsize; c++){ //loop depending on the size of the ship - battleship = 4 iterations, crusier = 3, etc.
         bool valid = false;
         do{
-            array[c] = new char[size];//initialize the char array within the character array
             cout <<"Please enter coordinate " <<c+1 <<" of " <<boatsize <<" for the position of your ship: " <<endl;
             cin.getline(array[c], size-1);//get user input
             

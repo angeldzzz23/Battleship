@@ -28,10 +28,10 @@ class Boat: public AbsBoat {
        virtual Type getType() {return type;}
        char* nameOfBoat() {return name;}
        // Check if cordinates added are
-       bool alCords(); // returns true if the coordinates of the boat fit our board 
+       bool alCords(Coordinate**, int size); // returns true if the coordinates of the boat fit our board. todo
        bool isDead() {return dead;}
-        Coordinate* cordAt(int i);
-        Coordinate* hcordAt(int i); // returns a coordinate at index i 
+       Coordinate* cordAt(int i);
+       Coordinate* hcordAt(int i); // returns a coordinate at index i        
 };
 
 class Destroyer: public Boat {

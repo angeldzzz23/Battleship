@@ -68,6 +68,19 @@ void Prompt::getturn(){ //function for taking turns - all inputs c strings for i
     delete input; //delete input to free up space
 }
 
+ char* getCordinates(char* name) {
+     bool valid = false;
+     int size = 50;
+     char *input;
+     input = new char[size]; //sized to 50 to protect against oversized and bad inputs
+     
+     do  {
+//         cout << "enter Coordinate for " << boat << endl;;
+         
+         
+     }while (!valid);
+ }
+
 void Prompt::mainmenu(){ //function for the main menu - all inputs c strings for input validation
     char *input;  //dynamically allocate an array of characters for input
     int size = 50;

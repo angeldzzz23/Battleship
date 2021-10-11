@@ -40,7 +40,8 @@ public:
     int gtTotmiSz() {return missSz; } // returns the total missSz
     Coordinate* gtMiCrd(int i); // get the miss coordinate
     int getId() const {return id;} // returns the id of the user
-     bool operator==(const User &);
+    bool operator==(const User &);
+    bool isMisB(Coordinate *cord); // checks if a coordinate is a miss 
       
     ~User(); // destructor 
 };

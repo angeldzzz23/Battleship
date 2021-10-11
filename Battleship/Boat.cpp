@@ -146,12 +146,49 @@ Boat::~Boat() {
      return false;
  }
  
+ // checks if the coordinates good for the boat
+ // TODO: 
+  bool Boat::alCords(Coordinate** cord, int size) {
+      int row = cord[0]->getRow();
+      int col = cord[0]->getCol();
+      bool rrow = false;
+      bool rcol = false;
+     
+      if (size <  0 ) {
+          cout << "array not big enough" << endl;
+          return false;
+      }
+     
+      // check if they all have the same row 
+      for (int i = 0; i < size; i++) {
+          if (row == cord[i]->getRow()) {
+              
+          }
+      }
+      
+      
+      
+//      // make sure they all have the same row 
+//      for (int i = 0; i < size; i++) {
+//          if (cord[i]->getRow() != row) {
+//              return false;
+//          }
+//          
+//          if (cord[i]->getCol() != col) {
+//              return false;
+//          }
+//      }
+      
+     
+      
+      // still need to check this 
+      return false;
+      
+  }
+ 
 
  // adds a cordinate into our boat cordinate 
- // make this cleaner later 
- // FIX: 
-    // make sure that you dont add more than required size cordinates.
-    // fix the cordhadded function
+ // make this cleaner later
  // make that you cannot add more than the ship size
  
  void Boat::addCord(Coordinate *cord) {   

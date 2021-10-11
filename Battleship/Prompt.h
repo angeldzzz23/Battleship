@@ -44,7 +44,7 @@ public:
     
     void winner(char *winner); //for printing out the winner
     
-    char** getboatcoord(int boatsize); //getting boat 
+    void getboatcoord(char *array[], int boatsize); //getting boat 
     
     char* getshotcoord();
     

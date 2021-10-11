@@ -39,18 +39,7 @@ using namespace std;
 
 
 int main(int argc, char** argv) {
-    Prompt *test = new Prompt;
 
-    char** array = test->getboatcoord(5);
-    cout <<"Here 2!" <<endl;
-    for (int f=0; f < 5; f++){
-         cout <<array[f] <<endl;//print out array
-    }  
-    
-    for (int i = 0; i < 5; i++){
-        delete array[i];
-    }
-    delete []array;
     
     return 0;
 }

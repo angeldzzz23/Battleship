@@ -130,9 +130,8 @@ void Prompt::winner(char *winner){ //prints out winner of game
     delete winner; //delete here since this funciton will not be returning anything
 }
 
-char** Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
+void Prompt::getboatcoord(char *array[], int boatsize){//for getting coordinates for boats
     int size = 25;//having a large size helps prevent infinite loops
-    char **array = new char*[boatsize];//int boatsize depends on how large ship is = number of coordinates
     int c = 0;
     for ( ;c < boatsize; c++){ //loop depending on the size of the ship - battleship = 4 iterations, crusier = 3, etc.
         bool valid = false;
@@ -158,12 +157,12 @@ char** Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
                     if(strlen(array[c]) == 3 && test == 1 && test2 == 0){ //to see if the coordinate is a '10'
                         cout <<"Coordinates registered" <<endl;
                         valid = true; //everything checks out - char and number, so condition is true
-                        array[c][3] = '\0'; //set null terminator to the 4th position, since the maximum size should be 3
+                        array[c][3] = '\n'; //set null terminator to the 4th position, since the maximum size should be 3
                     }
                     else if((strlen(array[c]) == 2) && test > 0 && test <= 9){ //check number if it is not a '10'
                         cout <<"Coordinates registered" <<endl;
                         valid = true; //everything checks out - char and number, so condition is true
-                        array[c][2]='\0'; //set null terminator to the 3rd position - since size of this array is only 2
+                        array[c][2]='\n'; //set null terminator to the 3rd position - since size of this array is only 2
                     }
                     else{ //for if the number coordinate is bad
                         cout <<"Out of bounds, please reenter." <<endl;
@@ -180,7 +179,6 @@ char** Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
         }while (valid == false); //test condition - is a bool to simplify it since it would be aggregious to retype all the conditions that must be meet up above back in here
     } //end of for loop
     cout <<"Here!" <<endl;
-    return array;        //return the completed array
 }
 
 char* Prompt::getshotcoord(){ //getting a single coordinate for shooting

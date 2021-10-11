@@ -180,9 +180,9 @@ Boat::~Boat() {
       }
       
       // check if there are any duplicates 
-        for (int i = 0; i < sz; i++) {
-          for (int j = i+1; j < sz; j++) {
-              if (*co22[i] == *co22[j]) {
+        for (int i = 0; i < size; i++) {
+          for (int j = i+1; j < size; j++) {
+              if (*cord[i] == *cord[j]) {
                    return false; 
               }
 
@@ -200,8 +200,8 @@ Boat::~Boat() {
         sort(cord,size); // sort by col 
         
        // check if they all have a difference of one 
-      for (int i = 0; i < sz-1; i++) {
-          if (co22[i+1]->getCol() - co22[i]->getCol() != 1) {
+      for (int i = 0; i < size-1; i++) {
+          if (cord[i+1]->getCol() - cord[i]->getCol() != 1) {
               cout << "no distance of one" << endl;
               rcol = false;
           }

@@ -141,7 +141,7 @@ int main(int argc, char** argv) {
       Coordinate **co22 = new Coordinate*[7]; // 
       Coordinate *Co1 = new Coordinate(0,1);
       Coordinate *Co2 = new Coordinate(0,2);
-      Coordinate *Co3 = new Coordinate(0,9);
+      Coordinate *Co3 = new Coordinate(0,3);
       Coordinate *Co4 = new Coordinate(0,4);
       Coordinate *Co5 = new Coordinate(0,5);
       
@@ -153,7 +153,9 @@ int main(int argc, char** argv) {
       co22[4] = Co3;
     
       
- 
+      int rtot = 0;  // the total num rows of cols
+      int ctot = 0; // the total number cols 
+     
       int sz = 5;
 //      cout <<   co22[j]->getRow() << " " << co22[j]->getCol() << endl;  
       
@@ -166,8 +168,13 @@ int main(int argc, char** argv) {
                   cout << "dddd" << endl;
                   // return false 
               }
-               
+           // increment row 
+          ctot += co22[i]->getCol();
+              
+           // increment col 
+            rtot += co22[i]->getRow();
           }
+          
           cout << endl;
       }
       
@@ -180,9 +187,13 @@ int main(int argc, char** argv) {
              }
       
          }
+         
+     
+         // add all of the ro
       
-      cout << crr->getCol() << endl;
-      
+       cout << crr->getCol() << endl;
+       cout << rtot << endl;
+       cout << ctot << endl;
   
      
    

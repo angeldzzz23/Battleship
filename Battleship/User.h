@@ -17,7 +17,7 @@
 
 // each user will have a 5 boats 
 class User {
-  private:
+  protected:
     int id; // the identifier of a user
     char *name; // the name of the user 
     int boatsz; // the size of the boats 

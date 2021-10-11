@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>AIPlayer.h</itemPath>
       <itemPath>AbsBoat.h</itemPath>
       <itemPath>Battleship.h</itemPath>
       <itemPath>Board.h</itemPath>
@@ -22,6 +23,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>AIPlayer.cpp</itemPath>
       <itemPath>Board.cpp</itemPath>
       <itemPath>Boat.cpp</itemPath>
       <itemPath>Coordinate.cpp</itemPath>
@@ -29,6 +31,28 @@
       <itemPath>User.cpp</itemPath>
       <itemPath>display.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -66,6 +90,10 @@
           <standard>11</standard>
         </ccTool>
       </compileType>
+      <item path="AIPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AIPlayer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
@@ -121,6 +149,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="AIPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AIPlayer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">

@@ -15,7 +15,9 @@
 // This is a destroyer ship that should be initialized with cordinates 
 
 class Boat: public AbsBoat {
-        
+    private: 
+        void sort(Coordinate**, int ); // sorts the coordinates 
+        void rSort(Coordinate**, int ); // sorts based on the
     public: 
          Boat(); // We might want to add cordinates on our constructor 
                 // we might want to create another constructor thae has an array of constructor 
@@ -31,7 +33,8 @@ class Boat: public AbsBoat {
        bool alCords(Coordinate**, int size); // returns true if the coordinates of the boat fit our board. todo
        bool isDead() {return dead;}
        Coordinate* cordAt(int i);
-       Coordinate* hcordAt(int i); // returns a coordinate at index i        
+       Coordinate* hcordAt(int i); // returns a coordinate at index i  
+       
 };
 
 class Destroyer: public Boat {

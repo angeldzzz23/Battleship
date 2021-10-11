@@ -37,6 +37,7 @@ using namespace std;
 // TODO #6 Prompt class
 // TODO #7 Display class  
 
+void sort1(Coordinate** cords, int size, int typw); 
 
 int main(int argc, char** argv) {
     
@@ -141,7 +142,7 @@ int main(int argc, char** argv) {
       Coordinate **co22 = new Coordinate*[7]; // 
       Coordinate *Co1 = new Coordinate(0,1);
       Coordinate *Co2 = new Coordinate(0,2);
-      Coordinate *Co3 = new Coordinate(0,3);
+      Coordinate *Co3 = new Coordinate(0,7);
       Coordinate *Co4 = new Coordinate(0,4);
       Coordinate *Co5 = new Coordinate(0,5);
       
@@ -168,36 +169,28 @@ int main(int argc, char** argv) {
                   cout << "dddd" << endl;
                   // return false 
               }
-           // increment row 
-          ctot += co22[i]->getCol();
-              
-           // increment col 
-            rtot += co22[i]->getRow();
+
           }
-          
-          cout << endl;
       }
       
-      // look for the highest number 
-      cout << endl;
-      Coordinate *crr = co22[0];
-         for (int i = 1; i < sz; i++) {
-             if (crr->getCol() < co22[i]->getCol()) { 
-                 crr = co22[i]; // holds reference to the biggest one
-             }
+      // sort the  coordinates 
+      sort1(co22,sz, 3);
       
-         }
-         
-     
-         // add all of the ro
+      for(int i = 0; i < sz;i++) {
+       cout <<   co22[i]->getRow() << " " << co22[i]->getCol() << endl;  
+
+      }
       
-       cout << crr->getCol() << endl;
-       cout << rtot << endl;
-       cout << ctot << endl;
-  
-     
-   
-     
+      // check if they all have a difference of one 
+      for (int i = 0; i < sz-1; i++) {
+          if (co22[i+1]->getCol() - co22[i]->getCol() != 1) {
+              cout << "no distance of one" << endl;
+          }
+      }
+      
+      
+ 
+    
     return 0;
 }
 
@@ -274,3 +267,26 @@ int main(int argc, char** argv) {
 //      tester.waitturn();
 //      tester.getturn();
 //      tester.winner();
+ void sort1(Coordinate** cords, int size, int typw) {
+//     Coordinate *inter = new Coordinate(1,3);
+     int row; // used for swapping
+     int col; // used for swapping
+     for (int i =0; i < size-1; i++) {
+         for (int j = 0; j < size-i-1; j++) {
+             
+             if (cords[j]->getCol() > cords[j + 1]->getCol()) {
+                 // swapping 
+                 row = cords[j]->getRow();
+                 col = cords[j]->getCol();
+       
+                 cords[j]->setCol(cords[j + 1]->getCol());
+                 cords[j]->setRow(cords[j + 1]->getRow());
+             
+                cords[j + 1]->setCol(col);
+                cords[j + 1]->setRow(row);
+        
+             
+             }
+         }
+     }
+ }

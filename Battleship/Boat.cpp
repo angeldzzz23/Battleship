@@ -164,14 +164,11 @@ Boat::~Boat() {
           if (row != cord[i]->getRow()) {
              rrow = false;
           }
-          
-//          if ()
       }
       
       
      // make sure they all have the same col 
       for (int i = 0; i < size; i++) {
-   
           if (col != cord[i]->getCol()) {
               rcol = false;
           }
@@ -181,14 +178,44 @@ Boat::~Boat() {
       if (rcol && rrow) {
           return false; 
       }
-     
-      // check if the distance between rrow case is 1 
-      for(int i =size-1; i >= 0; i--) {
-          for (int j = 0; j < i-1; j++ ) {
-              
+      
+      // check if there are any duplicates 
+        for (int i = 0; i < sz; i++) {
+          for (int j = i+1; j < sz; j++) {
+              if (*co22[i] == *co22[j]) {
+                   return false; 
+              }
+
           }
       }
       
+      
+      // do the row case
+      if (rcol) {
+          
+      }
+      
+      // do the col case
+      if (rcol) {
+        sort(cord,size); // sort by col 
+        
+       // check if they all have a difference of one 
+      for (int i = 0; i < sz-1; i++) {
+          if (co22[i+1]->getCol() - co22[i]->getCol() != 1) {
+              cout << "no distance of one" << endl;
+              rcol = false;
+          }
+        }
+      }
+      
+
+      // check if the distance between rrow case is 1 
+//      for(int i =size-1; i >= 0; i--) {
+//          for (int j = 0; j < i-1; j++ ) {
+//              
+//          }
+//      }
+//      
       // still need to check this 
       return false;
       
@@ -215,6 +242,30 @@ Boat::~Boat() {
       csize++;
 
       
+ }
+ 
+ // sorts coordings - rows 
+ void Boat::sort(Coordinate** cords, int size) {
+     int row; // used for swapping
+     int col; // used for swapping
+     for (int i =0; i < size-1; i++) {
+         for (int j = 0; j < size-i-1; j++) {
+             
+             if (cords[j]->getCol() > cords[j + 1]->getCol()) {
+                 // swapping 
+                 row = cords[j]->getRow();
+                 col = cords[j]->getCol();
+       
+                 cords[j]->setCol(cords[j + 1]->getCol());
+                 cords[j]->setRow(cords[j + 1]->getRow());
+             
+                cords[j + 1]->setCol(col);
+                cords[j + 1]->setRow(row);
+        
+             
+             }
+         }
+     }
  }
  
  

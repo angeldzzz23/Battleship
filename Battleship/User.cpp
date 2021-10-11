@@ -54,6 +54,19 @@ Coordinate* User::gtMiCrd(int i) {
     return misses[i];
 }
 
+bool User::CrdsNotTaken(Coordinate** cord, int size) { // returns true if all of the coordinates DNE exist in boats
+    
+    //  
+    for (int i = 0; i < boatsz; i++) {
+        // if it is taken 
+        if (!bIsNotTaken(cord)) {
+            return false;
+        }
+    }
+    
+    return true; // returns true 
+} 
+
  bool User::operator==(const User &usr) {
      if (this->id == usr.getId() ) {
          return true;

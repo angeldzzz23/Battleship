@@ -120,6 +120,18 @@ bool User::isHitb(Coordinate* cord) {
     // return false
     return false; 
 }
+bool User::bIsNotTaken(Coordinate* cord) {
+    for (int i = 0; i < boatsz;i++) {
+        Boat *cboat = boats[i];  // the boat at a specific index
+        // checks if the coordinate has been added before 
+        if (cboat->cordHsadd(cord)) { 
+            return false;
+        }
+
+    }
+    
+    return true; // the coordinate does not exist 
+}
 
 // returns true if the coordinate is a miss
 bool User::isMisB(Coordinate *cord) {

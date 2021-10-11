@@ -151,8 +151,8 @@ Boat::~Boat() {
   bool Boat::alCords(Coordinate** cord, int size) {
       int row = cord[0]->getRow();
       int col = cord[0]->getCol();
-      bool rrow = false;
-      bool rcol = false;
+      bool rrow = true;
+      bool rcol = true;
      
       if (size <  0 ) {
           cout << "array not big enough" << endl;
@@ -161,25 +161,33 @@ Boat::~Boat() {
      
       // check if they all have the same row 
       for (int i = 0; i < size; i++) {
-          if (row == cord[i]->getRow()) {
-              
+          if (row != cord[i]->getRow()) {
+             rrow = false;
           }
+          
+//          if ()
       }
       
       
+     // make sure they all have the same col 
+      for (int i = 0; i < size; i++) {
+   
+          if (col != cord[i]->getCol()) {
+              rcol = false;
+          }
+      }
       
-//      // make sure they all have the same row 
-//      for (int i = 0; i < size; i++) {
-//          if (cord[i]->getRow() != row) {
-//              return false;
-//          }
-//          
-//          if (cord[i]->getCol() != col) {
-//              return false;
-//          }
-//      }
-      
+      // all of them have the same row and same col
+      if (rcol && rrow) {
+          return false; 
+      }
      
+      // check if the distance between rrow case is 1 
+      for(int i =size-1; i >= 0; i--) {
+          for (int j = 0; j < i-1; j++ ) {
+              
+          }
+      }
       
       // still need to check this 
       return false;

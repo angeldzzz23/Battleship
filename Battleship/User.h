@@ -42,6 +42,7 @@ public:
     int getId() const {return id;} // returns the id of the user
     bool operator==(const User &);
     bool isMisB(Coordinate *cord); // checks if a coordinate is a miss 
+    bool bIsNotTaken(Coordinate* cord); // returns true coordinate DNE in boats  
       
     ~User(); // destructor 
 };

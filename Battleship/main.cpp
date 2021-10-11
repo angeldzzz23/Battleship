@@ -138,54 +138,52 @@ int main(int argc, char** argv) {
 //      delete carr;
     
       
-      Coordinate *Co1 = new Coordinate(0,0);
-      Coordinate *Co2 = new Coordinate(0,0);
+      Coordinate **co22 = new Coordinate*[7]; // 
+      Coordinate *Co1 = new Coordinate(0,1);
+      Coordinate *Co2 = new Coordinate(0,2);
+      Coordinate *Co3 = new Coordinate(0,9);
+      Coordinate *Co4 = new Coordinate(0,4);
+      Coordinate *Co5 = new Coordinate(0,5);
       
-      User *user = new User(); 
-      user->adBoat(depp);
-//      
-      user->adHit(Co1);
-//      
-//      
-//      user->adMiss(Co1);
-      
-      
-      user->adMiss(Co2);
+      // Coordinate 
+      co22[0] = Co1;
+      co22[1] = Co4;
+      co22[2] = Co5;
+      co22[3] = Co2;
+      co22[4] = Co3;
     
-         
+      
+ 
+      int sz = 5;
+//      cout <<   co22[j]->getRow() << " " << co22[j]->getCol() << endl;  
       
       
+      // checks duplicates 
+      cout << endl;
+      for (int i = 0; i < sz; i++) {
+          for (int j = i+1; j < sz; j++) {
+              if (*co22[i] == *co22[j]) {
+                  cout << "dddd" << endl;
+                  // return false 
+              }
+               
+          }
+          cout << endl;
+      }
       
-     
-//     sub->setHit(hit1); 
-//     sub->setHit(hit2);
-//     sub->setHit(hit3);
-     
-//     if (depp->cordHshit(hit2)) {
-//         cout << "you have hit again" << endl;
-//     }
-     
-//     depp->setHit(hit1);       
+      // look for the highest number 
+      cout << endl;
+      Coordinate *crr = co22[0];
+         for (int i = 1; i < sz; i++) {
+             if (crr->getCol() < co22[i]->getCol()) { 
+                 crr = co22[i]; // holds reference to the biggest one
+             }
       
-//      
-//      
-//     User *user = new User();
-//     user->adBoat(depp);
-//     user->adBoat(sub);
-//     user->adBoat(cuucu);
-//     user->adBoat(battle);
-//     user->adBoat(carr);
-////    
-////     
-//     Coordinate *hit12 = new Coordinate(2,0);
-//     Coordinate *hit123 = new Coordinate(2,1);
-//     Coordinate *hit1234 = new Coordinate(2,2);
-////     
-//     user->adHit(hit12);
-//     user->adHit(hit123);
-//     user->adHit(hit1234);
-//     
-//     
+         }
+      
+      cout << crr->getCol() << endl;
+      
+  
      
    
      

@@ -108,34 +108,50 @@ int main(int argc, char** argv) {
 //     Coordinate *hit3 = new Coordinate(5,2);
      
 
-     Boat **boatss = new Boat*[16];
-     boatss[0] = depp;
-     boatss[1] = sub;
-     boatss[2] = cuucu;       
-     boatss[3] = battle;
-     boatss[4] = carr;
+//     Boat **boatss = new Boat*[16];
+//     boatss[0] = depp;
+//     boatss[1] = sub;
+//     boatss[2] = cuucu;       
+//     boatss[3] = battle;
+//     boatss[4] = carr;
      
     
+     
+     
 //     cout << depp->cordAt(1)->getRow() << endl;
 //     cout << depp->cordAt(1)->getCol() << endl;
 //     
-     
-     Board *brd = new Board;
-     brd->update(boatss, 5);
-     brd->adBoat(depp);
-      
-      Display test;
-      test.displayboard(brd);
+//     
+//     Board *brd = new Board;
+//     brd->update(boatss, 5);
+//     brd->adBoat(depp);
+//      
+//      Display test;
+//      test.displayboard(brd);
 ////     
      
       
-      delete depp;
-      delete sub;
-      delete cuucu;
-      delete battle;
-      delete carr;
+//      delete depp;
+//      delete sub;
+//      delete cuucu;
+//      delete battle;
+//      delete carr;
+    
+      
+      Coordinate *Co1 = new Coordinate(0,0);
+      Coordinate *Co2 = new Coordinate(0,0);
+      
+      User *user = new User(); 
+      user->adBoat(depp);
+//      
+      user->adHit(Co1);
+//      
+//      
+//      user->adMiss(Co1);
       
       
+      user->adMiss(Co2);
+    
          
       
       

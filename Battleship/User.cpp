@@ -33,7 +33,7 @@ User::User() {
     misses = new Coordinate*[totMis];
     
     name = new char[81]; // dynamically allocate memory for the name 
-    
+ 
  
 }
 
@@ -103,30 +103,64 @@ void User::adHit(Coordinate *hit) {
 // loops through the boats 
 // takes in a coordinate called cord
 // returns true if a boat contains the cord and if the cord hasnt been hit yet. 
+// returns false if the coordinate is a hit 
 bool User::isHitb(Coordinate* cord) {
     // find the boat that contains that cordinate
     for (int i =0; i < boatsz; i++) {
         Boat *cboat = boats[i];
         // check if the boat contains the cordinate
         if (cboat->cordHsadd(cord)) {
-      
             if (cboat->cordHshit(cord)) {
                 return false;     
             } 
-//            // returns true if
+//            // returns true if the coordinate has been added and has not been hit 
             return true;
         }
     }
-    
+    // return false
     return false; 
+}
+
+// returns true if the coordinate is a miss
+bool User::isMisB(Coordinate *cord) {
+ 
+    // loop through our boats array and see if that coordinate exists 
+    for (int i =0; i < boatsz; i++) {
+         Boat *cboat = boats[i];
+         // check if the boat contains the coordinate 
+         if (cboat->cordHsadd(cord)) {
+             return false;
+         }
+    }
+    
+    return true;
 }
 
 
 
 // updates the enemyboard with the miss
 void User::adMiss(Coordinate *mis) {
+    // check if the coordinate that has been hit
+    // loop through you boars 
+    // find the boat that contains that cordinate
+    for (int i =0; i < boatsz; i++) {
+        Boat *cboat = boats[i];
+        // check if the boat contains the cordinate
+        if (cboat->cordHsadd(mis) ) {
+            cout << "here we are" << endl;
+            // you know that is a duplicate 
+            if (cboat->cordHshit(mis)) {
+                cout << "You have already hit this coordinate. It cannot be missed" << endl;
+                exit(1);
+            } 
+           
+        }
+    }
+    
+    
     misses[missSz] = mis;  // add the cordinate to our misses
     missSz += 1; // increment misses by one 
+    cout << missSz<<endl;
 }
 
 Boat* User::getBoat(int i) {

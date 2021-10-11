@@ -55,11 +55,10 @@ Coordinate* User::gtMiCrd(int i) {
 }
 
 bool User::CrdsNotTaken(Coordinate** cord, int size) { // returns true if all of the coordinates DNE exist in boats
-    
-    //  
-    for (int i = 0; i < boatsz; i++) {
+     
+    for (int i = 0; i < size; i++) {
         // if it is taken 
-        if (!bIsNotTaken(cord)) {
+        if (!bIsNotTaken(cord[i])) {
             return false;
         }
     }

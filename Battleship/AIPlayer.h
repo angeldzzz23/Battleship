@@ -14,7 +14,22 @@
 #ifndef AIPLAYER_H
 #define AIPLAYER_H
 
+#include "Coordinate.h"
+#include "Boat.h"
+#include "User.h"
+#include "Battleship.h"
+#include "Board.h"
 
+//enum Direction {north, east, south, west};
+
+class AIPlayer : public User {
+    private:
+        Coordinate* RNGCoords(Boat*);
+        //Direction RNGDirection(Boat*);
+    public:
+        AIPlayer();
+        ~AIPlayer();
+};
 
 #endif /* AIPLAYER_H */
 

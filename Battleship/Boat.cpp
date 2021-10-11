@@ -149,11 +149,18 @@ Boat::~Boat() {
  // checks if the coordinates good for the boat
  // TODO: 
   bool Boat::alCords(Coordinate** cord, int size) {
+       
       int row = cord[0]->getRow();
       int col = cord[0]->getCol();
+      
       bool rrow = true;
       bool rcol = true;
      
+       for (int i = 0; i < size;i++) {
+         cout << cord[i]->getRow() << " " << cord[i]->getCol() << endl;
+      }
+      
+      
       if (size <  0 ) {
           cout << "array not big enough" << endl;
           return false;
@@ -174,53 +181,83 @@ Boat::~Boat() {
           }
       }
       
+      
       // all of them have the same row and same col
       if (rcol && rrow) {
           return false; 
       }
       
+
+      
+      
       // check if there are any duplicates 
         for (int i = 0; i < size; i++) {
+          //   cout << cord[i]->getRow() << " " << cord[i]->getCol() << endl;
           for (int j = i+1; j < size; j++) {
+          //    cout << cord[i]->getRow() << " " << cord[i]->getCol() << endl;
+            //  cout << cord[j]->getRow() << " " << cord[j]->getCol() << endl;
+              cout << endl;
               if (*cord[i] == *cord[j]) {
                    return false; 
               }
 
           }
       }
-      
-      
       // do the row case
-      if (rcol) {
-          
-      }
-      
-      // do the col case
-      if (rcol) {
+      if (rrow) { 
+          cout << "fjfjf" << endl;
+        rSort(cord, size);  // 
+        
+        for (int i = 0; i < size-1; i++) {
+           if (cord[i+1]->getCol() - cord[i]->getCol() != 1) {
+              cout << "no distance of one" << endl;
+              rcol = false;
+          }           
+        }
+        return rrow;
+      } else if (rcol) {   // do the col case
         sort(cord,size); // sort by col 
         
        // check if they all have a difference of one 
       for (int i = 0; i < size-1; i++) {
-          if (cord[i+1]->getCol() - cord[i]->getCol() != 1) {
+          if (cord[i+1]->getRow() - cord[i]->getRow() != 1) {
               cout << "no distance of one" << endl;
               rcol = false;
           }
         }
+        
+        return rcol; 
       }
       
 
-      // check if the distance between rrow case is 1 
-//      for(int i =size-1; i >= 0; i--) {
-//          for (int j = 0; j < i-1; j++ ) {
-//              
-//          }
-//      }
-//      
       // still need to check this 
       return false;
       
   }
  
+ 
+ // Sorting based on rows 
+ void Boat::rSort(Coordinate** cords, int size) {  // sorts based on the
+     int row; // used for swapping
+     int col; // used for swapping
+     for (int i =0; i < size-1; i++) {
+         for (int j = 0; j < size-i-1; j++) { 
+             if (cords[j]->getRow() > cords[j + 1]->getRow()) {
+                 // swapping - 
+                 row = cords[j]->getRow();
+                 col = cords[j]->getCol();
+       
+                 cords[j]->setCol(cords[j + 1]->getCol());
+                 cords[j]->setRow(cords[j + 1]->getRow());
+             
+                cords[j + 1]->setCol(col);
+                cords[j + 1]->setRow(row);
+        
+             
+             }
+         }
+     }  
+ }
 
  // adds a cordinate into our boat cordinate 
  // make this cleaner later
@@ -261,8 +298,6 @@ Boat::~Boat() {
              
                 cords[j + 1]->setCol(col);
                 cords[j + 1]->setRow(row);
-        
-             
              }
          }
      }

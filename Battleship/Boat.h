@@ -16,7 +16,7 @@
 
 class Boat: public AbsBoat {
     private: 
-        void sort(Coordinate**, int ); // sorts the coordinates 
+        void sort(Coordinate**, int ); // col sorts the coordinates 
         void rSort(Coordinate**, int ); // sorts based on the
     public: 
          Boat(); // We might want to add cordinates on our constructor 
@@ -30,7 +30,7 @@ class Boat: public AbsBoat {
        virtual Type getType() {return type;}
        char* nameOfBoat() {return name;}
        // Check if cordinates added are
-       bool alCords(Coordinate**, int size); // returns true if the coordinates of the boat fit our board. todo
+       bool alCords(Coordinate**, int size); // returns true if the coordinates of the boat fit our board. todo: Test more 
        bool isDead() {return dead;}
        Coordinate* cordAt(int i);
        Coordinate* hcordAt(int i); // returns a coordinate at index i  

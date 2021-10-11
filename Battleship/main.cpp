@@ -39,8 +39,10 @@ using namespace std;
 
 
 int main(int argc, char** argv) {
-
-    
+    Prompt test;
+    test.hello();
+    test.mainmenu();
+    test.getturn();
     return 0;
 }
 

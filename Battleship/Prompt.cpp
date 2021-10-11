@@ -17,6 +17,15 @@
 
 using namespace std;
 
+Prompt::Prompt(){
+    username = NULL;
+    bcoordinate = NULL; //this one for working with boat coordinates
+    scoordinate = NULL;//this one is for the shooting
+    inputmain = NULL; //input for main
+    inputturn = NULL;
+    
+}
+
 char* Prompt::hello(){ //a simple welcome to the game prompt that asks for a username
     cout <<"Welcome to Battleship!" <<endl;
     cout <<"Please enter username: "; //enter their user name
@@ -58,7 +67,7 @@ char* Prompt::getturn(){ //function for taking turns - all inputs c strings for 
         }
         else if (*inputturn == '4'){ //save game to binary file for later and quit
             cout <<"Quitting and Saving the game..." <<endl;
-            valid == true;
+            valid = true;
         }
         else{
             cout <<"Not valid option" <<endl; //input validation
@@ -96,7 +105,7 @@ char* Prompt::mainmenu(){ //function for the main menu - all inputs c strings fo
         }
         else if (*inputmain == '3'){ //loads save game
             cout <<"Loading saved game..." <<endl;
-            valid == true;
+            valid = true;
         }
         else if (*inputmain == '4'){
             cout <<"Quitting..." <<endl;  //quits the game
@@ -222,10 +231,15 @@ char* Prompt::getshotcoord(){ //getting a single coordinate for shooting
 }
 
 Prompt::~Prompt(){
-    delete inputturn; //delete all our dynamic variables down here
-    delete username;
-    delete inputmain;
-    delete bcoordinate;
-    delete scoordinate;
+    if(inputturn != NULL)
+        delete inputturn; //delete all our dynamic variables down here
+    if(inputturn != NULL)
+        delete username;
+    if(inputturn != NULL)
+        delete inputmain;
+    if(inputturn != NULL)
+        delete bcoordinate;
+    if(inputturn != NULL)
+        delete scoordinate;
 }
 

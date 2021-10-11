@@ -34,6 +34,9 @@ private:
     char *inputturn;//input for turn
     
 public:
+    
+    Prompt();
+    
     char* hello();//basic welcome prompt
     
     char* mainmenu(); //main menu

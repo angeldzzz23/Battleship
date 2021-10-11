@@ -43,6 +43,7 @@ public:
     bool operator==(const User &);
     bool isMisB(Coordinate *cord); // checks if a coordinate is a miss 
     bool bIsNotTaken(Coordinate* cord); // returns true coordinate DNE in boats  
+    bool CrdsNotTaken(Coordinate** cord, int size); // returs true if all of the coordinates DNE exist in boats
       
     ~User(); // destructor 
 };

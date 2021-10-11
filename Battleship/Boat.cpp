@@ -151,24 +151,33 @@ Boat::~Boat() {
   bool Boat::alCords(Coordinate** cord, int size) {
       int row = cord[0]->getRow();
       int col = cord[0]->getCol();
-      bool rrow = true;
-      bool rcol = true;
+      bool rrow = false;
+      bool rcol = false;
      
       if (size <  0 ) {
           cout << "array not big enough" << endl;
           return false;
       }
-      
-      // make sure they all have the same row 
+     
+      // check if they all have the same row 
       for (int i = 0; i < size; i++) {
-          if (cord[i]->getRow() != row) {
-              return false;
-          }
-          
-          if (cord[i]->getCol() != col) {
-              return false;
+          if (row == cord[i]->getRow()) {
+              
           }
       }
+      
+      
+      
+//      // make sure they all have the same row 
+//      for (int i = 0; i < size; i++) {
+//          if (cord[i]->getRow() != row) {
+//              return false;
+//          }
+//          
+//          if (cord[i]->getCol() != col) {
+//              return false;
+//          }
+//      }
       
      
       

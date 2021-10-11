@@ -20,6 +20,8 @@ class Coordinate {
         Coordinate(int r, int c); // this initializer takes in an int row and an in col
         int getRow() const {return row;} // returns the row
         int getCol() const {return col;} // returns the col  
+        void setRow(int r) {row = r;}
+        void setCol(int c) {col = c;}
         bool operator==(const Coordinate &);
 };
 

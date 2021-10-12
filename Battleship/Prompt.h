@@ -29,8 +29,6 @@ using namespace std;
 class Prompt {
 private:
     char *username; //class was being weird about accessing username without being in a struct
-    char *bcoordinate; //this one for working with boat coordinates
-    char *scoordinate;//this one is for the shooting
     char *inputmain; //input for main
     char *inputturn;//input for turn
     
@@ -50,7 +48,7 @@ public:
     
     string getboatcoord(int boatsize); //getting boat 
     
-    char* getshotcoord();
+    string getshotcoord();
     
     ~Prompt();//destructor 
 };

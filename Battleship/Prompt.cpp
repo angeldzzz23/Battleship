@@ -20,8 +20,6 @@ using namespace std;
 
 Prompt::Prompt(){
     username = NULL;
-    bcoordinate = NULL; //this one for working with boat coordinates
-    scoordinate = NULL;//this one is for the shooting
     inputmain = NULL; //input for main
     inputturn = NULL;
     
@@ -34,7 +32,7 @@ char* Prompt::hello(){ //a simple welcome to the game prompt that asks for a use
     username =new char[size];
     cin.getline(username,size-1);
     cout <<username <<endl;
-    return username; //delete dynamic array
+    return username; 
 }
 
 char* Prompt::getturn(){ //function for taking turns - all inputs c strings for input validation
@@ -209,9 +207,7 @@ string Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
                 }
             }
             else if (boat[c] == ' '){//basically just ignore white spaces
-                if (tracksize > 0){
-                    delete boat[c];
-                }
+                //blank because just needed to filter out special characters, whitespaces are fine
             }            
             else{ //to filter out special characters and such
                 cout <<"Invalid character - try again." <<endl;
@@ -228,45 +224,47 @@ string Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
     return boat;
 }
 
-char* Prompt::getshotcoord(){ //getting a single coordinate for shooting
-    int size = 5;
+string Prompt::getshotcoord(){ //getting a single coordinate for shooting
     bool valid = false; //bool for do while control
+    string shot;
     do{
-        scoordinate = new char[size]; //dynamically allocate char array for coordinate
-        scoordinate[0] = '\0'; 
         cout <<"Enter coordinates for the shot sir: " <<endl;
-        cin.getline(scoordinate,size-1); //take it
+        getline(cin, shot); //take it
 
         //conversions of data types to make validation easier - also done on separate variables to preserve data
-        int comp = (int)scoordinate[0];
-        char test = scoordinate[1];
+        int comp = (int)shot[0];
+        char test = shot[1];
         test -= '0';
-        char test2 = scoordinate[2];
-        test2 -= '0';
 
         //validate the data
         if ((comp >= 65 && comp <= 74) || (comp >= 96 && comp <= 106)){ //using ascii values to validate the char coordinate
-            if(strlen(scoordinate) == 3 && test == 1 && test2 == 0){ //test and validate for coord is a '10'
-                cout <<"Coordinates confirmed" <<endl;;
-                valid = true; //set condition to true once coordinate is confirmed valid
+            if(shot.length() == 3 && test == 1){ //test and validate for coord is a '10'
+                char test2 = shot[2];
+                test2 -= '0';
+                if (test2 == 0){
+                    cout <<"Coordinates confirmed" <<endl;;
+                    valid = true; //set condition to true once coordinate is confirmed valid
+                }
+                else{
+                    cout <<"Out of range! Try again." <<endl;
+                    valid = false; //if invalid set condition to false and delete the array to start over
+                }
             }
-            else if((strlen(scoordinate) == 2) && test > 0 && test <= 9){ //test and validate if coord is not '10'
+            else if((shot.length() == 2) && test > 0 && test <= 9){ //test and validate if coord is not '10'
                 cout <<"Coordinates confirmed" <<endl;
                 valid = true; //set condition to true once coordinate is confirmed valid
             }
             else{
                 cout <<"Out of range! Try again." <<endl;
                 valid = false; //if invalid set condition to false and delete the array to start over
-                delete scoordinate;
             }
         }
         else{
             cout <<"Out of range! Try again." <<endl;
             valid = false; //if invalid set condition to false and delete the array to start over
-            delete scoordinate;
         }
     }while (valid == false);
-    return scoordinate;
+    return shot;
 }
 
 Prompt::~Prompt(){
@@ -276,9 +274,5 @@ Prompt::~Prompt(){
         delete username;
     if(inputturn != NULL)
         delete inputmain;
-    if(inputturn != NULL)
-        delete bcoordinate;
-    if(inputturn != NULL)
-        delete scoordinate;
 }
 

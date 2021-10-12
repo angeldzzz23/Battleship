@@ -43,7 +43,10 @@ int main(int argc, char** argv) {
     //test.hello();
     string feedme;
     feedme = test.getboatcoord(3);
-    cout <<feedme;
+    cout <<feedme <<endl;
+    string shot;
+    shot = test.getshotcoord();
+    cout <<shot;
     return 0;
 }
 

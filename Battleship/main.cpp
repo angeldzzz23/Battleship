@@ -47,59 +47,79 @@ int main(int argc, char** argv) {
     
     
 //        // boat 1
-//    Coordinate *cord01 = new Coordinate(0,0);
-//    Coordinate *cord02 = new Coordinate(0,1);
+    Coordinate *cord01 = new Coordinate(0,0);
+    Coordinate *cord02 = new Coordinate(1,0);
+    
+    
 ////    
 ////    // boat 2
-//    Coordinate *cord03 = new Coordinate(1,0);
-//    Coordinate *cord04 = new Coordinate(1,1);
-//    Coordinate *cord05 = new Coordinate(1,2);
+    Coordinate *cord03 = new Coordinate(1,0);
+    Coordinate *cord04 = new Coordinate(1,1);
+    Coordinate *cord05 = new Coordinate(1,2);
 //    
 //    // boat 3
-//    Coordinate *cord06 = new Coordinate(2,0);
-//    Coordinate *cord07 = new Coordinate(2,1); // 
-//    Coordinate *cord08 = new Coordinate(2,2); //
+    Coordinate *cord06 = new Coordinate(2,0);
+    Coordinate *cord07 = new Coordinate(2,1); // 
+    Coordinate *cord08 = new Coordinate(2,2); //
 //    
 //    // boat 4
-//    Coordinate *cord09 = new Coordinate(3,0); //
-//    Coordinate *cord10 = new Coordinate(3,1); //
-//    Coordinate *cord11 = new Coordinate(3,2); //
-//    Coordinate *cord12 = new Coordinate(3,3); //
+    Coordinate *cord09 = new Coordinate(3,0); //
+    Coordinate *cord10 = new Coordinate(3,1); //
+    Coordinate *cord11 = new Coordinate(3,2); //
+    Coordinate *cord12 = new Coordinate(3,3); //
 //   
 //    // boat 5
-//    Coordinate *cord13 = new Coordinate(9,1); //
-//    Coordinate *cord14 = new Coordinate(9,2); //
-//    Coordinate *cord15 = new Coordinate(9,3); //
-//    Coordinate *cord16 = new Coordinate(9,4); //
-//    Coordinate *cord17 = new Coordinate(9,5); //
+    Coordinate *cord13 = new Coordinate(9,1);
+    Coordinate *cord14 = new Coordinate(9,2);
+    Coordinate *cord15 = new Coordinate(9,3); 
+    Coordinate *cord16 = new Coordinate(9,4); 
+    Coordinate *cord17 = new Coordinate(9,5); 
 //    
-//    Destroyer *depp = new Destroyer(); 
-//    depp->addCord(cord01);
-//    depp->addCord(cord02);
-//    
-//    
-//    Submarine *sub = new Submarine();
-//      sub->addCord(cord03);
-//      sub->addCord(cord04);
-//      sub->addCord(cord05);
-//   
-//    Cruiser *cuucu = new  Cruiser();
-//      cuucu->addCord(cord06);
-//      cuucu->addCord(cord07);
-//      cuucu->addCord(cord08);
-//   
-//   Battleshp *battle = new Battleshp();
-//      battle->addCord(cord09);
-//      battle->addCord(cord10);
-//      battle->addCord(cord11);
-//      battle->addCord(cord12);
-//    
-//    Carrier *carr = new Carrier();
-    //  carr->addCord(cord13);
-    //  carr->addCord(cord14);
-    //  carr->addCord(cord15);
-    //  carr->addCord(cord16);
-    //  carr->addCord(cord17);
+    Destroyer *depp = new Destroyer(); 
+    depp->addCord(cord01);
+    depp->addCord(cord02);
+    
+   
+    Submarine *sub = new Submarine();
+    
+      sub->addCord(cord03);
+      sub->addCord(cord04);
+      sub->addCord(cord05);
+   
+    Cruiser *cuucu = new  Cruiser();
+    
+      cuucu->addCord(cord06);
+      cuucu->addCord(cord07);
+      cuucu->addCord(cord08);
+    
+   Battleshp *battle = new Battleshp();
+      battle->addCord(cord09);
+      battle->addCord(cord10);
+      battle->addCord(cord11);
+      battle->addCord(cord12);
+
+      
+    Carrier *carr = new Carrier();
+      carr->addCord(cord13);
+      carr->addCord(cord14);
+      carr->addCord(cord15);
+      carr->addCord(cord16);
+      carr->addCord(cord17);
+      
+     Coordinate **co22 = new Coordinate*[10];
+     co22[0] = cord13; 
+     co22[1] = cord14;
+     co22[2] = cord15;
+     co22[3] = cord16;
+     co22[4] = cord17;
+     
+    if ( depp->alCords(co22, 5)) {
+        cout << "the coordinates fit " << endl;
+    } else {
+        cout << "the coordinates do not fit" << endl;
+    }
+    
+      
 
 //
 //    Coordinate **co22 = new Coordinate*[10];

@@ -27,6 +27,7 @@ class Boat: public AbsBoat {
        virtual bool cordHsadd(Coordinate *c); 
        virtual void setHit(Coordinate *hit);  // initializez the hit with a a cord
        virtual void addCord(Coordinate*);    // Adds a cordinates
+       virtual void addCords(Coordinate **n); 
        virtual Type getType() {return type;}
        char* nameOfBoat() {return name;}
        // Check if cordinates added are
@@ -34,6 +35,7 @@ class Boat: public AbsBoat {
        bool isDead() {return dead;}
        Coordinate* cordAt(int i);
        Coordinate* hcordAt(int i); // returns a coordinate at index i  
+      
        
 };
 
@@ -45,7 +47,7 @@ class Destroyer: public Boat {
              // creates cordinate
             cordinate = new Coordinate*[reqsz()];
         }
-     
+        void addCords(Coordinate **n);
         Type getType() {return type;}
         int reqsz() const  {return 2; }      
 };
@@ -65,7 +67,7 @@ class Submarine:public Boat {
              // creates cordinate
             cordinate = new Coordinate*[reqsz()];
         }
-         
+        void addCords(Coordinate **n);
         Type getType() {return type;}
         int reqsz() const {return 3;}
 };
@@ -79,6 +81,7 @@ class Cruiser:public Boat {
              // creates cordinate
             cordinate = new Coordinate*[reqsz()];
         }
+        void addCords(Coordinate **n);
         Type getType() {return type;}
         int reqsz() const {return 3;}
 };
@@ -93,6 +96,7 @@ class Battleshp:public Boat {
              // creates cordinate
             cordinate = new Coordinate*[reqsz()];
         }
+        void addCords(Coordinate **n);
         Type getType() {return type;}
         int reqsz() const {return 4;}
 };
@@ -106,6 +110,7 @@ class Carrier:public Boat {
              // creates cordinate
             cordinate = new Coordinate*[reqsz()];
         }
+        void addCords(Coordinate **n);
         Type getType() {return type;}
         int reqsz() const {return 5;}
 };

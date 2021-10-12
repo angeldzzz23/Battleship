@@ -273,6 +273,34 @@ Boat::~Boat() {
       
  }
  
+  void Boat::addCords(Coordinate **n) {
+     cout << "hello world0" << endl;
+ }
+ 
+ // TODO
+ void Destroyer::addCords(Coordinate **n) {
+     cout << "hello world1" << endl;
+ }
+ 
+ void Submarine::addCords(Coordinate **n) {
+     cout << "hello world2" << endl;
+ }
+ 
+ void Cruiser::addCords(Coordinate **n) {
+     cout << "hello world3" << endl;
+ }
+ 
+ void Battleshp::addCords(Coordinate **n) {
+     cout << "hello world4" << endl;
+ }
+ 
+ void Carrier::addCords(Coordinate **n) {
+     cout << "hello world5" << endl;
+ }
+  
+  
+  
+ 
  // sorts coordings - rows 
  void Boat::sort(Coordinate** cords, int size) {
      int row; // used for swapping

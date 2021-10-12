@@ -37,73 +37,94 @@ using namespace std;
 // TODO #6 Prompt class
 // TODO #7 Display class  
 
-void sort1(Coordinate** cords, int size, int typw); 
+
 
 int main(int argc, char** argv) {
     
 //    Game game;
 //    game.startGame();
-
+    cout << "hello word" << endl;
     
     
-        // boat 1
-    Coordinate *cord01 = new Coordinate(0,0);
-    Coordinate *cord02 = new Coordinate(0,1);
+//        // boat 1
+//    Coordinate *cord01 = new Coordinate(0,0);
+//    Coordinate *cord02 = new Coordinate(0,1);
+////    
+////    // boat 2
+//    Coordinate *cord03 = new Coordinate(1,0);
+//    Coordinate *cord04 = new Coordinate(1,1);
+//    Coordinate *cord05 = new Coordinate(1,2);
 //    
-//    // boat 2
-    Coordinate *cord03 = new Coordinate(1,0);
-    Coordinate *cord04 = new Coordinate(1,1);
-    Coordinate *cord05 = new Coordinate(1,2);
-    
-    // boat 3
-    Coordinate *cord06 = new Coordinate(2,0);
-    Coordinate *cord07 = new Coordinate(2,1); // 
-    Coordinate *cord08 = new Coordinate(2,2); //
-    
-    // boat 4
-    Coordinate *cord09 = new Coordinate(3,0); //
-    Coordinate *cord10 = new Coordinate(3,1); //
-    Coordinate *cord11 = new Coordinate(3,2); //
-    Coordinate *cord12 = new Coordinate(3,3); //
-   
-    // boat 5
-    Coordinate *cord13 = new Coordinate(9,1); //
-    Coordinate *cord14 = new Coordinate(9,2); //
-    Coordinate *cord15 = new Coordinate(9,3); //
-    Coordinate *cord16 = new Coordinate(9,4); //
-    Coordinate *cord17 = new Coordinate(9,5); //
-    
-    Destroyer *depp = new Destroyer(); 
-    depp->addCord(cord01);
-    depp->addCord(cord02);
-    
-    
-    Submarine *sub = new Submarine();
-      sub->addCord(cord03);
-      sub->addCord(cord04);
-      sub->addCord(cord05);
-   
-    Cruiser *cuucu = new  Cruiser();
-      cuucu->addCord(cord06);
-      cuucu->addCord(cord07);
-      cuucu->addCord(cord08);
-   
-   Battleshp *battle = new Battleshp();
-      battle->addCord(cord09);
-      battle->addCord(cord10);
-      battle->addCord(cord11);
-      battle->addCord(cord12);
-    
-    Carrier *carr = new Carrier();
-      carr->addCord(cord13);
-      carr->addCord(cord14);
-      carr->addCord(cord15);
-      carr->addCord(cord16);
-      carr->addCord(cord17);
+//    // boat 3
+//    Coordinate *cord06 = new Coordinate(2,0);
+//    Coordinate *cord07 = new Coordinate(2,1); // 
+//    Coordinate *cord08 = new Coordinate(2,2); //
+//    
+//    // boat 4
+//    Coordinate *cord09 = new Coordinate(3,0); //
+//    Coordinate *cord10 = new Coordinate(3,1); //
+//    Coordinate *cord11 = new Coordinate(3,2); //
+//    Coordinate *cord12 = new Coordinate(3,3); //
+//   
+//    // boat 5
+//    Coordinate *cord13 = new Coordinate(9,1); //
+//    Coordinate *cord14 = new Coordinate(9,2); //
+//    Coordinate *cord15 = new Coordinate(9,3); //
+//    Coordinate *cord16 = new Coordinate(9,4); //
+//    Coordinate *cord17 = new Coordinate(9,5); //
+//    
+//    Destroyer *depp = new Destroyer(); 
+//    depp->addCord(cord01);
+//    depp->addCord(cord02);
+//    
+//    
+//    Submarine *sub = new Submarine();
+//      sub->addCord(cord03);
+//      sub->addCord(cord04);
+//      sub->addCord(cord05);
+//   
+//    Cruiser *cuucu = new  Cruiser();
+//      cuucu->addCord(cord06);
+//      cuucu->addCord(cord07);
+//      cuucu->addCord(cord08);
+//   
+//   Battleshp *battle = new Battleshp();
+//      battle->addCord(cord09);
+//      battle->addCord(cord10);
+//      battle->addCord(cord11);
+//      battle->addCord(cord12);
+//    
+//    Carrier *carr = new Carrier();
+    //  carr->addCord(cord13);
+    //  carr->addCord(cord14);
+    //  carr->addCord(cord15);
+    //  carr->addCord(cord16);
+    //  carr->addCord(cord17);
 
-      
-       
-      
+//
+//    Coordinate **co22 = new Coordinate*[10];
+//    co22[0] = cord13; // (9,1)
+//    co22[1] = cord14; // (9,2)
+//    co22[2] = cord15; // (9,3)  
+//    co22[3] = cord16; // (9,4)
+//    co22[4] = cord17; // (9,5)
+    
+    
+    
+    
+//    
+//    if (carr->alCords(co22, 5)) {
+//       cout << "good" << endl;
+//    }
+    
+    
+    
+//    w Coordinate(9,1); //
+//    Coordinate *cord14 = new Coordinate(9,2); //
+//    Coordinate *cord15 = new Coordinate(9,3); //
+//    Coordinate *cord16 = new Coordinate(9,4); //
+//    Coordinate *cord17 = new Coordinate(9,5); //
+    
 //     Coordinate *hit1 = new Coordinate(1,0);
 //     Coordinate *hit2 = new Coordinate(1,1);
 //     Coordinate *hit3 = new Coordinate(5,2);
@@ -139,54 +160,53 @@ int main(int argc, char** argv) {
 //      delete carr;
     
       
-      Coordinate **co22 = new Coordinate*[7]; // 
-      Coordinate *Co1 = new Coordinate(0,1);
-      Coordinate *Co2 = new Coordinate(0,2);
-      Coordinate *Co3 = new Coordinate(0,7);
-      Coordinate *Co4 = new Coordinate(0,4);
-      Coordinate *Co5 = new Coordinate(0,5);
-      
-      // Coordinate 
-      co22[0] = Co1;
-      co22[1] = Co4;
-      co22[2] = Co5;
-      co22[3] = Co2;
-      co22[4] = Co3;
-    
-      
-      int rtot = 0;  // the total num rows of cols
-      int ctot = 0; // the total number cols 
+//      Coordinate **co222 = new Coordinate*[7]; // 
+//      Coordinate *Co1 = new Coordinate(1,1);
+//      Coordinate *Co2 = new Coordinate(3,2);
+//      Coordinate *Co3 = new Coordinate(5,7);
+//      Coordinate *Co4 = new Coordinate(4,4);
+//      Coordinate *Co5 = new Coordinate(2,5);
+////      
+////      // Coordinate 
+//      co222[0] = Co1;
+//      co222[1] = Co4;
+//      co222[2] = Co5;
+//      co222[3] = Co2;
+//      co222[4] = Co3;
+//    
+////      
+      // int rtot = 0;  // the total num rows of cols
+      // int ctot = 0; // the total number cols 
      
-      int sz = 5;
+      // int sz = 5;
 //      cout <<   co22[j]->getRow() << " " << co22[j]->getCol() << endl;  
       
-      
-      // checks duplicates 
-      cout << endl;
-      for (int i = 0; i < sz; i++) {
-          for (int j = i+1; j < sz; j++) {
-              if (*co22[i] == *co22[j]) {
-                  cout << "dddd" << endl;
-                  // return false 
-              }
-
-          }
-      }
+//      
+//      // checks duplicates 
+//      cout << endl;
+//      for (int i = 0; i < sz; i++) {
+//          for (int j = i+1; j < sz-1; j++) {
+//              if (*co222[i] == *co222[j]) {
+//                  cout << "dddd" << endl;
+//                  // return false 
+//              }
+//
+//          }
+//      }
       
       // sort the  coordinates 
-      sort1(co22,sz, 3);
-      
-      for(int i = 0; i < sz;i++) {
-       cout <<   co22[i]->getRow() << " " << co22[i]->getCol() << endl;  
-
-      }
+      // sort1(co22,sz, 3);
+//      rSort(co22,  sz);
+//      for(int i = 0; i < sz;i++) {
+//       cout <<   co22[i]->getRow() << " " << co22[i]->getCol() << endl;  
+//      }
       
       // check if they all have a difference of one 
-      for (int i = 0; i < sz-1; i++) {
-          if (co22[i+1]->getCol() - co22[i]->getCol() != 1) {
-              cout << "no distance of one" << endl;
-          }
-      }
+//      for (int i = 0; i < sz-1; i++) {
+//          if (co22[i+1]->getCol() - co22[i]->getCol() != 1) {
+//              cout << "no distance of one" << endl;
+//          }
+//      }
       
       
  
@@ -196,97 +216,3 @@ int main(int argc, char** argv) {
 
 // Prompt class
 // Display class
-
-
-   
-//    
-//     user->adHit(hit3);
-
-     
-//     if (user->isHitb(hit)) {
-//         cout << "it is a hit" << endl;
-//     }
-     
-     
-  // Coordinate *cord06 = new Coordinate(2,0);
-    //Coordinate *cord07 = new Coordinate(2,1); // 
-    //Coordinate *cord08 = new Coordinate(2,2); //
-     
-     
-//     delete user;
-     
-     
-////
-//         Coordinate *cord0222 = new Coordinate(5,3);
-//         Coordinate *cord3333 = new Coordinate(6,1);
-//         Coordinate *cord02224 = new Coordinate(7,5);
-//         Coordinate *cord33334 = new Coordinate(8,1);
-//     
-//       int misz = 4;
-//      Coordinate **misses = new Coordinate*[21];
-//      misses[0] = cord0222;
-//      misses[1] = cord3333;
-//      misses[2] = cord02224;
-//      misses[3] = cord33334;
-//      
-//      // how to update the board
-//      Board *brd = new Board();
-//      
-//      // update misses at once 
-//      brd->upms(cord0222);
-//      brd->upms(cord3333);
-//      brd->upms(cord02224);
-//      brd->upms(cord33334);
-//      
-//      // the boaats
-//     Boat **boatss = new Boat*[6]; // the array 
-//     boatss[0] = depp;
-//     boatss[1] = sub;
-//     boatss[2] = cuucu;
-//     boatss[3] = battle;
-//     boatss[4] = carr;
-//      // update the boats 
-//      brd->update(boatss, 5);
-
-
-    // displaying the row and cols size 
-    /*for (int i = 0; i <  brd->getrowsize(); i++) {
-        for (int j = 0; j < brd->getcolsize(); j++) {
-            cout << brd->getElement(i,j) << " ";
-        }
-        cout << endl;
-    }*/
-     
-      //testing display and prompt
-//      Display test;
-//      test.displayboard(brd);
-//     
-//      Prompt tester;
-//      tester.hello();
-//      tester.mainmenu();
-//      tester.waitturn();
-//      tester.getturn();
-//      tester.winner();
- void sort1(Coordinate** cords, int size, int typw) {
-//     Coordinate *inter = new Coordinate(1,3);
-     int row; // used for swapping
-     int col; // used for swapping
-     for (int i =0; i < size-1; i++) {
-         for (int j = 0; j < size-i-1; j++) {
-             
-             if (cords[j]->getCol() > cords[j + 1]->getCol()) {
-                 // swapping 
-                 row = cords[j]->getRow();
-                 col = cords[j]->getCol();
-       
-                 cords[j]->setCol(cords[j + 1]->getCol());
-                 cords[j]->setRow(cords[j + 1]->getRow());
-             
-                cords[j + 1]->setCol(col);
-                cords[j + 1]->setRow(row);
-        
-             
-             }
-         }
-     }
- }

@@ -33,10 +33,11 @@ class Battleship {
             
         
     public:
-        Controller(int); // initializes the game
+        Battleship(int); // initializes the game
         void shotAttempt(User*);
         void setUserOne(User*);
         void setUserTwo(User*);
+        bool gameIsOver();
       
 };
 

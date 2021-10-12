@@ -37,6 +37,22 @@ User::User() {
  
 }
 
+// returns false if the boat passed in the parameter does not exist in user
+// returns true if they do have boat
+bool User::hboat(Boat* boat) {
+    if (boatsz == 0) {
+        return false;
+    }
+        
+    // TODO
+    // loop through the boats and check if they exist 
+//    for (int i = 0; i < boatsz; i++) {
+//        
+//    }
+    // 
+    return true;
+}
+
 // takes in a string, and the size of the string 
 // dynamically allocate memory for this. 
 void User::updNam(char *n, int sz) {
@@ -80,6 +96,20 @@ bool User::CrdsNotTaken(Coordinate** cord, int size) { // returns true if all of
 // parameter: is a reference to a boat
 // TODO: check if the function works for other boats 
 void User::adBoat(Boat *boat) {
+    // if the boat has at least another coordinate of another boat 
+    cout << boatsz << endl;
+   
+    if (boatsz > 0) {
+        for(int i = 0; i < boat->reqsz(); i++) {
+            Coordinate *cord = boat->cordAt(i);
+            if (!(bIsNotTaken(cord))) {
+                    cout << "you cannot initialize boats with the same coordinate " << endl;
+                exit(1);
+            }
+        }
+    }
+    
+    
     if (boatsz < 5) {
         boats[boatsz] = boat;
         boatsz++;
@@ -87,6 +117,17 @@ void User::adBoat(Boat *boat) {
         std::cout << "YOU ARE ADDING MORE THAN FIVE BOATS" << std::endl;
         exit(0);
     }  
+    
+    
+    // debugging 
+    if (boatsz == 5) {
+        cout << "we got five boats" << endl;
+    }
+    
+  
+    
+   
+    
 }
 
 

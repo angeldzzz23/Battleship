@@ -13,7 +13,8 @@
 #include "Boat.h"
 #include <iostream>
 #include <cstring>
-
+#include <string>
+#include <ctype.h> //for checking user input is char or letter - from resources online
 
 using namespace std;
 
@@ -132,73 +133,111 @@ void Prompt::waitturn(){ //for a two-player game - a little pause for the other 
 }
 
 void Prompt::winner(char *winner){ //prints out winner of game
-    int size = 50;
-    winner = new char[size];
     cout <<"Congratulations player: " <<winner <<"!" <<endl //insert username variable of winning player 
             <<"You have won! " <<endl; //perhaps also put in their score
-    delete winner; //delete here since this funciton will not be returning anything
 }
 
-void Prompt::getboatcoord(char *array[], int boatsize){//for getting coordinates for boats
-    int size = 25;//having a large size helps prevent infinite loops
-    int c = 0;
-    for ( ;c < boatsize; c++){ //loop depending on the size of the ship - battleship = 4 iterations, crusier = 3, etc.
-        bool valid = false;
-        do{
-            array[c] = new char[size];
-            cout <<"Please enter coordinate " <<c+1 <<" of " <<boatsize <<" for the position of your ship: " <<endl;
-            cin.getline(array[c], size-1);//get user input
+string Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
+    string boat;
+    int totalcount = 0;
+    bool valid = true;
+    do{
+        cout <<"Please enter all " <<boatsize <<" coordinates for your ship to be placed:" <<endl
+                <<"Ex: A1 A2 A3..." <<endl;
+        getline(cin, boat);
+        int tracksize = 0; //this is to track the size of the individual coordinates from the whole string, to make sure none are too large
+        totalcount = 0;//for keeping track of the total count of coordinates entered
+        bool prevone = false; //bool for testing if user enters a 10
+        valid = true;
+        for (int c = 0; c < boat.length(); c++){   
             
-            //assign data to variables, then convert them to make data validation easier - since it's on variables the data itself will be preserved
-            int comp = (int)array[c][0]; //ascii 2 of the ch coordinate (A-J) to make testing easier
-            char test = array[c][1];
-            test -= '0'; //the two following ch are also converted to integers, the -'0' to clear up ascii stuff
-            char test2 = array[c][2];
-            test2 -= '0'; //the two following ch since the largest coord will be x10 - anything larger is invalid
+            if (isalpha(boat[c])){ //test for character
+                cout <<"Character" <<endl;
+                if (tracksize == 1 || tracksize > 3){ //coordinates should always be at least 2, so tracksize of 1 implies no number was entered after a letter - and tracksize greater than 3 implies one that is too large
+                    cout <<"Invalid coordinate detected, try again." <<endl;
+                    valid = false;
+                    break;
+                }
+                else if(c == (boat.length()-1)){
+                    cout <<"Invalid, try again." <<endl;
+                    valid = false;
+                    break;
+                }
+                int test = int(boat[c]);
+                if ((test >= 65 && test <= 74) || (test >= 96 && test <= 106)){ //to test character is within bounds - capital and lowercase letters
+                    tracksize = 0;
+                    tracksize++;
+                    totalcount++;
+                    prevone = false;
+                }
+                else{
+                    cout <<"Invalid coordinate detected - try again." <<endl;
+                    break;
+                }
 
-            if(strlen(array[c])>3){ //anything larger than 3 is invalidated
-                cout <<"Input too long, try again" <<endl;
-                valid = false; //set the condition as being false
-                delete array[c]; //delete the char array to make room for a new one with better data
             }
-            else{
-                if ((comp >= 65 && comp <= 74) || (comp >= 96 && comp <= 106)){ //test the char part of coord is correct - done with ascii values so much easier
-                    if(strlen(array[c]) == 3 && test == 1 && test2 == 0){ //to see if the coordinate is a '10'
-                        cout <<"Coordinates registered" <<endl;
-                        valid = true; //everything checks out - char and number, so condition is true
-                        array[c][3] = '\n'; //set null terminator to the 4th position, since the maximum size should be 3
+            else if (isdigit(boat[c])){//test for number
+                cout <<"Digit" <<endl;
+                //10 test
+                if(boat[c] == '0' || tracksize >= 2){                                   
+                    if(prevone == true){
+                        if (boat[c] == '0' && tracksize == 2){//because any '10' coordinate must have a letter and a '1' preceding the 0
+                            prevone = false; //reset to false
+                        }
+                        else{
+                            cout <<"Invalid coordinate found - try again." <<endl;
+                            valid = false;
+                            break;
+                        }
                     }
-                    else if((strlen(array[c]) == 2) && test > 0 && test <= 9){ //check number if it is not a '10'
-                        cout <<"Coordinates registered" <<endl;
-                        valid = true; //everything checks out - char and number, so condition is true
-                        array[c][2]='\n'; //set null terminator to the 3rd position - since size of this array is only 2
-                    }
-                    else{ //for if the number coordinate is bad
-                        cout <<"Out of bounds, please reenter." <<endl;
-                        valid = false; //set condition to false
-                        delete array[c]; //delete array
+                    else{
+                        cout <<"Invalid coordinate - please tey again." <<endl;
+                        valid = false;
+                        break;
                     }
                 }
-                else{//letter no good
-                    cout <<"Out of bounds, please reenter." <<endl;
-                    valid = false; //set false
-                    delete array[c]; //delete
+                if (boat[c] == '1'){//if one is found set equal to true
+                    prevone = true;
+                }               
+                //10 test end
+                
+                tracksize++;                             
+                
+                if(c == (boat.length()-1) && tracksize <= 3){ //for the end of the string
+                    tracksize = 0;
+                    cout <<"Total coord: " <<totalcount <<endl;
                 }
             }
-        }while (valid == false); //test condition - is a bool to simplify it since it would be aggregious to retype all the conditions that must be meet up above back in here
-    } //end of for loop
-    cout <<"Here!" <<endl;
+            else if (boat[c] == ' '){//basically just ignore white spaces
+                if (tracksize > 0){
+                    delete boat[c];
+                }
+            }            
+            else{ //to filter out special characters and such
+                cout <<"Invalid character - try again." <<endl;
+                valid = false;
+                break;
+            }
+            
+        }
+        if (totalcount != boatsize){
+            cout <<"Incorrect number of coordinates, try again." <<endl;
+        }
+    }while (totalcount != boatsize || valid != true);
+    
+    return boat;
 }
 
 char* Prompt::getshotcoord(){ //getting a single coordinate for shooting
     int size = 5;
     bool valid = false; //bool for do while control
     do{
-        scoordinate = new char[size];    //dynamically allocate char array for coordinate
+        scoordinate = new char[size]; //dynamically allocate char array for coordinate
+        scoordinate[0] = '\0'; 
         cout <<"Enter coordinates for the shot sir: " <<endl;
         cin.getline(scoordinate,size-1); //take it
 
-        //conversions of data types to make validation easier - also done on seperate variables to preserve data
+        //conversions of data types to make validation easier - also done on separate variables to preserve data
         int comp = (int)scoordinate[0];
         char test = scoordinate[1];
         test -= '0';
@@ -206,7 +245,7 @@ char* Prompt::getshotcoord(){ //getting a single coordinate for shooting
         test2 -= '0';
 
         //validate the data
-        if ((comp >= 65 && comp <= 74) || (comp >= 96 && comp <= 106)){ //using ascii values to validate teh char coordinate
+        if ((comp >= 65 && comp <= 74) || (comp >= 96 && comp <= 106)){ //using ascii values to validate the char coordinate
             if(strlen(scoordinate) == 3 && test == 1 && test2 == 0){ //test and validate for coord is a '10'
                 cout <<"Coordinates confirmed" <<endl;;
                 valid = true; //set condition to true once coordinate is confirmed valid

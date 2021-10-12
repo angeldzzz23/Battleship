@@ -40,9 +40,10 @@ using namespace std;
 
 int main(int argc, char** argv) {
     Prompt test;
-    test.hello();
-    test.mainmenu();
-    test.getturn();
+    //test.hello();
+    string feedme;
+    feedme = test.getboatcoord(3);
+    cout <<feedme;
     return 0;
 }
 

@@ -16,6 +16,7 @@
 #ifndef PROMPT_H
 #define PROMPT_H
 #include <cstring>
+#include <string>
 
 using namespace std;
 // TODO: THink of all the type of user input that we will need
@@ -47,7 +48,7 @@ public:
     
     void winner(char *winner); //for printing out the winner
     
-    void getboatcoord(char *array[], int boatsize); //getting boat 
+    string getboatcoord(int boatsize); //getting boat 
     
     char* getshotcoord();
     

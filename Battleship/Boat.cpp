@@ -273,29 +273,112 @@ Boat::~Boat() {
       
  }
  
-  void Boat::addCords(Coordinate **n) {
-     cout << "hello world0" << endl;
+ // TODO: 
+  void Boat::addCords(Coordinate **n, int size) {
+  
  }
  
  // TODO
- void Destroyer::addCords(Coordinate **n) {
-     cout << "hello world1" << endl;
+ void Destroyer::addCords(Coordinate **n, int size) {
+     
+     if (size != reqsz()) {
+         cout << "size is not required size" << endl;
+         exit(1);
+     }
+     
+     if (csize == reqsz()) {
+         cout << "you cannot add more elements. Coordinate is full" << endl;
+         exit(1);
+     }
+     
+     // setting the pointers equal to each other 
+     for (int i = 0; i < size; i++) {
+         cordinate[i] = n[i];
+     }
+     
+        csize = size; // the coordinate 
+        
  }
  
- void Submarine::addCords(Coordinate **n) {
-     cout << "hello world2" << endl;
+ void Submarine::addCords(Coordinate **n, int size) {
+ 
+     if (size != reqsz()) {
+         cout << "size is not required size" << endl;
+         exit(1);
+     }
+     
+     if (csize == reqsz()) {
+         cout << "you cannot add more elements. Coordinate is full" << endl;
+         exit(1);
+     }
+     
+     // setting the pointers equal to each other 
+     for (int i = 0; i < size; i++) {
+         cordinate[i] = n[i];
+     }
+     
+        csize = size; // the coordinate 
  }
  
- void Cruiser::addCords(Coordinate **n) {
-     cout << "hello world3" << endl;
+ void Cruiser::addCords(Coordinate **n, int size) {
+   
+     if (size != reqsz()) {
+         cout << "size is not required size" << endl;
+         exit(1);
+     }
+     
+     if (csize == reqsz()) {
+         cout << "you cannot add more elements. Coordinate is full" << endl;
+         exit(1);
+     }
+     
+     // setting the pointers equal to each other 
+     for (int i = 0; i < size; i++) {
+         cordinate[i] = n[i];
+     }
+     
+        csize = size; // the coordinate 
+       
  }
  
- void Battleshp::addCords(Coordinate **n) {
-     cout << "hello world4" << endl;
+ void Battleshp::addCords(Coordinate **n, int size) {
+    
+     if (size != reqsz()) {
+         cout << "size is not required size" << endl;
+         exit(1);
+     }
+     
+     if (csize == reqsz()) {
+         cout << "you cannot add more elements. Coordinate is full" << endl;
+         exit(1);
+     }
+     
+     // setting the pointers equal to each other 
+     for (int i = 0; i < size; i++) {
+         cordinate[i] = n[i];
+     }
+     
+        csize = size; // the coordinate 
  }
  
- void Carrier::addCords(Coordinate **n) {
-     cout << "hello world5" << endl;
+ void Carrier::addCords(Coordinate **n, int size) {
+   
+     if (size != reqsz()) {
+         cout << "size is not required size" << endl;
+         exit(1);
+     }
+     
+     if (csize == reqsz()) {
+         cout << "you cannot add more elements. Coordinate is full" << endl;
+         exit(1);
+     }
+     
+     // setting the pointers equal to each other 
+     for (int i = 0; i < size; i++) {
+         cordinate[i] = n[i];
+     }
+     
+        csize = size; // the coordinate 
  }
   
   

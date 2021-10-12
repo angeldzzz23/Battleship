@@ -55,41 +55,43 @@ int main(int argc, char** argv) {
 //    game.startGame();
 // 
    
-       
+       // creates a destroyer 
       string des = "a1 a2";
       Coordinate **dest2 = strTCo(des, 2); // reads two pos 
       Destroyer *de = new Destroyer();
-      de->addCords(dest2); // testing adding a coordinate
+      de->addCords(dest2,2); // testing adding a coordinate
       
-      string sub = "b1 b2";
+      
+      // created a submarine
+      string sub = "b1 b2 b3";
       Coordinate **sub1 = strTCo(sub, 3); // reads two pos 
-      
       Submarine *subb = new Submarine();
-      subb->addCords(sub1); // testing adding a coordinate
-      
-//      string crui = "c1 c2 c3";
-//      Coordinate **crui1 = strTCo(crui, 3); 
-//       de->addCords(crui1); // testing adding a coordinate
-//      
-//      string battl = "d1 d2 d3 d4";
-//     Coordinate **battl1 = strTCo(battl, 4); 
-//     
-//       string carry = "e1 e2 e3 e4 e5";
-//     Coordinate **carr = strTCo(carry, 5); 
+      subb->addCords(sub1, 3); // testing adding a coordinate
       
       
+      string crui = "c1 c2 c3";
+      Cruiser *cru = new Cruiser();
+      Coordinate **crui1 = strTCo(crui, 3); 
+      cru->addCords(crui1,3); // adds a cruiser
       
-//      for (int i = 0; i < 5; i++) {
-//          cout << "row " << carr[i]->getRow() << " col " << carr[i]->getCol() << endl;
-//      }
-//      
-   
       
-         
+      // created a battle 
+      string battl = "d1 d2 d3 d4";
+      Battleshp *ballt = new Battleshp(); // creates a batleship game
+      Coordinate **battl1 = strTCo(battl, 4); 
+      ballt->addCords(battl1,4);
+     
+     
+     string carry = "e1 e2 e3 e4 e5";
+     Coordinate **carr = strTCo(carry, 5); 
+     Carrier *car = new Carrier; 
+     car->addCords(carr,5);
+     
+    
     return 0;
 }
 
-
+// TODO:
 Coordinate** strTCo( string strC, int btsz) {
     string inSCrd[10]; // individual string coordinates
     int totInx = 0;
@@ -142,8 +144,6 @@ Coordinate** strTCo( string strC, int btsz) {
       
      }
       
-      
-        
     return cords;
 }
 

@@ -24,7 +24,7 @@
 
 class AIPlayer : public User {
     private:
-        Coordinate* RNGCoords(Boat*);
+        void RNGCoords(Boat*);
         //Direction RNGDirection(Boat*);
     public:
         AIPlayer();

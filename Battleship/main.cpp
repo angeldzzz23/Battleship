@@ -23,6 +23,7 @@
 #include "Boat.h"
 #include "Board.h"
 #include "Prompt.h"
+#include "AIPlayer.h"
 
 
 using namespace std;
@@ -43,12 +44,65 @@ int main(int argc, char** argv) {
     
 //    Game game;
 //    game.startGame();
-    cout << "hello word" << endl;
+    AIPlayer *AI = new AIPlayer();
+    //User *AI = new User();
     
+    Board *board = new Board();
+    
+    for (int i = 0; i < 5; i++) {
+        board->adBoat(AI->getBoat(i));
+    }
+    
+    /*Boat *testBoat = NULL;
+    
+    Coordinate *cord01 = new Coordinate(0,0);
+    Coordinate *cord02 = new Coordinate(0,1);
+    
+    Coordinate *cord03 = new Coordinate(0,0);
+    Coordinate *cord4 = new Coordinate(1,0);
+    Coordinate *cord5 = new Coordinate(2,0);
+    
+    Coordinate *testCord = NULL;
+    
+    Destroyer *depp = new Destroyer(); 
+    Submarine *sub = new Submarine();
+    
+    AI->adBoat(depp);
+    AI->adBoat(sub);
+    
+    cout << "Adding Destroyer\n";
+    depp->addCord(cord01);
+    depp->addCord(cord02);
+    
+    
+    cout << "Adding Submarine\n";
+    sub->addCord(cord03);
+    sub->addCord(cord4);
+    sub->addCord(cord5);
+    //for (int i = 0; i < AI->gtTotBtsz(); i++)
+        if (!AI->bIsNotTaken(cord01))
+            cout << "taken sorry\n";
+    
+    cout << "added\n";
+    
+    for (int i = 0; i < 2; i++) {
+        testBoat = AI->getBoat(i);
+        cout << "testBoat " << i << endl;
+        cout << AI->getBoat(i)->cordAt(0)->getRow() << " " << AI->getBoat(i)->cordAt(0)->getCol()<< endl;
+        board->adBoat(AI->getBoat(i));
+        cout << "testBoat added " << i << endl;
+    }
+    
+    cout << "board\n";*/
+    
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++)
+            cout << board->getElement(i, j) << " ";
+        cout << endl;
+    }
     
 //        // boat 1
-//    Coordinate *cord01 = new Coordinate(0,0);
-//    Coordinate *cord02 = new Coordinate(0,1);
+    
 ////    
 ////    // boat 2
 //    Coordinate *cord03 = new Coordinate(1,0);
@@ -73,9 +127,7 @@ int main(int argc, char** argv) {
 //    Coordinate *cord16 = new Coordinate(9,4); //
 //    Coordinate *cord17 = new Coordinate(9,5); //
 //    
-//    Destroyer *depp = new Destroyer(); 
-//    depp->addCord(cord01);
-//    depp->addCord(cord02);
+   
 //    
 //    
 //    Submarine *sub = new Submarine();

@@ -264,7 +264,6 @@ Boat::~Boat() {
  // make that you cannot add more than the ship size
  
  void Boat::addCord(Coordinate *cord) {   
-    
      if (csize == reqsz()) {
          std::cout << "you have added way too many boats" <<std::endl;
          exit(1);
@@ -277,6 +276,7 @@ Boat::~Boat() {
      
       cordinate[csize]= cord;
       csize++;
+     
 
       
  }

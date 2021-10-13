@@ -17,25 +17,34 @@ using namespace std;
 
 void AIPlayer::RNGCoords(Boat* boat) {
     Coordinate **coords = new Coordinate*[boat->reqsz()]; //temp array of boat coords
-    bool badNorth = false, 
-            badEast = false, 
-            badSouth = false, 
-            badWest = false; //if a direction is bad, set to true
+    bool badNorth, //if a direction is bad, set to true (4 directions)
+            badEast, 
+            badSouth, 
+            badWest;
+    bool badDirections; //if all directions are bad, set to true
+    bool goodDirect = false; //if a good direction is found
     bool badCoord1; //will hold true if its a bad coord
-    int direct;
+    int direct; //the direction of the remaining coords
     
     do {
+        /* 0) Reset bools after each loop */
+        badNorth = false; 
+        badEast = false;
+        badSouth = false;
+        badWest = false;
+        badDirections = false;
+        
         /* 1) Rand gen 1st coord */
         do {
-            coords[0]->setRow(rand() % 10);
-            coords[0]->setCol(rand() % 10);
+            int r = rand() % 10, c = rand() % 10;
+            coords[0] = new Coordinate(r, c);
             badCoord1 = !bIsNotTaken(coords[0]);
         } while (badCoord1);
-        
         do {
-            direct = rand() % 4 + 1; /* 2) Rand gen a direction */
             
-            switch (direct) { /* 3) check coords in this direction */
+            direct = rand() % 4 + 1; // 2) Rand gen a direction 
+            
+            switch (direct) { // 3) check coords in this direction 
                 case 1: //north
                     if (!(coords[0]->getRow() - boat->reqsz() + 1 > -1)) //if boatsz does not fit in direction
                         badNorth = true;
@@ -45,6 +54,8 @@ void AIPlayer::RNGCoords(Boat* boat) {
                             badNorth = !bIsNotTaken(coords[i]); //test current coord for avail
                             if (badNorth) //if a single coord is not avail, break loop
                                 break;
+                            else if (!badNorth && i == boat->reqsz() - 1)
+                                goodDirect = true;
                         }
                     break;
                 case 2: //east
@@ -56,6 +67,8 @@ void AIPlayer::RNGCoords(Boat* boat) {
                             badEast = !bIsNotTaken(coords[i]); //test current coord for avail
                             if (badEast) //if a single coord is not avail, break loop
                                 break;
+                            else if (!badEast && i == boat->reqsz() - 1)
+                                goodDirect = true;
                         }
                     break;
                 case 3: //south
@@ -67,6 +80,8 @@ void AIPlayer::RNGCoords(Boat* boat) {
                             badSouth = !bIsNotTaken(coords[i]); //test current coord for avail
                             if (badSouth) //if a single coord is not avail, break loop
                                 break;
+                            else if (!badSouth && i == boat->reqsz() - 1)
+                                goodDirect = true;
                         }
                     break;
                 case 4: //west
@@ -78,12 +93,20 @@ void AIPlayer::RNGCoords(Boat* boat) {
                             badWest = !bIsNotTaken(coords[i]); //test current coord for avail
                             if (badWest) //if a single coord is not avail, break loop
                                 break;
+                            else if (!badWest && i == boat->reqsz() - 1)
+                                goodDirect = true;
                         }
                     break;
             }
-        } while ((badNorth || badEast || badSouth || badWest) && //repeat if a direction was bad (re-gen direction)
-                !(badNorth && badEast && badSouth && badWest)); //and if not all directions are bad yet (repeat until all directions are bad)
-    } while (badNorth && badEast && badSouth && badWest); //repeat if there are no avail directions (re-gen coord1)
+            
+            if (badNorth && badEast && badSouth && badWest) //if all directions are bad
+                badDirections = true;
+            
+            if (goodDirect) //If a line of coords has succeeded, break loop
+                break;
+            
+        } while (!badDirections); //repeat until all directions have been tried/failed (re-gen direction)
+    } while (badDirections); //repeat if there are no avail directions (re-gen coord1)
     
     /* 4) All coords are valid. Copy coords** to boat coords */
         for (int i = 0; i < boat->reqsz(); i++)
@@ -93,6 +116,8 @@ void AIPlayer::RNGCoords(Boat* boat) {
 }
 
 AIPlayer::AIPlayer() {
+    //Set rand seed
+    srand(time(0));
     
     //Initialize all boat types
     Destroyer *aiDes = new Destroyer();
@@ -102,22 +127,16 @@ AIPlayer::AIPlayer() {
     Carrier *aiCarr = new Carrier();
     
     //Assign boat types to Boat array
-    boats[0] = aiDes;
-    boats[1] = aiSub;
-    boats[2] = aiCru;
-    boats[3] = aiBs;
-    boats[4] = aiCarr;
+    adBoat(aiDes);
+    adBoat(aiSub);
+    adBoat(aiCru);
+    adBoat(aiBs);
+    adBoat(aiCarr);
     
     
     
     /* For Destroyer = 2 */
     RNGCoords(aiDes); //Rand gen all coords
-    
-    cout << "Destroyer test case:\n\n";
-    
-    for (int i = 0; i < aiDes->reqsz(); i++) {
-        cout << "Row: " << aiDes->cordAt(i)->getRow() << " Col: " << aiDes->cordAt(i)->getCol() << endl;
-    }
     
     /* For Submarine = 3 */
     RNGCoords(aiSub); //Rand gen all coords
@@ -130,4 +149,5 @@ AIPlayer::AIPlayer() {
     
     /* For Carrier = 5 */
     RNGCoords(aiCarr); //Rand gen all coords
+    
 }

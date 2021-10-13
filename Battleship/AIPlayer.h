@@ -24,6 +24,7 @@
 
 class AIPlayer : public User {
     private:
+        bool coordCheckAllBoats(Coordinate*);
         void RNGCoords(Boat*);
         //Direction RNGDirection(Boat*);
     public:

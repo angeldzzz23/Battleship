@@ -242,7 +242,7 @@ int main(int argc, char** argv) {
        Board *Cbrd = Sbrd; // The user hits and misses
        Board *CSbrd = brd2; // the enemy board that contains user hits and misses
 
-
+    Prompt test;
 
 
        Coordinate *inpC; // inputted coordinate
@@ -252,14 +252,10 @@ int main(int argc, char** argv) {
         (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
         (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
-
+        
 
         clearScreen();
 
-
-        // TODO:
-
-        // get correct input validation using Prompt class
 
         do {
           cout << "the hits and misses of the enemy + ur boats" << endl;
@@ -271,21 +267,23 @@ int main(int argc, char** argv) {
           distt->displayboard(hmcUBrd);
 
           // it will be here
-          string str;
-          cout << cUser->gtName() << " enter a coordinate: ";
-          getline(cin, str);
-          cout << str << endl;
+          string str = test.getshotcoord();
           inpC = strToSC(str);
 
+          
           // makes a move
           game->shotAttempt(cUser, inpC); // make a move with the current user
+          
+          // tell user to 
+          // if shot
 
-
-                                   // Update views
+          // Update views
          updUsrViews(Sbrd, brd2,user1,user2);
          updUsrViews(Sbrd2,brd,user2,user1);
-
-
+         
+         // tell user if it is a hit 
+         
+         
           cout << "press n to continue " << endl;
           getline(cin, str);
 
@@ -295,13 +293,10 @@ int main(int argc, char** argv) {
 
        }while(!game->gameIsOver());
 
-       cout << "game us over " << endl;
-
-
-
-       // clean up
-
-
+       // display that the game is over  
+       cout << "game is over " << endl;
+       
+       
 
     return 0;
 }

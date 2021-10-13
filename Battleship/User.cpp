@@ -223,7 +223,7 @@ void User::adMiss(Coordinate *mis) {
         Boat *cboat = boats[i];
         // check if the boat contains the cordinate
         if (cboat->cordHsadd(mis) ) {
-            cout << "here we are" << endl;
+           
             // you know that is a duplicate 
             if (cboat->cordHshit(mis)) {
                 cout << "You have already hit this coordinate. It cannot be missed" << endl;

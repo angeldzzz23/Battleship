@@ -24,12 +24,12 @@ private:
 public:
     Board();
     void update(Boat**, int size); // adds user boats into board. IDk if we'll need this 
-    void upHts(Boat*, int size); // update the hits 
+    void upHts(Boat**, int size); // update the hits 
     void upms(Coordinate*); // updates the misses cordinates 
     void adBoat(Boat*); // adds a boat into the Board 
     void adBoat(Boat*, char); // adds a boat with the type of boat
     void updmis(Coordinate**, int size);
-    
+    void upmss(Coordinate** ms, int s); // updates an array of misses
     int getrowsize(); //get size of row variable for other functions Ethan/Yanis
     int getcolsize(); //get size of colomn variable for other functions Ethan/Yanis
     char getElement(int row, int col) {return board[row][col]; } // retrives an element from the board

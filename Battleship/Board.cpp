@@ -95,6 +95,35 @@ void Board::upms(Coordinate* ms) {
     board[ms->getRow()][ms->getCol()] = 'm';
 }
 
+void Board::upmss(Coordinate** ms, int s) {
+    if (s == 0) {
+        std::cout << "it is zero" << std::endl;
+    }
+    for (int i = 0; i < s; i++) {
+     board[ms[i]->getRow()][ms[i]->getCol()] = 'm'; 
+    }
+}
+ 
+// update the hits 
+ void Board::upHts(Boat** boats, int size) {
+     
+     for (int i = 0; i < size; i++) { // loop through the array of boats
+         Boat *boat = boats[i]; // the boat in that specific index
+         int sz = boat->reqsz();
+         
+         for (int i = 0; i < sz; i++) {
+             Coordinate *cord = boat->cordAt(i);
+             if (boat->isDead()) {
+                 board[cord->getRow()][cord->getCol()] = 'X';
+             } else if (boat->cordHshit(cord)){
+                  board[cord->getRow()][cord->getCol()] = 'h';
+             } 
+         }
+         
+     }    
+
+ }
+
 
 int Board::getrowsize(){
     return rowsize;

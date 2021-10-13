@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Battleship.o \
 	${OBJECTDIR}/Board.o \
 	${OBJECTDIR}/Boat.o \
 	${OBJECTDIR}/Coordinate.o \
@@ -67,6 +68,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/battleship ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Battleship.o: Battleship.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Battleship.o Battleship.cpp
 
 ${OBJECTDIR}/Board.o: Board.cpp
 	${MKDIR} -p ${OBJECTDIR}

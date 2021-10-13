@@ -25,6 +25,7 @@
 #include "Prompt.h"
 #include <string>
 #include "Battleship.h"
+#include "NSFile.h"
 
 using namespace std;
 
@@ -52,12 +53,16 @@ Coordinate** strTCo(string, int btsz); // takes in a coordinate A1 A2 A3 and ret
    
 int main(int argc, char** argv) {
     
+    NSFile test;
+    test.savethegame();
+    test.readingame();
+    
     
     
 //    Game game;
 //    game.startGame();
     
-     Display *distt = new Display; // displays board
+     /*Display *distt = new Display; // displays board
     
     
     // create the user 1 
@@ -98,13 +103,13 @@ int main(int argc, char** argv) {
       
       
 //      
-      string crui = "a1 c2 c3";
+      string crui = "c1 c2 c3";
       Cruiser *cru = new Cruiser();
       Coordinate **crui1 = strTCo(crui, 3); 
       cru->addCords(crui1,3); // adds a cruiser
       
       // adds boat to user 1 
-      user1->adBoat(cru);
+      user1->adBoat(cru);*/
       
       
 //     

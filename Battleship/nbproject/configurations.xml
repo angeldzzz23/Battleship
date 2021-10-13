@@ -8,6 +8,7 @@
       <itemPath>Battleship.h</itemPath>
       <itemPath>Board.h</itemPath>
       <itemPath>Boat.h</itemPath>
+      <itemPath>Controller.h</itemPath>
       <itemPath>Coordinate.h</itemPath>
       <itemPath>Display.h</itemPath>
       <itemPath>Game.h</itemPath>
@@ -24,7 +25,9 @@
                    projectFiles="true">
       <itemPath>Board.cpp</itemPath>
       <itemPath>Boat.cpp</itemPath>
+      <itemPath>Controller.cpp</itemPath>
       <itemPath>Coordinate.cpp</itemPath>
+      <itemPath>NSFile.cpp</itemPath>
       <itemPath>Prompt.cpp</itemPath>
       <itemPath>User.cpp</itemPath>
       <itemPath>display.cpp</itemPath>
@@ -78,6 +81,10 @@
       </item>
       <item path="Boat.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Controller.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Controller.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Coordinate.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Coordinate.h" ex="false" tool="3" flavor2="0">
@@ -85,6 +92,8 @@
       <item path="Display.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NSFile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="NSFile.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -133,6 +142,10 @@
       </item>
       <item path="Boat.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Controller.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Controller.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Coordinate.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Coordinate.h" ex="false" tool="3" flavor2="0">
@@ -140,6 +153,8 @@
       <item path="Display.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NSFile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="NSFile.h" ex="false" tool="3" flavor2="0">
       </item>

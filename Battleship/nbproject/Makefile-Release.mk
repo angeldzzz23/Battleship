@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Battleship.o \
 	${OBJECTDIR}/Board.o \
 	${OBJECTDIR}/Boat.o \
-	${OBJECTDIR}/Controller.o \
 	${OBJECTDIR}/Coordinate.o \
 	${OBJECTDIR}/Prompt.o \
 	${OBJECTDIR}/User.o \
@@ -84,11 +83,6 @@ ${OBJECTDIR}/Boat.o: Boat.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Boat.o Boat.cpp
-
-${OBJECTDIR}/Controller.o: Controller.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Controller.o Controller.cpp
 
 ${OBJECTDIR}/Coordinate.o: Coordinate.cpp
 	${MKDIR} -p ${OBJECTDIR}

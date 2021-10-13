@@ -7,17 +7,90 @@
 // thethe actual battleship game 
 
 #include "Battleship.h"
+#include <iostream>
 
+using namespace std;
 
 
  // if user user wants to quit, we ask they if they want to save the current game. 
 
 // TODO
+// my constructor 
 Battleship::Battleship(int gameType) {
     // figure out the game type 
-    
-    
+      usOnBrd = new Board(); // contains user one boats, and contains UserTwo hits and misses     
+      usOnHS = new Board(); // contains hits and misses of user 
+        
+                
+       
+        usTwBrd = new Board(); // contains user two boats, and contains UserTwo hits and misses     
+        usTwHS = new Board; // contains hits and misses of user 
+   
 }
+
+ // we set the user one
+// takes user pointer as paramater
+ void Battleship::setUserOne(User* user) {
+    // point userOne to user
+     userOne = user;
+     
+     
+ }
+ 
+ // we set the user two
+ // takes user pointer as paramater
+  void Battleship::setUserTwo(User* user) {
+      // pointer userTwo to user
+      userTwo = user;
+  }
+  
+  // 
+  void Battleship::shotAttempt(User* usr, Coordinate * cord) {
+      
+      cout << "a shot has been attempted" << endl;
+      
+      if(*usr == *userOne) {
+          cout << "user 1" << endl;
+         cout << userTwo->gtTotBtsz() <<endl;
+         
+          if (userTwo->isHitb(cord)) {
+              // add a hit in userTwo
+              userTwo->adHit(cord);
+              cout << "it is a hit" << endl;
+          } else {
+              userOne->adMiss(cord);
+              // you add a miss in userOne
+              cout << "it is not a hit" << endl;
+          }
+          
+      } else if (*usr == *userTwo) {
+          cout << "user 2 " << endl;
+          if (userOne->isHitb(cord)) { // add a hit in userOne
+              cout << "it is a hit" << endl;
+          } else { // add a hit userTwo
+              cout << " it not a hit" << endl;
+          }
+      }
+      
+      
+  }
+  
+  // returns true if either userone or usertwo has all boats dead
+  bool Battleship::gameIsOver() {
+      // loop thoru
+      // return true if all boats are dead
+      if (userTwo->alBrDead()) {
+          return true;
+      }
+    
+    
+      if (userOne->alBrDead()) {
+          return true;
+      }
+      
+      return false; 
+   }
+
 
 // Game details: 
 // Quitting
@@ -36,7 +109,7 @@ Battleship::Battleship(int gameType) {
     // 
         
 
-void Battleship::startTwoPlayer() {
+//void Battleship::startTwoPlayer() {
     
     // we can display a small menu for the user 
         // let them know that they can quit the game at any time and that they can save 
@@ -58,11 +131,9 @@ void Battleship::startTwoPlayer() {
     // Here is where we will get input from the user 
     
     
-}
+//}
 
 
 // TODO
 // Similar process as the other one 
-void Battleship::startAIGame() {
-    
-}
+

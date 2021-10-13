@@ -257,7 +257,9 @@ int main(int argc, char** argv) {
         clearScreen();
        
         
+        // TODO: 
         
+        // get correct input validation using Prompt class 
         
         do {
           cout << "the hits and misses of the enemy + ur boats" << endl;      
@@ -267,7 +269,8 @@ int main(int argc, char** argv) {
                   
           cout << "you hits and misses" << endl;
           distt->displayboard(hmcUBrd);
-          
+        
+          // it will be here 
           string str; 
           cout << cUser->gtName() << " enter a coordinate: ";
           getline(cin, str);
@@ -281,15 +284,11 @@ int main(int argc, char** argv) {
                                    // Update views 
          updUsrViews(Sbrd, brd2,user1,user2); 
          updUsrViews(Sbrd2,brd,user2,user1);   
-                   
+          
+           
           cout << "press n to continue " << endl;
           getline(cin, str);
-
-          
-       // changes the user 
-//         (*cUser == *user1) ? (cUser = user2) : (cUser = user1); // user
-       
-         
+   
         (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
         
         (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
@@ -297,6 +296,12 @@ int main(int argc, char** argv) {
        }while(!game->gameIsOver()); 
        
        cout << "game us over " << endl;
+      
+       
+       
+       // clean up 
+       
+       
        
     return 0;
 }
@@ -313,11 +318,6 @@ Coordinate *strToSC(string sC) {
         cout << "length of string is not 2 or 3" << endl;
         exit(1);
     }
-    
-      
-       
-    // TODO: 
-    // input validation
     
     //this 
     Coordinate *cord = NULL; // set it to null 

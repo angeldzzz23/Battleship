@@ -49,6 +49,10 @@ Coordinate** strTCo(string, int btsz); // takes in a coordinate A1 A2 A3 and ret
    int cnvrt(char digit);
    Coordinate *strToSC(string sC);
     void clearScreen();
+    void updUsrViews(Board*Sbrd, Board *Ebrd, User* us1, User *us2); 
+   void updUsr2Views(Board*Sbrd2, Board *Ebrd1, User* us2, User *us1); 
+    void updUsr2Views();
+   
  
    
 int main(int argc, char** argv) {
@@ -241,24 +245,29 @@ int main(int argc, char** argv) {
           
      
        
-       Coordinate *inpC;; // inputted coordinate
-        Board *bwBoat; // board with boats and hits and misses of enemy
-        Board *hmcUBrd; // containts the hits and misses of current user board
-        Board *enBrdWBts; // the enenemy board with boats
+       Coordinate *inpC; // inputted coordinate
+        Board *bwBoat ;
+        Board *hmcUBrd;
+        
+        (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
+        (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
+        
+        
+        
         clearScreen();
+       
+        
+        
+        
         do {
-          cout << "the hits and misses of the enemy + ur boats" << endl;
-          // gets correct board with boats of cuser, and the hits and misses of enemy of cUser
-          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2);
+          cout << "the hits and misses of the enemy + ur boats" << endl;      
           // displays board
           distt->displayboard(bwBoat);
           cout << endl;
                   
           cout << "you hits and misses" << endl;
-          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
           distt->displayboard(hmcUBrd);
           
-         
           string str; 
           cout << cUser->gtName() << " enter a coordinate: ";
           getline(cin, str);
@@ -268,50 +277,31 @@ int main(int argc, char** argv) {
           // makes a move
           game->shotAttempt(cUser, inpC); // make a move with the current user
           
-         
           
-          // Update views
-          
-//          // updating views
-//          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
-//          // update the user board with the hits
-//          // update brd2 with hits and misses of user
-//          hmcUBrd->upmss(cUser->gtmiss(), cUser->gtTotmiSz());
-//          (*cUser == *user1) ? (cUser = user2) : (cUser = user1);
-//          hmcUBrd->upHts(cUser->gtboats(), cUser->gtTotBtsz());
-//          // turn back to normal player
-//         (*cUser == *user1) ? (cUser = user2) : (cUser = user1);
-//          
-//          
-//         (*cUser == *user1) ? (enBrdWBts = brd2) : ( enBrdWBts= brd);
-//          
-//
-//         // update the enemy board with the hits and misses of the user 
-//           enBrdWBts->upmss(cUser->gtmiss(), cUser->gtTotmiSz());
-//           (*cUser == *user1) ? (cUser = user2) : (cUser = user1);
-//           enBrdWBts->upHts(cUser->gtboats(), cUser->gtTotBtsz());
-//          (*cUser == *user1) ? (cUser = user2) : (cUser = user1);
-//   
-//          
-
-          
+                                   // Update views 
+         updUsrViews(Sbrd, brd2,user1,user2); 
+         updUsrViews(Sbrd2,brd,user2,user1);   
+                   
           cout << "press n to continue " << endl;
           getline(cin, str);
 
           
-          // changes the user
-       (*cUser == *user1) ? (cUser = user2) : (cUser = user1);
-
-          
-       }while(!game->gameIsOver()); 
+       // changes the user 
+//         (*cUser == *user1) ? (cUser = user2) : (cUser = user1); // user
+       
          
+        (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
+        
+        (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
        
+       }while(!game->gameIsOver()); 
        
-
-       
+       cout << "game us over " << endl;
        
     return 0;
 }
+
+
 
 
 // the string should be either of size 3 or size 2
@@ -480,6 +470,23 @@ Coordinate** strTCo( string strC, int btsz) {
 
        return -1;
    }
+   
+   // update the views of user1 
+   void updUsrViews(Board* Sbrd, Board *Ebrd, User* us1, User *us2) {
+       // you get the misses from user 1 and update it's board
+       Sbrd->upmss(us1->gtmiss(), us1->gtTotmiSz());
+       
+       // update the user 1 hits into Sbr
+       // user 1 hits are located in user2 boats
+       Sbrd->upHts(us2->gtboats(), us2->gtTotBtsz());
+       
+       
+       Ebrd->upmss(us1->gtmiss(), us1->gtTotmiSz());
+       Ebrd->upHts(us2->gtboats(), us2->gtTotBtsz());
+       
+   }
+   
+   
    
    // TODO: a input validation class 
    void clearScreen() {

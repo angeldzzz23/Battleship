@@ -50,8 +50,7 @@ Battleship::Battleship(int gameType) {
       cout << "a shot has been attempted" << endl;
       
       if(*usr == *userOne) {
-          cout << "user 1" << endl;
-         cout << userTwo->gtTotBtsz() <<endl;
+       
          
           if (userTwo->isHitb(cord)) {
               // add a hit in userTwo
@@ -64,15 +63,15 @@ Battleship::Battleship(int gameType) {
           }
           
       } else if (*usr == *userTwo) {
-          cout << "user 2 " << endl;
+        
           if (userOne->isHitb(cord)) { // add a hit in userOne
-              cout << "it is a hit" << endl;
+              cout << "a hit" << endl;
+              userOne->adHit(cord);
           } else { // add a hit userTwo
-              cout << " it not a hit" << endl;
+              cout << "a miss" << endl;
+              userTwo->adMiss(cord);
           }
       }
-      
-      
   }
   
   // returns true if either userone or usertwo has all boats dead
@@ -83,7 +82,6 @@ Battleship::Battleship(int gameType) {
           return true;
       }
     
-    
       if (userOne->alBrDead()) {
           return true;
       }
@@ -91,49 +89,4 @@ Battleship::Battleship(int gameType) {
       return false; 
    }
 
-
-// Game details: 
-// Quitting
-    // users can quit at any time of the game
-    // if users quit, we ask them if they want to save
-        // we save and then quit the game
-    // the next time the user enters a two player game. We ask them if they want to continue playing the game
-// Game details 
-    // Each user enters five boats 
-    // user 1 gets to choose the coordinates first. 
-    // we keep on letting a user choose cordinates until they get a miss 
-        // we display both the user's boards (each user has two boards)
-        // ask user for correct input. 
-        // if the user got a correct, we ask again. 
-        // if the user got an incorrect input, we aks the next user 
-    // 
-        
-
-//void Battleship::startTwoPlayer() {
-    
-    // we can display a small menu for the user 
-        // let them know that they can quit the game at any time and that they can save 
-    
-    // get the name of user 1
-        // create a delay for user 2 to press so that they can pick their name
-    // get the name of user 2 
-    
-    // create a delay for user 1 to press so that they can pick their boats
-    
-    // get the boats for user one
-        // there are around ___ boats
-        
-    // create a delay for user 2 to press so that they can pick their board
-    
-    // get the boats for user 2
-    
-    
-    // Here is where we will get input from the user 
-    
-    
-//}
-
-
-// TODO
-// Similar process as the other one 
 

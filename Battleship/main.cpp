@@ -9,6 +9,8 @@
  * Author: AZ
  *sss sjsjsjjs old
  * Created on September 26, 2021, 12:43 PM
+ * 
+ *
  */
 
 #include <cstdlib>
@@ -56,7 +58,7 @@ int main(int argc, char** argv) {
 //    Game game;
 //    game.startGame();
     
-     Display *distt = new Display; // displays board
+     /*Display *distt = new Display; // displays board
     
     
     // create the user 1 
@@ -156,7 +158,7 @@ int main(int argc, char** argv) {
      Coordinate **Ucru2 = strTCo(cru2, 3);
       Cruiser *ucru22 = new Cruiser();
      ucru22->addCords(Ucru2,3); // addings 3 coordinates to cruiser      
-      user2->adBoat(ucru22);
+      user2->adBoat(ucru22);*/
 ////
 ////    
 ////      // create a battleshp
@@ -199,8 +201,8 @@ int main(int argc, char** argv) {
        
        
       NSFile test;
-      test.savethegame(user1, user2);
-      //test.readingame();   
+      //test.savethegame(user1, user2);
+      test.readingame();   
      
     return 0;
 }

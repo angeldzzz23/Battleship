@@ -9,9 +9,9 @@
 using namespace std;
 
 void NSFile::savethegame(User* user1, User* user2){//saving a game
-    gamesaver.index = 1;
+    gamesaver.index = 1;//game index
     
-    gamesaver.player1.id = user1->getId();    
+    gamesaver.player1.id = user1->getId();   //get user 1 id 
     gamesaver.player1.isturn = true;
     gamesaver.player1.boatsz = user1->gtTotBtsz();
     gamesaver.player1.missSz = user1->gtTotmiSz();
@@ -54,6 +54,8 @@ void NSFile::savethegame(User* user1, User* user2){//saving a game
     }
     savefile.close();
     cout <<"File closed... deleting..." <<endl;
+    
+    //deleting the dynamic arrays of boats
     for(int i = 0; i <gamesaver.player1.boatsz;i++ ) {
         delete gamesaver.player1.boats[i]; 
         gamesaver.player1.boats[i] = NULL; 

@@ -46,7 +46,7 @@ public:
     bool bIsNotTaken(Coordinate* cord); // returns true coordinate DNE in boats  
     bool CrdsNotTaken(Coordinate** cord, int size); // returs true if all of the coordinates DNE exist in boats
     bool hboat(Boat*); // returns true if the user contains the boat
-      
+    
     
     
     ~User(); // destructor 

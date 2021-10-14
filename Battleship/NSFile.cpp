@@ -57,7 +57,7 @@ void NSFile::savethegame(User* user1, User* user2){//saving a game
 
 }
 
-void NSFile::readingame(){//loading in a game
+void NSFile::readingame(User* user1, User* user2){//loading in a game
     fstream loadfile;//start the file stream
     loadfile.open("savedgames.bin", ios::in|ios::binary);//open savedgames.bin
     if (loadfile.is_open()){ //test file is open
@@ -78,11 +78,17 @@ void NSFile::readingame(){//loading in a game
     cout <<"Player 1 boat size: " <<gameloader.player1.boatsz <<endl;
     cout <<"Player 1 miss size: " <<gameloader.player1.missSz <<endl;
     
+    for (int c = 0; c < gameloader.player1.boatsz; c++){
+        user1->adBoat(gameloader.player1.boats[c]);
+    }    
+    
     cout <<endl <<"Player 2: " <<endl;
     cout <<"Player 2 Id: " <<gameloader.player2.id <<endl;
     cout <<"Player 2 turn: " <<gameloader.player2.isturn <<endl;
     cout <<"Player 2 boat size: " <<gameloader.player2.boatsz <<endl;
     cout <<"Player 2 miss size: " <<gameloader.player2.missSz <<endl;
     
-            
+    for (int c = 0; c < gameloader.player2.boatsz; c++){
+        user2->adBoat(gameloader.player2.boats[c]);
+    }           
 }

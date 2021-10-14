@@ -58,7 +58,7 @@ int main(int argc, char** argv) {
 //    Game game;
 //    game.startGame();
     
-     /*Display *distt = new Display; // displays board
+     Display *distt = new Display; // displays board
     
     
     // create the user 1 
@@ -101,24 +101,24 @@ int main(int argc, char** argv) {
       user1->adBoat(cru);
       
       
-//     
-//       created a battleship 
-//      string battl = "d1 d2 d3 d4";
-//      Battleshp *ballt = new Battleshp(); // creates a batleship game
-//      Coordinate **battl1 = strTCo(battl, 4); 
-//      ballt->addCords(battl1,4);
-//     
-//      // adds user1 to boat
-//      user1->adBoat(ballt);
+    
+   // created a battleship 
+    string battl = "d1 d2 d3 d4";
+    Battleshp *ballt = new Battleshp(); // creates a batleship game
+    Coordinate **battl1 = strTCo(battl, 4); 
+    ballt->addCords(battl1,4);
+     
+      // adds user1 to boat
+    user1->adBoat(ballt);
 //      
 //    
-//     string carry = "e1 e2 e3 e4 e5";
-//     Coordinate **carr = strTCo(carry, 5); 
-//     Carrier *car = new Carrier(); 
-//     car->addCords(carr,5);
-//     
-//     // ads a boat to user1
-//     user1->adBoat(car); //
+    string carry = "e1 e2 e3 e4 e5";
+    Coordinate **carr = strTCo(carry, 5); 
+    Carrier *car = new Carrier(); 
+    car->addCords(carr,5);
+     
+     // ads a boat to user1
+     user1->adBoat(car); //
 //       
 //     brd->adBoat(de);
 //     brd->adBoat(subb);
@@ -158,7 +158,7 @@ int main(int argc, char** argv) {
      Coordinate **Ucru2 = strTCo(cru2, 3);
       Cruiser *ucru22 = new Cruiser();
      ucru22->addCords(Ucru2,3); // addings 3 coordinates to cruiser      
-      user2->adBoat(ucru22);*/
+      user2->adBoat(ucru22);
 ////
 ////    
 ////      // create a battleshp
@@ -201,9 +201,17 @@ int main(int argc, char** argv) {
        
        
       NSFile test;
-      //test.savethegame(user1, user2);
-      test.readingame();   
-     
+      test.savethegame(user1, user2);
+      
+      //delete user1;
+      //delete user2;
+      User* user3 = new User();
+      User* user4 = new User();
+      test.readingame(user3, user4);  
+    for (int c = 0; c < 5; c++){  
+        brd->adBoat(user3->getBoat(c));
+    }
+    distt->displayboard(brd); 
     return 0;
 }
 

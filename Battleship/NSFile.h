@@ -10,7 +10,7 @@
  *
  * V1 create basic structures for storing data - do a couple test ones to ensure it works
  * V2 add two users as parameters for savethegame function, and have their data read into the gamesave structs
- * V3 - add two users as parameters for the readingame function, and have the data stored read into them
+ * V3 add two users as parameters for the readingame function, and hooked up saved boat data to read into the users
  */
 
 #ifndef NSFILE_H
@@ -53,7 +53,7 @@ private:
 
 public:
     void savethegame(User*, User*);//for saving a game - takes in two user as the parameters
-    void readingame();//for recalling a game
+    void readingame(User*, User*);//for recalling a game
 };
 
 #endif /* NSFILE_H */

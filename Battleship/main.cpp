@@ -51,18 +51,12 @@ Coordinate** strTCo(string, int btsz); // takes in a coordinate A1 A2 A3 and ret
    Coordinate *strToSC(string sC);
  
    
-int main(int argc, char** argv) {
-    
-    NSFile test;
-    test.savethegame();
-    test.readingame();
-    
-    
+int main(int argc, char** argv) {    
     
 //    Game game;
 //    game.startGame();
     
-     /*Display *distt = new Display; // displays board
+     Display *distt = new Display; // displays board
     
     
     // create the user 1 
@@ -87,21 +81,14 @@ int main(int argc, char** argv) {
       de->addCords(dest2,2); // testing adding a coordinate
     
       // add the destroyer to user 1
-        user1->adBoat(de);
-   
-      
+        user1->adBoat(de);      
   
 //     // created a submarine
       string sub = "b1 b2 b3";
       Coordinate **sub1 = strTCo(sub, 3); // reads two pos 
       Submarine *subb = new Submarine();
       subb->addCords(sub1,3);
-      user1->adBoat(subb);
-      
-      
-      
-      
-      
+      user1->adBoat(subb);      
 //      
       string crui = "c1 c2 c3";
       Cruiser *cru = new Cruiser();
@@ -109,11 +96,11 @@ int main(int argc, char** argv) {
       cru->addCords(crui1,3); // adds a cruiser
       
       // adds boat to user 1 
-      user1->adBoat(cru);*/
+      user1->adBoat(cru);
       
       
 //     
-//       // created a battle 
+//       created a battleship 
 //      string battl = "d1 d2 d3 d4";
 //      Battleshp *ballt = new Battleshp(); // creates a batleship game
 //      Coordinate **battl1 = strTCo(battl, 4); 
@@ -146,33 +133,30 @@ int main(int argc, char** argv) {
      
                                          // add boats to user2
      
-//     // creates a destroyer 
-//      string Udes = "g3 h3";
-//      Coordinate **Udest2 = strTCo(Udes, 2); // reads two pos 
-//       Destroyer *Ude = new Destroyer();
-//      Ude->addCords(Udest2,2); // testing adding a coordinate
-//      // add the destroyer to user 1
-//      user2->adBoat(Ude);
+     // creates a destroyer 
+      string Udes = "g3 h3";
+      Coordinate **Udest2 = strTCo(Udes, 2); // reads two pos 
+      Destroyer *Ude = new Destroyer();
+     Ude->addCords(Udest2,2); // testing adding a coordinate
+      // add the destroyer to user 1
+      user2->adBoat(Ude);
 //      
 //      
-//      
-//      
-//      // creates a sub for user 2
-//      
-//      string su2 = "a6 b6 c6";
-//      Coordinate **sub2 = strTCo(su2, 3); // reads 3 pos 
-//      Submarine *subb2 = new Submarine();
-//      subb2->addCords(sub2, 3); // testing adding a coordinate
-//      // adds sub the 
-//      user2->adBoat(subb2);
-//      
-//      
-////      // create cruiser 
-//      string cru2 = "d5 d7 d7";
-//      Coordinate **Ucru2 = strTCo(cru2, 3);
-//      Cruiser *ucru22 = new Cruiser();
-//      ucru22->addCords(Ucru2,3); // addings 3 coordinates to cruiser      
-//      user2->adBoat(ucru22);
+//           
+     // creates a sub for user 2
+      
+      string su2 = "a6 b6 c6";
+      Coordinate **sub2 = strTCo(su2, 3); // reads 3 pos 
+     Submarine *subb2 = new Submarine();
+     subb2->addCords(sub2, 3); // testing adding a coordinate
+     user2->adBoat(subb2);
+      
+      // create cruiser 
+     string cru2 = "d5 d7 d7";
+     Coordinate **Ucru2 = strTCo(cru2, 3);
+      Cruiser *ucru22 = new Cruiser();
+     ucru22->addCords(Ucru2,3); // addings 3 coordinates to cruiser      
+      user2->adBoat(ucru22);
 ////
 ////    
 ////      // create a battleshp
@@ -214,13 +198,9 @@ int main(int argc, char** argv) {
 //       
        
        
-     
-     
-     
-     
-     
-     
-     
+      NSFile test;
+      test.savethegame(user1, user2);
+      //test.readingame();   
      
     return 0;
 }

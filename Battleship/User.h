@@ -25,6 +25,7 @@ class User {
     int missSz; // the size of the misses array  
     int hitsz;
     Coordinate **misses;  // constains 
+    
  
 public: 
     User(); //initializes a user with a name
@@ -46,6 +47,8 @@ public:
     bool CrdsNotTaken(Coordinate** cord, int size); // returs true if all of the coordinates DNE exist in boats
     bool hboat(Boat*); // returns true if the user contains the boat
       
+    
+    
     ~User(); // destructor 
 };
 

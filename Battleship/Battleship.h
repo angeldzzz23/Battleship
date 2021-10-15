@@ -20,27 +20,26 @@ class Battleship {
     private: 
         // user 1 
         User *userOne; // a user One model 
-       // usrbrd - contains UserTwo hits and misses
+    //  usrbrd - contains UserTwo hits and misses
+        Board *usOnBrd; // contains user one boats, and contains UserTwo hits and misses     
+        Board *usOnHS; // contains hits and misses of user 
         
-        // enmy brd - contains the hits and misses of the user
-        
-        
+                
         // user 2
         User *userTwo; // a userTwo model 
-        // usrbrd - contains UserTwo hits and misses
-        
-        // enmy brd - contains the hits and misses of the user
+        Board *usTwBrd; // contains user two boats, and contains UserTwo hits and misses     
+        Board *usTwHS; // contains hits and misses of user 
             
         
-    public:
-        Controller(int); // initializes the game
-        void shotAttempt(User*);
-        void setUserOne(User*);
-        void setUserTwo(User*);
+    public:// for some reason
+        Battleship(int); // initializes the game
+        void shotAttempt(User*, Coordinate *);
+        void setUserOne(User* user);
+        void setUserTwo(User* user);
+        bool gameIsOver();
       
 };
 
-
-
 #endif /* BATTLESHIP_H */
+
 

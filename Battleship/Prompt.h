@@ -16,6 +16,7 @@
 #ifndef PROMPT_H
 #define PROMPT_H
 #include <cstring>
+#include <string>
 
 using namespace std;
 // TODO: THink of all the type of user input that we will need
@@ -27,22 +28,29 @@ using namespace std;
 
 class Prompt {
 private:
-    struct userinfo{
-        char *username; //class was being weird about accessing username without being in a struct
-    };    
-    userinfo tester;
-    
+    char *username; //class was being weird about accessing username without being in a struct
+    char *inputmain; //input for main
+    char *inputturn;//input for turn
     
 public:
-    void hello();//basic welcome prompt
     
-    void mainmenu(); //main menu
+    Prompt();
     
-    void getturn(); //for taking turns
+    char* hello();//basic welcome prompt
+    
+    char* mainmenu(); //main menu
+    
+    char* getturn(); //for taking turns
     
     void waitturn(); //for waiting for 2nd user
     
-    void winner(); //for printing out the winner
+    void winner(char *winner); //for printing out the winner
+    
+    string getboatcoord(int boatsize); //getting boat 
+    
+    string getshotcoord(char*);
+    
+    ~Prompt();//destructor 
 };
 
 

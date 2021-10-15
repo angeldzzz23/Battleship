@@ -4,8 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>AIPlayer.h</itemPath>
       <itemPath>AbsBoat.h</itemPath>
       <itemPath>Battleship.h</itemPath>
+      <itemPath>BattleshipAI.h</itemPath>
       <itemPath>Board.h</itemPath>
       <itemPath>Boat.h</itemPath>
       <itemPath>Controller.h</itemPath>
@@ -23,7 +25,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Battleship.cpp</itemPath>
+      <itemPath>AIPlayer.cpp</itemPath>
       <itemPath>Board.cpp</itemPath>
       <itemPath>Boat.cpp</itemPath>
       <itemPath>Controller.cpp</itemPath>
@@ -69,11 +71,17 @@
           <standard>11</standard>
         </ccTool>
       </compileType>
+      <item path="AIPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AIPlayer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Battleship.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BattleshipAI.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Board.cpp" ex="false" tool="0" flavor2="0">
       </item>
@@ -130,11 +138,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="AIPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AIPlayer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Battleship.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BattleshipAI.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Board.cpp" ex="false" tool="0" flavor2="0">
       </item>

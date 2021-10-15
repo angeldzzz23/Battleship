@@ -7,6 +7,7 @@
       <itemPath>AIPlayer.h</itemPath>
       <itemPath>AbsBoat.h</itemPath>
       <itemPath>Battleship.h</itemPath>
+      <itemPath>BattleshipAI.h</itemPath>
       <itemPath>Board.h</itemPath>
       <itemPath>Boat.h</itemPath>
       <itemPath>Coordinate.h</itemPath>
@@ -76,6 +77,8 @@
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="BattleshipAI.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Board.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Board.h" ex="false" tool="3" flavor2="0">
@@ -134,6 +137,8 @@
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BattleshipAI.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Board.cpp" ex="false" tool="0" flavor2="0">
       </item>

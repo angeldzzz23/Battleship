@@ -14,6 +14,20 @@ using namespace std;
  * 3 - South
  * 4 - West
  */
+/*
+bool checkPrevMoves(Coordinate*) {
+    //check hits/miss arrays
+}
+
+Coordinate AIPlayer::makeAMove(User *user) {
+    Coordinate *coord = nullptr;
+    
+    while (true) {
+        coord = new Coordinate(rand() % 10, rand() % 10);
+        if (checkPrevMoves(coord))
+            return coord;
+    }
+} */
 
 void AIPlayer::RNGCoords(Boat* boat) {
     Coordinate **coords = new Coordinate*[boat->reqsz()]; //temp array of boat coords
@@ -132,8 +146,6 @@ AIPlayer::AIPlayer() {
     adBoat(aiCru);
     adBoat(aiBs);
     adBoat(aiCarr);
-    
-    
     
     /* For Destroyer = 2 */
     RNGCoords(aiDes); //Rand gen all coords

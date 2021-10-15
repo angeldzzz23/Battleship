@@ -24,10 +24,10 @@
 
 class AIPlayer : public User {
     private:
-        bool coordCheckAllBoats(Coordinate*);
-        void RNGCoords(Boat*);
-        //Direction RNGDirection(Boat*);
+        bool checkPrevMoves(Coordinate*);
     public:
+        void RNGCoords(Boat*);
+        Coordinate makeAMove();
         AIPlayer();
         ~AIPlayer();
 };

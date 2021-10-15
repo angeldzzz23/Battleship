@@ -48,7 +48,7 @@ public:
     
     string getboatcoord(int boatsize); //getting boat 
     
-    string getshotcoord();
+    string getshotcoord(char*);
     
     ~Prompt();//destructor 
 };

@@ -20,12 +20,10 @@ Battleship::Battleship(int gameType) {
     // figure out the game type 
       usOnBrd = new Board(); // contains user one boats, and contains UserTwo hits and misses     
       usOnHS = new Board(); // contains hits and misses of user 
-        
-                
-       
-        usTwBrd = new Board(); // contains user two boats, and contains UserTwo hits and misses     
+               
+       usTwBrd = new Board(); // contains user two boats, and contains UserTwo hits and misses     
         usTwHS = new Board; // contains hits and misses of user 
-   
+
 }
 
  // we set the user one
@@ -44,7 +42,7 @@ Battleship::Battleship(int gameType) {
       userTwo = user;
   }
   
-  // 
+  
   void Battleship::shotAttempt(User* usr, Coordinate * cord) {
       
       cout << "a shot has been attempted" << endl;

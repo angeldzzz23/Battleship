@@ -51,6 +51,11 @@ Boat::~Boat() {
     delete [] hits;
     // deletes the cordinates
     delete[] cordinate; 
+
+    csize=0;  // set the coordinate size to zero 
+    hsize=0; // set the hit size to zero
+    dead=0; // sets the boolean to zero 
+
 }
 
 // checks of a specific cordinate has been hit 

@@ -54,9 +54,10 @@ Coordinate** strTCo(string, int btsz); // takes in a coordinate A1 A2 A3 and ret
     void updUsr2Views();
 
 
-
+// TODO: 
+    
 int main(int argc, char** argv) {
-
+    
 
      Display *distt = new Display; // displays board
 
@@ -69,7 +70,8 @@ int main(int argc, char** argv) {
       user1->updNam(user1N, 1);
 
 
-
+//      Prompt test;
+//     test.getshotcoord()
 
       // create the user 2
       User *user2 = new User(); // user model
@@ -83,16 +85,11 @@ int main(int argc, char** argv) {
       string des = "a1 a2";
       Coordinate **dest2 = strTCo(des, 2); // reads two pos
       Destroyer *de = new Destroyer();
-//      de->addCord(dest2[0]);
-//      de->addCord(dest2[1]);
 
       de->addCords(dest2,2); // testing adding a coordinate
 
       // add the destroyer to user 1
         user1->adBoat(de);
-
-
-
 
 
 //     // created a submarine
@@ -140,14 +137,12 @@ int main(int argc, char** argv) {
 
      distt->displayboard(brd);
      cout << endl;
-//
-     //dwmqd qwmdkqwjdnwqkjdnwkqjdnwjkdnq
-     //dbhdnjdkqwndjqwnkdjqwnkdjwqnkd
-     ///dqwdkqwdkqwndkjwqndkjwqndkjwqndjkqw
 
-                                         // add boats to user2
-
-//     // creates a destroyer
+     
+     
+                                        // add boats to user2
+     
+    // creates a destroyer
       string Udes = "g3 h3";
       Coordinate **Udest2 = strTCo(Udes, 2); // reads two pos
        Destroyer *Ude = new Destroyer();
@@ -206,26 +201,10 @@ int main(int argc, char** argv) {
        }else {
            cout << " not all boats r dead" << endl;
        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
 
        // before we begin game
-
+       
        // ask user for the game
        int gmeType = 2;
 
@@ -242,7 +221,8 @@ int main(int argc, char** argv) {
        Board *Cbrd = Sbrd; // The user hits and misses
        Board *CSbrd = brd2; // the enemy board that contains user hits and misses
 
-
+       Prompt prompt;
+       
 
 
        Coordinate *inpC; // inputted coordinate
@@ -252,8 +232,8 @@ int main(int argc, char** argv) {
         (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
         (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
-
-
+        
+        
         clearScreen();
 
 
@@ -269,32 +249,33 @@ int main(int argc, char** argv) {
 
           cout << "you hits and misses" << endl;
           distt->displayboard(hmcUBrd);
-
+          cout << endl;
           // it will be here
-          string str;
-          cout << cUser->gtName() << " enter a coordinate: ";
-          getline(cin, str);
-          cout << str << endl;
+          string str = prompt.getshotcoord(cUser->gtName());
           inpC = strToSC(str);
-
+          // TODO: validate user input if it is duplicated
+          // 
           // makes a move
           game->shotAttempt(cUser, inpC); // make a move with the current user
-
-
                                    // Update views
-         updUsrViews(Sbrd, brd2,user1,user2);
+         
+          updUsrViews(Sbrd, brd2,user1,user2);
          updUsrViews(Sbrd2,brd,user2,user1);
 
 
           cout << "press n to continue " << endl;
           getline(cin, str);
 
-        (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
+          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
+         
+          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
 
-        (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
+          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
        }while(!game->gameIsOver());
 
+       
+       
        cout << "game us over " << endl;
 
 

@@ -267,6 +267,8 @@ Boat* User::getBoat(int i) {
     delete [] boats;
     delete [] misses;
     delete [] name; 
+ 
+    
     
 }
 

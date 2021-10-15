@@ -224,11 +224,11 @@ string Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
     return boat;
 }
 
-string Prompt::getshotcoord(){ //getting a single coordinate for shooting
+string Prompt::getshotcoord(char* name){ //getting a single coordinate for shooting
     bool valid = false; //bool for do while control
     string shot;
     do{
-        cout <<"Enter coordinates for the shot sir: " <<endl;
+        cout << name << " Enter coordinates for the shot: " <<endl;
         getline(cin, shot); //take it
 
         //conversions of data types to make validation easier - also done on separate variables to preserve data
@@ -242,25 +242,25 @@ string Prompt::getshotcoord(){ //getting a single coordinate for shooting
                 char test2 = shot[2];
                 test2 -= '0';
                 if (test2 == 0){
-                    cout <<"Coordinates confirmed" <<endl;;
+//                    cout <<"Coordinates confirmed" <<endl;;
                     valid = true; //set condition to true once coordinate is confirmed valid
                 }
                 else{
-                    cout <<"Out of range! Try again." <<endl;
+//                    cout <<"Out of range! Try again." <<endl;
                     valid = false; //if invalid set condition to false and delete the array to start over
                 }
             }
             else if((shot.length() == 2) && test > 0 && test <= 9){ //test and validate if coord is not '10'
-                cout <<"Coordinates confirmed" <<endl;
+//                cout <<"Coordinates confirmed" <<endl;
                 valid = true; //set condition to true once coordinate is confirmed valid
             }
             else{
-                cout <<"Out of range! Try again." <<endl;
+//                cout <<"Out of range! Try again." <<endl;
                 valid = false; //if invalid set condition to false and delete the array to start over
             }
         }
         else{
-            cout <<"Out of range! Try again." <<endl;
+//            cout <<"Out of range! Try again." <<endl;
             valid = false; //if invalid set condition to false and delete the array to start over
         }
     }while (valid == false);

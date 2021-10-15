@@ -96,9 +96,6 @@ void Board::upms(Coordinate* ms) {
 }
 
 void Board::upmss(Coordinate** ms, int s) {
-    if (s == 0) {
-        std::cout << "it is zero" << std::endl;
-    }
     for (int i = 0; i < s; i++) {
      board[ms[i]->getRow()][ms[i]->getCol()] = 'm'; 
     }

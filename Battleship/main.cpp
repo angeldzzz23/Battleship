@@ -58,11 +58,11 @@ int main(int argc, char** argv) {
 //    Game game;
 //    game.startGame();
     
-     Display *distt = new Display; // displays board
-     Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2
-     Board *brd2 = new Board();  // View- displays the boats and the hits and misses of user 1.
+//     Display *distt = new Display; // displays board
+//     Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2
+//     Board *brd2 = new Board();  // View- displays the boats and the hits and misses of user 1.
     
-    // create the user 1 
+     //create the user 1 
 //     User *user1 = new User(); // user model
 //      
 //
@@ -128,7 +128,7 @@ int main(int argc, char** argv) {
 //      user2->adBoat(Ude);
 //      
 //      
-////           
+//          
 //     // creates a sub for user 2
 //      
 //      string su2 = "a6 b6 c6";
@@ -158,20 +158,15 @@ int main(int argc, char** argv) {
 //      Coordinate **Ucarry2 = strTCo(carry2, 5);
 //      Carrier *car2 = new Carrier();
 //      car2->addCords(Ucarry2, 5);
-//      user2->adBoat(car2);
-//
-//           distt->displayboard(brd); 
-//    distt->displayboard(brd2);
-       
+//      user2->adBoat(car2);      
     NSFile test = NSFile();
-    //test.savethegame(user1, user2);
+   // test.savethegame(user1, user2);
 
       //delete user1;
       //delete user2;
       User* user3 = new User();
       User* user4 = new User();
       test.readingame(user3, user4);  
-      //brd->adBoat(user3->getBoat(0));
 
     return 0;
 }

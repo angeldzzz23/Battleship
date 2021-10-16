@@ -102,8 +102,9 @@ void User::adBoat(Boat *boat) {
     if (boatsz > 0) {
         for(int i = 0; i < boat->reqsz(); i++) {
             Coordinate *cord = boat->cordAt(i);
-            if (!(bIsNotTaken(cord))) {
+            if (!(bIsNotTaken(cord))) {                    
                     cout << "you cannot initialize boats with the same coordinate " << endl;
+                    cout  <<cord->getRow() <<" " <<cord->getCol() <<endl;
                 exit(1);
             }
         }

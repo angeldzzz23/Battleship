@@ -196,11 +196,20 @@ int main(int argc, char** argv) {
        distt->displayboard(brd2);
 
 
-       if (user1->alBrDead()) {
-           cout << "boats are dead" << endl;
-       }else {
-           cout << " not all boats r dead" << endl;
-       }
+       cout << "first" << endl;
+       
+       Coordinate *hi1 = new Coordinate(0,3);
+       Coordinate *hi2 = new Coordinate(0,3);
+       
+       user1->adMiss(hi1);
+       user1->adMiss(hi2);
+       
+//       user1->adMis(hi1);
+//       user1->adHit(hi2);
+       
+       
+       
+       cout << "here" << endl;
        
 
        // before we begin game
@@ -234,49 +243,54 @@ int main(int argc, char** argv) {
 
         
         
+        
+        
+        
         clearScreen();
 
-
-        // TODO:
-
-        // get correct input validation using Prompt class
-
-        do {
-          cout << "the hits and misses of the enemy + ur boats" << endl;
-          // displays board
-          distt->displayboard(bwBoat);
-          cout << endl;
-
-          cout << "you hits and misses" << endl;
-          distt->displayboard(hmcUBrd);
-          cout << endl;
-          // it will be here
-          string str = prompt.getshotcoord(cUser->gtName());
-          inpC = strToSC(str);
-          // TODO: validate user input if it is duplicated
-          // 
-          // makes a move
-          game->shotAttempt(cUser, inpC); // make a move with the current user
-                                   // Update views
-         
-          updUsrViews(Sbrd, brd2,user1,user2);
-         updUsrViews(Sbrd2,brd,user2,user1);
-
-
-          cout << "press n to continue " << endl;
-          getline(cin, str);
-
-          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
-         
-          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
-
-          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
-
-       }while(!game->gameIsOver());
-
-       
-       
-       cout << "game us over " << endl;
+//
+//        // TODO:
+//
+//        // get correct input validation using Prompt class
+//
+//        do {
+//          cout << "the hits and misses of the enemy + ur boats" << endl;
+//          // displays board
+//          distt->displayboard(bwBoat);
+//          cout << endl;
+//
+//          cout << "you hits and misses" << endl;
+//          distt->displayboard(hmcUBrd);
+//          cout << endl;
+//          // it will be here
+//          string str = prompt.getshotcoord(cUser->gtName());
+//          inpC = strToSC(str); // transalates coordinate string to coordinate type 
+//         
+//          
+//          // TODO: validate user input if it is duplicated
+//          // 
+//          // makes a move
+//          game->shotAttempt(cUser, inpC); // make a move with the current user
+//                                   // Update views
+//         
+//          updUsrViews(Sbrd, brd2,user1,user2);
+//         updUsrViews(Sbrd2,brd,user2,user1);
+//
+//
+//          cout << "press n to continue " << endl;
+//          getline(cin, str);
+//
+//          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
+//         
+//          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
+//
+//          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
+//
+//       }while(!game->gameIsOver());
+//
+//       
+//       
+//       cout << "game us over " << endl;
 
 
 

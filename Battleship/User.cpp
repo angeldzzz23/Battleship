@@ -201,6 +201,7 @@ bool User::bIsNotTaken(Coordinate* cord) {
 // returns true if the coordinate is a miss
 bool User::isMisB(Coordinate *cord) {
  
+        
     // loop through our boats array and see if that coordinate exists 
     for (int i =0; i < boatsz; i++) {
          Boat *cboat = boats[i];

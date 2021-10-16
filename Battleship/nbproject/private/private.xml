@@ -7,14 +7,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/Display.h</file>
+            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/Board.cpp</file>
             <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/main.cpp</file>
-            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/NSFile.cpp</file>
             <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/Board.h</file>
             <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/NSFile.h</file>
-            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/User.h</file>
-            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/Board.cpp</file>
+            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/NSFile.cpp</file>
+            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/Boat.h</file>
             <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/User.cpp</file>
+            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/User.h</file>
+            <file>file:/C:/Users/Admin.WIN-53AFI2ATH46/Documents/GitHub/Battleship/Battleship/Boat.cpp</file>
         </group>
     </open-files>
 </project-private>

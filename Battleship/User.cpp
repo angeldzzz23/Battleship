@@ -100,9 +100,7 @@ void User::adBoat(Boat *boat) {
         exit(0);
         
     }
-    
-    
-    
+   
     if (boatsz > 0) {
         for(int i = 0; i < boat->reqsz(); i++) {
             Coordinate *cord = boat->cordAt(i);
@@ -209,6 +207,11 @@ bool User::isMisB(Coordinate *cord) {
          if (cboat->cordHsadd(cord)) {
              return false;
          }
+         
+         if (cboat->cordHshit(cord)) {
+             return false;
+         }
+         
     }
     
     return true;

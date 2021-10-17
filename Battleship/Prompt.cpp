@@ -135,7 +135,8 @@ void Prompt::winner(char *winner){ //prints out winner of game
             <<"You have won! " <<endl; //perhaps also put in their score
 }
 
-string Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
+string Prompt::getboatcoord(int boatsize, char *name, string btName) {//for getting coordinates for boats
+    cout << "choose coordinates for " << btName << endl; // displays the boat name of user
     string boat;
     int totalcount = 0;
     bool valid = true;
@@ -150,7 +151,7 @@ string Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
         for (int c = 0; c < boat.length(); c++){
 
             if (isalpha(boat[c])){ //test for character
-                cout <<"Character" <<endl;
+                
                 if (tracksize == 1 || tracksize > 3){ //coordinates should always be at least 2, so tracksize of 1 implies no number was entered after a letter - and tracksize greater than 3 implies one that is too large
                     cout <<"Invalid coordinate detected, try again." <<endl;
                     valid = false;
@@ -175,7 +176,7 @@ string Prompt::getboatcoord(int boatsize){//for getting coordinates for boats
 
             }
             else if (isdigit(boat[c])){//test for number
-                cout <<"Digit" <<endl;
+                
                 //10 test
                 if(boat[c] == '0' || tracksize >= 2){
                     if(prevone == true){

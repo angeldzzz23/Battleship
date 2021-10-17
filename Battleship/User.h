@@ -47,8 +47,10 @@ public:
     bool CrdsNotTaken(Coordinate** cord, int size); // returns true if all of the coordinates DNE exist in boats
     bool hboat(Boat*); // returns true if the user contains the boat
     bool alBrDead();   // return true if all the boats are dead
-    Coordinate** gtmiss() {return misses;}
-    int gthtSz() {return hitsz;}
+    Coordinate** gtmiss() {return misses;} // gets the misses of the boat 
+    int gthtSz() {return hitsz;} // gets the size of the boat
+    int reqBSz() {return 5;} // the amount of boats a user can have 
+  
     
     ~User(); // destructor 
 };

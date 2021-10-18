@@ -112,15 +112,26 @@ int main(int argc, char** argv) {
        
       // gets the boat from the user 
     for (int i = 0; i < user1->reqBSz(); i++) {
+       // clears the UI
+       clearScreen();
        string chssz = name[i];
        int sz = boatToSize[chssz]; //gets the size for that boat
        string usrCord = prompt.getboatcoord(sz,"angel",chssz);
        Coordinate **bCord = strTCo(usrCord,sz);
-       bts[i]->addCords(bCord, sz);
+       
        // check if the coordinate is unique
+       if ( !(user1->CrdsNotTaken(bCord,sz )) || (!(bts[i]->alCords(bCord, sz)))) {
+           cout << "ask for input again"  << endl;
+           
+           i--;
+           continue; 
+       } 
+     
+       // check if each coordinate is not good
        
+       bts[i]->addCords(bCord, sz);
        // add the boat to user   
-       
+       user1->adBoat(bts[i]);
        
     }
         

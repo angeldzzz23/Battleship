@@ -76,6 +76,7 @@ Boat::~Boat() {
     
  }
  // returns a hit coordinate 
+ 
  Coordinate* Boat::hcordAt(int i) {
      if (i >= hsize) {
          cout << "class boat-hcordaT: your index is out of bounds" << endl;
@@ -211,11 +212,13 @@ Boat::~Boat() {
         rSort(cord, size);  // 
         for (int i = 0; i < size-1; i++) {
            if (cord[i+1]->getCol() - cord[i]->getCol() != 1) {
-              rcol = false;
+              rrow = false;
           }           
         }
+        cout << "here" << endl;
         return rrow;
       } else if (rcol) {   // do the col case
+         
          // we sort the cordinate by their row element (smallest to largest)
          // we subtract cord[i + 1] - cord[i] to check they all have a row distance of one
         sort(cord,size); // sort by col 

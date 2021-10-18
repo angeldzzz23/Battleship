@@ -53,6 +53,7 @@ Coordinate** strTCo(string, int btsz); // takes in a coordinate A1 A2 A3 and ret
     void updUsrViews(Board*Sbrd, Board *Ebrd, User* us1, User *us2);
    void updUsr2Views(Board*Sbrd2, Board *Ebrd1, User* us2, User *us1);
     void updUsr2Views();
+    void gtUsrBts(User*);
 
 
 // TODO: 
@@ -60,6 +61,7 @@ Coordinate** strTCo(string, int btsz); // takes in a coordinate A1 A2 A3 and ret
 int main(int argc, char** argv) {
     
     
+    // the name of the boats
     string name[6] = {"destroyer", "submarine", "cruiser", "battleship", "carrier"};
     
     // translates the boat size to the name 
@@ -67,9 +69,7 @@ int main(int argc, char** argv) {
         {"destroyer", 2}, {"submarine", 3}, {"cruiser", 3}, {"battleship", 4}, {"carrier", 5}, 
     };
     
-    
-    int boatszz = boatToSize[name[0]];
-        
+            
 
      Display *distt = new Display; // displays board
      Prompt prompt;
@@ -94,49 +94,69 @@ int main(int argc, char** argv) {
       user2->updNam(user2N, 1);
       
       
-      // create a new destroyer 
-      Destroyer *destroyer = new Destroyer();
-      Submarine *submarine = new Submarine();
-      Cruiser   *cruiser = new Cruiser();
-      Battleshp *batle  = new Battleshp(); 
-      Carrier  *carrier = new Carrier();
       
-     // get the boars for the user 
-      Boat **bts = new Boat*[5];
-         bts[0] =destroyer; 
-         bts[1] = submarine;
-         bts[2] = cruiser;
-         bts[3] = batle;
-         bts[4] = carrier;
-     
-       
-      // gets the boat from the user 
-    for (int i = 0; i < user1->reqBSz(); i++) {
-       // clears the UI
-       clearScreen();
-       string chssz = name[i];
-       int sz = boatToSize[chssz]; //gets the size for that boat
-       string usrCord = prompt.getboatcoord(sz,"angel",chssz);
-       Coordinate **bCord = strTCo(usrCord,sz);
-       
-       // check if the coordinate is unique
-       if ( !(user1->CrdsNotTaken(bCord,sz )) || (!(bts[i]->alCords(bCord, sz)))) {
-           cout << "ask for input again"  << endl;
-           
-           i--;
-           continue; 
-       } 
-     
-       // check if each coordinate is not good
-       
-       bts[i]->addCords(bCord, sz);
-       // add the boat to user   
-       user1->adBoat(bts[i]);
-       
-    }
+      gtUsrBts(user1);
+      
+      for (int i =0; i <user1->reqBSz(); i++) {
+          Boat *b = user1->getBoat(i);
+          for(int j = 0; j < b->reqsz(); j++) {
+              cout <<b->cordAt(j)->getRow() << " " << b->cordAt(j)->getCol() << endl;
+          }
+          cout << endl;
+          cout << endl;
+
+      }
+      
+      
+      
+//      
+//      // create a new destroyer 
+//      Destroyer *destroyer = new Destroyer();
+//      Submarine *submarine = new Submarine();
+//      Cruiser   *cruiser = new Cruiser();
+//      Battleshp *batle  = new Battleshp(); 
+//      Carrier  *carrier = new Carrier();
+//      
+//     // get the boars for the user 
+//      Boat **bts = new Boat*[5];
+//         bts[0] =destroyer; 
+//         bts[1] = submarine;
+//         bts[2] = cruiser;
+//         bts[3] = batle;
+//         bts[4] = carrier;
+//     
+//       
+//      // gets the boat from the user 
+//    for (int i = 0; i < user1->reqBSz(); i++) {
+//       // clears the UI
+//       clearScreen();
+//       string chssz = name[i];
+//       int sz = boatToSize[chssz]; //gets the size for that boat
+//       string usrCord = prompt.getboatcoord(sz,"angel",chssz);
+//       Coordinate **bCord = strTCo(usrCord,sz);
+//       
+//       // check if the coordinate is unique
+//       if ( !(user1->CrdsNotTaken(bCord,sz )) || (!(bts[i]->alCords(bCord, sz)))) {
+//           cout << "ask for input again"  << endl;
+//           
+//           i--;
+//           continue; 
+//       } 
+//     
+//       // check if each coordinate is not good
+//       
+//       bts[i]->addCords(bCord, sz);
+//       // add the boat to user   
+//       user1->adBoat(bts[i]);
+//       
+//    }
         
      
-    delete [] bts; 
+         
+         
+         
+         
+    //delete [] bts; 
     
 //    cout << bts[0]->gtCsize() << endl;
         
@@ -420,6 +440,64 @@ Coordinate *strToSC(string sC) {
 
 
     return cord;
+}
+
+// gets the boat for the user 
+void gtUsrBts(User *user) {
+     Prompt prompt;
+     // the name of the boats
+    string name[6] = {"destroyer", "submarine", "cruiser", "battleship", "carrier"};
+    
+    // translates the boat size to the name 
+    map<string, int> boatToSize = {
+        {"destroyer", 2}, {"submarine", 3}, {"cruiser", 3}, {"battleship", 4}, {"carrier", 5}, 
+    };
+    
+    
+      // create a new destroyer 
+      Destroyer *destroyer = new Destroyer();
+      Submarine *submarine = new Submarine();
+      Cruiser   *cruiser = new Cruiser();
+      Battleshp *batle  = new Battleshp(); 
+      Carrier  *carrier = new Carrier();
+      
+     // get the boars for the user 
+      Boat **bts = new Boat*[5];
+         bts[0] =destroyer; 
+         bts[1] = submarine;
+         bts[2] = cruiser;
+         bts[3] = batle;
+         bts[4] = carrier;
+     
+       
+      // gets the boat from the user 
+    for (int i = 0; i < user->reqBSz(); i++) {
+       // clears the UI
+       clearScreen();
+       string chssz = name[i];
+       int sz = boatToSize[chssz]; //gets the size for that boat
+       string usrCord = prompt.getboatcoord(sz,user->gtName(),chssz);
+       Coordinate **bCord = strTCo(usrCord,sz);
+       
+       // check if the coordinate is unique
+       if ( !(user->CrdsNotTaken(bCord,sz )) || (!(bts[i]->alCords(bCord, sz)))) {
+           cout << "ask for input again"  << endl;
+           
+           i--;
+           continue; 
+       } 
+     
+       // check if each coordinate is not good
+       
+       bts[i]->addCords(bCord, sz);
+       // add the boat to user   
+       user->adBoat(bts[i]);
+       
+    }
+         
+       delete [] bts;
+    
+    
 }
 
 // TODO:

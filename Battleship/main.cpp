@@ -65,19 +65,19 @@ int main(int argc, char** argv) {
     // create the user 1 
       User *user1 = new User(); // user model      
       
-      char* nametest;
-     nametest = new char[81];
-      cin.getline(nametest,81-1);
-      nametest[80] = '\0';
-      cout <<nametest <<endl;
-     user1->updNam(nametest,81);
-      // create the user 2
-      User *user2 = new User(); // user model      
-      char* nametest2;
-      nametest2 = new char[81];
-      cin.getline(nametest2,81-1);
-      cout <<nametest2 <<endl;
-      user2->updNam(nametest2,81);      
+    char* nametest;
+    int size = 81;
+    nametest = new char[size];
+    cin.getline(nametest,size-1);
+    cout <<nametest <<endl;
+    user1->updNam(nametest,size);
+     // create the user 2
+    User *user2 = new User(); // user model      
+//    char* nametest2;
+//    nametest2 = new char[size];
+//    cin.getline(nametest2,size-1);
+//    cout <<nametest2 <<endl;
+//    user2->updNam(nametest2,size);      
 //                                        
       // creates a destroyer 
       string des = "a1 a2";
@@ -167,17 +167,10 @@ int main(int argc, char** argv) {
       Carrier *car2 = new Carrier();
       car2->addCords(Ucarry2, 5);
       user2->adBoat(car2); 
-      
-      Coordinate *tester = new Coordinate(9,5);
-      cout <<"Before: "<< user2->getBoat(4)->gtHsz() <<endl;
-      user2->getBoat(4)->setHit(tester);
-      cout <<"After: "<< user2->getBoat(4)->gtHsz() <<endl;
-      
-      tester = new Coordinate(1,9);
-      user1->adMiss(tester);
+
       
    NSFile test = NSFile();
-   test.savethegame(user1, user2);
+   //test.savethegame(user1, user2);
 
 //      //delete user1;
 //      //delete user2;

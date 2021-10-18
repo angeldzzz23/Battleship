@@ -13,6 +13,7 @@
  * V3 add two users as parameters for the readingame function, and hooked up saved boat data to read into the users
  * V4 - Due to not being to save boat data directly, need to create own boat structures that can hold all the necessary information, and hook them up 
  * V4.5 - Interim version - all the necessary boat information (hit arrays, miss arrays, etc.) are all there and accounted for
+ * V5 - Attempt to introduce an index system to save multiple games
  */
 
 #ifndef NSFILE_H
@@ -75,7 +76,6 @@ struct usersave{ //this one will hold individual users
     
     //copy pasted from user class
     int id; // the identifier of a user
-    char* name; // the name of the user 
     int missSz; // the size of the misses array  
     int hitsz; //size of the hits array
     coordin misses[83]; //the miss array 
@@ -90,6 +90,7 @@ struct usersave{ //this one will hold individual users
 
 struct gamesave{ //this one will hold both users who are playing together - thus all the information can be extracted from one super structure
     int index; //index for the game
+    char* name; // the name of the user 
     usersave player1; //holds the stats of player one
     usersave player2;    //holds stats of player 
     

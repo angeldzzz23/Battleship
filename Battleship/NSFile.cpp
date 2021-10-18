@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 #include "NSFile.h"
 
 using namespace std;
@@ -15,17 +9,19 @@ NSFile::NSFile(){
     transferbattle = new Coordinate*[4];
     transfercarr = new Coordinate*[5];
     int size = 81;
-    gamesaver.player1.name = new char[size];
-    gamesaver.player2.name = new char[size];
-    gameloader.player1.name = new char[size];
-    gameloader.player1.name[80] = '\0';
-    gameloader.player2.name = new char[size];
+    gamesaver.name = new char[size];
+    //gamesaver.player2.name = new char[size];
+    gameloader.name = new char[size];
+    //gameloader.player2.name = new char[size];
 }
 
 void NSFile::savethegame(User* user1, User* user2){//saving a game
-    gamesaver.index = 1;//game index
     
-    //transfer all necessary information from User1 into player1
+    
+    
+    gamesaver.name = user1->gtName();
+    cout <<gamesaver.name <<endl;
+    
     gamesaver.player1.missSz = user1->gtTotmiSz(); //size of their miss array       
     if( gamesaver.player1.missSz > 0){
         for (int i=0; i <  gamesaver.player1.missSz; i++){
@@ -204,6 +200,9 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
     else{
         cout <<"File fail!" <<endl;//error for if fail fails to open
     }      
+    
+    cout <<"Loading in name from file: " <<endl;
+    cout <<gameloader.name <<endl;
     
     //transfer the data from coordinate structure to coordinate class
 

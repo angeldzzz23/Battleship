@@ -85,15 +85,11 @@
       char user2N[] = "monster";
       user2->updNam(user2N, 1);
       
-//      string sssr;
+      string sssr;
       gtUsrBts(user1,brd); // gets the boat from user 1
-//      cout << "user 2 press enter to continue" << endl;
-//      getline(cin, sssr); // change this later
-//      
+      cout << "user 2 press enter to continue" << endl;
+      getline(cin, sssr); // change this later   
       gtUsrBts(user2,brd2); // gets the boat from user 1
-      
-      
-      
       
       int gmeType = 2;
                                         // game begins
@@ -108,17 +104,13 @@
        Board *Cbrd = Sbrd; // The user hits and misses
        Board *CSbrd = brd2; // the enemy board that contains user hits and misses
 
-    
-
        Coordinate *inpC; // inputted coordinate
         Board *bwBoat ;
         Board *hmcUBrd;
 
         (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
         (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
-        
-        
-   
+       
         
         do {
           cout << "the hits and misses of the enemy + ur boats" << endl;
@@ -133,9 +125,6 @@
           string str = prompt.getshotcoord(cUser->gtName());
           inpC = strToSC(str); // transalates coordinate string to coordinate type 
          
-          
-         
-          
           // check if it is a valid hit or if its a valid miss 
           if (!((cUser->isMisB(inpC) || oUser->isHitb(inpC)))) { 
               // clear the screen 
@@ -156,15 +145,15 @@
 //          getline(cin, str);
 
           // alternate the user 
-//          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
+          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
 //          
 //          // update the opposite user 
-//          (*oUser == *user2) ? (oUser = user1) :  (oUser = user2);
+          (*oUser == *user2) ? (oUser = user1) :  (oUser = user2);
 //         
 //          // updates the boards
-//          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
+          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
 //
-//          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
+          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
        }while(!game->gameIsOver());
        

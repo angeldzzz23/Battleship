@@ -20,14 +20,13 @@
 #include "Battleship.h"
 #include "Board.h"
 
-//enum Direction {north, east, south, west};
-
 class AIPlayer : public User {
     private:
-        bool checkPrevMoves(Coordinate*);
+        bool smartHit;
     public:
         void RNGCoords(Boat*);
-        Coordinate makeAMove();
+        bool checkPrevMoves(Coordinate*, User*);
+        Coordinate* makeAMove(User*);
         AIPlayer();
         ~AIPlayer();
 };

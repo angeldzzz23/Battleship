@@ -14,7 +14,14 @@
 #ifndef BATTLESHIPAI_H
 #define BATTLESHIPAI_H
 
+#include "Battleship.h"
 
+class BattleshipAI : public Battleship {
+    public:
+        BattleshipAI();
+        ~BattleshipAI();
+        void shotAttempt();
+};
 
 #endif /* BATTLESHIPAI_H */
 

@@ -41,9 +41,13 @@ using namespace std;
 
 // method to translate the prompt to coordinates
 Coordinate** strTCo(string, int btsz); // takes in a coordinate A1 A2 A3 and returns coordinates (0,1), (0,1), (0,2)
-//int Coordinate::cnvrtLet(char letter); // converts a character number to an integer
                                        // convrting a character letter to a
-//int  Coordinate::cnvrt(char digit);
+Coordinate *strToSC(string sC);
+Coordinate** strTCo( string strC, int btsz);
+int cnvrt(char digit);
+int cnvrtLet(char letter);
+void updUsrViews(Board* Sbrd, Board *Ebrd, User* us1, User *us2);
+void clearScreen();
 
 int main(int argc, char** argv) {
 
@@ -51,13 +55,22 @@ int main(int argc, char** argv) {
 //    game.startGame();
     AIPlayer *AI = new AIPlayer();
     //User *AI = new User();
-
+    
     Board *board = new Board();
 
     for (int i = 0; i < 5; i++) {
         board->adBoat(AI->getBoat(i));
     }
-
+    
+    
+    User *user = new User();
+    
+    
+//    for (int i = 0; i < 10; i++) {
+//        for (int j = 0; j < 10; j++)
+//            cout << board->getElement(i, j) << " ";
+//        cout << endl;
+//    }
     /*Boat *testBoat = NULL;
 
     Coordinate *cord01 = new Coordinate(0,0);
@@ -100,246 +113,102 @@ int main(int argc, char** argv) {
 
     cout << "board\n";*/
 
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++)
-            cout << board->getElement(i, j) << " ";
-        cout << endl;
-    }
+    
 
-//        // boat 1
-
-////
-////    // boat 2
-//    Coordinate *cord03 = new Coordinate(1,0);
-//    Coordinate *cord04 = new Coordinate(1,1);
-//    Coordinate *cord05 = new Coordinate(1,2);
-//
-//    // boat 3
-//    Coordinate *cord06 = new Coordinate(2,0);
-//    Coordinate *cord07 = new Coordinate(2,1); //
-//    Coordinate *cord08 = new Coordinate(2,2); //
-//
-//    // boat 4
-//    Coordinate *cord09 = new Coordinate(3,0); //
-//    Coordinate *cord10 = new Coordinate(3,1); //
-//    Coordinate *cord11 = new Coordinate(3,2); //
-//    Coordinate *cord12 = new Coordinate(3,3); //
-//
-//    // boat 5
-//    Coordinate *cord13 = new Coordinate(9,1); //
-//    Coordinate *cord14 = new Coordinate(9,2); //
-//    Coordinate *cord15 = new Coordinate(9,3); //
-//    Coordinate *cord16 = new Coordinate(9,4); //
-//    Coordinate *cord17 = new Coordinate(9,5); //
-//
+//    // boat 1
+    Coordinate *cord01 = new Coordinate(4,0);
+    Coordinate *cord02 = new Coordinate(4,1);
 
 //
-//
-//    Submarine *sub = new Submarine();
-//      sub->addCord(cord03);
-//      sub->addCord(cord04);
-//      sub->addCord(cord05);
-//
-//    Cruiser *cuucu = new  Cruiser();
-//      cuucu->addCord(cord06);
-//      cuucu->addCord(cord07);
-//      cuucu->addCord(cord08);
-//
-//   Battleshp *battle = new Battleshp();
-//      battle->addCord(cord09);
-//      battle->addCord(cord10);
-//      battle->addCord(cord11);
-//      battle->addCord(cord12);
-//
-//    Carrier *carr = new Carrier();
-    //  carr->addCord(cord13);
-    //  carr->addCord(cord14);
-    //  carr->addCord(cord15);
-    //  carr->addCord(cord16);
-    //  carr->addCord(cord17);
+//    // boat 2
+    Coordinate *cord03 = new Coordinate(1,0);
+    Coordinate *cord04 = new Coordinate(1,1);
+    Coordinate *cord05 = new Coordinate(1,2);
 
-//
-      string crui = "c1 c2 c3";
-      Cruiser *cru = new Cruiser();
-      Coordinate **crui1 = strTCo(crui, 3);
-      cru->addCords(crui1,3); // adds a cruiser
+    // boat 3
+    Coordinate *cord06 = new Coordinate(2,0);
+    Coordinate *cord07 = new Coordinate(2,1); //
+    Coordinate *cord08 = new Coordinate(2,2); //
 
-      // adds boat to user 1
-      user1->adBoat(cru);
+    // boat 4
+    Coordinate *cord09 = new Coordinate(3,0); //
+    Coordinate *cord10 = new Coordinate(3,1); //
+    Coordinate *cord11 = new Coordinate(3,2); //
+    Coordinate *cord12 = new Coordinate(3,3); //
+
+    // boat 5
+    Coordinate *cord13 = new Coordinate(9,1); //
+    Coordinate *cord14 = new Coordinate(9,2); //
+    Coordinate *cord15 = new Coordinate(9,3); //
+    Coordinate *cord16 = new Coordinate(9,4); //
+    Coordinate *cord17 = new Coordinate(9,5); //
 
 
-//
-//       // created a battle
-      string battl = "d1 d2 d3 d4";
-      Battleshp *ballt = new Battleshp(); // creates a batleship game
-      Coordinate **battl1 = strTCo(battl, 4);
-      ballt->addCords(battl1,4);
+    Destroyer *des = new Destroyer();
+    des->addCord(cord01);
+    des->addCord(cord02);
 
-      // adds user1 to boat
-      user1->adBoat(ballt);
-//
-//
-     string carry = "e1 e2 e3 e4 e5";
-     Coordinate **carr = strTCo(carry, 5);
-     Carrier *car = new Carrier();
-     car->addCords(carr,5);
+    Submarine *sub = new Submarine();
+      sub->addCord(cord03);
+      sub->addCord(cord04);
+      sub->addCord(cord05);
 
-     // ads a boat to user1
-     user1->adBoat(car); //
+    Cruiser *cuucu = new  Cruiser();
+      cuucu->addCord(cord06);
+      cuucu->addCord(cord07);
+      cuucu->addCord(cord08);
 
-     brd->adBoat(de);
-     brd->adBoat(subb);
-     brd->adBoat(cru);
-     brd->adBoat(ballt);
-     brd->adBoat(car);
+   Battleshp *battle = new Battleshp();
+      battle->addCord(cord09);
+      battle->addCord(cord10);
+      battle->addCord(cord11);
+      battle->addCord(cord12);
 
-     distt->displayboard(brd);
-     cout << endl;
-
-
-
-                                        // add boats to user2
-
-    // creates a destroyer
-      string Udes = "g3 h3";
-      Coordinate **Udest2 = strTCo(Udes, 2); // reads two pos
-       Destroyer *Ude = new Destroyer();
-      Ude->addCords(Udest2,2); // testing adding a coordinate
-      // add the destroyer to user 1
-      user2->adBoat(Ude);
-//
-//
-//
-//
-//      // creates a sub for user 2
-//
-      string su2 = "a6 b6 c6";
-      Coordinate **sub2 = strTCo(su2, 3); // reads 3 pos
-      Submarine *subb2 = new Submarine();
-      subb2->addCords(sub2, 3); // testing adding a coordinate
-      // adds sub the
-      user2->adBoat(subb2);
-//
-//
-////      // create cruiser
-      string cru2 = "d5 d6 d7";
-      Coordinate **Ucru2 = strTCo(cru2, 3);
-      Cruiser *ucru22 = new Cruiser();
-      ucru22->addCords(Ucru2,3); // addings 3 coordinates to cruiser
-      user2->adBoat(ucru22);
-////
-////
-////      // create a battleshp
-////
-      string btle2 = "f5 f6 f7 f8";
-      Coordinate **Ubtle2 = strTCo(btle2, 4);
-      Battleshp *ubtle2 = new Battleshp();
-      ubtle2->addCords(Ubtle2, 4);
-////
-      user2->adBoat(ubtle2);
-      // create a crarried
-////
-      string carry2 = "j4 j5 j6 j7 j8";
-      Coordinate **Ucarry2 = strTCo(carry2, 5);
-      Carrier *car2 = new Carrier();
-      car2->addCords(Ucarry2, 5);
-      user2->adBoat(car2);
-
-       brd2->adBoat(Ude);
-       brd2->adBoat(subb2);
-       brd2->adBoat(ucru22);
-       brd2->adBoat(ubtle2);
-       brd2->adBoat(car2);
-
-       distt->displayboard(brd2);
-
-
-       if (user1->alBrDead()) {
-           cout << "boats are dead" << endl;
-       }else {
-           cout << " not all boats r dead" << endl;
-       }
-
-
-       // before we begin game
-
-       // ask user for the game
-       int gmeType = 2;
-
-                                        // game begins
-       Battleship *game = new Battleship(2);
-
-       game->setUserOne(user1);
-       game->setUserTwo(user2);
-
-       User *cUser = user1; // the current player
-       User *oUser = user2; // the other player
-
-
-       Board *Cbrd = Sbrd; // The user hits and misses
-       Board *CSbrd = brd2; // the enemy board that contains user hits and misses
-
-       Prompt prompt;
-
-
-
-       Coordinate *inpC; // inputted coordinate
-        Board *bwBoat ;
-        Board *hmcUBrd;
-
-        (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
-        (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
-
-
-
-        clearScreen();
-
-
-        // TODO:
-
-        // get correct input validation using Prompt class
-
-        do {
-          cout << "the hits and misses of the enemy + ur boats" << endl;
-          // displays board
-          distt->displayboard(bwBoat);
-          cout << endl;
-
-          cout << "you hits and misses" << endl;
-          distt->displayboard(hmcUBrd);
-          cout << endl;
-          // it will be here
-          string str = prompt.getshotcoord(cUser->gtName());
-          inpC = strToSC(str);
-          // TODO: validate user input if it is duplicated
-          //
-          // makes a move
-          game->shotAttempt(cUser, inpC); // make a move with the current user
-                                   // Update views
-
-          updUsrViews(Sbrd, brd2,user1,user2);
-         updUsrViews(Sbrd2,brd,user2,user1);
-
-
-          cout << "press n to continue " << endl;
-          getline(cin, str);
-
-          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
-
-          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
-
-          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
-
-       }while(!game->gameIsOver());
-
-
-
-       cout << "game us over " << endl;
-
-
-
-       // clean up
-
+    Carrier *carr = new Carrier();
+      carr->addCord(cord13);
+      carr->addCord(cord14);
+      carr->addCord(cord15);
+      carr->addCord(cord16);
+      carr->addCord(cord17);
+      
+      
+      user->adBoat(des);
+      user->adBoat(sub);
+      user->adBoat(cuucu);
+      user->adBoat(battle);
+      user->adBoat(carr);
+      
+      //Test hits
+      Coordinate *hitCoord1 = new Coordinate(9, 5);
+      Coordinate *hitCoord2 = new Coordinate(3, 3);
+      Coordinate *hitCoord3 = new Coordinate(2, 0);
+      Coordinate *hitCoord4 = new Coordinate(1, 1);
+      
+      user->adHit(hitCoord1);
+      user->adHit(hitCoord2);
+      user->adHit(hitCoord3);
+      user->adHit(hitCoord4);
+      
+      //Test misses
+      Coordinate *missCoord1 = new Coordinate(4, 3);
+      Coordinate *missCoord2 = new Coordinate(1, 3);
+      Coordinate *missCoord3 = new Coordinate(2, 3);
+      Coordinate *missCoord4 = new Coordinate(3, 4);
+      
+      AI->adMiss(missCoord1);
+      AI->adMiss(missCoord2);
+      AI->adMiss(missCoord3);
+      AI->adMiss(missCoord4);
+      
+      Coordinate *reCoord;
+      for (int i = 0; i < 2000; i++) {
+        reCoord = AI->makeAMove(user);
+        if (*reCoord == *missCoord1  || *reCoord == *missCoord2 || *reCoord == *missCoord3 || *reCoord == *missCoord4)
+            cout << "Duplicate found\n";
+//        if (reCoord->getRow() == 1 && reCoord->getCol() == 1)
+//            cout << "Kachow\n";
+        cout << "reCoord " << reCoord->getRow() << " " << reCoord->getCol() << endl;
+      }
 
 
     return 0;

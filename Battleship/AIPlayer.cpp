@@ -14,20 +14,33 @@ using namespace std;
  * 3 - South
  * 4 - West
  */
-/*
-bool checkPrevMoves(Coordinate*) {
-    //check hits/miss arrays
+
+bool AIPlayer::checkPrevMoves(Coordinate *coord, User *user) {
+    //check AI miss array
+    for (int i = 0; i < this->missSz; i++) {
+        if (*this->misses[i] == *coord)
+            return false; //if the coord has been shot already
+    }
+        
+    //check enemy user's boat hit coords array
+    for (int i = 0; i < user->gtTotBtsz(); i++) {
+        if (user->getBoat(i)->cordHshit(coord))
+            return false; //if the coord has been shot already
+    }
+    
+    //There are no duplicates at this point
+    return true; //Coord DNE; can still be taken
 }
 
-Coordinate AIPlayer::makeAMove(User *user) {
+Coordinate* AIPlayer::makeAMove(User *user) {
     Coordinate *coord = nullptr;
     
     while (true) {
         coord = new Coordinate(rand() % 10, rand() % 10);
-        if (checkPrevMoves(coord))
+        if (checkPrevMoves(coord, user)) //if coord DNE yet
             return coord;
     }
-} */
+}
 
 void AIPlayer::RNGCoords(Boat* boat) {
     Coordinate **coords = new Coordinate*[boat->reqsz()]; //temp array of boat coords

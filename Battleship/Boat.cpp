@@ -77,19 +77,20 @@ Boat::~Boat() {
  }
  // returns a hit coordinate 
  Coordinate* Boat::hcordAt(int i) {
-     if (i >= hsize) {
-         cout << "class boat-hcordaT: your index is out of bounds" << endl;
-         exit(1);
-     }
+     //if (i >= hsize) {
+         //cout << "class boat-hcordaT: your index is out of bounds" << endl;
+         //exit(1);
+     //}
      return hits[i];
  }
  
  // retuns a cordAt
  Coordinate* Boat::cordAt(int i) {
-     if (i >= csize) {
-         cout << "class boat-cordAt: Your index is out of bounds." << endl;
-         exit(1);
-     }
+     //cout << i << " " << csize << endl;
+     //if (i > csize) {
+         //cout << "class boat-cordAt: Your index is out of bounds." << endl;
+         //exit(1);
+     //}
      
      return cordinate[i];
  }

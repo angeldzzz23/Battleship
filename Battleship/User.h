@@ -25,7 +25,7 @@ class User {
     int missSz; // the size of the misses array  
     Coordinate **misses;  // constains 
     int hitsz; 
-    Coordinate **hits; 
+//    Coordinate **hits; 
 public: 
     User(); //initializes a user with a name
     void updNam(char *n, int sz); // updates the name of the user 

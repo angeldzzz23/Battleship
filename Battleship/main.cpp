@@ -53,7 +53,8 @@ Coordinate** strTCo(string, int btsz); // takes in a coordinate A1 A2 A3 and ret
     void gtUsrBts(User*, Board*);
 
 
-// TODO: 
+// TODO: make the game faster 
+// l
     
 int main(int argc, char** argv) {
     
@@ -77,12 +78,13 @@ int main(int argc, char** argv) {
       char user2N[] = "monster";
       user2->updNam(user2N, 1);
       
-      string sssr;
+//      string sssr;
       gtUsrBts(user1,brd); // gets the boat from user 1
-      cout << "user 2 press enter to continue" << endl;
-      getline(cin, sssr); // change this later
-      
+//      cout << "user 2 press enter to continue" << endl;
+//      getline(cin, sssr); // change this later
+//      
       gtUsrBts(user2,brd2); // gets the boat from user 1
+      
       
       
       
@@ -110,7 +112,7 @@ int main(int argc, char** argv) {
         
         
    
-       clearScreen();
+//       clearScreen();
 
         do {
           cout << "the hits and misses of the enemy + ur boats" << endl;
@@ -141,13 +143,12 @@ int main(int argc, char** argv) {
              // makes a move 
              game->shotAttempt(cUser, inpC); // make a move with the current user
                                    // Update views
-          
-          updUsrViews(Sbrd, brd2,user1,user2);
-          updUsrViews(Sbrd2,brd,user2,user1);
-
-
-          cout << "press n to continue " << endl;
-          getline(cin, str);
+            updUsrViews(Sbrd, brd2,user1,user2);
+            updUsrViews(Sbrd2,brd,user2,user1);
+            
+            
+//          cout << "press n to continue " << endl;
+//          getline(cin, str);
 
           // alternate the user 
           (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
@@ -160,24 +161,22 @@ int main(int argc, char** argv) {
 
           (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
-       }while(!game->gameIsOver() || );
-       clearScreen();
+       }while(!game->gameIsOver());
        
-      // display 
-       cout << "game us over " << endl;
+       clearScreen();
+       User *user = game->getWin(); 
+       // display winner
+       prompt.winner(user->gtName());
+      
+ 
+       delete game;
+       // delete display
 
-
-
-       // clean up
-
-
+       
+       
+       
 
     return 0;
-}
-
-
-Boat** inBts() {
-    return NULL;
 }
 
 

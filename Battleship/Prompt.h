@@ -52,6 +52,7 @@ public:
     
     
     
+    
     ~Prompt();//destructor 
 };
 

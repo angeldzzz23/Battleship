@@ -18,11 +18,7 @@ using namespace std;
 // my constructor 
 Battleship::Battleship(int gameType) {
     // figure out the game type 
-      usOnBrd = new Board(); // contains user one boats, and contains UserTwo hits and misses     
-      usOnHS = new Board(); // contains hits and misses of user 
-               
-       usTwBrd = new Board(); // contains user two boats, and contains UserTwo hits and misses     
-        usTwHS = new Board; // contains hits and misses of user 
+    
 
 }
 
@@ -42,7 +38,20 @@ Battleship::Battleship(int gameType) {
       userTwo = user;
   }
   
-  
+  // returns the winner of the game
+  User* Battleship::getWin() {
+      
+      if (userTwo->alBrDead()) {
+          return userTwo; // returns the userTwo that one
+      }
+    
+      if (userOne->alBrDead()) {
+          return userOne; // returns the userOne that one
+      }
+      
+      
+      return userTwo;
+  }
   void Battleship::shotAttempt(User* usr, Coordinate * cord) {
       
       cout << "a shot has been attempted" << endl;
@@ -86,5 +95,15 @@ Battleship::Battleship(int gameType) {
       
       return false; 
    }
+  
+  // deletes the user 
+  Battleship::~Battleship() {
+      delete userTwo; 
+      delete userOne;
+      
+      userTwo = NULL;
+      userOne = NULL;
+      
+  }
 
 

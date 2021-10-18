@@ -35,7 +35,7 @@ User::User() {
     name = new char[81]; // dynamically allocate memory for the name 
     
     // allocates memory for hits array 
-    hits =  new Coordinate*[totHit];
+//    hits =  new Coordinate*[totHit];
 
 }
 
@@ -155,7 +155,7 @@ void User::adHit(Coordinate *hit) {
         if (cboat->cordHsadd(hit)) {
             //  set the hit to the boats
             cboat->setHit(hit);
-            hits[hitsz] = hit; // holds a reference to hit 
+//            hits[hitsz] = hit; // holds a reference to hit 
             hitsz += 1; // increment the number of hits the user has
         }         
     }

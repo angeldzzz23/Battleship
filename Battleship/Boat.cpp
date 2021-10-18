@@ -33,7 +33,7 @@ Boat::Boat() {
 // This works with destroying other boats
 Boat::~Boat() {
     
-    cout << "dess" << csize << endl;
+  
     
     // loop through hits
     for (int i =0; i < csize; i++) {

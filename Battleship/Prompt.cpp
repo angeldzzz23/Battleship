@@ -130,6 +130,9 @@ void Prompt::waitturn(){ //for a two-player game - a little pause for the other 
     delete input;
 }
 
+
+
+
 void Prompt::winner(char *winner) { //prints out winner of game
     cout <<"Congratulations player: " <<winner <<"!" <<endl //insert username variable of winning player
             <<"You have won! " <<endl; //perhaps also put in their score

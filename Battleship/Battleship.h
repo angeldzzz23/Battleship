@@ -20,23 +20,19 @@ class Battleship {
     private: 
         // user 1 
         User *userOne; // a user One model 
-    //  usrbrd - contains UserTwo hits and misses
-        Board *usOnBrd; // contains user one boats, and contains UserTwo hits and misses     
-        Board *usOnHS; // contains hits and misses of user 
-        
-                
+              
         // user 2
         User *userTwo; // a userTwo model 
-        Board *usTwBrd; // contains user two boats, and contains UserTwo hits and misses     
-        Board *usTwHS; // contains hits and misses of user 
-            
-        
+
+         
     public:// for some reason
         Battleship(int); // initializes the game
         void shotAttempt(User*, Coordinate *);
         void setUserOne(User* user);
         void setUserTwo(User* user);
         bool gameIsOver();
+        User* getWin(); // returns the user who won
+        ~Battleship();
       
 };
 

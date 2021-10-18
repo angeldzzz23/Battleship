@@ -212,7 +212,18 @@ bool User::isMisB(Coordinate *cord) {
              return false;
          }
          
+         // check the misses array 
+         
     }
+    
+    // loop thorugh your misses 
+    for (int i = 0; i < missSz;i++) {
+        if (*misses[i] == *cord) {
+            return false;
+        }
+    }
+     
+    
     
     return true;
 }

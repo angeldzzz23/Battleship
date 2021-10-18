@@ -52,31 +52,39 @@ Battleship::Battleship(int gameType) {
       
       return userTwo;
   }
+  
+  // TODO: fix the bug for when the user enters a hit twice 
+  // a failed shot attempt happens when a user enters the same 
   void Battleship::shotAttempt(User* usr, Coordinate * cord) {
       
       cout << "a shot has been attempted" << endl;
       
       if(*usr == *userOne) {
        
-         
           if (userTwo->isHitb(cord)) {
               // add a hit in userTwo
               userTwo->adHit(cord);
               cout << "it is a hit" << endl;
-          } else {
+              
+          } else if (userOne->isMisB(cord)) {
+            
               userOne->adMiss(cord);
               // you add a miss in userOne
               cout << "it is not a hit" << endl;
-          }
+          } else if (!(userOne->isMisB(cord))) {
+              cout << "it is repeated because it is repeated" << endl;
+          } 
           
       } else if (*usr == *userTwo) {
         
           if (userOne->isHitb(cord)) { // add a hit in userOne
               cout << "a hit" << endl;
               userOne->adHit(cord);
-          } else { // add a hit userTwo
+          } else if (userTwo->isMisB(cord)) { // add a hit userTwo
               cout << "a miss" << endl;
               userTwo->adMiss(cord);
+          } else if (!(userTwo->isMisB(cord))){
+              cout << "it is repeated!!!!!" << endl;
           }
       }
   }

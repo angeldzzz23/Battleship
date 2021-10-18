@@ -23,7 +23,7 @@ class Display {
 private:
 public:
     void displayboard(Board *board1);
-    
+     void clearScreen(); 
 };
 
 #endif /* DISPLAY_H */

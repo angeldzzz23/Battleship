@@ -215,7 +215,7 @@ Boat::~Boat() {
               rrow = false;
           }           
         }
-        cout << "here" << endl;
+      
         return rrow;
       } else if (rcol) {   // do the col case
          

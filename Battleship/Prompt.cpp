@@ -130,13 +130,13 @@ void Prompt::waitturn(){ //for a two-player game - a little pause for the other 
     delete input;
 }
 
-void Prompt::winner(char *winner){ //prints out winner of game
+void Prompt::winner(char *winner) { //prints out winner of game
     cout <<"Congratulations player: " <<winner <<"!" <<endl //insert username variable of winning player
             <<"You have won! " <<endl; //perhaps also put in their score
 }
 
 string Prompt::getboatcoord(int boatsize, char *name, string btName) {//for getting coordinates for boats
-    cout << "choose coordinates for " << btName << endl; // displays the boat name of user
+    cout <<name<< " choose coordinates for " << btName << endl; // displays the boat name of user
     string boat;
     int totalcount = 0;
     bool valid = true;

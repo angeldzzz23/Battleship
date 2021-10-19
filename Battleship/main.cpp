@@ -64,22 +64,20 @@ int main(int argc, char** argv) {
     
     // create the user 1 
       User *user1 = new User(); // user model      
-      
-    char* nametest;
-    int size = 81;
-    nametest = new char[size];
-    cin.getline(nametest,size-1);
-    cout <<nametest <<endl;
-    user1->updNam(nametest,size);
+     
+
+    char nametest[81];
+   cin >>nametest;
+   cout <<nametest <<endl;
+   user1->updNam(nametest,strlen(nametest));
      // create the user 2
     User *user2 = new User(); // user model      
-//    char* nametest2;
-//    nametest2 = new char[size];
-//    cin.getline(nametest2,size-1);
-//    cout <<nametest2 <<endl;
-//    user2->updNam(nametest2,size);      
-//                                        
-      // creates a destroyer 
+    char nametest2[81];
+    cin >>nametest2;
+    cout <<nametest2 <<endl;
+    user2->updNam(nametest2,strlen(nametest2));      
+                                        
+//       creates a destroyer 
       string des = "a1 a2";
       Coordinate **dest2 = strTCo(des, 2); // reads two pos 
       Destroyer *de = new Destroyer();
@@ -170,14 +168,28 @@ int main(int argc, char** argv) {
 
       
    NSFile test = NSFile();
-   //test.savethegame(user1, user2);
+   test.savethegame(user1, user2);
 
 //      //delete user1;
 //      //delete user2;
       User* user3 = new User();
       User* user4 = new User();
       test.readingame(user3, user4); 
-
+      //printing out all information to test it was transferred correctly
+      cout << user3->gtName() <<endl;
+      for (int c =0; c<5; c++){
+        for (int i = 0; i < user3->getBoat(c)->reqsz(); i++){
+          cout << user3->getBoat(c)->cordAt(i)->getRow() <<" " <<user3->getBoat(c)->cordAt(i)->getCol() <<endl;
+        }
+        cout <<endl;
+      }
+    cout << user4->gtName() <<endl;
+      for (int c =0; c<5; c++){
+        for (int i = 0; i < user4->getBoat(c)->reqsz(); i++){
+          cout << user4->getBoat(c)->cordAt(i)->getRow() <<" " <<user4->getBoat(c)->cordAt(i)->getCol() <<endl;
+        }
+        cout <<endl;
+      }
     return 0;
 }
 

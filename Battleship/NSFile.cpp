@@ -2,112 +2,112 @@
 
 using namespace std;
 
-NSFile::NSFile(){
+NSFile::NSFile(){ //initiate all those dynamic transfer variables for loading back in a game
     transferdes = new Coordinate*[2];
     transfersub = new Coordinate*[3];
     transfercruise = new Coordinate*[3];
     transferbattle = new Coordinate*[4];
-    transfercarr = new Coordinate*[5];
-    int size = 81;
-    gamesaver.name = new char[size];
-    //gamesaver.player2.name = new char[size];
-    gameloader.name = new char[size];
-    //gameloader.player2.name = new char[size];
+    transfercarr = new Coordinate*[5]; //sizes are the sizes of the boats (2 for destroyer, 3 for sub and cruiser, etc.)
 }
 
-void NSFile::savethegame(User* user1, User* user2){//saving a game
-    
-    
-    
-    gamesaver.name = user1->gtName();
-    cout <<gamesaver.name <<endl;
-    
-    gamesaver.player1.missSz = user1->gtTotmiSz(); //size of their miss array       
-    if( gamesaver.player1.missSz > 0){
-        for (int i=0; i <  gamesaver.player1.missSz; i++){
-             gamesaver.player1.misses[i].row = user1->gtMiCrd(i)->getRow();
-             gamesaver.player1.misses[i].col = user1->gtMiCrd(i)->getCol();
+//saving a game
+void NSFile::savethegame(User* user1, User* user2){    
+//take in the username string and put it in our array
+    for(int i = 0; i < strlen(user1->gtName()); i++){ //use the strlen to get the string length, and loop for that many characters
+        gamesaver.player1.name[i] =  user1->gtName()[i]; //put in the username characters one at a time
+    }
+    gamesaver.player1.name[strlen(user1->gtName())] = '\0'; //set the null terminator at the end of the username string
+    cout <<gamesaver.player1.name <<endl; //print back out for testing purposes
+//miss array
+    gamesaver.player1.missSz = user1->gtTotmiSz(); //size of user 1 miss array       
+    if( gamesaver.player1.missSz > 0){ //if there are misses to store
+        for (int i=0; i <  gamesaver.player1.missSz; i++){ //loop through that many misses and add their information into our miss array 
+             gamesaver.player1.misses[i].row = user1->gtMiCrd(i)->getRow(); //get the row in integers
+             gamesaver.player1.misses[i].col = user1->gtMiCrd(i)->getCol(); //get the col in integers
         } 
     }
-
-        for(int c=0; c < 2; c++){     //destroyer coordinates along with its hit coordinates - same process for every boat
-            gamesaver.player1.destroy.position[c].row = user1->getBoat(0)->cordAt(c)->getRow();//extract the digits from all the coordinates in the boat class and put them in our boat structure
-            gamesaver.player1.destroy.position[c].col = user1->getBoat(0)->cordAt(c)->getCol();
-        }        
-        gamesaver.player1.destroy.dead = user1->getBoat(0)->isDead();//get the dead variable
-        gamesaver.player1.destroy.hitsz = user1->getBoat(0)->gtHsz();//get how many hits have been made on the ship
-        if (gamesaver.player1.destroy.hitsz > 0){//determine if there are any hits to begin with
-            for (int i=0; i < gamesaver.player1.destroy.hitsz; i++){//if there are, copy them down into our hit array
-                gamesaver.player1.destroy.hits[i].row = user1->getBoat(0)->hcordAt(i)->getRow();
-                gamesaver.player1.destroy.hits[i].col = user1->getBoat(0)->hcordAt(i)->getCol();
-            }
+//destroyer
+    for(int c=0; c < 2; c++){     //destroyer coordinates along with its hit coordinates - same process for every boat
+        gamesaver.player1.destroy.position[c].row = user1->getBoat(0)->cordAt(c)->getRow();//extract the digits for the coordinates in the boat class and put them in our boat structure
+        gamesaver.player1.destroy.position[c].col = user1->getBoat(0)->cordAt(c)->getCol();
+    }        
+    gamesaver.player1.destroy.dead = user1->getBoat(0)->isDead();//get the dead variable
+    gamesaver.player1.destroy.hitsz = user1->getBoat(0)->gtHsz();//get how many hits have been made on the ship
+    if (gamesaver.player1.destroy.hitsz > 0){//determine if there are any hits to begin with
+        for (int i=0; i < gamesaver.player1.destroy.hitsz; i++){//if there are, copy them down into our hit array
+            gamesaver.player1.destroy.hits[i].row = user1->getBoat(0)->hcordAt(i)->getRow(); //get row
+            gamesaver.player1.destroy.hits[i].col = user1->getBoat(0)->hcordAt(i)->getCol(); //get column
         }
-
-        for(int c=0; c < 3; c++){   //submarine
-            gamesaver.player1.sub.position[c].row = user1->getBoat(1)->cordAt(c)->getRow();//more conversions
-            gamesaver.player1.sub.position[c].col = user1->getBoat(1)->cordAt(c)->getCol();
+    } //this process is repeated for all boats, for both users
+//submarine
+    for(int c=0; c < 3; c++){   
+        gamesaver.player1.sub.position[c].row = user1->getBoat(1)->cordAt(c)->getRow();//more conversions
+        gamesaver.player1.sub.position[c].col = user1->getBoat(1)->cordAt(c)->getCol();
+    }
+    gamesaver.player1.sub.dead = user1->getBoat(1)->isDead();    
+    gamesaver.player1.sub.hitsz = user1->getBoat(1)->gtHsz();
+    if (gamesaver.player1.sub.hitsz > 0){
+        for (int i=0; i < gamesaver.player1.sub.hitsz; i++){
+            gamesaver.player1.sub.hits[i].row = user1->getBoat(1)->hcordAt(i)->getRow();
+            gamesaver.player1.sub.hits[i].col = user1->getBoat(1)->hcordAt(i)->getCol();
         }
-        gamesaver.player1.sub.dead = user1->getBoat(1)->isDead();    
-        gamesaver.player1.sub.hitsz = user1->getBoat(1)->gtHsz();
-        if (gamesaver.player1.sub.hitsz > 0){
-            for (int i=0; i < gamesaver.player1.sub.hitsz; i++){
-                gamesaver.player1.sub.hits[i].row = user1->getBoat(1)->hcordAt(i)->getRow();
-                gamesaver.player1.sub.hits[i].col = user1->getBoat(1)->hcordAt(i)->getCol();
-            }
+    }
+//cruiser
+    for(int c=0; c < 3; c++){     
+        gamesaver.player1.cruisee.position[c].row = user1->getBoat(2)->cordAt(c)->getRow();
+        gamesaver.player1.cruisee.position[c].col = user1->getBoat(2)->cordAt(c)->getCol();
+    }            
+    gamesaver.player1.cruisee.dead = user1->getBoat(2)->isDead();
+    gamesaver.player1.cruisee.hitsz = user1->getBoat(0)->gtHsz();
+    if (gamesaver.player1.cruisee.hitsz > 0){
+        for (int i=0; i < gamesaver.player1.cruisee.hitsz; i++){
+            gamesaver.player1.cruisee.hits[i].row = user1->getBoat(2)->hcordAt(i)->getRow();
+            gamesaver.player1.cruisee.hits[i].col = user1->getBoat(2)->hcordAt(i)->getCol();
         }
-
-        for(int c=0; c < 3; c++){     //cruiser
-            gamesaver.player1.cruisee.position[c].row = user1->getBoat(2)->cordAt(c)->getRow();
-            gamesaver.player1.cruisee.position[c].col = user1->getBoat(2)->cordAt(c)->getCol();
-        }            
-        gamesaver.player1.cruisee.dead = user1->getBoat(2)->isDead();
-        gamesaver.player1.cruisee.hitsz = user1->getBoat(0)->gtHsz();
-        if (gamesaver.player1.cruisee.hitsz > 0){
-            for (int i=0; i < gamesaver.player1.cruisee.hitsz; i++){
-                gamesaver.player1.cruisee.hits[i].row = user1->getBoat(2)->hcordAt(i)->getRow();
-                gamesaver.player1.cruisee.hits[i].col = user1->getBoat(2)->hcordAt(i)->getCol();
-            }
+    }
+//battleship
+    for(int c=0; c < 4; c++){     
+        gamesaver.player1.battle.position[c].row = user1->getBoat(3)->cordAt(c)->getRow();
+        gamesaver.player1.battle.position[c].col = user1->getBoat(3)->cordAt(c)->getCol();
+    }
+    gamesaver.player1.battle.dead = user1->getBoat(3)->isDead();
+    gamesaver.player1.battle.hitsz = user1->getBoat(0)->gtHsz();
+    if (gamesaver.player1.battle.hitsz > 0){
+        for (int i=0; i < gamesaver.player1.battle.hitsz; i++){
+            gamesaver.player1.battle.hits[i].row = user1->getBoat(3)->hcordAt(i)->getRow();
+            gamesaver.player1.battle.hits[i].col = user1->getBoat(3)->hcordAt(i)->getCol();
         }
-
-        for(int c=0; c < 4; c++){     //battleship
-            gamesaver.player1.battle.position[c].row = user1->getBoat(3)->cordAt(c)->getRow();
-            gamesaver.player1.battle.position[c].col = user1->getBoat(3)->cordAt(c)->getCol();
+    }
+//carrier
+    for(int c=0; c < 5; c++){     
+        gamesaver.player1.carr.position[c].row = user1->getBoat(4)->cordAt(c)->getRow();
+        gamesaver.player1.carr.position[c].col = user1->getBoat(4)->cordAt(c)->getCol();
+    }
+    gamesaver.player1.carr.dead = user1->getBoat(4)->isDead();
+    gamesaver.player1.carr.hitsz = user1->getBoat(4)->gtHsz();
+    if (gamesaver.player1.carr.hitsz > 0){
+        for (int i=0; i < gamesaver.player1.carr.hitsz; i++){
+            gamesaver.player1.carr.hits[i].row = user1->getBoat(4)->hcordAt(i)->getRow();
+            gamesaver.player1.carr.hits[i].col = user1->getBoat(4)->hcordAt(i)->getCol();
         }
-        gamesaver.player1.battle.dead = user1->getBoat(3)->isDead();
-        gamesaver.player1.battle.hitsz = user1->getBoat(0)->gtHsz();
-        if (gamesaver.player1.battle.hitsz > 0){
-            for (int i=0; i < gamesaver.player1.battle.hitsz; i++){
-                gamesaver.player1.battle.hits[i].row = user1->getBoat(3)->hcordAt(i)->getRow();
-                gamesaver.player1.battle.hits[i].col = user1->getBoat(3)->hcordAt(i)->getCol();
-            }
-        }
-
-        for(int c=0; c < 5; c++){     //carrier
-            gamesaver.player1.carr.position[c].row = user1->getBoat(4)->cordAt(c)->getRow();
-            gamesaver.player1.carr.position[c].col = user1->getBoat(4)->cordAt(c)->getCol();
-        }
-        gamesaver.player1.carr.dead = user1->getBoat(4)->isDead();
-        gamesaver.player1.carr.hitsz = user1->getBoat(4)->gtHsz();
-        if (gamesaver.player1.carr.hitsz > 0){
-            for (int i=0; i < gamesaver.player1.carr.hitsz; i++){
-                gamesaver.player1.carr.hits[i].row = user1->getBoat(4)->hcordAt(i)->getRow();
-                gamesaver.player1.carr.hits[i].col = user1->getBoat(4)->hcordAt(i)->getCol();
-            }
-        }       
+    }       
     
-    
-    //transfer information from User2 to player2 - same process and information as User1
-
+//transfer information from User2 to player2 - same process and information as User1
+//username
+    for(int i = 0; i < strlen(user2->gtName()); i++){ //use the strlen to get the string length, and loop for that many characters
+        gamesaver.player2.name[i] =  user2->gtName()[i]; //put in the username characters one at a time
+    }
+    gamesaver.player2.name[strlen(gamesaver.player2.name)] = '\0';//set null terminator
+    cout <<gamesaver.player2.name <<endl; //print back out for testing purposes
+//User 2 Miss array    
     gamesaver.player2.missSz = user2->gtTotmiSz(); //their miss array size
     if( gamesaver.player2.missSz > 0){
-        for (int i=0; i <  gamesaver.player2.missSz; i++){
+        for (int i=0; i <  gamesaver.player2.missSz; i++){ //once more we test their miss array size, and if there are misses, we transfer that information into our array
              gamesaver.player2.misses[i].row = user2->gtMiCrd(i)->getRow();
              gamesaver.player2.misses[i].col = user2->gtMiCrd(i)->getCol();
         } 
     }   
-//    gamesaver.player2.name = user2->gtName();
-//    cout <<gamesaver.player2.name <<endl;
-    //destroyer
+//destroyer
     for(int c=0; c < 2; c++){     
         gamesaver.player2.destroy.position[c].row = user2->getBoat(0)->cordAt(c)->getRow();
         gamesaver.player2.destroy.position[c].col = user2->getBoat(0)->cordAt(c)->getCol();
@@ -120,8 +120,8 @@ void NSFile::savethegame(User* user1, User* user2){//saving a game
             gamesaver.player2.destroy.hits[i].col = user2->getBoat(0)->hcordAt(i)->getCol();
         }
     }
-    //submarine    
-    for(int c=0; c < 3; c++){   //submarine
+//submarine    
+    for(int c=0; c < 3; c++){   
         gamesaver.player2.sub.position[c].row = user2->getBoat(1)->cordAt(c)->getRow();
         gamesaver.player2.sub.position[c].col = user2->getBoat(1)->cordAt(c)->getCol();
     }
@@ -133,8 +133,8 @@ void NSFile::savethegame(User* user1, User* user2){//saving a game
             gamesaver.player2.sub.hits[i].col = user2->getBoat(1)->hcordAt(i)->getCol();
         }
     }
-    //cruiser
-    for(int c=0; c < 3; c++){     //cruiser
+//cruiser
+    for(int c=0; c < 3; c++){     
         gamesaver.player2.cruisee.position[c].row = user2->getBoat(2)->cordAt(c)->getRow();
         gamesaver.player2.cruisee.position[c].col = user2->getBoat(2)->cordAt(c)->getCol();
     }
@@ -146,8 +146,8 @@ void NSFile::savethegame(User* user1, User* user2){//saving a game
             gamesaver.player2.cruisee.hits[i].col = user2->getBoat(2)->hcordAt(i)->getCol();
         }
     }
-    //battleship
-    for(int c=0; c < 4; c++){     //battleship
+//battleship
+    for(int c=0; c < 4; c++){     
         gamesaver.player2.battle.position[c].row = user2->getBoat(3)->cordAt(c)->getRow();
         gamesaver.player2.battle.position[c].col = user2->getBoat(3)->cordAt(c)->getCol();
     }
@@ -159,8 +159,8 @@ void NSFile::savethegame(User* user1, User* user2){//saving a game
             gamesaver.player2.battle.hits[i].col = user2->getBoat(3)->hcordAt(i)->getCol();
         }
     }
-    //carrier
-    for(int c=0; c < 5; c++){     //carrier
+//carrier
+    for(int c=0; c < 5; c++){     
         gamesaver.player2.carr.position[c].row = user2->getBoat(4)->cordAt(c)->getRow();
         gamesaver.player2.carr.position[c].col = user2->getBoat(4)->cordAt(c)->getCol();    
     }
@@ -173,7 +173,6 @@ void NSFile::savethegame(User* user1, User* user2){//saving a game
             cout <<gamesaver.player2.carr.hits[i].row <<gamesaver.player2.carr.hits[i].col <<endl;
         }
     }
-    
     
     fstream savefile; //open file stream
     savefile.open("savedgames.bin", ios::out|ios::binary|ios::trunc);//open the saved games file
@@ -191,32 +190,33 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
     loadfile.open("savedgames.bin", ios::in|ios::binary);//open savedgames.bin
     int i;
     if (loadfile.is_open()){ //test file is open
-        long cursor = 0L;
+        long cursor = 0L; //cursor
         loadfile.seekg(cursor, ios::beg); //set the cursor
-        cursor = sizeof(gamesave);
+        cursor = sizeof(gamesave);//set cursor to size of gamesave
         loadfile.read(reinterpret_cast<char *> (&gameloader), sizeof(gamesave));//read in the gamesave structure
-        loadfile.close();
+        loadfile.close(); //close file
     }
     else{
         cout <<"File fail!" <<endl;//error for if fail fails to open
-    }      
+    }  
     
+//transfer from player1 in gameloader into load1 user
+//username  testing - print back out to ensure it's good  
     cout <<"Loading in name from file: " <<endl;
-    cout <<gameloader.name <<endl;
-    
-    //transfer the data from coordinate structure to coordinate class
-
+    cout <<gameloader.player1.name <<endl;
+//transfer username from player1 to user load1 using a load1 method
+    load1->updNam(gameloader.player1.name,strlen(gameloader.player1.name));
+//miss array
     if(gameloader.player1.missSz > 0){//check to see if there is anything to transfer to  begin with
-        for (int c = 0; c < gameloader.player1.missSz; c++){
-            Coordinate *transfermiss = new Coordinate(gameloader.player1.misses[c].row,gameloader.player1.misses[c].col);//translate our coordinate back into Coordinate class 
-            load1->adMiss(transfermiss);//after translation, add it into user information
+        for (int c = 0; c < gameloader.player1.missSz; c++){ //loop through how many misses are in the array
+            Coordinate *transfermiss = new Coordinate(gameloader.player1.misses[c].row,gameloader.player1.misses[c].col);//translate our coordinate back into Coordinate class using a temp variable
+            load1->adMiss(transfermiss);//after translation, add it into user (load1) information 
         }
     }
-    //user 1 destroyer
+//destroyer
     for(int i = 0; i < 2; i++){
        Coordinate *tester = new Coordinate(gameloader.player1.destroy.position[i].row, gameloader.player1.destroy.position[i].col);//translate our coordinates back into temp Coordinate class
        transferdes[i] = tester;//put the temp Coordinate into an array of Coordinates - who's size correlates to the boat size
-//       delete tester;
     }
     Destroyer *transdes1 = new Destroyer();//declare a new boat
     transdes1->addCords(transferdes, 2);//transfer the array of coordinates into the new boat
@@ -227,29 +227,11 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
             cout <<transferhit->getRow() <<transferhit->getCol() <<endl;//then transfer into a temp Coordinate
             load1->getBoat(0)->setHit(transferhit); //then transfer that temp Coordinate into the boat hit array
         }
-    }
-    
-    //cruiser
-    for(int i = 0; i < 3; i++){
-       Coordinate *tester = new Coordinate(gameloader.player1.cruisee.position[i].row, gameloader.player1.cruisee.position[i].col);
-       transfercruise[i] = tester;
-//       delete tester;
-    }
-    Cruiser *transcruise1 = new Cruiser();
-    transcruise1->addCords(transfercruise,3);
-    load1->adBoat(transcruise1);
-        if (gameloader.player1.cruisee.hitsz > 0){
-        for (int c = 0; c < gameloader.player1.cruisee.hitsz; c++){
-            Coordinate *transferhit = new Coordinate(gameloader.player1.cruisee.hits[c].row,gameloader.player1.cruisee.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load1->getBoat(1)->setHit(transferhit);
-        }
-    }    
-    //submarine
+    }//this process is repeated for all boats in load1 and load2    
+//submarine
     for(int i = 0; i < 3; i++){
        Coordinate *tester = new Coordinate(gameloader.player1.sub.position[i].row, gameloader.player1.sub.position[i].col);
        transfersub[i] = tester;
-//       delete tester;
     }
     Submarine *transub1 = new Submarine();
     transub1->addCords(transfersub,3);
@@ -258,15 +240,28 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
         for (int c = 0; c < gameloader.player1.sub.hitsz; c++){
             Coordinate *transferhit = new Coordinate(gameloader.player1.sub.hits[c].row,gameloader.player1.sub.hits[c].col);
             cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load1->getBoat(2)->setHit(transferhit);
+            load1->getBoat(1)->setHit(transferhit);
         }
     }
-    
-    //battleship
+//cruiser
+    for(int i = 0; i < 3; i++){
+       Coordinate *tester = new Coordinate(gameloader.player1.cruisee.position[i].row, gameloader.player1.cruisee.position[i].col);
+       transfercruise[i] = tester;
+    }
+    Cruiser *transcruise1 = new Cruiser();
+    transcruise1->addCords(transfercruise,3);
+    load1->adBoat(transcruise1);
+        if (gameloader.player1.cruisee.hitsz > 0){
+        for (int c = 0; c < gameloader.player1.cruisee.hitsz; c++){
+            Coordinate *transferhit = new Coordinate(gameloader.player1.cruisee.hits[c].row,gameloader.player1.cruisee.hits[c].col);
+            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+            load1->getBoat(2)->setHit(transferhit);
+        }
+    }           
+//battleship
     for(int i = 0; i < 4; i++){
        Coordinate *tester = new Coordinate(gameloader.player1.battle.position[i].row, gameloader.player1.battle.position[i].col);
        transferbattle[i] = tester;
-//       delete tester;
     }
     Battleshp *transbat1 = new Battleshp();
     transbat1->addCords(transferbattle,4);
@@ -278,12 +273,10 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
             load1->getBoat(3)->setHit(transferhit);
         }
     }
-    
-    //carrier
+//carrier
     for(int i = 0; i < 5; i++){
        Coordinate *tester = new Coordinate(gameloader.player1.carr.position[i].row, gameloader.player1.carr.position[i].col);
        transfercarr[i] = tester;
-//       delete tester;
     }
     Carrier *transcarr1 = new Carrier();
     transcarr1->addCords(transfercarr, 5);
@@ -297,18 +290,23 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
     }
     
     
-    //user2
+//load 2 information
+//username testing
+    cout <<"Loading in name from file: " <<endl;
+    cout <<gameloader.player2.name <<endl;
+//username
+    load2->updNam(gameloader.player2.name,strlen(gameloader.player2.name));
+//miss array
     if(gameloader.player2.missSz > 0){
         for (int c = 0; c < gameloader.player2.missSz; c++){
             Coordinate *transfermiss = new Coordinate(gameloader.player2.misses[c].row,gameloader.player2.misses[c].col);
             load2->adMiss(transfermiss);
         }
     }
-    //destroyer
+//destroyer
    for(int i = 0; i < 2; i++){
        Coordinate *tester = new Coordinate(gameloader.player2.destroy.position[i].row, gameloader.player2.destroy.position[i].col);
        transferdes[i] = tester;
-//       delete tester;
     }    
     Destroyer *transdes2 =new Destroyer(); 
     transdes2->addCords(transferdes, 2);    
@@ -320,27 +318,10 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
             load2->getBoat(0)->setHit(transferhit);
         }
     }
-    //cruiser
-    for(int i = 0; i < 3; i++){
-       Coordinate *tester = new Coordinate(gameloader.player2.cruisee.position[i].row, gameloader.player2.cruisee.position[i].col);
-       transfercruise[i] = tester;
-//       delete tester;
-    }
-    Cruiser *transcruise2 = new Cruiser();
-    transcruise2->addCords(transfercruise,3);
-    load2->adBoat(transcruise2);
-    if(gameloader.player2.cruisee.hitsz > 0 ){
-        for (int c = 0; c <gameloader.player2.cruisee.hitsz; c++ ){
-            Coordinate *transferhit = new Coordinate(gameloader.player2.cruisee.hits[c].row,gameloader.player2.cruisee.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load2->getBoat(1)->setHit(transferhit);
-        }
-    }
-    //submarine
+//submarine
     for(int i = 0; i < 3; i++){
        Coordinate *tester = new Coordinate(gameloader.player2.sub.position[i].row, gameloader.player2.sub.position[i].col);
        transfersub[i] = tester;
-//       delete tester;
     }
     Submarine *transub2 = new Submarine();
     transub2->addCords(transfersub,3);
@@ -349,14 +330,28 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
         for (int c = 0; c <gameloader.player2.sub.hitsz; c++ ){
             Coordinate *transferhit = new Coordinate(gameloader.player2.sub.hits[c].row,gameloader.player2.sub.hits[c].col);
             cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+            load2->getBoat(1)->setHit(transferhit);
+        }
+    }
+//cruiser
+    for(int i = 0; i < 3; i++){
+       Coordinate *tester = new Coordinate(gameloader.player2.cruisee.position[i].row, gameloader.player2.cruisee.position[i].col);
+       transfercruise[i] = tester;
+    }
+    Cruiser *transcruise2 = new Cruiser();
+    transcruise2->addCords(transfercruise,3);
+    load2->adBoat(transcruise2);
+    if(gameloader.player2.cruisee.hitsz > 0 ){
+        for (int c = 0; c <gameloader.player2.cruisee.hitsz; c++ ){
+            Coordinate *transferhit = new Coordinate(gameloader.player2.cruisee.hits[c].row,gameloader.player2.cruisee.hits[c].col);
+            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
             load2->getBoat(2)->setHit(transferhit);
         }
     }
-    //battleship
+//battleship
     for(int i = 0; i < 4; i++){
        Coordinate *tester = new Coordinate(gameloader.player2.battle.position[i].row, gameloader.player2.battle.position[i].col);
        transferbattle[i] = tester;
-//       delete tester;
     }
     Battleshp *transbat2 = new Battleshp();
     transbat2->addCords(transferbattle,4);
@@ -368,11 +363,10 @@ void NSFile::readingame(User* load1, User* load2){//loading in a game
             load2->getBoat(3)->setHit(transferhit);
         }
     }
-    //carrier
+//carrier
     for(int i = 0; i < 5; i++){
        Coordinate *tester = new Coordinate(gameloader.player2.carr.position[i].row, gameloader.player2.carr.position[i].col);
        transfercarr[i] = tester;
-      // delete tester;
     }
     Carrier *transcarr2 = new Carrier();
     transcarr2->addCords(transfercarr, 5);

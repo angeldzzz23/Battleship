@@ -22,13 +22,15 @@
 
 class AIPlayer : public User {
     private:
-        bool smartHit;
+        bool saveSmartHit;
     public:
+        void setSmartHit(bool);
+        bool getSmartHit() {return saveSmartHit;}
         void RNGCoords(Boat*);
         bool checkPrevMoves(Coordinate*, User*);
         Coordinate* makeAMove(User*);
         AIPlayer();
-        ~AIPlayer();
+        //~AIPlayer();
 };
 
 #endif /* AIPLAYER_H */

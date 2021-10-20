@@ -17,18 +17,21 @@
 
 // our battleship is our controller
 class Battleship {  
-    private: 
+    protected: 
         // user 1 
         User *userOne; // a user One model 
     //  usrbrd - contains UserTwo hits and misses
         Board *usOnBrd; // contains user one boats, and contains UserTwo hits and misses     
         Board *usOnHS; // contains hits and misses of user 
         
-                
-        // user 2
-        User *userTwo; // a userTwo model 
+        //user 2
         Board *usTwBrd; // contains user two boats, and contains UserTwo hits and misses     
         Board *usTwHS; // contains hits and misses of user 
+        
+    private:
+        // user 2
+        User *userTwo; // a userTwo model 
+       
             
         
     public:// for some reason

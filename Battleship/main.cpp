@@ -201,14 +201,6 @@ int main(int argc, char** argv) {
       AI->adMiss(missCoord4);
       
       Coordinate *reCoord;
-      for (int i = 0; i < 2000; i++) {
-        reCoord = AI->makeAMove(user);
-        if (*reCoord == *missCoord1  || *reCoord == *missCoord2 || *reCoord == *missCoord3 || *reCoord == *missCoord4)
-            cout << "Duplicate found\n";
-//        if (reCoord->getRow() == 1 && reCoord->getCol() == 1)
-//            cout << "Kachow\n";
-        cout << "reCoord " << reCoord->getRow() << " " << reCoord->getCol() << endl;
-      }
 
 
     return 0;

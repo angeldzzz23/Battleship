@@ -36,6 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/AIPlayer.o \
+	${OBJECTDIR}/Battleship.o \
+	${OBJECTDIR}/BattleshipAI.o \
 	${OBJECTDIR}/Board.o \
 	${OBJECTDIR}/Boat.o \
 	${OBJECTDIR}/Controller.o \
@@ -74,6 +76,16 @@ ${OBJECTDIR}/AIPlayer.o: AIPlayer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/AIPlayer.o AIPlayer.cpp
+
+${OBJECTDIR}/Battleship.o: Battleship.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Battleship.o Battleship.cpp
+
+${OBJECTDIR}/BattleshipAI.o: BattleshipAI.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BattleshipAI.o BattleshipAI.cpp
 
 ${OBJECTDIR}/Board.o: Board.cpp
 	${MKDIR} -p ${OBJECTDIR}

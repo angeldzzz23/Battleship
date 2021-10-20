@@ -20,7 +20,7 @@ class BattleshipAI : public Battleship {
     public:
         BattleshipAI();
         ~BattleshipAI();
-        void shotAttempt();
+        void AIBSshotAttempt(); //shotAttempt, but made to include AI
 };
 
 #endif /* BATTLESHIPAI_H */

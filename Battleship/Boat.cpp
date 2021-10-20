@@ -86,11 +86,11 @@ Boat::~Boat() {
  
  // retuns a cordAt
  Coordinate* Boat::cordAt(int i) {
-     //cout << i << " " << csize << endl;
-     //if (i > csize) {
-         //cout << "class boat-cordAt: Your index is out of bounds." << endl;
-         //exit(1);
-     //}
+     cout << i << " " << csize << endl;
+//     if (i > csize) {
+//         cout << "class boat-cordAt: Your index is out of bounds." << endl;
+//         exit(1);
+//     }
      
      return cordinate[i];
  }

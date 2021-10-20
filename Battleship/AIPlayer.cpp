@@ -15,6 +15,10 @@ using namespace std;
  * 4 - West
  */
 
+void setSmartHit(bool hit) {
+    this->saveSmartHit = hit;
+}
+
 bool AIPlayer::checkPrevMoves(Coordinate *coord, User *user) {
     //check AI miss array
     for (int i = 0; i < this->missSz; i++) {
@@ -32,11 +36,15 @@ bool AIPlayer::checkPrevMoves(Coordinate *coord, User *user) {
     return true; //Coord DNE; can still be taken
 }
 
-Coordinate* AIPlayer::makeAMove(User *user) {
+Coordinate* AIPlayer::makeAMove(User *user, bool smartHit) {
     Coordinate *coord = nullptr;
     
     while (true) {
-        coord = new Coordinate(rand() % 10, rand() % 10);
+        if (getSmartHit())
+            
+        else
+            coord = new Coordinate(rand() % 10, rand() % 10);
+        
         if (checkPrevMoves(coord, user)) //if coord DNE yet
             return coord;
     }
@@ -143,6 +151,9 @@ void AIPlayer::RNGCoords(Boat* boat) {
 }
 
 AIPlayer::AIPlayer() {
+    //Set smartHit to false
+    saveSmartHit = false;
+    
     //Set rand seed
     srand(time(0));
     
@@ -176,3 +187,7 @@ AIPlayer::AIPlayer() {
     RNGCoords(aiCarr); //Rand gen all coords
     
 }
+
+//AIPlayer::~AIPlayer() {
+//    
+//}

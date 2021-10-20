@@ -26,6 +26,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>AIPlayer.cpp</itemPath>
+      <itemPath>Battleship.cpp</itemPath>
+      <itemPath>BattleshipAI.cpp</itemPath>
       <itemPath>Board.cpp</itemPath>
       <itemPath>Boat.cpp</itemPath>
       <itemPath>Controller.cpp</itemPath>
@@ -77,9 +79,11 @@
       </item>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Battleship.cpp" ex="false" tool="0" flavor2="0">
+      <item path="Battleship.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BattleshipAI.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="BattleshipAI.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -144,9 +148,11 @@
       </item>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Battleship.cpp" ex="false" tool="0" flavor2="0">
+      <item path="Battleship.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="BattleshipAI.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="BattleshipAI.h" ex="false" tool="3" flavor2="0">
       </item>

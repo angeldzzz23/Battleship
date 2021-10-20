@@ -30,6 +30,7 @@ public:
     virtual bool cordHshit(Coordinate*) {return false;} // check if the cordinate has been hit
     virtual void setHit(Coordinate *hit) {};  // initializez the hit with a a cord 
                                               // we might need a a function to set the name
+    int gtCsize() {return csize; }
     virtual int gtHsz() {return hsize;} // returns the the size of the hit array 
 };
 

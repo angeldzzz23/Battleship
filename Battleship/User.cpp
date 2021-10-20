@@ -35,7 +35,7 @@ User::User() {
     name = new char[81]; // dynamically allocate memory for the name 
     
     // allocates memory for hits array 
-    hits =  new Coordinate*[totHit];
+//    hits =  new Coordinate*[totHit];
 
 }
 
@@ -100,9 +100,7 @@ void User::adBoat(Boat *boat) {
         exit(0);
         
     }
-    
-    
-    
+   
     if (boatsz > 0) {
         for(int i = 0; i < boat->reqsz(); i++) {
                 Coordinate *cord = boat->cordAt(i);
@@ -157,7 +155,7 @@ void User::adHit(Coordinate *hit) {
         if (cboat->cordHsadd(hit)) {
             //  set the hit to the boats
             cboat->setHit(hit);
-            hits[hitsz] = hit; // holds a reference to hit 
+//            hits[hitsz] = hit; // holds a reference to hit 
             hitsz += 1; // increment the number of hits the user has
         }         
     }
@@ -201,6 +199,7 @@ bool User::bIsNotTaken(Coordinate* cord) {
 // returns true if the coordinate is a miss
 bool User::isMisB(Coordinate *cord) {
  
+        
     // loop through our boats array and see if that coordinate exists 
     for (int i =0; i < boatsz; i++) {
          Boat *cboat = boats[i];
@@ -208,7 +207,23 @@ bool User::isMisB(Coordinate *cord) {
          if (cboat->cordHsadd(cord)) {
              return false;
          }
+         
+         if (cboat->cordHshit(cord)) {
+             return false;
+         }
+         
+         // check the misses array 
+         
     }
+    
+    // loop thorugh your misses 
+    for (int i = 0; i < missSz;i++) {
+        if (*misses[i] == *cord) {
+            return false;
+        }
+    }
+     
+    
     
     return true;
 }

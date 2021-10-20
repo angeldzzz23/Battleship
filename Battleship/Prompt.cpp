@@ -19,94 +19,53 @@
 using namespace std;
 
 Prompt::Prompt(){
-    username = NULL;
-    inputmain = NULL; //input for main
-    inputturn = NULL;
 
 }
 
-char* Prompt::hello(){ //a simple welcome to the game prompt that asks for a username
+string Prompt::hello(){ //a simple welcome to the game prompt that asks for a username
+    bool valid = false;//set a control bool variable
+    string username; //to take in their username
     cout <<"Welcome to Battleship!" <<endl;
-    cout <<"Please enter username: "; //enter their user name
-    int size = 50;
-    username =new char[size];
-    cin.getline(username,size-1);
-    cout <<username <<endl;
+    do{
+        cout <<"Please enter username: "; //prompt enter their user name
+        getline(cin, username); //take user input
+        if (username.length() > 80){ //ensure it is not too long
+            cout <<"Too large! Re-enter username... ";      
+        }
+    }while(valid == false);
+    cout <<"Welcome, Captain " <<username <<endl; //welcome them to the game
     return username;
 }
 
-char* Prompt::getturn(){ //function for taking turns - all inputs c strings for input validation
-    int size = 50;
-    inputturn = new char[size]; //sized to 50 to protect against oversized and bad inputs
-    bool valid = false; //to test for the do-while loop
-
-    do{
-        cout <<"What would you like to do: \n" //main menu prompt for taking a turn
-                <<"1. Re-Print board \n"
-                <<"2. Print score \n"
-                <<"3. Take shot \n"
-                <<"4. Quit and save the game \n";
-
-        cin.getline(inputturn,size-1);
-        if (strlen(inputturn) > 2){ //to test out garbage inputs with white spaces
-            cout <<"Invalid" <<endl;
-            valid = false;
-        }
-        else if(*inputturn == '1'){
-            cout <<"Printing out board..." <<endl; //link up with display/user/game
-            valid = true;
-        }
-        else if (*inputturn == '2'){
-            cout <<"Printing out score..." <<endl; //link up with display/user class
-            valid = true;
-        }
-        else if (*inputturn == '3'){
-            cout <<"Taking shot..." <<endl; //need work with who is doing coordinate class
-            valid = true;
-        }
-        else if (*inputturn == '4'){ //save game to binary file for later and quit
-            cout <<"Quitting and Saving the game..." <<endl;
-            valid = true;
-        }
-        else{
-            cout <<"Not valid option" <<endl; //input validation
-            valid = false;
-        }
-
-    }while(valid == false); //while be true if inputs are valid, false and repeat for invalid inputs
-    return inputturn; //return the verified input
-}
-
-char* Prompt::mainmenu(){ //function for the main menu - all inputs c strings for input validation
-    int size = 50;
-    inputmain = new char[size]; //sized to 50 to protect against oversized and bad inputs
+string Prompt::mainmenu(){ //function for the main menu - all inputs c strings for input validation
+    string inputmain;
     bool valid = false; //to test for the do-while loop
 
     do{
         cout <<"What would you like to do: \n" //main menu prompt
-                <<"1. Play Computer \n"
+                <<"1. Play against Computer \n"
                 <<"2. Play two-player \n"
-                <<"3. Load saved game \n"
+                <<"3. Load a saved game \n"
                 <<"4. Quit \n";
-        cin.getline(inputmain,size-1);     //getline input
+        getline(cin, inputmain);     //getline input
 
-        if (strlen(inputmain) > 2){ //to test out garbage inputs with white spaces
+        if (inputmain.length() > 2){ //to test out garbage inputs 
             cout <<"Invalid - too many inputs." <<endl;
             valid = false;
         }
-        else if(*inputmain == '1'){
-            cout <<"le AI revolt" <<endl; //link up with game
+        else if(inputmain == "1"){
+            cout <<"AI is getting ready" <<endl; 
             valid = true;
         }
-        else if (*inputmain == '2'){
-            cout <<"le man on man action" <<endl; //link up with game
+        else if (inputmain == "2"){
+            cout <<"Enemy fleet approaching" <<endl; 
             valid = true;
         }
-        else if (*inputmain == '3'){ //loads save game
+        else if (inputmain == "3"){ //loads save game
             cout <<"Loading saved game..." <<endl;
             valid = true;
         }
-        else if (*inputmain == '4'){
+        else if (inputmain == "4"){
             cout <<"Quitting..." <<endl;  //quits the game
             valid = true;
         }
@@ -120,18 +79,11 @@ char* Prompt::mainmenu(){ //function for the main menu - all inputs c strings fo
 }
 
 void Prompt::waitturn(){ //for a two-player game - a little pause for the other player to get on the computer so they do not see each other's boards
-    char *input;  //dynamically allocate an array of characters for input
-    int size = 50;
-    input = new char[size];
-
+    string input;
     cout <<"Thankyou, please let other user take their seat and being their turn. " <<endl //ask other user to get on
             <<"When next player is ready, press any key and enter..." <<endl;
-    cin.getline(input,size-1); //just any input to let program know player is there
-    delete input;
+    cin >> input; //input doesn't matter, just something to tell they're on
 }
-
-
-
 
 void Prompt::winner(char *winner) { //prints out winner of game
     cout <<"Congratulations player: " <<winner <<"!" <<endl //insert username variable of winning player
@@ -271,11 +223,25 @@ string Prompt::getshotcoord(char* name){ //getting a single coordinate for shoot
     return shot;
 }
 
+string Prompt::gtsavefilename(){
+    string savefile;
+    cout <<"Please enter the name of the file you wish to save to: " <<endl
+            <<"NOTE: If you enter the same name as another file, it will be overwritten. Also remember this name for when you wish to load this game again." <<endl
+            <<"File extensions are automatically applied." <<endl;
+    getline(cin, savefile);
+    savefile +=  ".bin"; //add .bin extension to user input
+    return savefile;
+}
+
+string Prompt::gtloadfilename(){
+    string loadfile;
+    cout <<"Please enter the name of the file you wish to load from: " <<endl
+            <<"File extensions are automatically applied." <<endl;
+    getline(cin, loadfile);
+    loadfile +=  ".bin"; //add .bin extension to user input
+    return loadfile;
+}
+
 Prompt::~Prompt(){
-    if(inputturn != NULL)
-        delete inputturn; //delete all our dynamic variables down here
-    if(inputturn != NULL)
-        delete username;
-    if(inputturn != NULL)
-        delete inputmain;
+
 }

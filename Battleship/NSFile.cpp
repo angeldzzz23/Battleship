@@ -177,7 +177,6 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
     }
     
 
-savename +=  ".bin"; //add .bin extension to user input
 cout <<savename <<endl;
     fstream savefile; //open file stream
     savefile.open( savename.c_str(), ios::out|ios::binary);//create the save games file with name specified by the user - use .c_str() to make it a c_string and avoid conflicts
@@ -192,7 +191,6 @@ cout <<savename <<endl;
 }
 
 void NSFile::readingame(User* load1, User* load2, string loadname){//loading in a game
-    loadname += ".bin"; //add the binary extension to user input
     cout <<loadname <<endl; //test to ensure it got through
     fstream loadfile;//start the file stream
     loadfile.open(loadname.c_str(), ios::in|ios::binary);//open .bin specified by the user - use .c_str() to make it a c_string and avoid conflicts
@@ -208,7 +206,7 @@ void NSFile::readingame(User* load1, User* load2, string loadname){//loading in 
     
 //transfer from player1 in gameloader into load1 user
 //username  testing - print back out to ensure it's good  
-    cout <<"Loading in name from file... " <<endl
+    cout <<"Loading in name from file... " <<endl;
     cout <<gameloader.player1.name <<endl;
 //transfer username from player1 to user load1 using a load1 method
     load1->updNam(gameloader.player1.name,strlen(gameloader.player1.name));

@@ -28,6 +28,7 @@
 #include "Prompt.h"
 #include <string>
 #include "Battleship.h"
+#include "NSFile.h"
 #include <map>
 
 

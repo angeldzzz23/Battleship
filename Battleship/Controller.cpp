@@ -76,7 +76,7 @@
       Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
       Board *Sbrd = new Board(); // containts the hits and misses of the user1
       user1->updNam(user1N, 5);
-
+      NSFile *savetest = new NSFile();
 
       // create the user 2
       User *user2 = new User(); // user model
@@ -85,11 +85,16 @@
       char user2N[] = "monster";
       user2->updNam(user2N, 1);
 
-      string sssr;
-      gtUsrBts(user1,brd); // gets the boat from user 1
-      cout << "user 2 press enter to continue" << endl;
-      getline(cin, sssr); // change this later
-      gtUsrBts(user2,brd2); // gets the boat from user 1
+//      string sssr;
+//      gtUsrBts(user1,brd); // gets the boat from user 1
+//      cout << "user 2 press enter to continue" << endl;
+//      getline(cin, sssr); // change this later
+//      gtUsrBts(user2,brd2); // gets the boat from user 1
+    
+    string loadname = prompt.gtloadfilename();
+    savetest->readingame(user1,user2,loadname);
+    brd->update(user1->gtboats(), 5 );
+    brd2->update(user2->gtboats(), 5); 
 
       int gmeType = 2;
                                         // game begins
@@ -122,6 +127,9 @@
           distt->displayboard(hmcUBrd);
           cout << endl;
           // it will be here
+//          string savefile = prompt.gtsavefilename();
+//          savetest->savethegame(user1, user2, savefile);
+          
           string str = prompt.getshotcoord(cUser->gtName());
           inpC = strToSC(str); // transalates coordinate string to coordinate type
 

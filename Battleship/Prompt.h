@@ -10,6 +10,7 @@
  * Version 1 - Ethan and Yanis - basic prompting for functions + inputs and input validation. Will still need to link up with other classes for full functionality but the bases are made
  * Version 2 - Added some more prompting for taking turns and printing the winner of the game 
  * Version 3 - Added in prompt for loading/saving a game from/to a binary file - still need to implement Prompt class into other classes
+ * Version 4 (in save file branch) - Adjusted inputs and methods to match new needs of controller, added functions for loading and saving a game
  * Created on September 28, 2021, 10:43 AM
  */
 
@@ -28,19 +29,14 @@ using namespace std;
 
 class Prompt {
 private:
-    char *username; //class was being weird about accessing username without being in a struct
-    char *inputmain; //input for main
-    char *inputturn;//input for turn
     
 public:
     
     Prompt();
     
-    char* hello();//basic welcome prompt
+    string hello();//basic welcome prompt - adjusted to be string
     
-    char* mainmenu(); //main menu
-    
-    char* getturn(); //for taking turns
+    string mainmenu(); //main menu adjusting to be string
     
     void waitturn(); //for waiting for 2nd user
     
@@ -50,8 +46,9 @@ public:
     
     string getshotcoord(char*);
     
+    string gtsavefilename();
     
-    
+    string gtloadfilename();
     
     ~Prompt();//destructor 
 };

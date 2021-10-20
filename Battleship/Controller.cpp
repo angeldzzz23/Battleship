@@ -75,9 +75,9 @@
       char user1N[] = "angel";
       Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
       Board *Sbrd = new Board(); // containts the hits and misses of the user1
-      user1->updNam(user1N, 1);
+      user1->updNam(user1N, 5);
 
-      
+         
       // create the user 2
       User *user2 = new User(); // user model
       Board *brd2 = new Board();  // View- displays the boats and the hits and misses of user 1.

@@ -14,6 +14,7 @@
  * V4 - Due to not being to save boat data directly, need to create own boat structures that can hold all the necessary information, and hook them up 
  * V4.5 - Interim version - all the necessary boat information (hit arrays, miss arrays, etc.) are all there and accounted for
  * V5 - Switched from using a dynamic char array using a static one for the purpose of saving the usernames 
+ * V6 - Make multi saving possible by allowing user to name their save files
  */
 
 #ifndef NSFILE_H
@@ -88,7 +89,6 @@ struct usersave{ //this one will hold individual users
 };
 
 struct gamesave{ //this one will hold both users who are playing together - thus all the information can be extracted from one super structure
-    int index; //index for the game
     usersave player1; //holds the stats of player one
     usersave player2;    //holds stats of player 
     
@@ -106,8 +106,8 @@ private:
     Coordinate **transfercarr;
 public:
     NSFile();
-    void savethegame(User*, User*);//for saving a game - takes in two user as the parameters
-    void readingame(User*, User*);//for recalling a game - takes in two users and fills them up with information
+    void savethegame(User*, User*, string);//for saving a game - takes in two user as the parameters - takes in string input as name of the file to save to
+    void readingame(User*, User*, string);//for recalling a game - takes in two users and fills them up with information - takes in string input as name of the file to load from
     ~NSFile();
 };
 

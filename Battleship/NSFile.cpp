@@ -1,3 +1,5 @@
+#include <ios>
+
 #include "NSFile.h"
 
 using namespace std;
@@ -11,7 +13,7 @@ NSFile::NSFile(){ //initiate all those dynamic transfer variables for loading ba
 }
 
 //saving a game
-void NSFile::savethegame(User* user1, User* user2){    
+void NSFile::savethegame(User* user1, User* user2, string savename){    
 //take in the username string and put it in our array
     for(int i = 0; i < strlen(user1->gtName()); i++){ //use the strlen to get the string length, and loop for that many characters
         gamesaver.player1.name[i] =  user1->gtName()[i]; //put in the username characters one at a time
@@ -174,8 +176,11 @@ void NSFile::savethegame(User* user1, User* user2){
         }
     }
     
+
+savename +=  ".bin"; //add .bin extension to user input
+cout <<savename <<endl;
     fstream savefile; //open file stream
-    savefile.open("savedgames.bin", ios::out|ios::binary|ios::trunc);//open the saved games file
+    savefile.open( savename.c_str(), ios::out|ios::binary);//create the save games file with name specified by the user - use .c_str() to make it a c_string and avoid conflicts
     if(savefile.is_open()){//test that file is indeed open
         savefile.write(reinterpret_cast<char *> (&gamesaver), sizeof(gamesave));//write to the file using our super structure
         savefile.close();//close the file
@@ -183,26 +188,27 @@ void NSFile::savethegame(User* user1, User* user2){
     else{
         cout <<"File fail!" <<endl;//print out error for if the file fails
     }
+    
 }
 
-void NSFile::readingame(User* load1, User* load2){//loading in a game
+void NSFile::readingame(User* load1, User* load2, string loadname){//loading in a game
+    loadname += ".bin"; //add the binary extension to user input
+    cout <<loadname <<endl; //test to ensure it got through
     fstream loadfile;//start the file stream
-    loadfile.open("savedgames.bin", ios::in|ios::binary);//open savedgames.bin
-    int i;
+    loadfile.open(loadname.c_str(), ios::in|ios::binary);//open .bin specified by the user - use .c_str() to make it a c_string and avoid conflicts
     if (loadfile.is_open()){ //test file is open
         long cursor = 0L; //cursor
         loadfile.seekg(cursor, ios::beg); //set the cursor
-        cursor = sizeof(gamesave);//set cursor to size of gamesave
         loadfile.read(reinterpret_cast<char *> (&gameloader), sizeof(gamesave));//read in the gamesave structure
         loadfile.close(); //close file
     }
     else{
-        cout <<"File fail!" <<endl;//error for if fail fails to open
+        cout <<"File fail! Please double check file name." <<endl;//error for if fail fails to open
     }  
     
 //transfer from player1 in gameloader into load1 user
 //username  testing - print back out to ensure it's good  
-    cout <<"Loading in name from file: " <<endl;
+    cout <<"Loading in name from file... " <<endl
     cout <<gameloader.player1.name <<endl;
 //transfer username from player1 to user load1 using a load1 method
     load1->updNam(gameloader.player1.name,strlen(gameloader.player1.name));

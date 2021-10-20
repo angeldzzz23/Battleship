@@ -33,7 +33,7 @@ Boat::Boat() {
 // This works with destroying other boats
 Boat::~Boat() {
     
-    cout << "dess" << csize << endl;
+  
     
     // loop through hits
     for (int i =0; i < csize; i++) {
@@ -51,6 +51,11 @@ Boat::~Boat() {
     delete [] hits;
     // deletes the cordinates
     delete[] cordinate; 
+
+    csize=0;  // set the coordinate size to zero 
+    hsize=0; // set the hit size to zero
+    dead=0; // sets the boolean to zero 
+
 }
 
 // checks of a specific cordinate has been hit 
@@ -71,6 +76,7 @@ Boat::~Boat() {
     
  }
  // returns a hit coordinate 
+ // TODO: figure out why this fails in the ai 
  Coordinate* Boat::hcordAt(int i) {
      if (i >= hsize) {
          cout << "class boat-hcordaT: your index is out of bounds" << endl;
@@ -80,11 +86,12 @@ Boat::~Boat() {
  }
  
  // retuns a cordAt
+ // TODO: figure out why this fails in the ai 
  Coordinate* Boat::cordAt(int i) {
-     if (i >= csize) {
-         cout << "class boat-cordAt: Your index is out of bounds." << endl;
-         exit(1);
-     }
+//     if (i >= csize) {
+//         cout << "class boat-cordAt: Your index is out of bounds." << endl;
+//         exit(1);
+//     }
      
      return cordinate[i];
  }
@@ -206,11 +213,13 @@ Boat::~Boat() {
         rSort(cord, size);  // 
         for (int i = 0; i < size-1; i++) {
            if (cord[i+1]->getCol() - cord[i]->getCol() != 1) {
-              rcol = false;
+              rrow = false;
           }           
         }
+      
         return rrow;
       } else if (rcol) {   // do the col case
+         
          // we sort the cordinate by their row element (smallest to largest)
          // we subtract cord[i + 1] - cord[i] to check they all have a row distance of one
         sort(cord,size); // sort by col 

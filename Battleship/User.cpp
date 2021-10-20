@@ -33,8 +33,10 @@ User::User() {
     misses = new Coordinate*[totMis];
     
     name = new char[81]; // dynamically allocate memory for the name 
- 
- 
+    
+    // allocates memory for hits array 
+//    hits =  new Coordinate*[totHit];
+
 }
 
 // returns false if the boat passed in the parameter does not exist in user
@@ -44,12 +46,6 @@ bool User::hboat(Boat* boat) {
         return false;
     }
         
-    // TODO
-    // loop through the boats and check if they exist 
-//    for (int i = 0; i < boatsz; i++) {
-//        
-//    }
-    // 
     return true;
 }
 
@@ -97,7 +93,13 @@ bool User::CrdsNotTaken(Coordinate** cord, int size) { // returns true if all of
 // TODO: check if the function works for other boats 
 void User::adBoat(Boat *boat) {
     // if the boat has at least another coordinate of another boat 
-    cout << boatsz << endl;
+  
+      // debugging 
+    if (boatsz == 5) {
+        cout << "we got five boats" << endl;
+        exit(0);
+        
+    }
    
     if (boatsz > 0) {
         for(int i = 0; i < boat->reqsz(); i++) {
@@ -119,17 +121,24 @@ void User::adBoat(Boat *boat) {
         exit(0);
     }  
     
-    
-    // debugging 
-    if (boatsz == 5) {
-        cout << "we got five boats" << endl;
-    }
-    
-  
-    
-   
-    
 }
+
+// returns true if all of the boats in user are dead
+ bool User::alBrDead() {
+     if (boatsz != 5) {
+         cout << "all boats cannot be dead. Please initialize all your boats" << endl;
+         exit(1);
+     }
+     
+     for (int i = 0; i < boatsz; i++) { // loop through all of the boats 
+         Boat *cboat = boats[i]; // boat that specific index
+         if (!cboat->isDead()) {
+             return false;
+         }
+     }
+     
+     return true; 
+ }
 
 
 // updates the enemy board with the hit
@@ -146,11 +155,12 @@ void User::adHit(Coordinate *hit) {
         // check if the boat contains the cordinate 
         if (cboat->cordHsadd(hit)) {
             //  set the hit to the boats
-            cboat->setHit(hit); 
+            cboat->setHit(hit);
+//            hits[hitsz] = hit; // holds a reference to hit 
+            hitsz += 1; // increment the number of hits the user has
         }         
     }
     
-    hitsz += 1; // increment the number of hits the user has
 }
 
 
@@ -190,6 +200,7 @@ bool User::bIsNotTaken(Coordinate* cord) {
 // returns true if the coordinate is a miss
 bool User::isMisB(Coordinate *cord) {
  
+        
     // loop through our boats array and see if that coordinate exists 
     for (int i =0; i < boatsz; i++) {
          Boat *cboat = boats[i];
@@ -197,11 +208,26 @@ bool User::isMisB(Coordinate *cord) {
          if (cboat->cordHsadd(cord)) {
              return false;
          }
+         
+         if (cboat->cordHshit(cord)) {
+             return false;
+         }
+         
+         // check the misses array 
+         
     }
+    
+    // loop thorugh your misses 
+    for (int i = 0; i < missSz;i++) {
+        if (*misses[i] == *cord) {
+            return false;
+        }
+    }
+     
+    
     
     return true;
 }
-
 
 
 // updates the enemyboard with the miss
@@ -257,6 +283,8 @@ Boat* User::getBoat(int i) {
     delete [] boats;
     delete [] misses;
     delete [] name; 
+ 
+    
     
 }
 

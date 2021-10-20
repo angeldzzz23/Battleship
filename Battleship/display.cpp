@@ -32,3 +32,7 @@ void Display::displayboard(Board *board1){
     }
     
 }
+
+ void Display::clearScreen() {
+       cout << string(100,'\n');
+   }

@@ -23,6 +23,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Battleship.cpp</itemPath>
       <itemPath>Board.cpp</itemPath>
       <itemPath>Boat.cpp</itemPath>
       <itemPath>Controller.cpp</itemPath>
@@ -70,6 +71,8 @@
         </ccTool>
       </compileType>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Battleship.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -131,6 +134,8 @@
         </asmTool>
       </compileType>
       <item path="AbsBoat.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Battleship.cpp" ex="false" tool="0" flavor2="0">
       </item>
       <item path="Battleship.h" ex="false" tool="3" flavor2="0">
       </item>

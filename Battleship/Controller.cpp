@@ -12,6 +12,9 @@
  */
 
 #include "Controller.h"
+#include <string.h>
+#include <cstring>
+
 
    // TODO: a input validation class
    void Controller::clearScreen() {
@@ -62,42 +65,47 @@
        return -1;
    }
 
-   //
-   Controller:: Controller() {
-
-
+   
+ void Controller::gameController() {
+     
+     Prompt prompt;    
+       
      Display *distt = new Display(); // displays board
-     Prompt prompt;
-
-
-    // create the user 1
-      User *user1 = new User(); // user model
-      char user1N[] = "angel";
-      Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
-      Board *Sbrd = new Board(); // containts the hits and misses of the user1
-      user1->updNam(user1N, 5);
-      NSFile *savetest = new NSFile();
-
-      // create the user 2
-      User *user2 = new User(); // user model
-      Board *brd2 = new Board();  // View- displays the boats and the hits and misses of user 1.
-      Board *Sbrd2 = new Board(); //
-      char user2N[] = "monster";
-      user2->updNam(user2N, 1);
-
-//      string sssr;
-//      gtUsrBts(user1,brd); // gets the boat from user 1
-//      cout << "user 2 press enter to continue" << endl;
-//      getline(cin, sssr); // change this later
-//      gtUsrBts(user2,brd2); // gets the boat from user 1
     
-    string loadname = prompt.gtloadfilename();
-    savetest->readingame(user1,user2,loadname);
-    brd->update(user1->gtboats(), 5 );
-    brd2->update(user2->gtboats(), 5); 
+     // get the name for the user1 
+    prompt.user(gtuser1());
+    string usr1Name = prompt.hello(); // gets the name of user1
+    char user1N[usr1Name.length() + 1]; // 
+    strcpy(user1N, usr1Name.c_str()); // convers user1Name to a string 
+    
+      // create the user 1
+    User *user1 = new User(); // user model
+    Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
+    Board *Sbrd = new Board(); // containts the hits and misses of the user1
+     user1->updNam(user1N, strlen(user1N));
+//      NSFile *savetest = new NSFile();
 
-      int gmeType = 2;
-                                        // game begins
+     distt->clearScreen();
+     // get the name for the user 2
+     prompt.user(gtuser2());
+     string usr2Name = prompt.hello();
+     char user2N[usr2Name.length() + 1];
+     strcpy(user2N, usr2Name.c_str());
+     
+     // sets up the user stuff 
+     User *user2 = new User(); // user model
+     Board *brd2 = new Board();  // View- displays the boats and the hits and misses of user 1.
+     Board *Sbrd2 = new Board(); // creates the board for the user 
+     user2->updNam(user2N, strlen(user2N));
+      
+
+      string sssr;
+      gtUsrBts(user1,brd); // gets the boat from user 1
+      prompt.waitturn(); // lets the other player wait for their turn 
+      gtUsrBts(user2,brd2); // gets the boat from user 1
+      
+
+          // game begins
        Battleship *game = new Battleship(2);
 
        game->setUserOne(user1);
@@ -109,14 +117,16 @@
        Board *Cbrd = Sbrd; // The user hits and misses
        Board *CSbrd = brd2; // the enemy board that contains user hits and misses
 
-       Coordinate *inpC; // inputted coordinate
+       Coordinate *inpC; // inputted coordinate variable 
         Board *bwBoat ;
         Board *hmcUBrd;
-
+        
+        // assigns the bwboat to the approatiate board 
         (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
+         // assigns the Sbrd, to the appropriate user
         (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
-
+        // beginning of the do while loop 
         do {
           cout << "the hits and misses of the enemy + ur boats" << endl;
           // displays board
@@ -126,9 +136,6 @@
           cout << "you hits and misses" << endl;
           distt->displayboard(hmcUBrd);
           cout << endl;
-          // it will be here
-//          string savefile = prompt.gtsavefilename();
-//          savetest->savethegame(user1, user2, savefile);
           
           string str = prompt.getshotcoord(cUser->gtName());
           inpC = strToSC(str); // transalates coordinate string to coordinate type
@@ -148,19 +155,13 @@
             updUsrViews(Sbrd, brd2,user1,user2);
             updUsrViews(Sbrd2,brd,user2,user1);
 
-
-//          cout << "press n to continue " << endl;
-//          getline(cin, str);
-
           // alternate the user
           (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
-//
-//          // update the opposite user
+          // update the opposite user
           (*oUser == *user2) ? (oUser = user1) :  (oUser = user2);
-//
-//          // updates the boards
+         // assigns the bwboat to the approatiate board 
           (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
-//
+          //  assigns the current user to 
           (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
        }while(!game->gameIsOver());
@@ -172,10 +173,32 @@
 
 
        delete game;
-//        delete display;
+       delete distt;
 
+ }
+   
+   
+ // the constructor decides which game will be played 
+   Controller:: Controller() {
+       Prompt prompt;
+       string userI = prompt.mainmenu();
+       Display dist;
+       if (userI == "1") {
+           cout << "1111" << endl;
+       } else if (userI == "2") {
+        // play a 2 player game 
+           dist.clearScreen();
+           gameController();
+           
+       } else if ((userI == "3")) {
+             cout << "33333" << endl;
+       } else if (userI == "4") {
+             cout << "14444" << endl;
+       }
+     
+       
    }
-
+   // helps get the userBts, and updates the user board 
    void Controller::gtUsrBts(User *user, Board* brd) {
       Prompt prompt;
      Display dist;
@@ -293,7 +316,7 @@
     return cords;
 }
 
-
+   // converts a string to a coordinate array 
    Coordinate *Controller::strToSC(string sC) {
     // you prompt class is doing something wrong
     if (sC.length() != 3 && sC.length() != 2) {
@@ -326,7 +349,7 @@
     return cord;
 }
 
-
+   // helps updUsrViews
    void Controller::updUsrViews(Board* Sbrd, Board *Ebrd, User* us1, User *us2) {
        // you get the misses from user 1 and update it's board
        Sbrd->upmss(us1->gtmiss(), us1->gtTotmiSz());

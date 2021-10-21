@@ -27,8 +27,7 @@ Battleship::Battleship(int gameType) {
  void Battleship::setUserOne(User* user) {
     // point userOne to user
      userOne = user;
-     
-     
+   
  }
  
  // we set the user two

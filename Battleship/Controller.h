@@ -44,6 +44,11 @@ class Controller {
   Coordinate** strTCo( string strC, int btsz);
   Coordinate *strToSC(string sC);
   void updUsrViews(Board*Sbrd, Board *Ebrd, User* us1, User *us2);
+  void gameController();
+  void mnMnCntrl(); // the main menu control 
+  string gtuser1() {return "user1";}
+  string gtuser2() {return "user2";}
+  
    // deconstructor: TODO
 private:
 

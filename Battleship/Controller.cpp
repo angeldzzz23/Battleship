@@ -67,10 +67,6 @@
 
    
  void Controller::gameController() {
-     
-     Prompt prompt;    
-       
-     Display *distt = new Display(); // displays board
     
      // get the name for the user1 
     prompt.user(gtuser1());
@@ -83,9 +79,8 @@
     Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
     Board *Sbrd = new Board(); // containts the hits and misses of the user1
      user1->updNam(user1N, strlen(user1N));
-//      NSFile *savetest = new NSFile();
 
-     distt->clearScreen();
+     distt.clearScreen();
      // get the name for the user 2
      prompt.user(gtuser2());
      string usr2Name = prompt.hello();
@@ -99,7 +94,6 @@
      user2->updNam(user2N, strlen(user2N));
       
 
-      string sssr;
       gtUsrBts(user1,brd); // gets the boat from user 1
       prompt.waitturn(); // lets the other player wait for their turn 
       gtUsrBts(user2,brd2); // gets the boat from user 1
@@ -117,7 +111,7 @@
        Board *Cbrd = Sbrd; // The user hits and misses
        Board *CSbrd = brd2; // the enemy board that contains user hits and misses
 
-       Coordinate *inpC; // inputted coordinate variable 
+        Coordinate *inpC; // inputted coordinate variable 
         Board *bwBoat ;
         Board *hmcUBrd;
         
@@ -128,17 +122,18 @@
 
         // beginning of the do while loop 
         do {
-          cout << "the hits and misses of the enemy + ur boats" << endl;
+         
+          distt.htsNMisTle(); // displays the title 
           // displays board
-          distt->displayboard(bwBoat);
-          cout << endl;
+          distt.displayboard(bwBoat);
+          cout << endl; // displays a new line 
 
-          cout << "you hits and misses" << endl;
-          distt->displayboard(hmcUBrd);
+          distt.yHmTle(); // displays title of hits and misses 
+          distt.displayboard(hmcUBrd);
           cout << endl;
           
           string str = prompt.getshotcoord(cUser->gtName());
-          inpC = strToSC(str); // transalates coordinate string to coordinate type
+          inpC = strToSC(str); // translates coordinate string to coordinate type
 
           // check if it is a valid hit or if its a valid miss
           if (!((cUser->isMisB(inpC) || oUser->isHitb(inpC)))) {
@@ -156,31 +151,28 @@
             updUsrViews(Sbrd2,brd,user2,user1);
 
           // alternate the user
-          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
+//          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
           // update the opposite user
-          (*oUser == *user2) ? (oUser = user1) :  (oUser = user2);
+//          (*oUser == *user2) ? (oUser = user1) :  (oUser = user2);
          // assigns the bwboat to the approatiate board 
-          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
+//          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
           //  assigns the current user to 
-          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
+//          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
        }while(!game->gameIsOver());
 
        clearScreen();
        User *user = game->getWin();
        // display winner
-       prompt.winner(user->gtName());
+       distt.winner(user->gtName());
 
 
        delete game;
-       delete distt;
+    
 
  }
-   
-   
- // the constructor decides which game will be played 
-   Controller:: Controller() {
-       Prompt prompt;
+   void Controller::mnMnCntrl() {
+             
        string userI = prompt.mainmenu();
        Display dist;
        if (userI == "1") {
@@ -195,12 +187,18 @@
        } else if (userI == "4") {
              cout << "14444" << endl;
        }
-     
-       
+      
+   }
+   
+ // the constructor decides which game will be played 
+   Controller:: Controller() {
+       distt = Display();
+       // calls the main menu control 
+        mnMnCntrl();
    }
    // helps get the userBts, and updates the user board 
    void Controller::gtUsrBts(User *user, Board* brd) {
-      Prompt prompt;
+      
      Display dist;
      // the name of the boats
     string name[6] = {"destroyer", "submarine", "cruiser", "battleship", "carrier"};

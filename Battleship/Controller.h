@@ -51,7 +51,8 @@ class Controller {
   
    // deconstructor: TODO
 private:
-
+    Display distt; // the display of the controller 
+    Prompt prompt; // the prompt of the controller.. prompts the user for input 
 };
 
 

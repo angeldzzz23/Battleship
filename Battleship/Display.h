@@ -16,15 +16,20 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 #include "Board.h"
-
+#include <iostream>
 // this class is in charged of display everything from the board
+using namespace std;
 
 class Display {
 private:
 public:
     void displayboard(Board *board1);
      void clearScreen(); 
+     void htsNMisTle() {cout << "the hits and misses of the enemy + ur boats" << endl;} // the title for hits and misses 
+     void yHmTle() {cout << "you hits and misses" << endl; }; // displays the hits and misses of the user title
+     void winner(char *winner);
+     
 };
-
+   
 #endif /* DISPLAY_H */
 

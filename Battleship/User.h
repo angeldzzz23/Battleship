@@ -26,6 +26,7 @@ class User {
     Coordinate **misses;  // constains
     int hitsz;
 //    Coordinate **hits;
+    bool currentUser;
 public:
     User(); //initializes a user with a name
     void updNam(char *n, int sz); // updates the name of the user
@@ -50,6 +51,8 @@ public:
     Coordinate** gtmiss() {return misses;} // gets the misses of the boat
     int gthtSz() {return hitsz;} // gets the size of the boat
     int reqBSz() {return 5;} // the amount of boats a user can have
+    bool isCurrentUser() {return currentUser;}
+    void setCurUrs(bool cur) {currentUser = cur;}
 
 
     ~User(); // destructor

@@ -15,6 +15,7 @@ User::User() {
     static int identifier = 0;
     identifier +=1;
     id = identifier;
+    currentUser = false;
     
     int brdsz = 100; // the size of the board 
     int boatszs = 5; // the total number of boats a user can add 

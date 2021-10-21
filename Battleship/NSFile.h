@@ -73,7 +73,7 @@ struct carrie{//carrier structure
 };
 
 struct usersave{ //this one will hold individual users
-    bool isturn;//for saving who's turn it is
+    bool curruser;//for saving who's turn it is
     int id; // the identifier of a user    
     int missSz; // the size of the misses array  
     int hitsz; //the total size of the hits array

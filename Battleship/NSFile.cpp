@@ -20,6 +20,8 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
     }
     gamesaver.player1.name[strlen(user1->gtName())] = '\0'; //set the null terminator at the end of the username string
     cout <<gamesaver.player1.name <<endl; //print back out for testing purposes
+//user turn - an integer file to determine if it's this users turn ot not    
+    gamesaver.player1.curruser = user1->isCurrentUser();
 //miss array
     gamesaver.player1.missSz = user1->gtTotmiSz(); //size of user 1 miss array       
     if( gamesaver.player1.missSz > 0){ //if there are misses to store
@@ -101,6 +103,8 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
     }
     gamesaver.player2.name[strlen(gamesaver.player2.name)] = '\0';//set null terminator
     cout <<gamesaver.player2.name <<endl; //print back out for testing purposes
+//user turn - an integer file to determine if it's this users turn ot not    
+    gamesaver.player2.curruser = user2->isCurrentUser();
 //User 2 Miss array    
     gamesaver.player2.missSz = user2->gtTotmiSz(); //their miss array size
     if( gamesaver.player2.missSz > 0){
@@ -202,12 +206,15 @@ void NSFile::readingame(User* load1, User* load2, string loadname){//loading in 
     }
     else{
         cout <<"File fail! Please double check file name." <<endl;//error for if fail fails to open
+        exit(1); //exit value
     }  
     
 //transfer from player1 in gameloader into load1 user
 //username  testing - print back out to ensure it's good  
     cout <<"Loading in name from file... " <<endl;
     cout <<gameloader.player1.name <<endl;
+//curruser update
+    load1->setCurUrs(gameloader.player1.curruser);
 //transfer username from player1 to user load1 using a load1 method
     load1->updNam(gameloader.player1.name,strlen(gameloader.player1.name));
 //miss array
@@ -300,6 +307,8 @@ void NSFile::readingame(User* load1, User* load2, string loadname){//loading in 
     cout <<gameloader.player2.name <<endl;
 //username
     load2->updNam(gameloader.player2.name,strlen(gameloader.player2.name));
+//player turn
+    load2->setCurUrs(gameloader.player2.curruser);
 //miss array
     if(gameloader.player2.missSz > 0){
         for (int c = 0; c < gameloader.player2.missSz; c++){

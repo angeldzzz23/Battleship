@@ -15,6 +15,7 @@
       <itemPath>NSFile.h</itemPath>
       <itemPath>Prompt.h</itemPath>
       <itemPath>User.h</itemPath>
+      <itemPath>inptVal.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -110,6 +111,8 @@
       </item>
       <item path="display.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="inptVal.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -172,6 +175,8 @@
       <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="inptVal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -29,6 +29,7 @@
 #include <string>
 #include "Battleship.h"
 #include "NSFile.h"
+#include "inptVal.h"
 #include <map>
 
 
@@ -53,6 +54,7 @@ class Controller {
 private:
     Display distt; // the display of the controller 
     Prompt prompt; // the prompt of the controller.. prompts the user for input 
+    InptVal inptval; // displays input validation errors
 };
 
 

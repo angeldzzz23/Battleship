@@ -71,14 +71,14 @@
      // get the name for the user1 
     prompt.user(gtuser1());
     string usr1Name = prompt.hello(); // gets the name of user1
-    char user1N[usr1Name.length() + 1]; // 
+    char user1N[usr1Name.length() + 1]; // translates the user
     strcpy(user1N, usr1Name.c_str()); // convers user1Name to a string 
     
       // create the user 1
     User *user1 = new User(); // user model
     Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
     Board *Sbrd = new Board(); // containts the hits and misses of the user1
-     user1->updNam(user1N, strlen(user1N));
+    user1->updNam(user1N, strlen(user1N));
 
      distt.clearScreen();
      // get the name for the user 2
@@ -125,11 +125,11 @@
          
           distt.htsNMisTle(); // displays the title 
           // displays board
-          distt.displayboard(bwBoat);
+          distt.displayboard(bwBoat); // displasy the boats of current user along with the 
           cout << endl; // displays a new line 
 
           distt.yHmTle(); // displays title of hits and misses 
-          distt.displayboard(hmcUBrd);
+          distt.displayboard(hmcUBrd); // displays the hits and misses of current user
           cout << endl;
           
           string str = prompt.getshotcoord(cUser->gtName());
@@ -142,8 +142,7 @@
               // ask for input again
               continue; // asks for input again
           }
-
-
+          
              // makes a move
              game->shotAttempt(cUser, inpC); // make a move with the current user
                                    // Update views
@@ -151,13 +150,13 @@
             updUsrViews(Sbrd2,brd,user2,user1);
 
           // alternate the user
-//          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
+          (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
           // update the opposite user
-//          (*oUser == *user2) ? (oUser = user1) :  (oUser = user2);
+          (*oUser == *user2) ? (oUser = user1) :  (oUser = user2);
          // assigns the bwboat to the approatiate board 
-//          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
+          (*cUser == *user1) ? (bwBoat = brd) : (bwBoat = brd2); // board with boats and hits and misses of enemy
           //  assigns the current user to 
-//          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
+          (*cUser == *user1) ? (hmcUBrd = Sbrd) : (hmcUBrd = Sbrd2);
 
        }while(!game->gameIsOver());
 
@@ -236,14 +235,11 @@
        Coordinate **bCord = strTCo(usrCord,sz);
 
        // check if the coordinate is unique
+       // if it is not unique, we ask for input again
        if ( !(user->CrdsNotTaken(bCord,sz )) || (!(bts[i]->alCords(bCord, sz)))) {
-           cout << "ask for input again"  << endl;
-
            i--;
            continue;
        }
-
-       // check if each coordinate is not good
 
        bts[i]->addCords(bCord, sz);
        // add the boat to user
@@ -315,15 +311,16 @@
 }
 
    // converts a string to a coordinate array 
+   // the string size will always be 2 or 3. 
+   // our prompt class takes care of this 
    Coordinate *Controller::strToSC(string sC) {
     // you prompt class is doing something wrong
     if (sC.length() != 3 && sC.length() != 2) {
-        cout << sC.length() << endl;
-        cout << "length of string is not 2 or 3" << endl;
+        inptval.memStr(); // displays the an error before exiting 
         exit(1);
     }
 
-    //this
+    //
     Coordinate *cord = NULL; // set it to null
 
     // here im assuming the string i got is correct forma a1 or A1 or A10
@@ -336,16 +333,11 @@
 
 
     } else if (sC.length() == 2) { // ther user inputted a letter and a
-
         cord = new Coordinate(cnvrtLet(sC[0]),cnvrt(sC[1]));
-//        return new Coordinate(cnvrtLet(sC[0]),cnvrt(sC[1]));
-    }
-
-
-
-
+   }
+    
     return cord;
-}
+} // end of strToSC
 
    // helps updUsrViews
    void Controller::updUsrViews(Board* Sbrd, Board *Ebrd, User* us1, User *us2) {
@@ -356,8 +348,10 @@
        // user 1 hits are located in user2 boats
        Sbrd->upHts(us2->gtboats(), us2->gtTotBtsz());
 
-
+       // update the enemey board of user 1 with the user1 misses 
        Ebrd->upmss(us1->gtmiss(), us1->gtTotmiSz());
+       
+       // update the enemy board of user1 with the user2 boat hits. 
        Ebrd->upHts(us2->gtboats(), us2->gtTotBtsz());
 
    }

@@ -70,7 +70,7 @@ private:
     Board *Sbrd2; // view 4 -  contains the hits and misses of user2
     // creating users and boards
     void crtUsNBrd(); // allocates memory for all of the usr brd
-    // nsfile 
+    NSFile saveload; 
     string lfile; // the name of the file you are saving
     string sfile; // the name of the file you are 
     bool lgame; // load the game..initialize is set to false  

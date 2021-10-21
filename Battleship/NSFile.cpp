@@ -13,7 +13,8 @@ NSFile::NSFile(){ //initiate all those dynamic transfer variables for loading ba
 }
 
 //saving a game
-void NSFile::savethegame(User* user1, User* user2, string savename){    
+void NSFile::savethegame(User* user1, User* user2, string savename){   
+    gamesaver.player1.isAI = false;
 //take in the username string and put it in our array
     for(int i = 0; i < strlen(user1->gtName()); i++){ //use the strlen to get the string length, and loop for that many characters
         gamesaver.player1.name[i] =  user1->gtName()[i]; //put in the username characters one at a time
@@ -97,6 +98,7 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
     }       
     
 //transfer information from User2 to player2 - same process and information as User1
+     gamesaver.player1.isAI = false;
 //username
     for(int i = 0; i < strlen(user2->gtName()); i++){ //use the strlen to get the string length, and loop for that many characters
         gamesaver.player2.name[i] =  user2->gtName()[i]; //put in the username characters one at a time

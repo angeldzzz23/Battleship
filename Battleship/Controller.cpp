@@ -91,11 +91,14 @@
     // save the game 
     // in order to save a game the user be playing the
     void Controller::saveGame() {
-        // ask the user to enter a file name 
+        //get filename from user
+        sfile = prompt.gtsavefilename();
         
-        // save their game status using NSFIle 
+        //save the game
+        saveload.savethegame(user1, user2, sfile);
         
-        // quit the game.. do nothing
+        //exit the game
+        //exit(0); I assume?
     }
     
               
@@ -230,11 +233,13 @@
       // load the game stuff here 
       // ask the user to input a file name 
       // set lname to the name of the file 
-     
+     lfile = prompt.gtloadfilename();         
      
      // call the crtUsNBrd() method 
+     crtUsNBrd();
      
-    // call the NSfile method to load the game 
+    // call the NSfile method to load the game  (I called the NSFile object "savefile")
+     saveload.readingame(user1, user2, lfile);
       
      // set the lfile to true
      lfile = true;
@@ -242,6 +247,8 @@
      // if the game is playing against an AI, call the AI game method 
      
     // if the game is playing a 2 player game, Call gameController()
+     //update board info here
+     gameController();
       
  }
  

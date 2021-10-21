@@ -100,6 +100,7 @@
     
               
    // the game controller for the 2 player game 
+  // TODO: 
  void Controller::gameController() {
     
      // this means the users havent been created
@@ -116,8 +117,8 @@
       prompt.waitturn(); // lets the other player wait for their turn 
       gtUsrBts(user2,brd2); // gets the boat from user 1
       
-//      user1->setCurUrs(true);
-//     user2->setCurUrs(false);
+      user1->setCurUrs(true);
+      user2->setCurUrs(false);
       
      }
      
@@ -131,10 +132,15 @@
        game->setUserOne(user1);
        game->setUserTwo(user2);
        
-
+       
        User *cUser = user1; // the current player
+          
+       (user1->isCurrentUser()) ? (cUser = user1) : (cUser = user2);
+       
        User *oUser = user2; // the other player
-
+       (!user2->isCurrentUser()) ? (oUser = user2) : (oUser = user1);
+       
+    
        Board *Cbrd = Sbrd; // The user hits and misses
        Board *CSbrd = brd2; // the enemy board that contains user hits and misses
 
@@ -161,8 +167,9 @@
           
           string str = prompt.getshotcoord(cUser->gtName());
           // check if the user quit 
-          if (str == "q" || "Q") { saveGame(); break;}
           // if the user quit, save their game
+          if (str == "q" || str == "Q") { saveGame(); break;} // memory dealloc is taken care of at the end 
+          
           
           inpC = strToSC(str); // translates coordinate string to coordinate type
 
@@ -179,7 +186,17 @@
                                    // Update views
             updUsrViews(Sbrd, brd2,user1,user2);
             updUsrViews(Sbrd2,brd,user2,user1);
-
+            
+            
+            // this updating the model, so that we keep the data whenever the user quits
+            if (user1->isCurrentUser()) { 
+                user1->setCurUrs(false);
+                user2->setCurUrs(true);
+            } else if (user2->isCurrentUser()) {
+                user2->setCurUrs(false);
+                user1->setCurUrs(true);
+            }
+            
           // alternate the user
           (*cUser == *user1) ? (cUser = user2) :  (cUser = user1);
           // update the opposite user

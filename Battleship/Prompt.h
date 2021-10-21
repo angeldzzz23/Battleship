@@ -18,7 +18,7 @@
 #define PROMPT_H
 #include <cstring>
 #include <string>
-
+#include <iostream>
 using namespace std;
 // TODO: THink of all the type of user input that we will need
 // might want to talk to the person working on game and cruiserclass
@@ -33,7 +33,7 @@ private:
 public:
     
     Prompt();
-    
+    void user(string usr) {cout << usr << endl;}
     string hello();//basic welcome prompt - adjusted to be string
     
     string mainmenu(); //main menu adjusting to be string

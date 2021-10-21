@@ -36,3 +36,8 @@ void Display::displayboard(Board *board1){
  void Display::clearScreen() {
        cout << string(100,'\n');
    }
+ 
+ void  Display::winner(char *winner) { //prints out winner of game
+    cout <<"Congratulations player: " <<winner <<"!" <<endl //insert username variable of winning player
+            <<"You have won! " <<endl; //perhaps also put in their score
+}

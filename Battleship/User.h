@@ -51,7 +51,7 @@ public:
     Coordinate** gtmiss() {return misses;} // gets the misses of the boat
     int gthtSz() {return hitsz;} // gets the size of the boat
     int reqBSz() {return 5;} // the amount of boats a user can have
-    bool isCurrentUser() {return currentUser;}
+    bool isCurrentUser() {return currentUser;} // sets the current user 
     void setCurUrs(bool cur) {currentUser = cur;}
 
 

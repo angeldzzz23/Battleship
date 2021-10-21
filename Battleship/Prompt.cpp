@@ -25,13 +25,16 @@ Prompt::Prompt(){
 string Prompt::hello(){ //a simple welcome to the game prompt that asks for a username
     bool valid = false;//set a control bool variable
     string username; //to take in their username
-    cout <<"Welcome to Battleship!" <<endl;
     do{
         cout <<"Please enter username: "; //prompt enter their user name
         getline(cin, username); //take user input
         if (username.length() > 80){ //ensure it is not too long
             cout <<"Too large! Re-enter username... ";      
+            valid = false;
+        } else {
+              valid = true;
         }
+      
     }while(valid == false);
     cout <<"Welcome, Captain " <<username <<endl; //welcome them to the game
     return username;
@@ -57,8 +60,7 @@ string Prompt::mainmenu(){ //function for the main menu - all inputs c strings f
             cout <<"AI is getting ready" <<endl; 
             valid = true;
         }
-        else if (inputmain == "2"){
-            cout <<"Enemy fleet approaching" <<endl; 
+        else if (inputmain == "2") {
             valid = true;
         }
         else if (inputmain == "3"){ //loads save game
@@ -82,7 +84,8 @@ void Prompt::waitturn(){ //for a two-player game - a little pause for the other 
     string input;
     cout <<"Thankyou, please let other user take their seat and being their turn. " <<endl //ask other user to get on
             <<"When next player is ready, press any key and enter..." <<endl;
-    cin >> input; //input doesn't matter, just something to tell they're on
+//    cin >> input; //input doesn't matter, just something to tell they're on
+    getline(cin, input);
 }
 
 void Prompt::winner(char *winner) { //prints out winner of game
@@ -90,6 +93,8 @@ void Prompt::winner(char *winner) { //prints out winner of game
             <<"You have won! " <<endl; //perhaps also put in their score
 }
 
+// returns a board coordinate 
+// however, this detects if the user wants exit the game
 string Prompt::getboatcoord(int boatsize, char *name, string btName) {//for getting coordinates for boats
     cout <<name<< " choose coordinates for " << btName << endl; // displays the boat name of user
     string boat;
@@ -103,6 +108,13 @@ string Prompt::getboatcoord(int boatsize, char *name, string btName) {//for gett
         totalcount = 0;//for keeping track of the total count of coordinates entered
         bool prevone = false; //bool for testing if user enters a 10
         valid = true;
+        
+        // check if the user quit the game 
+        if (boat == "q" || boat == "Q") {
+            return boat;
+        }
+        
+        
         for (int c = 0; c < boat.length(); c++){
 
             if (isalpha(boat[c])){ //test for character
@@ -186,7 +198,12 @@ string Prompt::getshotcoord(char* name){ //getting a single coordinate for shoot
     do{
         cout << name << " Enter coordinates for the shot: " <<endl;
         getline(cin, shot); //take it
-
+        
+        // checks if the user wants to quit 
+        if (shot == "q" || shot == "Q") {
+            return shot;
+        }
+        
         //conversions of data types to make validation easier - also done on separate variables to preserve data
         int comp = (int)shot[0];
         char test = shot[1];

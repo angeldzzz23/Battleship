@@ -65,35 +65,33 @@
        return -1;
    }
 
+    void  Controller::updNm(User* user, string usr) {
+        prompt.user(usr);
+        string usrName = prompt.hello();
+        char userN[usrName.length() + 1];
+        strcpy(userN, usrName.c_str());
+        user->updNam(userN, strlen(userN));
+    }
    
+   // the game controller for the 2 player game 
  void Controller::gameController() {
     
-     // get the name for the user1 
-    prompt.user(gtuser1());
-    string usr1Name = prompt.hello(); // gets the name of user1
-    char user1N[usr1Name.length() + 1]; // translates the user
-    strcpy(user1N, usr1Name.c_str()); // convers user1Name to a string 
-    
+   
       // create the user 1
     User *user1 = new User(); // user model
     Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
     Board *Sbrd = new Board(); // containts the hits and misses of the user1
-    user1->updNam(user1N, strlen(user1N));
-
-     distt.clearScreen();
-     // get the name for the user 2
-     prompt.user(gtuser2());
-     string usr2Name = prompt.hello();
-     char user2N[usr2Name.length() + 1];
-     strcpy(user2N, usr2Name.c_str());
+    updNm(user1, gtuser1()); // updates the name of the user
+    
+     distt.clearScreen(); // clears the screen 
      
      // sets up the user stuff 
      User *user2 = new User(); // user model
      Board *brd2 = new Board();  // View- displays the boats and the hits and misses of user 1.
-     Board *Sbrd2 = new Board(); // creates the board for the user 
-     user2->updNam(user2N, strlen(user2N));
+     Board *Sbrd2 = new Board(); // creates the board for the user
+     updNm(user2, gtuser2()); // updates the name of the user
+     
       
-
       gtUsrBts(user1,brd); // gets the boat from user 1
       prompt.waitturn(); // lets the other player wait for their turn 
       gtUsrBts(user2,brd2); // gets the boat from user 1
@@ -170,7 +168,13 @@
     
 
  }
-   void Controller::mnMnCntrl() {
+ 
+ void Controller::loadGame() {
+      // load the game stuff here 
+     // 
+ }
+ 
+ void Controller::mnMnCntrl() {
              
        string userI = prompt.mainmenu();
        Display dist;
@@ -182,9 +186,11 @@
            gameController();
            
        } else if ((userI == "3")) {
-             cout << "33333" << endl;
+           lgame = true; 
+           loadGame();
+        
        } else if (userI == "4") {
-             cout << "14444" << endl;
+           return;
        }
       
    }

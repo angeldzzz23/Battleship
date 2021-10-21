@@ -46,15 +46,19 @@ class Controller {
   Coordinate *strToSC(string sC);
   void updUsrViews(Board*Sbrd, Board *Ebrd, User* us1, User *us2);
   void gameController();
+  void loadGame();
+  void updNm(User* user, string usr);
   void mnMnCntrl(); // the main menu control 
   string gtuser1() {return "user1";}
   string gtuser2() {return "user2";}
+  
   
    // deconstructor: TODO
 private:
     Display distt; // the display of the controller 
     Prompt prompt; // the prompt of the controller.. prompts the user for input 
     InptVal inptval; // displays input validation errors
+    bool lgame; // load the game..initialize is set to false 
 };
 
 

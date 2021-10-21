@@ -12,9 +12,8 @@
 #include "AbsBoat.h"
 #include "Boat.h"
 
-
-
 // test the board
+
 class Board {
 private:
     int rowsize;//rowsize for board - Ethan/Yanis

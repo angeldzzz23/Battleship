@@ -6,7 +6,7 @@
 
 /*
  * File:   Controller.cpp
- * Author: Admin
+ * Author: Angel Zambrano 
  *
  * Created on October 12, 2021, 11:55 PM
  */
@@ -73,35 +73,64 @@
         user->updNam(userN, strlen(userN));
     }
    
+   // allocates memory for all the models and views
+    void Controller::crtUsNBrd() {
+       // allocates memory for a first player and their boards
+     user1 = new User(); // user model
+     brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
+     Sbrd = new Board(); // view - containts the hits and misses of the user1
+     
+    
+     // allocates memory for a second player and their boards
+     user2 = new User(); // user model
+     brd2 = new Board();  // View- displays the boats and the hits and misses of user 1.
+     Sbrd2 = new Board(); // view- creates the board for the user
+    }
+    
+    
+    // save the game 
+    // in order to save a game the user be playing the
+    void Controller::saveGame() {
+        // ask the user to enter a file name 
+        
+        // save their game status using NSFIle 
+        
+        // quit the game.. do nothing
+    }
+    
+              
    // the game controller for the 2 player game 
  void Controller::gameController() {
     
-   
-      // create the user 1
-    User *user1 = new User(); // user model
-    Board *brd = new Board(); // View - displays the boats of user 1 and the hits and misses of user 2.
-    Board *Sbrd = new Board(); // containts the hits and misses of the user1
-    updNm(user1, gtuser1()); // updates the name of the user
-    
-     distt.clearScreen(); // clears the screen 
-     
-     // sets up the user stuff 
-     User *user2 = new User(); // user model
-     Board *brd2 = new Board();  // View- displays the boats and the hits and misses of user 1.
-     Board *Sbrd2 = new Board(); // creates the board for the user
-     updNm(user2, gtuser2()); // updates the name of the user
-     
+     // this means the users havent been created
+     if (lgame == false) {
+        // allocates memory for a first player (n brd) and second player 
+      crtUsNBrd();  // allocating memory for first player (n its boards) and user2 and its boards
+      // gets the name of two users 
+      updNm(user1, gtuser1()); // updates the name of the user
+      distt.clearScreen(); // clears the screen 
+      updNm(user2, gtuser2()); // updates the name of the user
       
+      // gets user bts 
       gtUsrBts(user1,brd); // gets the boat from user 1
       prompt.waitturn(); // lets the other player wait for their turn 
       gtUsrBts(user2,brd2); // gets the boat from user 1
       
+//      user1->setCurUrs(true);
+//     user2->setCurUrs(false);
+      
+     }
+     
+     // if lgame is true, the that means data has already beeen allocated in the loaded method 
+     // so we dont need to allocate memory, or ask for user names or ask for usr boats
+     
 
           // game begins
        Battleship *game = new Battleship(2);
 
        game->setUserOne(user1);
        game->setUserTwo(user2);
+       
 
        User *cUser = user1; // the current player
        User *oUser = user2; // the other player
@@ -131,12 +160,16 @@
           cout << endl;
           
           string str = prompt.getshotcoord(cUser->gtName());
+          // check if the user quit 
+          if (str == "q" || "Q") { saveGame(); break;}
+          // if the user quit, save their game
+          
           inpC = strToSC(str); // translates coordinate string to coordinate type
 
           // check if it is a valid hit or if its a valid miss
           if (!((cUser->isMisB(inpC) || oUser->isHitb(inpC)))) {
               // clear the screen
-              clearScreen();
+              distt.clearScreen();
               // ask for input again
               continue; // asks for input again
           }
@@ -159,19 +192,40 @@
        }while(!game->gameIsOver());
 
        clearScreen();
-       User *user = game->getWin();
-       // display winner
-       distt.winner(user->gtName());
+       
+       if (game->gameIsOver()) {
+            User *user = game->getWin();
+             // display winner
+            distt.winner(user->gtName());
+       }
+      
+      
 
 
        delete game;
+       // delete the boards 
+       
     
 
  }
  
  void Controller::loadGame() {
       // load the game stuff here 
-     // 
+      // ask the user to input a file name 
+      // set lname to the name of the file 
+     
+     
+     // call the crtUsNBrd() method 
+     
+    // call the NSfile method to load the game 
+      
+     // set the lfile to true
+     lfile = true;
+     
+     // if the game is playing against an AI, call the AI game method 
+     
+    // if the game is playing a 2 player game, Call gameController()
+      
  }
  
  void Controller::mnMnCntrl() {
@@ -201,6 +255,26 @@
        // calls the main menu control 
         mnMnCntrl();
    }
+   
+   // this is called 
+   void Controller::cleanUp() {
+       cout << "here 1" << endl;
+       delete user1;
+        cout << "here 2" << endl;
+       delete user2;
+        cout << "here 3" << endl;
+       delete brd;
+        cout << "here 4" << endl;
+       delete Sbrd;
+        cout << "here 5" << endl;
+       delete brd2;
+        cout << "here 6" << endl;
+       delete Sbrd2;
+        cout << "here 7" << endl;
+       
+   }
+   
+   
    // helps get the userBts, and updates the user board 
    void Controller::gtUsrBts(User *user, Board* brd) {
       
@@ -238,6 +312,28 @@
        string chssz = name[i];
        int sz = boatToSize[chssz]; //gets the size for that boat
        string usrCord = prompt.getboatcoord(sz,user->gtName(),chssz);
+       // check if the user quit the game 
+      
+       if (usrCord == "q" || usrCord == "Q") { 
+           
+           // clean up the rest of thee array
+           for (int j = i ; j < user->reqBSz(); j++) {
+               cout << j << endl;
+               delete bts[j];
+           }
+           
+         
+           // clean up 
+           cleanUp();
+           
+           // deletes the array 
+           delete [] bts;
+           
+           // go back to main menu
+           mnMnCntrl();
+           
+       }
+       
        Coordinate **bCord = strTCo(usrCord,sz);
 
        // check if the coordinate is unique

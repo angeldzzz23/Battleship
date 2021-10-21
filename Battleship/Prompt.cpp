@@ -93,6 +93,8 @@ void Prompt::winner(char *winner) { //prints out winner of game
             <<"You have won! " <<endl; //perhaps also put in their score
 }
 
+// returns a board coordinate 
+// however, this detects if the user wants exit the game
 string Prompt::getboatcoord(int boatsize, char *name, string btName) {//for getting coordinates for boats
     cout <<name<< " choose coordinates for " << btName << endl; // displays the boat name of user
     string boat;
@@ -106,6 +108,13 @@ string Prompt::getboatcoord(int boatsize, char *name, string btName) {//for gett
         totalcount = 0;//for keeping track of the total count of coordinates entered
         bool prevone = false; //bool for testing if user enters a 10
         valid = true;
+        
+        // check if the user quit the game 
+        if (boat == "q" || boat == "Q") {
+            return boat;
+        }
+        
+        
         for (int c = 0; c < boat.length(); c++){
 
             if (isalpha(boat[c])){ //test for character
@@ -189,7 +198,12 @@ string Prompt::getshotcoord(char* name){ //getting a single coordinate for shoot
     do{
         cout << name << " Enter coordinates for the shot: " <<endl;
         getline(cin, shot); //take it
-
+        
+        // checks if the user wants to quit 
+        if (shot == "q" || shot == "Q") {
+            return shot;
+        }
+        
         //conversions of data types to make validation easier - also done on separate variables to preserve data
         int comp = (int)shot[0];
         char test = shot[1];

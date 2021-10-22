@@ -203,20 +203,20 @@ bool User::isMisB(Coordinate *cord) {
  
         
     // loop through our boats array and see if that coordinate exists 
-    for (int i =0; i < boatsz; i++) {
-         Boat *cboat = boats[i];
-         // check if the boat contains the coordinate 
-         if (cboat->cordHsadd(cord)) {
-             return false;
-         }
-         
-         if (cboat->cordHshit(cord)) {
-             return false;
-         }
-         
-         // check the misses array 
-         
-    }
+//    for (int i =0; i < boatsz; i++) {
+//         Boat *cboat = boats[i];
+//         // check if the boat contains the coordinate 
+//         if (cboat->cordHsadd(cord)) {
+//             return false;
+//         }
+//         
+//         if (cboat->cordHshit(cord)) {
+//             return false;
+//         }
+//         
+//         // check the misses array 
+//         
+//    }
     
     // loop thorugh your misses 
     for (int i = 0; i < missSz;i++) {

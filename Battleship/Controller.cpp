@@ -37,30 +37,43 @@
    }
 
    int Controller::cnvrtLet(char letter) {
-
-       switch(letter) {
-           case 'a':
-               return 0;
-           case 'b':
-               return 1;
-           case 'c':
-               return 2;
-           case 'd':
-               return 3;
-           case 'e':
-               return 4;
-           case 'f':
-               return 5;
-           case 'g':
-               return 6;
-           case 'h':
-               return 7;
-           case 'i':
-               return 8;
-          case 'j':
-               return 9;
-
+   
+      if((letter<'A'||letter>'Z')&&(letter<'a'||letter>'z')){
+           cout<<"You don't know what you are doing"<<endl; 
+           exit(0); 
        }
+       
+       //in bounds
+       if(letter>='A'&&letter<='Z'){
+           return letter-'A';
+       }else if(letter>='a'&&letter<='z'){
+           return letter-'a'; 
+       }
+       
+       
+//       switch(letter) {
+//           case 'a':
+//               return 0;
+//           case 'b':
+//               return 1;
+//           case 'c':
+//               return 2;
+//           case 'd':
+//               return 3;
+//           case 'e':
+//               return 4;
+//           case 'f':
+//               return 5;
+//           case 'g':
+//               return 6;
+//           case 'h':
+//               return 7;
+//           case 'i':
+//               return 8;
+//          case 'j':
+//               return 9;
+//
+//       }
 
        return -1;
    }
@@ -259,22 +272,25 @@
       
  }
  
+ // technically, we would do us
+ // technically this is another controller 
  void Controller::mnMnCntrl() {
-             
-       string userI = prompt.mainmenu();
+     string ai = "1", twPlyGme = "2", ldGame = "3", quit = "4";
+      string userI = prompt.mainmenu();
        Display dist;
-       if (userI == "1") {
-           cout << "1111" << endl;
-       } else if (userI == "2") {
+       if (userI == ai) {
+         
+       } else if (userI == twPlyGme) {
         // play a 2 player game 
            dist.clearScreen();
            gameController();
            
-       } else if ((userI == "3")) {
+       } else if ((userI == ldGame)) {
            lgame = true; 
            loadGame();
         
-       } else if (userI == "4") {
+       } else if (userI == quit) {
+           exit(0);
            return;
        }
       

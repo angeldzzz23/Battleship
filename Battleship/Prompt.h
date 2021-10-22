@@ -46,9 +46,12 @@ public:
     
     void winner(char *winner); //for printing out the winner
     
-    string getboatcoord(int boatsize); //getting boat 
+    string getboatcoord(int boatsize, char *name, string btName); //getting boat 
     
     string getshotcoord(char*);
+    
+    
+    
     
     ~Prompt();//destructor 
 };

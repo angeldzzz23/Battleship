@@ -63,7 +63,7 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
         gamesaver.player1.cruisee.position[c].col = user1->getBoat(2)->cordAt(c)->getCol();
     }            
     gamesaver.player1.cruisee.dead = user1->getBoat(2)->isDead();
-    gamesaver.player1.cruisee.hitsz = user1->getBoat(0)->gtHsz();
+    gamesaver.player1.cruisee.hitsz = user1->getBoat(2)->gtHsz();
     if (gamesaver.player1.cruisee.hitsz > 0){
         for (int i=0; i < gamesaver.player1.cruisee.hitsz; i++){
             gamesaver.player1.cruisee.hits[i].row = user1->getBoat(2)->hcordAt(i)->getRow();
@@ -76,7 +76,7 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
         gamesaver.player1.battle.position[c].col = user1->getBoat(3)->cordAt(c)->getCol();
     }
     gamesaver.player1.battle.dead = user1->getBoat(3)->isDead();
-    gamesaver.player1.battle.hitsz = user1->getBoat(0)->gtHsz();
+    gamesaver.player1.battle.hitsz = user1->getBoat(3)->gtHsz();
     if (gamesaver.player1.battle.hitsz > 0){
         for (int i=0; i < gamesaver.player1.battle.hitsz; i++){
             gamesaver.player1.battle.hits[i].row = user1->getBoat(3)->hcordAt(i)->getRow();
@@ -121,7 +121,7 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
         gamesaver.player2.destroy.position[c].col = user2->getBoat(0)->cordAt(c)->getCol();
     }    
     gamesaver.player2.destroy.dead = user2->getBoat(0)->isDead();
-    gamesaver.player2.destroy.hitsz = user1->getBoat(0)->gtHsz();
+    gamesaver.player2.destroy.hitsz = user2->getBoat(0)->gtHsz();
     if (gamesaver.player2.destroy.hitsz > 0){
         for (int i=0; i < gamesaver.player2.destroy.hitsz; i++){
             gamesaver.player2.destroy.hits[i].row = user2->getBoat(0)->hcordAt(i)->getRow();
@@ -134,7 +134,7 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
         gamesaver.player2.sub.position[c].col = user2->getBoat(1)->cordAt(c)->getCol();
     }
     gamesaver.player2.sub.dead = user2->getBoat(1)->isDead();
-    gamesaver.player2.sub.hitsz = user1->getBoat(1)->gtHsz();
+    gamesaver.player2.sub.hitsz = user2->getBoat(1)->gtHsz();
     if (gamesaver.player2.sub.hitsz > 0){
         for (int i=0; i < gamesaver.player2.sub.hitsz; i++){
             gamesaver.player2.sub.hits[i].row = user2->getBoat(1)->hcordAt(i)->getRow();
@@ -147,7 +147,7 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
         gamesaver.player2.cruisee.position[c].col = user2->getBoat(2)->cordAt(c)->getCol();
     }
     gamesaver.player2.cruisee.dead = user2->getBoat(2)->isDead();
-    gamesaver.player2.cruisee.hitsz = user1->getBoat(2)->gtHsz();
+    gamesaver.player2.cruisee.hitsz = user2->getBoat(2)->gtHsz();
     if (gamesaver.player2.cruisee.hitsz > 0){
         for (int i=0; i < gamesaver.player2.cruisee.hitsz; i++){
             gamesaver.player2.cruisee.hits[i].row = user2->getBoat(2)->hcordAt(i)->getRow();
@@ -160,7 +160,7 @@ void NSFile::savethegame(User* user1, User* user2, string savename){
         gamesaver.player2.battle.position[c].col = user2->getBoat(3)->cordAt(c)->getCol();
     }
     gamesaver.player2.battle.dead = user2->getBoat(3)->isDead();
-    gamesaver.player2.battle.hitsz = user1->getBoat(3)->gtHsz();
+    gamesaver.player2.battle.hitsz = user2->getBoat(3)->gtHsz();
     if (gamesaver.player2.battle.hitsz > 0){
         for (int i=0; i < gamesaver.player2.battle.hitsz; i++){
             gamesaver.player2.battle.hits[i].row = user2->getBoat(3)->hcordAt(i)->getRow();
@@ -212,10 +212,7 @@ void NSFile::readingame(User* load1, User* load2, string loadname){//loading in 
     }  
     
 //transfer from player1 in gameloader into load1 user
-//username  testing - print back out to ensure it's good  
-    cout <<"Loading in name from file... " <<endl;
-    cout <<gameloader.player1.name <<endl;
-//curruser update
+//current user update 
     load1->setCurUrs(gameloader.player1.curruser);
 //transfer username from player1 to user load1 using a load1 method
     load1->updNam(gameloader.player1.name,strlen(gameloader.player1.name));
@@ -304,9 +301,6 @@ void NSFile::readingame(User* load1, User* load2, string loadname){//loading in 
     
     
 //load 2 information
-//username testing
-    cout <<"Loading in name from file: " <<endl;
-    cout <<gameloader.player2.name <<endl;
 //username
     load2->updNam(gameloader.player2.name,strlen(gameloader.player2.name));
 //player turn

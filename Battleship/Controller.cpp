@@ -247,7 +247,14 @@
      // if the game is playing against an AI, call the AI game method 
      
     // if the game is playing a 2 player game, Call gameController()
-     //update board info here
+     brd->update(user1->gtboats(), 5);
+     brd->upmss(user2->gtmiss(),user2->gtTotmiSz());
+     Sbrd->upmss(user1->gtmiss(),user1->gtTotmiSz());
+     brd2->update(user2->gtboats(), 5);
+     brd2->upmss(user1->gtmiss(),user1->gtTotmiSz());
+     Sbrd2->upmss(user2->gtmiss(),user2->gtTotmiSz());
+     
+     
      gameController();
       
  }

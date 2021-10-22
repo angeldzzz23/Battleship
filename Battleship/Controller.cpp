@@ -283,6 +283,7 @@
            loadGame();
         
        } else if (userI == quit) {
+           exit(0);
            return;
        }
       

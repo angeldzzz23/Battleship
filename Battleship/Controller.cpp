@@ -233,12 +233,11 @@
        }
       
       
-
+       mnMnCntrl();
 
        delete game;
        // delete the boards 
-       
-    
+          
 
  }
  
@@ -260,12 +259,15 @@
      // if the game is playing against an AI, call the AI game method 
      
     // if the game is playing a 2 player game, Call gameController()
-     brd->update(user1->gtboats(), 5);
-     brd->upmss(user2->gtmiss(),user2->gtTotmiSz());
-     Sbrd->upmss(user1->gtmiss(),user1->gtTotmiSz());
+     brd->update(user1->gtboats(), 5); //these two need to be here for the user boat to show up
      brd2->update(user2->gtboats(), 5);
-     brd2->upmss(user1->gtmiss(),user1->gtTotmiSz());
-     Sbrd2->upmss(user2->gtmiss(),user2->gtTotmiSz());
+//     brd->upmss(user2->gtmiss(),user2->gtTotmiSz());
+//     Sbrd->upmss(user1->gtmiss(),user1->gtTotmiSz());     
+//     brd2->upmss(user1->gtmiss(),user1->gtTotmiSz());
+//     Sbrd2->upmss(user2->gtmiss(),user2->gtTotmiSz());
+     updUsrViews(Sbrd, brd2,user1,user2);
+     updUsrViews(Sbrd2,brd,user2,user1);
+     
      
      
      gameController();

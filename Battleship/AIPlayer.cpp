@@ -15,11 +15,7 @@ using namespace std;
  * 4 - West
  */
 
-void setSmartHit(bool hit) {
-    this->saveSmartHit = hit;
-}
-
-bool AIPlayer::checkPrevMoves(Coordinate *coord, User *user) {
+bool AIPlayer::checkPrevMoves(Coordinate *coord, User *enemyUser) {
     //check AI miss array
     for (int i = 0; i < this->missSz; i++) {
         if (*this->misses[i] == *coord)
@@ -27,8 +23,8 @@ bool AIPlayer::checkPrevMoves(Coordinate *coord, User *user) {
     }
         
     //check enemy user's boat hit coords array
-    for (int i = 0; i < user->gtTotBtsz(); i++) {
-        if (user->getBoat(i)->cordHshit(coord))
+    for (int i = 0; i < enemyUser->gtTotBtsz(); i++) {
+        if (enemyUser->getBoat(i)->cordHshit(coord))
             return false; //if the coord has been shot already
     }
     
@@ -36,16 +32,18 @@ bool AIPlayer::checkPrevMoves(Coordinate *coord, User *user) {
     return true; //Coord DNE; can still be taken
 }
 
-Coordinate* AIPlayer::makeAMove(User *user, bool smartHit) {
+Coordinate* AIPlayer::makeAMove(User *enemyUser, Coordinate *prevCoord) {
     Coordinate *coord = nullptr;
+    int randRow, randCol;
     
     while (true) {
-        if (getSmartHit())
-            
-        else
-            coord = new Coordinate(rand() % 10, rand() % 10);
+        randRow = rand() % 10, randCol = rand() % 10;
+//        if (getSmartHit())
+//            coord = smartMove(prevCoord, enemyUser);
+//        else
+        coord = new Coordinate(randRow, randCol);
         
-        if (checkPrevMoves(coord, user)) //if coord DNE yet
+        if (checkPrevMoves(coord, enemyUser)) //if coord DNE yet
             return coord;
     }
 }
@@ -152,7 +150,7 @@ void AIPlayer::RNGCoords(Boat* boat) {
 
 AIPlayer::AIPlayer() {
     //Set smartHit to false
-    saveSmartHit = false;
+    //saveSmartHit = false;
     
     //Set rand seed
     srand(time(0));
@@ -187,7 +185,3 @@ AIPlayer::AIPlayer() {
     RNGCoords(aiCarr); //Rand gen all coords
     
 }
-
-//AIPlayer::~AIPlayer() {
-//    
-//}

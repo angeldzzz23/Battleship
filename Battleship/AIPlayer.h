@@ -22,15 +22,15 @@
 
 class AIPlayer : public User {
     private:
-        bool saveSmartHit;
+        //bool saveSmartHit = false; //AI should not start off with a smart hit
     public:
-        void setSmartHit(bool);
-        bool getSmartHit() {return saveSmartHit;}
+        //Coordinate* smartMove(Coordinate*);
+        //void setSmartHit(bool);
+        //bool getSmartHit() {return saveSmartHit;}
         void RNGCoords(Boat*);
         bool checkPrevMoves(Coordinate*, User*);
-        Coordinate* makeAMove(User*);
+        Coordinate* makeAMove(User*, Coordinate*);
         AIPlayer();
-        //~AIPlayer();
 };
 
 #endif /* AIPLAYER_H */

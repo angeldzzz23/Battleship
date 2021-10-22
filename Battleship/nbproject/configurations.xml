@@ -12,11 +12,13 @@
       <itemPath>Boat.h</itemPath>
       <itemPath>Controller.h</itemPath>
       <itemPath>Coordinate.h</itemPath>
+      <itemPath>CtrlMenu.h</itemPath>
       <itemPath>Display.h</itemPath>
       <itemPath>Game.h</itemPath>
       <itemPath>NSFile.h</itemPath>
       <itemPath>Prompt.h</itemPath>
       <itemPath>User.h</itemPath>
+      <itemPath>inptVal.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -32,6 +34,8 @@
       <itemPath>Boat.cpp</itemPath>
       <itemPath>Controller.cpp</itemPath>
       <itemPath>Coordinate.cpp</itemPath>
+      <itemPath>CtrlMenu.cpp</itemPath>
+      <itemPath>NSFile.cpp</itemPath>
       <itemPath>Prompt.cpp</itemPath>
       <itemPath>User.cpp</itemPath>
       <itemPath>display.cpp</itemPath>
@@ -103,9 +107,15 @@
       </item>
       <item path="Coordinate.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="CtrlMenu.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CtrlMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Display.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NSFile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="NSFile.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -118,6 +128,8 @@
       <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="inptVal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -172,9 +184,15 @@
       </item>
       <item path="Coordinate.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="CtrlMenu.cpp" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CtrlMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Display.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NSFile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="NSFile.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -187,6 +205,8 @@
       <item path="User.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="display.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="inptVal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

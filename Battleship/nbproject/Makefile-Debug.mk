@@ -42,6 +42,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Boat.o \
 	${OBJECTDIR}/Controller.o \
 	${OBJECTDIR}/Coordinate.o \
+	${OBJECTDIR}/CtrlMenu.o \
+	${OBJECTDIR}/NSFile.o \
 	${OBJECTDIR}/Prompt.o \
 	${OBJECTDIR}/User.o \
 	${OBJECTDIR}/display.o \
@@ -106,6 +108,16 @@ ${OBJECTDIR}/Coordinate.o: Coordinate.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Coordinate.o Coordinate.cpp
+
+${OBJECTDIR}/CtrlMenu.o: CtrlMenu.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CtrlMenu.o CtrlMenu.cpp
+
+${OBJECTDIR}/NSFile.o: NSFile.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++14 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NSFile.o NSFile.cpp
 
 ${OBJECTDIR}/Prompt.o: Prompt.cpp
 	${MKDIR} -p ${OBJECTDIR}

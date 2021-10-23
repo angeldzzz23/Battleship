@@ -199,194 +199,197 @@ cout <<savename <<endl;
 void NSFile::readingame(User* load1, User* load2, string loadname){//loading in a game
     cout <<loadname <<endl; //test to ensure it got through
     fstream loadfile;//start the file stream
+    bool validstart = false; //bool to control loading in
     loadfile.open(loadname.c_str(), ios::in|ios::binary);//open .bin specified by the user - use .c_str() to make it a c_string and avoid conflicts
     if (loadfile.is_open()){ //test file is open
         long cursor = 0L; //cursor
         loadfile.seekg(cursor, ios::beg); //set the cursor
         loadfile.read(reinterpret_cast<char *> (&gameloader), sizeof(gamesave));//read in the gamesave structure
         loadfile.close(); //close file
+        validstart = true; //if loaded in, set the bool to true
     }
     else{
         cout <<"File fail! Please double check file name." <<endl;//error for if fail fails to open
-        exit(1); //exit value
+        validstart = false; //if not loaded in, set bool to false
     }  
-    
-//transfer from player1 in gameloader into load1 user
-//current user update 
-    load1->setCurUrs(gameloader.player1.curruser);
-//transfer username from player1 to user load1 using a load1 method
-    load1->updNam(gameloader.player1.name,strlen(gameloader.player1.name));
-//miss array
-    if(gameloader.player1.missSz > 0){//check to see if there is anything to transfer to  begin with
-        for (int c = 0; c < gameloader.player1.missSz; c++){ //loop through how many misses are in the array
-            Coordinate *transfermiss = new Coordinate(gameloader.player1.misses[c].row,gameloader.player1.misses[c].col);//translate our coordinate back into Coordinate class using a temp variable
-            load1->adMiss(transfermiss);//after translation, add it into user (load1) information 
+    if (validstart == true){   //only load in when bool is true
+    //transfer from player1 in gameloader into load1 user
+    //current user update 
+        load1->setCurUrs(gameloader.player1.curruser);
+    //transfer username from player1 to user load1 using a load1 method
+        load1->updNam(gameloader.player1.name,strlen(gameloader.player1.name));
+    //miss array
+        if(gameloader.player1.missSz > 0){//check to see if there is anything to transfer to  begin with
+            for (int c = 0; c < gameloader.player1.missSz; c++){ //loop through how many misses are in the array
+                Coordinate *transfermiss = new Coordinate(gameloader.player1.misses[c].row,gameloader.player1.misses[c].col);//translate our coordinate back into Coordinate class using a temp variable
+                load1->adMiss(transfermiss);//after translation, add it into user (load1) information 
+            }
         }
-    }
-//destroyer
-    for(int i = 0; i < 2; i++){
-       Coordinate *tester = new Coordinate(gameloader.player1.destroy.position[i].row, gameloader.player1.destroy.position[i].col);//translate our coordinates back into temp Coordinate class
-       transferdes[i] = tester;//put the temp Coordinate into an array of Coordinates - who's size correlates to the boat size
-    }
-    Destroyer *transdes1 = new Destroyer();//declare a new boat
-    transdes1->addCords(transferdes, 2);//transfer the array of coordinates into the new boat
-    load1->adBoat(transdes1);//put boat into a user 
-    if (gameloader.player1.destroy.hitsz > 0){//check to see if their is anything in the boat hit array
-        for (int c = 0; c < gameloader.player1.destroy.hitsz; c++){//transfer hit coordinates
-            Coordinate *transferhit = new Coordinate(gameloader.player1.destroy.hits[c].row,gameloader.player1.destroy.hits[c].col);//translate them first
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;//then transfer into a temp Coordinate
-            load1->getBoat(0)->setHit(transferhit); //then transfer that temp Coordinate into the boat hit array
+    //destroyer
+        for(int i = 0; i < 2; i++){
+           Coordinate *tester = new Coordinate(gameloader.player1.destroy.position[i].row, gameloader.player1.destroy.position[i].col);//translate our coordinates back into temp Coordinate class
+           transferdes[i] = tester;//put the temp Coordinate into an array of Coordinates - who's size correlates to the boat size
         }
-    }//this process is repeated for all boats in load1 and load2    
-//submarine
-    for(int i = 0; i < 3; i++){
-       Coordinate *tester = new Coordinate(gameloader.player1.sub.position[i].row, gameloader.player1.sub.position[i].col);
-       transfersub[i] = tester;
-    }
-    Submarine *transub1 = new Submarine();
-    transub1->addCords(transfersub,3);
-    load1->adBoat(transub1);
-        if (gameloader.player1.sub.hitsz > 0){
-        for (int c = 0; c < gameloader.player1.sub.hitsz; c++){
-            Coordinate *transferhit = new Coordinate(gameloader.player1.sub.hits[c].row,gameloader.player1.sub.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load1->getBoat(1)->setHit(transferhit);
+        Destroyer *transdes1 = new Destroyer();//declare a new boat
+        transdes1->addCords(transferdes, 2);//transfer the array of coordinates into the new boat
+        load1->adBoat(transdes1);//put boat into a user 
+        if (gameloader.player1.destroy.hitsz > 0){//check to see if their is anything in the boat hit array
+            for (int c = 0; c < gameloader.player1.destroy.hitsz; c++){//transfer hit coordinates
+                Coordinate *transferhit = new Coordinate(gameloader.player1.destroy.hits[c].row,gameloader.player1.destroy.hits[c].col);//translate them first
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;//then transfer into a temp Coordinate
+                load1->getBoat(0)->setHit(transferhit); //then transfer that temp Coordinate into the boat hit array
+            }
+        }//this process is repeated for all boats in load1 and load2    
+    //submarine
+        for(int i = 0; i < 3; i++){
+           Coordinate *tester = new Coordinate(gameloader.player1.sub.position[i].row, gameloader.player1.sub.position[i].col);
+           transfersub[i] = tester;
         }
-    }
-//cruiser
-    for(int i = 0; i < 3; i++){
-       Coordinate *tester = new Coordinate(gameloader.player1.cruisee.position[i].row, gameloader.player1.cruisee.position[i].col);
-       transfercruise[i] = tester;
-    }
-    Cruiser *transcruise1 = new Cruiser();
-    transcruise1->addCords(transfercruise,3);
-    load1->adBoat(transcruise1);
-        if (gameloader.player1.cruisee.hitsz > 0){
-        for (int c = 0; c < gameloader.player1.cruisee.hitsz; c++){
-            Coordinate *transferhit = new Coordinate(gameloader.player1.cruisee.hits[c].row,gameloader.player1.cruisee.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load1->getBoat(2)->setHit(transferhit);
+        Submarine *transub1 = new Submarine();
+        transub1->addCords(transfersub,3);
+        load1->adBoat(transub1);
+            if (gameloader.player1.sub.hitsz > 0){
+            for (int c = 0; c < gameloader.player1.sub.hitsz; c++){
+                Coordinate *transferhit = new Coordinate(gameloader.player1.sub.hits[c].row,gameloader.player1.sub.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load1->getBoat(1)->setHit(transferhit);
+            }
         }
-    }           
-//battleship
-    for(int i = 0; i < 4; i++){
-       Coordinate *tester = new Coordinate(gameloader.player1.battle.position[i].row, gameloader.player1.battle.position[i].col);
-       transferbattle[i] = tester;
-    }
-    Battleshp *transbat1 = new Battleshp();
-    transbat1->addCords(transferbattle,4);
-    load1->adBoat(transbat1);
-    if (gameloader.player1.battle.hitsz > 0){
-        for (int c = 0; c < gameloader.player1.battle.hitsz; c++){
-            Coordinate *transferhit = new Coordinate(gameloader.player1.battle.hits[c].row,gameloader.player1.battle.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load1->getBoat(3)->setHit(transferhit);
+    //cruiser
+        for(int i = 0; i < 3; i++){
+           Coordinate *tester = new Coordinate(gameloader.player1.cruisee.position[i].row, gameloader.player1.cruisee.position[i].col);
+           transfercruise[i] = tester;
         }
-    }
-//carrier
-    for(int i = 0; i < 5; i++){
-       Coordinate *tester = new Coordinate(gameloader.player1.carr.position[i].row, gameloader.player1.carr.position[i].col);
-       transfercarr[i] = tester;
-    }
-    Carrier *transcarr1 = new Carrier();
-    transcarr1->addCords(transfercarr, 5);
-    load1->adBoat(transcarr1);   
-    if (gameloader.player1.carr.hitsz > 0){
-        for (int c = 0; c < gameloader.player1.carr.hitsz; c++){
-            Coordinate *transferhit = new Coordinate(gameloader.player1.carr.hits[c].row,gameloader.player1.carr.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load1->getBoat(4)->setHit(transferhit);
+        Cruiser *transcruise1 = new Cruiser();
+        transcruise1->addCords(transfercruise,3);
+        load1->adBoat(transcruise1);
+            if (gameloader.player1.cruisee.hitsz > 0){
+            for (int c = 0; c < gameloader.player1.cruisee.hitsz; c++){
+                Coordinate *transferhit = new Coordinate(gameloader.player1.cruisee.hits[c].row,gameloader.player1.cruisee.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load1->getBoat(2)->setHit(transferhit);
+            }
+        }           
+    //battleship
+        for(int i = 0; i < 4; i++){
+           Coordinate *tester = new Coordinate(gameloader.player1.battle.position[i].row, gameloader.player1.battle.position[i].col);
+           transferbattle[i] = tester;
         }
-    }
-    
-    
-//load 2 information
-//username
-    load2->updNam(gameloader.player2.name,strlen(gameloader.player2.name));
-//player turn
-    load2->setCurUrs(gameloader.player2.curruser);
-//miss array
-    if(gameloader.player2.missSz > 0){
-        for (int c = 0; c < gameloader.player2.missSz; c++){
-            Coordinate *transfermiss = new Coordinate(gameloader.player2.misses[c].row,gameloader.player2.misses[c].col);
-            load2->adMiss(transfermiss);
+        Battleshp *transbat1 = new Battleshp();
+        transbat1->addCords(transferbattle,4);
+        load1->adBoat(transbat1);
+        if (gameloader.player1.battle.hitsz > 0){
+            for (int c = 0; c < gameloader.player1.battle.hitsz; c++){
+                Coordinate *transferhit = new Coordinate(gameloader.player1.battle.hits[c].row,gameloader.player1.battle.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load1->getBoat(3)->setHit(transferhit);
+            }
         }
-    }
-//destroyer
-   for(int i = 0; i < 2; i++){
-       Coordinate *tester = new Coordinate(gameloader.player2.destroy.position[i].row, gameloader.player2.destroy.position[i].col);
-       transferdes[i] = tester;
-    }    
-    Destroyer *transdes2 =new Destroyer(); 
-    transdes2->addCords(transferdes, 2);    
-    load2->adBoat(transdes2);    
-    if(gameloader.player2.destroy.hitsz > 0 ){
-        for (int c = 0; c <gameloader.player2.destroy.hitsz; c++ ){
-            Coordinate *transferhit = new Coordinate(gameloader.player2.destroy.hits[c].row,gameloader.player2.destroy.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load2->getBoat(0)->setHit(transferhit);
+    //carrier
+        for(int i = 0; i < 5; i++){
+           Coordinate *tester = new Coordinate(gameloader.player1.carr.position[i].row, gameloader.player1.carr.position[i].col);
+           transfercarr[i] = tester;
         }
-    }
-//submarine
-    for(int i = 0; i < 3; i++){
-       Coordinate *tester = new Coordinate(gameloader.player2.sub.position[i].row, gameloader.player2.sub.position[i].col);
-       transfersub[i] = tester;
-    }
-    Submarine *transub2 = new Submarine();
-    transub2->addCords(transfersub,3);
-    load2->adBoat(transub2);
-    if(gameloader.player2.sub.hitsz > 0 ){
-        for (int c = 0; c <gameloader.player2.sub.hitsz; c++ ){
-            Coordinate *transferhit = new Coordinate(gameloader.player2.sub.hits[c].row,gameloader.player2.sub.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load2->getBoat(1)->setHit(transferhit);
+        Carrier *transcarr1 = new Carrier();
+        transcarr1->addCords(transfercarr, 5);
+        load1->adBoat(transcarr1);   
+        if (gameloader.player1.carr.hitsz > 0){
+            for (int c = 0; c < gameloader.player1.carr.hitsz; c++){
+                Coordinate *transferhit = new Coordinate(gameloader.player1.carr.hits[c].row,gameloader.player1.carr.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load1->getBoat(4)->setHit(transferhit);
+            }
         }
-    }
-//cruiser
-    for(int i = 0; i < 3; i++){
-       Coordinate *tester = new Coordinate(gameloader.player2.cruisee.position[i].row, gameloader.player2.cruisee.position[i].col);
-       transfercruise[i] = tester;
-    }
-    Cruiser *transcruise2 = new Cruiser();
-    transcruise2->addCords(transfercruise,3);
-    load2->adBoat(transcruise2);
-    if(gameloader.player2.cruisee.hitsz > 0 ){
-        for (int c = 0; c <gameloader.player2.cruisee.hitsz; c++ ){
-            Coordinate *transferhit = new Coordinate(gameloader.player2.cruisee.hits[c].row,gameloader.player2.cruisee.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load2->getBoat(2)->setHit(transferhit);
+
+
+    //load 2 information
+    //username
+        load2->updNam(gameloader.player2.name,strlen(gameloader.player2.name));
+    //player turn
+        load2->setCurUrs(gameloader.player2.curruser);
+    //miss array
+        if(gameloader.player2.missSz > 0){
+            for (int c = 0; c < gameloader.player2.missSz; c++){
+                Coordinate *transfermiss = new Coordinate(gameloader.player2.misses[c].row,gameloader.player2.misses[c].col);
+                load2->adMiss(transfermiss);
+            }
         }
-    }
-//battleship
-    for(int i = 0; i < 4; i++){
-       Coordinate *tester = new Coordinate(gameloader.player2.battle.position[i].row, gameloader.player2.battle.position[i].col);
-       transferbattle[i] = tester;
-    }
-    Battleshp *transbat2 = new Battleshp();
-    transbat2->addCords(transferbattle,4);
-    load2->adBoat(transbat2);
-    if(gameloader.player2.battle.hitsz > 0 ){
-        for (int c = 0; c <gameloader.player2.battle.hitsz; c++ ){
-            Coordinate *transferhit = new Coordinate(gameloader.player2.battle.hits[c].row,gameloader.player2.battle.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load2->getBoat(3)->setHit(transferhit);
+    //destroyer
+       for(int i = 0; i < 2; i++){
+           Coordinate *tester = new Coordinate(gameloader.player2.destroy.position[i].row, gameloader.player2.destroy.position[i].col);
+           transferdes[i] = tester;
+        }    
+        Destroyer *transdes2 =new Destroyer(); 
+        transdes2->addCords(transferdes, 2);    
+        load2->adBoat(transdes2);    
+        if(gameloader.player2.destroy.hitsz > 0 ){
+            for (int c = 0; c <gameloader.player2.destroy.hitsz; c++ ){
+                Coordinate *transferhit = new Coordinate(gameloader.player2.destroy.hits[c].row,gameloader.player2.destroy.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load2->getBoat(0)->setHit(transferhit);
+            }
         }
-    }
-//carrier
-    for(int i = 0; i < 5; i++){
-       Coordinate *tester = new Coordinate(gameloader.player2.carr.position[i].row, gameloader.player2.carr.position[i].col);
-       transfercarr[i] = tester;
-    }
-    Carrier *transcarr2 = new Carrier();
-    transcarr2->addCords(transfercarr, 5);
-    load2->adBoat(transcarr2);
-    if(gameloader.player2.carr.hitsz > 0 ){
-        for (int c = 0; c <gameloader.player2.carr.hitsz; c++ ){
-            Coordinate *transferhit = new Coordinate(gameloader.player2.carr.hits[c].row,gameloader.player2.carr.hits[c].col);
-            cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
-            load2->getBoat(4)->setHit(transferhit);
+    //submarine
+        for(int i = 0; i < 3; i++){
+           Coordinate *tester = new Coordinate(gameloader.player2.sub.position[i].row, gameloader.player2.sub.position[i].col);
+           transfersub[i] = tester;
         }
-    }
+        Submarine *transub2 = new Submarine();
+        transub2->addCords(transfersub,3);
+        load2->adBoat(transub2);
+        if(gameloader.player2.sub.hitsz > 0 ){
+            for (int c = 0; c <gameloader.player2.sub.hitsz; c++ ){
+                Coordinate *transferhit = new Coordinate(gameloader.player2.sub.hits[c].row,gameloader.player2.sub.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load2->getBoat(1)->setHit(transferhit);
+            }
+        }
+    //cruiser
+        for(int i = 0; i < 3; i++){
+           Coordinate *tester = new Coordinate(gameloader.player2.cruisee.position[i].row, gameloader.player2.cruisee.position[i].col);
+           transfercruise[i] = tester;
+        }
+        Cruiser *transcruise2 = new Cruiser();
+        transcruise2->addCords(transfercruise,3);
+        load2->adBoat(transcruise2);
+        if(gameloader.player2.cruisee.hitsz > 0 ){
+            for (int c = 0; c <gameloader.player2.cruisee.hitsz; c++ ){
+                Coordinate *transferhit = new Coordinate(gameloader.player2.cruisee.hits[c].row,gameloader.player2.cruisee.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load2->getBoat(2)->setHit(transferhit);
+            }
+        }
+    //battleship
+        for(int i = 0; i < 4; i++){
+           Coordinate *tester = new Coordinate(gameloader.player2.battle.position[i].row, gameloader.player2.battle.position[i].col);
+           transferbattle[i] = tester;
+        }
+        Battleshp *transbat2 = new Battleshp();
+        transbat2->addCords(transferbattle,4);
+        load2->adBoat(transbat2);
+        if(gameloader.player2.battle.hitsz > 0 ){
+            for (int c = 0; c <gameloader.player2.battle.hitsz; c++ ){
+                Coordinate *transferhit = new Coordinate(gameloader.player2.battle.hits[c].row,gameloader.player2.battle.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load2->getBoat(3)->setHit(transferhit);
+            }
+        }
+    //carrier
+        for(int i = 0; i < 5; i++){
+           Coordinate *tester = new Coordinate(gameloader.player2.carr.position[i].row, gameloader.player2.carr.position[i].col);
+           transfercarr[i] = tester;
+        }
+        Carrier *transcarr2 = new Carrier();
+        transcarr2->addCords(transfercarr, 5);
+        load2->adBoat(transcarr2);
+        if(gameloader.player2.carr.hitsz > 0 ){
+            for (int c = 0; c <gameloader.player2.carr.hitsz; c++ ){
+                Coordinate *transferhit = new Coordinate(gameloader.player2.carr.hits[c].row,gameloader.player2.carr.hits[c].col);
+                cout <<transferhit->getRow() <<transferhit->getCol() <<endl;
+                load2->getBoat(4)->setHit(transferhit);
+            }
+        }
+    }//end of if statment is here
 }
 
 NSFile::~NSFile(){

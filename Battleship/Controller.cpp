@@ -252,7 +252,7 @@
      
     // call the NSfile method to load the game  (I called the NSFile object "savefile")
      saveload.readingame(user1, user2, lfile);
-      
+     //cout <<"Checkpoint." <<endl; //test code
      // set the lfile to true
      lfile = true;
      
